@@ -10,14 +10,14 @@ logger = logging.getLogger(__name__)
 router = APIRouter(tags=["Chat"])
 
 # RAG 엔진 연동 전 목 응답 플래그
-# 윤승혁님 run_rag_chat() 완성되면 False로 바꾸고 아래 import 활성화
+# 승혁님 run_rag_chat() 완성되면 False로 바꾸고 아래 import 활성화
 USE_MOCK = True
 
 # from backend.services.rag_service import run_rag_chat
 
 
 def _mock_response(request: ChatRequest) -> ChatResponse:
-    """RAG 연동 전 임시 목 응답 - 송민지님 Streamlit 작업용"""
+    """RAG 연동 전 임시 목 응답 - 민지님 Streamlit 작업용"""
     profile = request.user_profile
 
     return ChatResponse(
