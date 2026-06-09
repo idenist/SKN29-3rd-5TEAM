@@ -2,7 +2,7 @@ import time
 import logging
 from fastapi import APIRouter, HTTPException
 from backend.schemas.chat_schema import (
-    ChatRequest, ChatResponse, ErrorResponse,
+    ChatRequest, ChatResponse, 
     UserConditions, PolicyRecommendation,
 )
 
@@ -87,7 +87,7 @@ async def chat(request: ChatRequest):
             #     top_k=request.top_k,
             # )
             # result = ChatResponse(**raw)
-            pass
+            raise NotImplementedError("RAG 서비스가 아직 연동되지 않았습니다.")
 
         elapsed = time.time() - start
         logger.info(
