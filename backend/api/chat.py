@@ -10,10 +10,10 @@ logger = logging.getLogger(__name__)
 router = APIRouter(tags=["Chat"])
 
 # RAG 엔진 연동 전 목 응답 플래그
-# 승혁님 run_rag_chat() 완성되면 False로 바꾸고 아래 import 활성화 -> 완료!
-USE_MOCK = False
+# 승혁님 run_rag_chat() 완성되면 False로 바꾸고 아래 import 활성화
+USE_MOCK = True
 
-from backend.services.rag_chat_service import run_rag_chat
+# from backend.services.rag_service import run_rag_chat
 
 
 def _mock_response(request: ChatRequest) -> ChatResponse:
@@ -80,13 +80,38 @@ async def chat(request: ChatRequest):
         if USE_MOCK:
             result = _mock_response(request)
         else:
-            # RAG 연동 시 아래 주석 해제 -> 완료!
-            result = run_rag_chat(
-                message=request.message,
-                user_profile=request.user_profile,
-                top_k=request.top_k,
-            )
-            # raise NotImplementedError("RAG 서비스가 아직 연동되지 않았습니다.")
+            # RAG 연동 시 아래 주석 해제
+            # raw = run_rag_chat(
+            #     message=request.message,
+            #     user_profile=request.user_profile,
+            #     top_k=request.top_k,
+            # )
+            # result = ChatResponse(**raw)
+            raise NotImplementedError("RAG 서비스가 아직 연동되지 않았습니다.")
+        # 나중에 이렇게 교체
+        # else:
+        #     try:
+        #         raw = run_rag_chat(
+        #             message=request.message,
+        #             user_profile=request.user_profile,
+        #             top_k=request.top_k,
+        #         )
+        #         result = ChatResponse(**raw)
+        #     except ConnectionError:
+        #         raise HTTPException(
+        #             status_code=503,
+        #             detail="Vector DB 연결에 실패했습니다. 잠시 후 다시 시도해 주세요."
+        #         )
+        #     except ValueError:
+        #         raise HTTPException(
+        #             status_code=500,
+        #             detail="LLM 응답 처리 중 오류가 발생했습니다."
+        #         )
+        #     except TimeoutError:
+        #         raise HTTPException(
+        #             status_code=504,
+        #             detail="응답 시간이 초과됐습니다. 잠시 후 다시 시도해 주세요."
+        #         )
 
         elapsed = time.time() - start
         logger.info(
