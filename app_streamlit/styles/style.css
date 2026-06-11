@@ -452,6 +452,24 @@ div[data-testid="stVerticalBlockBorderWrapper"]:has(.result-filter-heading)
     margin-bottom: 10px;
 }
 
+.policy-link {
+    display: block;
+    text-decoration: none !important;
+}
+
+.action-btn.policy-link {
+    color: #FFFFFF !important;
+}
+
+.sub-btn.policy-link {
+    color: #334155 !important;
+}
+
+.action-btn-disabled {
+    cursor: default;
+    opacity: 0.5;
+}
+
 .sub-btn {
     background: #FFFFFF;
     color: #334155;

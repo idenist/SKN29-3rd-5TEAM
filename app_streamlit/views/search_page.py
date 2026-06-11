@@ -12,6 +12,7 @@ REGIONS = ["서울", "부산", "대구", "인천", "광주", "대전", "경기",
 JOB_STATUSES = ["구직자", "재직자", "중소기업 재직자", "프리랜서", "예비창업자", "사업자", "학생"]
 HOUSING_STATUSES = ["월세", "전세", "자가", "무주택", "기타"]
 INTERESTS = ["취업", "교육", "창업", "주거", "금융", "복지"]
+RESULT_LIMIT = 30
 
 
 def _is_closed_policy(policy, today=None):
@@ -38,6 +39,42 @@ def _sync_filter_widgets(profile):
     st.session_state.filter_job_status = profile["job_status"]
     st.session_state.filter_housing_status = profile["housing_status"]
     st.session_state.filter_interest = profile["interest"]
+
+
+def _matches_age(policy, age):
+    try:
+        age_min = int(policy["age_min"]) if policy["age_min"] else None
+        age_max = int(policy["age_max"]) if policy["age_max"] else None
+    except ValueError:
+        return True
+
+    return (age_min is None or age >= age_min) and (age_max is None or age <= age_max)
+
+
+def _matches_region(policy, region):
+    policy_region = policy["region"]
+    return policy_region == "전국" or region in policy_region
+
+
+def _relevance_score(policy, query):
+    score = policy["score"]
+    keywords = {
+        token.lower()
+        for token in re.findall(r"[가-힣A-Za-z0-9]+", query)
+        if len(token) >= 2
+    }
+    score += sum(20 for keyword in keywords if keyword in policy["search_text"])
+    return score
+
+
+def _external_link(label, url, class_name):
+    if not url:
+        return ""
+
+    return (
+        f'<a class="{class_name}" href="{escape(url, quote=True)}" '
+        f'target="_blank" rel="noopener noreferrer">{label}</a>'
+    )
 
 
 def render_search_page(policies):
@@ -162,13 +199,20 @@ def render_search_page(policies):
         exclude_closed = st.session_state.get("exclude_closed_policies", True)
         filtered_policies = [
             policy for policy in policies
-            if not selected_interests or policy["category"] in selected_interests
+            if (not selected_interests or policy["category"] in selected_interests)
+            and _matches_age(policy, profile["age"])
+            and _matches_region(policy, profile["region"])
         ]
         if exclude_closed:
             filtered_policies = [
                 policy for policy in filtered_policies
                 if not _is_closed_policy(policy)
             ]
+        filtered_policies.sort(
+            key=lambda policy: _relevance_score(policy, keyword),
+            reverse=True
+        )
+        visible_policies = filtered_policies[:RESULT_LIMIT]
         interest_text = ", ".join(selected_interests) if selected_interests else "전체"
         condition_summary = (
             f"{profile['age']}세 · {profile['region']} · "
@@ -202,7 +246,7 @@ def render_search_page(policies):
                 render_html(f"""
 <div class="result-filter-heading">
     <div class="result-title">총 {len(filtered_policies)}개의 관련 정책을 찾았습니다.</div>
-    <div class="small-muted">관련도 순으로 정책을 보여드려요.</div>
+    <div class="small-muted">관련도 순으로 상위 {min(len(filtered_policies), RESULT_LIMIT)}개를 보여드려요.</div>
 </div>
 """)
 
@@ -219,52 +263,67 @@ def render_search_page(policies):
                     else "마감된 정책도 함께 표시 중"
                 )
 
-        for p in filtered_policies:
+        for display_rank, p in enumerate(visible_policies, 1):
+            apply_link = _external_link(
+                "신청하기 ↗",
+                p["application_url"],
+                "action-btn policy-link"
+            )
+            source_link = _external_link(
+                "출처 보기 ↗",
+                p["source_url"],
+                "sub-btn policy-link"
+            )
+            if not apply_link:
+                apply_link = '<div class="action-btn action-btn-disabled">신청 링크 없음</div>'
+            if not source_link:
+                source_link = '<div class="sub-btn action-btn-disabled">출처 없음</div>'
+
             render_html(f"""
 <div class="policy-card">
     <div class="policy-layout">
         <div class="policy-left">
-            <span class="rank-badge">{p['rank']}</span>
-            <div class="category-box">{p['icon']}</div>
-            <div class="category-label">{p['category']}</div>
+            <span class="rank-badge">{display_rank}</span>
+            <div class="category-box">{escape(p['icon'])}</div>
+            <div class="category-label">{escape(p['category'])}</div>
         </div>
 
         <div>
             <div class="policy-top">
-                <div class="policy-title">{p['title']}</div>
+                <div class="policy-title">{escape(p['title'])}</div>
                 <div>
-                    <span class="{p['status_class']}">{p['status']}</span>
-                    <span class="badge-blue">{p['detail']}</span>
+                    <span class="{p['status_class']}">{escape(p['status'])}</span>
+                    <span class="badge-blue">{escape(p['detail'])}</span>
                 </div>
             </div>
 
-            <div class="policy-desc">{p['description']}</div>
+            <div class="policy-desc">{escape(p['description'])}</div>
 
             <div class="policy-meta">
                 <div>
                     <div class="meta-label">신청기간</div>
-                    <div class="meta-value">{p['period']}</div>
+                    <div class="meta-value">{escape(p['period'])}</div>
                 </div>
                 <div>
                     <div class="meta-label">대상연령</div>
-                    <div class="meta-value">{p['age']}</div>
+                    <div class="meta-value">{escape(p['age'])}</div>
                 </div>
                 <div>
                     <div class="meta-label">지원내용</div>
-                    <div class="meta-value">{p['support']}</div>
+                    <div class="meta-value">{escape(p['support'])}</div>
                 </div>
             </div>
 
             <div class="policy-checks">
-                <div class="check-line">✓ 신청방법: {p['method']}</div>
-                <div class="check-line">✓ 소득조건: {p['income']}</div>
-                <div class="check-line">✓ 제출서류: {p['docs']}</div>
+                <div class="check-line">✓ 신청방법: {escape(p['method'])}</div>
+                <div class="check-line">✓ 대상조건: {escape(p['income'])}</div>
+                <div class="check-line">✓ 운영기관: {escape(p['organization'])}</div>
             </div>
         </div>
 
         <div>
-            <div class="action-btn">신청하기 ↗</div>
-            <div class="sub-btn">출처 보기</div>
+            {apply_link}
+            {source_link}
         </div>
     </div>
 </div>

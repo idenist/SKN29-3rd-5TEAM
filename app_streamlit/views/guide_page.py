@@ -1,3 +1,5 @@
+from html import escape
+
 import streamlit as st
 
 from utils.html_renderer import render_html
@@ -15,14 +17,19 @@ def render_guide_page(policies):
     st.markdown('<div class="page-title">신청 가이드</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-sub">선택한 정책의 신청 절차와 필요 서류를 안내합니다.</div>', unsafe_allow_html=True)
 
-    selected = st.selectbox("정책 선택", [p["title"] for p in policies])
-    policy = next(p for p in policies if p["title"] == selected)
+    policies_by_id = {policy["id"]: policy for policy in policies}
+    selected_id = st.selectbox(
+        "정책 선택",
+        list(policies_by_id),
+        format_func=lambda policy_id: policies_by_id[policy_id]["title"]
+    )
+    policy = policies_by_id[selected_id]
 
     html = f"""
 <div class="content-card">
-    <div class="policy-title">{policy['icon']} {policy['title']}</div>
-    <div class="policy-desc">신청 기간: {policy['period']}</div>
-    <span class="{policy['status_class']}">{policy['status']}</span>
+    <div class="policy-title">{escape(policy['icon'])} {escape(policy['title'])}</div>
+    <div class="policy-desc">신청 기간: {escape(policy['period'])}</div>
+    <span class="{policy['status_class']}">{escape(policy['status'])}</span>
 </div>
 """
     render_html(html)
@@ -41,7 +48,7 @@ def render_guide_page(policies):
         if i == 1 and official_url:
             site_link = f"""
 <a class="guide-site-link"
-   href="{official_url}"
+   href="{escape(official_url, quote=True)}"
    target="_blank"
    rel="noopener noreferrer">
     공식 사이트 접속 ↗
@@ -52,7 +59,7 @@ def render_guide_page(policies):
 <div class="guide-step">
     <div class="step-num">{i}</div>
     <div class="guide-step-content">
-        <b>{step}</b><br>
+        <b>{escape(step)}</b><br>
         <span class="small-muted">신청 전 세부 조건을 반드시 확인하세요.</span>
     </div>
     {site_link}
