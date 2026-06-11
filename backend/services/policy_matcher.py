@@ -150,7 +150,12 @@ def _is_national_policy(policy_region_codes: list[str], policy_text: str) -> boo
     return False
 
 
-def _match_region_by_code(user_region_code: Optional[str], policy_region_code: Any, policy_text: str) -> tuple[str, str]:
+def _match_region_by_code(
+    user_region_code: Optional[str],
+    policy_region_code: Any,
+    policy_text: str,
+    item_type_label: str = "정책",
+) -> tuple[str, str]:
     """
     반환:
     - status: matched | missing | unmatched
@@ -159,33 +164,38 @@ def _match_region_by_code(user_region_code: Optional[str], policy_region_code: A
     policy_codes = _normalize_codes(policy_region_code)
 
     if _is_national_policy(policy_codes, policy_text):
-        return "matched", "지역 조건 충족: 전국 대상 정책"
+        return "matched", f"지역 조건 충족: 전국 대상 {item_type_label}"
 
     if not user_region_code:
         return "missing", "사용자 지역 정보가 없어 지역 조건 확인 필요"
 
     if not policy_codes:
-        return "missing", "정책 지역 조건이 구조화되어 있지 않아 확인 필요"
+        return "missing", f"{item_type_label} 지역 조건이 구조화되어 있지 않아 확인 필요"
 
     if user_region_code in policy_codes:
-        return "matched", f"지역 조건 충족: 사용자 지역 코드 {user_region_code}가 정책 대상 지역에 포함됨"
+        return "matched", f"지역 조건 충족: 사용자 지역 코드 {user_region_code}가 {item_type_label} 대상 지역에 포함됨"
 
     # 시도 단위 코드 11000, 26000 등과 시군구 코드 매칭
     if len(user_region_code) == 5 and user_region_code.endswith("000"):
         sido_prefix = user_region_code[:2]
         if any(code.startswith(sido_prefix) for code in policy_codes):
-            return "matched", f"지역 조건 충족: 사용자 지역 {user_region_code}와 같은 시도 권역의 정책"
+            return "matched", f"지역 조건 충족: 사용자 지역 {user_region_code}와 같은 시도 권역의 {item_type_label}"
 
     # 사용자가 구 단위고 정책이 시도 권역 코드 목록인 경우
     if len(user_region_code) == 5:
         user_prefix = user_region_code[:2]
         if any(code.endswith("000") and code.startswith(user_prefix) for code in policy_codes):
-            return "matched", f"지역 조건 충족: 사용자 지역 {user_region_code}가 정책 시도 권역에 포함됨"
+            return "matched", f"지역 조건 충족: 사용자 지역 {user_region_code}가 {item_type_label} 시도 권역에 포함됨"
 
-    return "unmatched", f"지역 조건 불충족 가능성: 사용자 지역 코드 {user_region_code}가 정책 대상 지역에 포함되지 않음"
+    return "unmatched", f"지역 조건 불충족 가능성: 사용자 지역 코드 {user_region_code}가 {item_type_label} 대상 지역에 포함되지 않음"
 
 
-def _match_age(user_age: Any, age_min: Any, age_max: Any) -> tuple[str, str]:
+def _match_age(
+    user_age: Any,
+    age_min: Any,
+    age_max: Any,
+    item_type_label: str = "정책",
+) -> tuple[str, str]:
     """
     반환:
     - status: matched | missing | unmatched
@@ -199,7 +209,7 @@ def _match_age(user_age: Any, age_min: Any, age_max: Any) -> tuple[str, str]:
         return "missing", "사용자 나이 정보가 없어 연령 조건 확인 필요"
 
     if min_age == -1 or max_age == -1:
-        return "missing", "정책 연령 조건이 구조화되어 있지 않아 확인 필요"
+        return "missing", f"{item_type_label} 연령 조건이 구조화되어 있지 않아 확인 필요"
 
     if min_age <= age <= max_age:
         return "matched", f"연령 조건 충족: {age}세는 지원 대상 {min_age}~{max_age}세에 포함됨"
@@ -231,7 +241,11 @@ def _extract_income_condition_from_text(text: str) -> Optional[str]:
     return None
 
 
-def _match_income(user_conditions: dict[str, Any], policy_text: str) -> tuple[str, str]:
+def _match_income(
+    user_conditions: dict[str, Any],
+    policy_text: str,
+    item_type_label: str = "정책",
+) -> tuple[str, str]:
     """
     소득은 명확히 계산하지 않는다.
     - 사용자 소득 정보와 정책 기준을 구조화하지 않은 상태에서는 추가 확인 필요로 둔다.
@@ -240,15 +254,19 @@ def _match_income(user_conditions: dict[str, Any], policy_text: str) -> tuple[st
     policy_income_hint = _extract_income_condition_from_text(policy_text)
 
     if policy_income_hint and not user_income:
-        return "missing", f"소득 조건 확인 필요: 정책에 '{policy_income_hint}' 관련 조건이 있음"
+        return "missing", f"소득 조건 확인 필요: {item_type_label}에 '{policy_income_hint}' 관련 조건이 있음"
 
     if policy_income_hint and user_income:
-        return "missing", "소득 조건 확인 필요: 사용자 소득 정보와 정책 소득 기준을 원문에서 대조해야 함"
+        return "missing", f"소득 조건 확인 필요: 사용자 소득 정보와 {item_type_label} 소득 기준을 원문에서 대조해야 함"
 
-    return "matched", "소득 조건: 검색된 정책 chunk에서 명확한 소득 제한을 확인하지 못함"
+    return "matched", f"소득 조건: 검색된 {item_type_label} chunk에서 명확한 소득 제한을 확인하지 못함"
 
 
-def _check_employment_status(user_conditions: dict[str, Any], policy_text: str) -> tuple[str, str]:
+def _check_employment_status(
+    user_conditions: dict[str, Any],
+    policy_text: str,
+    item_type_label: str = "정책",
+) -> tuple[str, str]:
     user_status = _safe_str(user_conditions.get("employment_status"))
 
     if not user_status:
@@ -264,10 +282,10 @@ def _check_employment_status(user_conditions: dict[str, Any], policy_text: str) 
     keywords = status_keywords.get(user_status, [user_status])
 
     if any(keyword in policy_text for keyword in keywords):
-        return "matched", f"고용 상태 조건 충족 가능성: 정책 본문에 '{user_status}' 관련 표현이 있음"
+        return "matched", f"고용 상태 조건 충족 가능성: {item_type_label} 본문에 '{user_status}' 관련 표현이 있음"
 
     # 정책 본문에 고용 조건이 없으면 불합격 처리하지 않는다.
-    return "missing", f"고용 상태 조건 확인 필요: 정책 본문에서 '{user_status}' 조건을 명확히 확인하지 못함"
+    return "missing", f"고용 상태 조건 확인 필요: {item_type_label} 본문에서 '{user_status}' 조건을 명확히 확인하지 못함"
 
 
 def _has_application_period(text: str) -> bool:
@@ -284,19 +302,56 @@ def _build_policy_view(policy: dict[str, Any]) -> dict[str, Any]:
     """
     metadata = policy.get("metadata") or {}
 
+    item_id = (
+        policy.get("item_id")
+        or metadata.get("item_id")
+        or policy.get("policy_id")
+        or metadata.get("policy_id")
+        or ""
+    )
+
+    title = (
+        policy.get("title")
+        or metadata.get("title")
+        or policy.get("policy_name")
+        or metadata.get("policy_name")
+        or ""
+    )
+
+    source_category = (
+        policy.get("source_category")
+        or metadata.get("source_category")
+        or ""
+    )
+
     return {
-        "policy_id": policy.get("policy_id") or metadata.get("policy_id") or "",
-        "policy_name": policy.get("policy_name") or metadata.get("policy_name") or "",
+        "policy_id": item_id,
+        "policy_name": title,
+        "item_id": item_id,
+        "title": title,
+        "source_category": source_category,
         "domain": policy.get("domain") or metadata.get("domain") or "",
         "text": policy.get("text") or "",
         "age_min": policy.get("age_min", metadata.get("age_min", -1)),
         "age_max": policy.get("age_max", metadata.get("age_max", -1)),
         "region_code": policy.get("region_code", metadata.get("region_code", "")),
         "source_url": policy.get("source_url", metadata.get("source_url", "")),
+        "application_url": policy.get("application_url", metadata.get("application_url", "")),
         "info_score": policy.get("info_score", metadata.get("info_score", 0)),
         "needs_detail_check": policy.get("needs_detail_check", metadata.get("needs_detail_check", True)),
     }
 
+def _get_item_type_label(source_category: str) -> str:
+    if source_category == "training":
+        return "교육훈련 과정"
+
+    if source_category == "startup_notice":
+        return "창업지원 공고"
+
+    if source_category == "policy":
+        return "정책"
+
+    return "지원 정보"
 
 def check_policy_eligibility(
     user_conditions: dict[str, Any],
@@ -306,6 +361,10 @@ def check_policy_eligibility(
     사용자 조건과 단일 정책을 비교하여 신청 가능성 등급을 산정한다.
     """
     policy_view = _build_policy_view(policy)
+    
+    item_type_label = _get_item_type_label(
+        _safe_str(policy_view.get("source_category"))
+    )
 
     policy_id = _safe_str(policy_view.get("policy_id"))
     policy_name = _safe_str(policy_view.get("policy_name"))
@@ -321,6 +380,7 @@ def check_policy_eligibility(
         user_age=user_conditions.get("age"),
         age_min=policy_view.get("age_min"),
         age_max=policy_view.get("age_max"),
+        item_type_label=item_type_label,
     )
 
     if age_status == "matched":
@@ -337,6 +397,7 @@ def check_policy_eligibility(
         user_region_code=user_region_code,
         policy_region_code=policy_view.get("region_code"),
         policy_text=policy_text,
+        item_type_label=item_type_label,
     )
 
     if region_status == "matched":
@@ -347,7 +408,11 @@ def check_policy_eligibility(
         blockers.append(region_message)
 
     # 3. 소득 조건
-    income_status, income_message = _match_income(user_conditions, policy_text)
+    income_status, income_message = _match_income(
+        user_conditions=user_conditions,
+        policy_text=policy_text,
+        item_type_label=item_type_label,
+    )
 
     if income_status == "matched":
         matched_conditions.append(income_message)
@@ -357,7 +422,11 @@ def check_policy_eligibility(
         blockers.append(income_message)
 
     # 4. 고용 상태 조건
-    employment_status, employment_message = _check_employment_status(user_conditions, policy_text)
+    employment_status, employment_message = _check_employment_status(
+        user_conditions=user_conditions,
+        policy_text=policy_text,
+        item_type_label=item_type_label,
+    )
 
     if employment_status == "matched":
         matched_conditions.append(employment_message)
@@ -371,19 +440,19 @@ def check_policy_eligibility(
     info_score = _safe_int(policy_view.get("info_score"), default=0)
 
     if needs_detail_check:
-        cautions.append("정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요")
-
+        cautions.append(f"{item_type_label} 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요")
+    
     if info_score and info_score < 80:
-        cautions.append(f"정책 정보 완성도 점수(info_score={info_score})가 낮아 세부 조건 확인 필요")
+        cautions.append(f"{item_type_label} 정보 완성도 점수(info_score={info_score})가 낮아 세부 조건 확인 필요")
 
     if not policy_view.get("source_url"):
-        cautions.append("출처 URL이 없어 신청 전 원문 또는 담당 기관 확인 필요")
+        cautions.append(f"출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요")
 
     if not _has_application_period(policy_text):
-        cautions.append("신청기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음")
+        cautions.append(f"{item_type_label}의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음")
 
     if not _has_required_documents(policy_text):
-        cautions.append("제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음")
+        cautions.append(f"{item_type_label}의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음")
 
     # 6. 최종 등급 산정
     if blockers:
@@ -399,6 +468,9 @@ def check_policy_eligibility(
     return {
         "policy_id": policy_id,
         "policy_name": policy_name,
+        "item_id": policy_view.get("item_id", policy_id),
+        "title": policy_view.get("title", policy_name),
+        "source_category": policy_view.get("source_category", ""),
         "eligibility": eligibility,
         "matched_conditions": matched_conditions,
         "missing_conditions": missing_conditions,

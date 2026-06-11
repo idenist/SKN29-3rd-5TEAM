@@ -50,6 +50,8 @@ def build_rag_workflow():
 def run_rag_workflow(
     query: str,
     return_full_state: bool = True,
+    top_k: int = 5,
+    use_llm: bool = True,
 ) -> dict[str, Any]:
     """
     RAG workflow 실행 함수.
@@ -61,6 +63,8 @@ def run_rag_workflow(
         "user_query": query,
         "warnings": [],
         "errors": [],
+        "top_k": top_k,
+        "use_llm": use_llm,
     }
 
     result = app.invoke(initial_state)

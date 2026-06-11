@@ -152,6 +152,64 @@ DOMAIN_ALIASES = {
     "기타": "전체",
 }
 
+SOURCE_CATEGORY_KEYWORDS = {
+    "training": [
+        "국비지원",
+        "국비",
+        "국민내일배움카드",
+        "내일배움카드",
+        "훈련",
+        "훈련과정",
+        "교육과정",
+        "직업훈련",
+        "직무훈련",
+        "k-digital",
+        "k digital",
+        "kdt",
+        "부트캠프",
+        "개발자 과정",
+        "데이터 분석 과정",
+        "ai 과정",
+        "hrd",
+        "고용24",
+    ],
+    "startup_notice": [
+        "창업공고",
+        "창업 지원사업",
+        "창업지원사업",
+        "사업화",
+        "예비창업",
+        "예비창업자",
+        "초기창업",
+        "스타트업",
+        "창업교육",
+        "창업진흥원",
+        "k-startup",
+        "입주기업",
+        "입주공간",
+        "ir",
+        "투자유치",
+        "창업자금",
+    ],
+    "policy": [
+        "정책",
+        "수당",
+        "지원금",
+        "장려금",
+        "월세",
+        "전세",
+        "주거",
+        "저축",
+        "적금",
+        "계좌",
+        "청년도약계좌",
+        "청년수당",
+        "교통비",
+        "면접수당",
+        "응시료 지원",
+        "복지",
+    ],
+}
 
 def _append_warning(state: GraphState, message: str) -> list[str]:
     return state.get("warnings", []) + [message]
@@ -263,6 +321,66 @@ def route_policy_domain(
         "reason": " / ".join(reasons),
     }
 
+def route_source_category(
+    query: str,
+    route: str,
+    conditions: dict[str, Any] | None = None,
+) -> dict[str, str | None]:
+    conditions = conditions or {}
+
+    text_parts = [
+        query or "",
+        str(conditions.get("interest_domain") or ""),
+        " ".join(str(k) for k in conditions.get("keywords") or []),
+    ]
+
+    text = " ".join(text_parts).lower()
+
+    scores = {
+        "training": 0,
+        "startup_notice": 0,
+        "policy": 0,
+    }
+
+    for category, keywords in SOURCE_CATEGORY_KEYWORDS.items():
+        for keyword in keywords:
+            if keyword.lower() in text:
+                scores[category] += 1
+
+    # route 기반 보정
+    if route == "창업":
+        scores["startup_notice"] += 2
+
+    if route in {"주거", "금융", "복지문화", "참여권리"}:
+        scores["policy"] += 2
+
+    # 교육은 training/policy가 모두 가능하므로 키워드에 따라 판단
+    if route == "교육":
+        if any(word in text for word in ["훈련", "국비", "내일배움", "k-digital", "kdt", "과정", "부트캠프"]):
+            scores["training"] += 3
+        elif any(word in text for word in ["응시료", "자격증", "시험"]):
+            scores["policy"] += 2
+
+    # 일자리는 애매하므로 강하게 고정하지 않음
+    if route == "일자리":
+        if any(word in text for word in ["훈련", "교육과정", "직업훈련", "k-digital", "kdt"]):
+            scores["training"] += 2
+        elif any(word in text for word in ["면접수당", "취업지원금", "청년수당"]):
+            scores["policy"] += 2
+
+    best_category = max(scores, key=scores.get)
+    best_score = scores[best_category]
+
+    if best_score <= 0:
+        return {
+            "source_category": None,
+            "reason": "데이터 출처 유형을 특정할 명확한 키워드가 없어 전체 source_category 검색",
+        }
+
+    return {
+        "source_category": best_category,
+        "reason": f"질문과 route를 기준으로 {best_category} 데이터를 우선 검색",
+    }
 
 def input_validator_node(state: GraphState) -> GraphState:
     query = (
@@ -340,6 +458,13 @@ def router_node(state: GraphState) -> GraphState:
     route_result = route_policy_domain(query=query, conditions=conditions)
     route = route_result["route"]
 
+    source_category_result = route_source_category(
+        query=query,
+        route=route,
+        conditions=conditions,
+    )
+    source_category = source_category_result.get("source_category")
+
     filters = conditions_to_retriever_filters(conditions)
 
     if route in {"전체", "기타"}:
@@ -347,10 +472,21 @@ def router_node(state: GraphState) -> GraphState:
     else:
         filters["domain"] = route
 
+    if source_category:
+        filters["source_category"] = source_category
+
+    route_reason = route_result["reason"]
+
+    if source_category:
+        route_reason = (
+            f"{route_reason} / "
+            f"{source_category_result.get('reason')}"
+        )
+
     return {
         **state,
         "route": route,
-        "route_reason": route_result["reason"],
+        "route_reason": route_reason,
         "filters": filters,
     }
 
@@ -366,16 +502,18 @@ def retriever_node(state: GraphState) -> GraphState:
     retriever_query = build_query_from_conditions(query, conditions)
 
     try:
+        top_k = int(state.get("top_k", 5))
+
         chunks = retrieve_policies(
             query=retriever_query,
             filters=filters,
-            top_k=5,
+            top_k=top_k,
         )
 
         warnings = state.get("warnings", [])
 
         if not chunks:
-            warnings = warnings + ["검색 조건에 맞는 정책 chunk를 찾지 못했습니다."]
+            warnings = warnings + ["검색 조건에 맞는 지원 정보 chunk를 찾지 못했습니다."]
 
         return {
             **state,
@@ -438,11 +576,13 @@ def answer_generator_node(state: GraphState) -> GraphState:
         }
 
     try:
+        use_llm = bool(state.get("use_llm", True))
+        
         answer = generate_answer(
             query=query,
             user_conditions=conditions,
             policies=policies,
-            use_llm=True,
+            use_llm = use_llm
         )
 
         return {

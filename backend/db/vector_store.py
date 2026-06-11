@@ -36,7 +36,7 @@ class YouthPolicyVectorStore:
     def __init__(
         self,
         persist_dir: str = "data/vector_db",
-        collection_name: str = "youth_policy_chunks",
+        collection_name="youth_opportunity_chunks",
         embedding_model: Optional[str] = None,
     ):
         self.persist_dir = persist_dir
