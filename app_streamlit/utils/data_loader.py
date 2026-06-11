@@ -21,6 +21,32 @@ CATEGORY_META = {
     "복지": "🌿",
 }
 
+REGION_CODE_NAMES = {
+    "11": "서울",
+    "26": "부산",
+    "27": "대구",
+    "28": "인천",
+    "29": "광주",
+    "30": "대전",
+    "31": "울산",
+    "36": "세종",
+    "41": "경기",
+    "42": "강원",
+    "43": "충북",
+    "44": "충남",
+    "45": "전북",
+    "46": "전남",
+    "47": "경북",
+    "48": "경남",
+    "50": "제주",
+    "51": "강원",
+    "52": "전북",
+}
+REGION_DISPLAY_ORDER = [
+    "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종",
+    "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주",
+]
+
 
 def _category_for(item):
     source_category = str(item.get("source_category", ""))
@@ -108,8 +134,29 @@ def _age_for(item):
 
 def _region_for(item):
     region = str(item.get("region") or item.get("location") or "").strip()
-    if not region or (region.replace(",", "").isdigit() and len(region) > 5):
+    if not region:
         return "전국"
+
+    region_codes = [
+        code.strip()
+        for code in region.split(",")
+        if code.strip().isdigit()
+    ]
+    if region_codes and len(region_codes) == len(region.split(",")):
+        region_names = {
+            REGION_CODE_NAMES[code[:2]]
+            for code in region_codes
+            if code[:2] in REGION_CODE_NAMES
+        }
+        if len(region_names) >= 10:
+            return "전국"
+        if region_names:
+            return ", ".join(
+                name
+                for name in REGION_DISPLAY_ORDER
+                if name in region_names
+            )
+
     return region
 
 

@@ -35,4 +35,8 @@ def parse_user_query(query: str):
         if field in query:
             result["interest"].append(field)
 
+    if any(keyword in query for keyword in ["월세", "전세", "주택", "주거비"]):
+        if "주거" not in result["interest"]:
+            result["interest"].append("주거")
+
     return result

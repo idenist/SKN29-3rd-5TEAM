@@ -8,12 +8,22 @@ from utils.html_renderer import render_html
 
 def render_detail_page(policies):
     st.markdown('<div class="page-title">정책 상세 분석</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-sub">추천된 정책이 내 조건에 맞는지 항목별로 비교합니다.</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="page-sub">추천 결과에서 검색된 정책을 선택해 상세 내용과 조건을 확인합니다.</div>',
+        unsafe_allow_html=True
+    )
 
     policies_by_id = {policy["id"]: policy for policy in policies}
+    recommended_ids = [
+        policy_id
+        for policy_id in st.session_state.get("recommended_policy_ids", [])
+        if policy_id in policies_by_id
+    ]
+    selectable_ids = recommended_ids or list(policies_by_id)
+
     selected_id = st.selectbox(
-        "정책 선택",
-        list(policies_by_id),
+        "검색된 정책 선택",
+        selectable_ids,
         format_func=lambda policy_id: policies_by_id[policy_id]["title"]
     )
     policy = policies_by_id[selected_id]
@@ -26,8 +36,62 @@ def render_detail_page(policies):
     <span class="{policy['status_class']}">{escape(policy['status'])}</span>
     <span class="badge-blue">{escape(policy['category'])}</span>
 </div>
+
+<div class="content-card">
+    <div class="section-title">정책 상세 내용</div>
+    <div class="detail-info-grid">
+        <div class="detail-info-item">
+            <div class="meta-label">신청 기간</div>
+            <div class="meta-value">{escape(policy['period'])}</div>
+        </div>
+        <div class="detail-info-item">
+            <div class="meta-label">대상 연령</div>
+            <div class="meta-value">{escape(policy['age'])}</div>
+        </div>
+        <div class="detail-info-item">
+            <div class="meta-label">대상 지역</div>
+            <div class="meta-value">{escape(policy['region'])}</div>
+        </div>
+        <div class="detail-info-item">
+            <div class="meta-label">운영 기관</div>
+            <div class="meta-value">{escape(policy['organization'])}</div>
+        </div>
+    </div>
+
+    <div class="detail-text-section">
+        <div class="meta-label">지원 내용</div>
+        <div class="detail-text">{escape(policy['support'])}</div>
+    </div>
+    <div class="detail-text-section">
+        <div class="meta-label">대상 및 자격 조건</div>
+        <div class="detail-text">{escape(policy['income'])}</div>
+    </div>
+    <div class="detail-text-section">
+        <div class="meta-label">신청 방법</div>
+        <div class="detail-text">{escape(policy['method'])}</div>
+    </div>
+</div>
 """
     render_html(html)
+
+    link_columns = st.columns(2)
+    with link_columns[0]:
+        if policy["application_url"]:
+            st.link_button(
+                "신청 사이트 바로가기 ↗",
+                policy["application_url"],
+                use_container_width=True,
+                type="primary"
+            )
+    with link_columns[1]:
+        if policy["source_url"]:
+            st.link_button(
+                "공식 출처 확인 ↗",
+                policy["source_url"],
+                use_container_width=True
+            )
+
+    st.markdown("### 내 조건과 비교")
 
     df = pd.DataFrame([
         ["나이", f"{profile['age']}세", policy["age"], "확인 필요"],

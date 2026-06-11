@@ -38,7 +38,10 @@ def _sync_filter_widgets(profile):
     st.session_state.filter_income = profile["income"]
     st.session_state.filter_job_status = profile["job_status"]
     st.session_state.filter_housing_status = profile["housing_status"]
-    st.session_state.filter_interest = profile["interest"]
+    for interest in INTERESTS:
+        st.session_state[f"filter_interest_{interest}"] = (
+            interest in profile["interest"]
+        )
 
 
 def _matches_age(policy, age):
@@ -77,6 +80,13 @@ def _external_link(label, url, class_name):
     )
 
 
+def _shorten(text, limit):
+    normalized = " ".join(str(text or "").split())
+    if len(normalized) <= limit:
+        return normalized
+    return normalized[:limit].rstrip() + "..."
+
+
 def render_search_page(policies):
     render_html("""
 <div class="search-layout">
@@ -102,7 +112,11 @@ def render_search_page(policies):
         st.session_state.setdefault("filter_income", profile["income"])
         st.session_state.setdefault("filter_job_status", profile["job_status"])
         st.session_state.setdefault("filter_housing_status", profile["housing_status"])
-        st.session_state.setdefault("filter_interest", profile["interest"])
+        for interest in INTERESTS:
+            st.session_state.setdefault(
+                f"filter_interest_{interest}",
+                interest in profile["interest"]
+            )
 
         keyword = st.text_input(
             "검색어",
@@ -162,11 +176,20 @@ def render_search_page(policies):
                 HOUSING_STATUSES,
                 key="filter_housing_status"
             )
-            interest = st.multiselect(
-                "관심 분야",
-                INTERESTS,
-                key="filter_interest"
-            )
+            st.markdown('<div class="filter-field-label">관심 분야</div>', unsafe_allow_html=True)
+            interest = []
+            for row_start in range(0, len(INTERESTS), 2):
+                interest_columns = st.columns(2)
+                for column, interest_name in zip(
+                    interest_columns,
+                    INTERESTS[row_start:row_start + 2]
+                ):
+                    with column:
+                        if st.checkbox(
+                            interest_name,
+                            key=f"filter_interest_{interest_name}"
+                        ):
+                            interest.append(interest_name)
 
             filter_submitted = st.form_submit_button(
                 "조건 적용",
@@ -213,6 +236,9 @@ def render_search_page(policies):
             reverse=True
         )
         visible_policies = filtered_policies[:RESULT_LIMIT]
+        st.session_state.recommended_policy_ids = [
+            policy["id"] for policy in visible_policies
+        ]
         interest_text = ", ".join(selected_interests) if selected_interests else "전체"
         condition_summary = (
             f"{profile['age']}세 · {profile['region']} · "
@@ -224,12 +250,10 @@ def render_search_page(policies):
 <div class="search-result-box">
     <span style="font-size:28px;">🔎</span>
     <span class="result-search-title">"{escape(st.session_state.get("result_query", keyword))}"</span>
+    <div class="result-search-condition">
+        <b>현재 적용 조건</b> · {escape(condition_summary)}
+    </div>
     <div class="result-search-sub">추출된 조건을 반영한 추천 결과입니다.</div>
-</div>
-
-<div class="info-box">
-    <b>현재 적용 조건</b><br>
-    {escape(condition_summary)}
 </div>
 
 <div class="info-box">
@@ -291,13 +315,15 @@ def render_search_page(policies):
         <div>
             <div class="policy-top">
                 <div class="policy-title">{escape(p['title'])}</div>
-                <div>
+                <div class="policy-badges">
                     <span class="{p['status_class']}">{escape(p['status'])}</span>
                     <span class="badge-blue">{escape(p['detail'])}</span>
                 </div>
             </div>
 
-            <div class="policy-desc">{escape(p['description'])}</div>
+            <div class="policy-desc policy-desc-summary">
+                {escape(_shorten(p['description'], 105))}
+            </div>
 
             <div class="policy-meta">
                 <div>
@@ -310,14 +336,8 @@ def render_search_page(policies):
                 </div>
                 <div>
                     <div class="meta-label">지원내용</div>
-                    <div class="meta-value">{escape(p['support'])}</div>
+                    <div class="meta-value">{escape(_shorten(p['support'], 75))}</div>
                 </div>
-            </div>
-
-            <div class="policy-checks">
-                <div class="check-line">✓ 신청방법: {escape(p['method'])}</div>
-                <div class="check-line">✓ 대상조건: {escape(p['income'])}</div>
-                <div class="check-line">✓ 운영기관: {escape(p['organization'])}</div>
             </div>
         </div>
 

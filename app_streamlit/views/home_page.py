@@ -4,6 +4,42 @@ from utils.condition_parser import parse_user_query
 from utils.html_renderer import render_html
 
 
+INTERESTS = ["취업", "교육", "창업", "주거", "금융", "복지"]
+EXAMPLE_QUERIES = [
+    "부산 청년 월세 지원 알려줘",
+    "취업 준비생 지원 정책 알려줘",
+    "중소기업 재직자 청년 정책 알려줘",
+]
+
+
+def _apply_query_and_open_results(user_query):
+    extracted = parse_user_query(user_query)
+    profile = st.session_state.profile.copy()
+
+    for key in ("age", "region", "income", "job_status"):
+        if extracted[key] is not None:
+            profile[key] = extracted[key]
+
+    if extracted["interest"]:
+        profile["interest"] = extracted["interest"]
+
+    st.session_state.profile = profile
+    st.session_state.extracted_conditions = extracted
+    st.session_state.result_query = user_query
+    st.session_state.result_query_input = user_query
+    st.session_state.filter_age = profile["age"]
+    st.session_state.filter_region = profile["region"]
+    st.session_state.filter_income = profile["income"]
+    st.session_state.filter_job_status = profile["job_status"]
+    st.session_state.filter_housing_status = profile["housing_status"]
+    for interest in INTERESTS:
+        st.session_state[f"filter_interest_{interest}"] = (
+            interest in profile["interest"]
+        )
+    st.session_state.page = "추천 결과"
+    st.rerun()
+
+
 def render_home_page():
     html = """
 <div class="hero-section">
@@ -56,41 +92,23 @@ def render_home_page():
         )
 
     if extract_clicked:
-        extracted = parse_user_query(user_query)
-        profile = st.session_state.profile.copy()
+        _apply_query_and_open_results(user_query)
 
-        for key in ("age", "region", "income", "job_status"):
-            if extracted[key] is not None:
-                profile[key] = extracted[key]
-
-        if extracted["interest"]:
-            profile["interest"] = extracted["interest"]
-
-        st.session_state.profile = profile
-        st.session_state.extracted_conditions = extracted
-        st.session_state.result_query = user_query
-        st.session_state.result_query_input = user_query
-        st.session_state.filter_age = profile["age"]
-        st.session_state.filter_region = profile["region"]
-        st.session_state.filter_income = profile["income"]
-        st.session_state.filter_job_status = profile["job_status"]
-        st.session_state.filter_housing_status = profile["housing_status"]
-        st.session_state.filter_interest = profile["interest"]
-        st.session_state.page = "추천 결과"
-        st.rerun()
-
-    example_html = """
+    render_html("""
 <div class="example-area">
     <div class="example-title">예시로 입력해보기</div>
-
-    <div class="example-wrap">
-        <span class="example-chip">부산 청년 월세 지원 알려줘</span>
-        <span class="example-chip">취업 준비생 지원 정책 알려줘</span>
-        <span class="example-chip">중소기업 재직자 청년 정책 알려줘</span>
-    </div>
 </div>
-"""
-    render_html(example_html)
+""")
+
+    example_columns = st.columns(len(EXAMPLE_QUERIES))
+    for column, example_query in zip(example_columns, EXAMPLE_QUERIES):
+        with column:
+            if st.button(
+                example_query,
+                key=f"example_query_{example_query}",
+                use_container_width=True
+            ):
+                _apply_query_and_open_results(example_query)
 
     flow_html = """
 <div class="flow-section">
