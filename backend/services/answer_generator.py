@@ -16,6 +16,11 @@ load_dotenv()
 
 
 DEFAULT_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini")
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 730a7ffc38cc4fcab0f72ba171af94a20f3c7c82
 MISSING_TEXT = "제공된 데이터에는 정보가 없습니다."
 
 
