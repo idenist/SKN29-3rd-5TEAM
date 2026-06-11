@@ -1,0 +1,12 @@
+﻿metric,value
+chunk_count,33950
+min_length,19
+max_length,3299
+avg_length,538.22
+median_length,684.0
+policy_chunk_count,9758
+policy_avg_length,242.72
+startup_notice_chunk_count,3789
+startup_notice_avg_length,413.59
+training_chunk_count,20403
+training_avg_length,702.7

@@ -1,0 +1,15 @@
+﻿evaluation_item,implemented,artifact
+데이터셋 선정 타당성,Y,"README.md, docs/source_notes.md, docs/data_pipeline_summary.md"
+편향성 처리,Y,"source_coverage_report.csv, docs/data_pipeline_summary.md"
+중복 제거,Y,data/reports/duplicate_check_report.csv
+결측치 처리,Y,data/reports/missing_value_report.csv
+정규표현식 텍스트 정규화,Y,"scripts/analyze_korean_text.py, docs/text_preprocessing.md"
+KoNLPy 형태소 분석,Partial,"scripts/analyze_korean_text.py, data/reports/konlpy_keyword_report.csv"
+불용어 처리,Y,data/reports/stopword_report.csv
+BoW,Y,data/reports/bow_keyword_report.csv
+TF-IDF,Y,data/reports/tfidf_keyword_report.csv
+Word2Vec/FastText,Partial,data/reports/word2vec_fasttext_status_report.csv
+청킹 전략,Y,"docs/chunking_strategy.md, data/reports/chunk_length_report.csv"
+데이터 스키마 문서화,Y,"docs/data_dictionary.md, docs/opportunity_schema.md"
+전처리 파이프라인 문서화,Y,docs/data_pipeline_summary.md
+데이터 수량 문서화,Y,"README.md, data/processed/preprocessing_summary.json"

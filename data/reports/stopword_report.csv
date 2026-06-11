@@ -1,0 +1,71 @@
+﻿stopword,status,note
+가능,removed,generic administrative/common word
+개,removed,generic administrative/common word
+경우,removed,generic administrative/common word
+공고,removed,generic administrative/common word
+과정,removed,generic administrative/common word
+관련,removed,generic administrative/common word
+기간,removed,generic administrative/common word
+기관,removed,generic administrative/common word
+기업,removed,generic administrative/common word
+기준,removed,generic administrative/common word
+내,removed,generic administrative/common word
+내용,removed,generic administrative/common word
+년,removed,generic administrative/common word
+대상,removed,generic administrative/common word
+대한,removed,generic administrative/common word
+대해,removed,generic administrative/common word
+등,removed,generic administrative/common word
+또는,removed,generic administrative/common word
+명,removed,generic administrative/common word
+모집,removed,generic administrative/common word
+문의,removed,generic administrative/common word
+및,removed,generic administrative/common word
+사업,removed,generic administrative/common word
+사업자,removed,generic administrative/common word
+사용,removed,generic administrative/common word
+사항,removed,generic administrative/common word
+서비스,removed,generic administrative/common word
+선정,removed,generic administrative/common word
+센터,removed,generic administrative/common word
+수,removed,generic administrative/common word
+시,removed,generic administrative/common word
+신청,removed,generic administrative/common word
+안내,removed,generic administrative/common word
+외,removed,generic administrative/common word
+운영,removed,generic administrative/common word
+원,removed,generic administrative/common word
+월,removed,generic administrative/common word
+위해,removed,generic administrative/common word
+이상,removed,generic administrative/common word
+이하,removed,generic administrative/common word
+일,removed,generic administrative/common word
+전,removed,generic administrative/common word
+정보,removed,generic administrative/common word
+제,removed,generic administrative/common word
+제공,removed,generic administrative/common word
+중,removed,generic administrative/common word
+지역,removed,generic administrative/common word
+지원,removed,generic administrative/common word
+차,removed,generic administrative/common word
+참여,removed,generic administrative/common word
+통해,removed,generic administrative/common word
+프로그램,removed,generic administrative/common word
+해당,removed,generic administrative/common word
+확인,removed,generic administrative/common word
+회,removed,generic administrative/common word
+후,removed,generic administrative/common word
+훈련,removed,generic administrative/common word
+AI,preserved,domain-critical word
+KDT,preserved,domain-critical word
+교육,preserved,domain-critical word
+구직자,preserved,domain-critical word
+내일배움카드,preserved,domain-critical word
+데이터,preserved,domain-critical word
+디지털,preserved,domain-critical word
+인공지능,preserved,domain-critical word
+주거,preserved,domain-critical word
+창업,preserved,domain-critical word
+청년,preserved,domain-critical word
+취업,preserved,domain-critical word
+ANALYZER_USED,konlpy.Okt,KoNLPy available

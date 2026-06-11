@@ -1,0 +1,5 @@
+﻿metric,value
+analyzer,konlpy.Okt
+rows,26803
+output,data/processed/opportunities_with_keywords.json
+note,최종 제출 산출물은 KoNLPy Okt 실행 결과로 재생성됨

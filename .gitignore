@@ -1,4 +1,31 @@
 .env
-data
 data/.DS_Store
 **/.DS_Store
+
+# large/generated data excluded
+data/raw/
+data/processed/
+data/vector_db/
+*.zip
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# virtual env
+.venv/
+venv/
+env/
+
+# editor/os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+
+

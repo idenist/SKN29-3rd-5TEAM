@@ -3,4 +3,4 @@ scikit-learn
 konlpy
 JPype1
 gensim
-langgraph
+scipy

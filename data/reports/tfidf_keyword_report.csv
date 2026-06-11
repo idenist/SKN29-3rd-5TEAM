@@ -1,0 +1,4141 @@
+﻿group_type,group,keyword,tfidf_score
+overall,all,코드,0.064355
+overall,all,훈련기,0.064342
+overall,all,상세,0.064286
+overall,all,데이터,0.053705
+overall,all,근로자,0.051109
+overall,all,서울,0.05011
+overall,all,한국,0.035306
+overall,all,협회,0.03474
+overall,all,실업자,0.033447
+overall,all,강남구,0.03138
+overall,all,평생교육,0.031323
+overall,all,부산,0.030438
+overall,all,러닝,0.029888
+overall,all,일반,0.029788
+overall,all,디지털,0.02937
+overall,all,활용,0.029301
+overall,all,부산진구,0.028268
+overall,all,주식회사,0.028077
+overall,all,경기,0.028027
+overall,all,플러스,0.027351
+overall,all,국민,0.026875
+overall,all,카드,0.026851
+overall,all,배움,0.026836
+overall,all,산업,0.026826
+overall,all,에듀,0.026801
+overall,all,구로구,0.021909
+overall,all,고양시,0.021709
+overall,all,일산동구,0.021545
+overall,all,지능,0.02073
+overall,all,인공,0.020656
+overall,all,이러닝,0.020446
+overall,all,개발,0.019822
+overall,all,분석,0.019696
+overall,all,실무,0.019618
+overall,all,자격증,0.019565
+overall,all,컴퓨터,0.019367
+overall,all,윈스,0.019081
+overall,all,펙원격,0.019081
+overall,all,기타,0.018986
+overall,all,빅데이터,0.018819
+overall,all,청년,0.018219
+overall,all,아카데미,0.018048
+overall,all,테크,0.017442
+overall,all,시대,0.017325
+overall,all,창업,0.017261
+overall,all,취득,0.017192
+overall,all,학원,0.01711
+overall,all,사단법인,0.017056
+overall,all,교육,0.016309
+overall,all,요약,0.015275
+overall,all,예비,0.014532
+overall,all,그린,0.014384
+overall,all,필기,0.013809
+overall,all,연령,0.013741
+overall,all,제목,0.013499
+overall,all,통합,0.013311
+overall,all,기술,0.013275
+overall,all,퓨어,0.013071
+overall,all,실기,0.012628
+overall,all,능력,0.01259
+overall,all,분류,0.012513
+overall,all,비원,0.012263
+overall,all,영등포구,0.012186
+overall,all,양성,0.011696
+overall,all,대학생,0.011624
+overall,all,인천,0.011301
+overall,all,컨버전,0.011129
+overall,all,일반인,0.010971
+overall,all,분야,0.010858
+overall,all,기초,0.010783
+overall,all,기사,0.010655
+overall,all,미래,0.010506
+overall,all,자격,0.010405
+overall,all,전략,0.010272
+overall,all,역량,0.010239
+overall,all,업력,0.010165
+overall,all,국가,0.00963
+overall,all,종합,0.009628
+overall,all,직업,0.009495
+overall,all,회계,0.009086
+overall,all,패스,0.008987
+overall,all,스마트,0.008981
+overall,all,대학,0.008771
+overall,all,취업,0.00873
+overall,all,제작,0.008722
+overall,all,상위,0.008633
+overall,all,향상,0.008568
+overall,all,정책,0.008491
+overall,all,창조,0.00847
+overall,all,콘텐츠,0.008279
+overall,all,보건,0.008056
+overall,all,파이썬,0.008014
+overall,all,업무,0.00798
+overall,all,디자인,0.007914
+overall,all,시작,0.00787
+overall,all,융합,0.007852
+overall,all,기반,0.007848
+overall,all,제조,0.007823
+overall,all,프로그래밍,0.007791
+overall,all,복지,0.007623
+overall,all,직종,0.007607
+overall,all,오니,0.007439
+overall,all,엑셀,0.007398
+overall,all,성형,0.007387
+overall,all,비즈니스,0.007312
+overall,all,방법,0.007219
+overall,all,사무,0.007172
+overall,all,부평구,0.007163
+overall,all,미만,0.007034
+overall,all,전산,0.007018
+overall,all,의료,0.006918
+overall,all,핵심,0.006894
+overall,all,마케팅,0.006837
+overall,all,청소년,0.006756
+overall,all,관심,0.006737
+overall,all,전국,0.006694
+overall,all,전문학교,0.006626
+overall,all,직장인,0.006623
+overall,all,혁신,0.006553
+overall,all,다음,0.006548
+overall,all,이해,0.006344
+overall,all,전문가,0.006292
+overall,all,전공자,0.006254
+overall,all,기능사,0.006251
+overall,all,서초구,0.006218
+overall,all,이론,0.006177
+overall,all,입문,0.006145
+overall,all,포토샵,0.006143
+overall,all,제한,0.006058
+overall,all,마스터,0.006053
+overall,all,맞춤,0.00597
+overall,all,세무,0.005968
+overall,all,조건,0.005922
+overall,all,워드,0.00587
+overall,all,연구기관,0.005725
+overall,all,프로젝트,0.005715
+overall,all,컴퓨터아트,0.005593
+overall,all,이내,0.00552
+overall,all,중심,0.005513
+overall,all,공간,0.005498
+overall,all,희망,0.005496
+overall,all,강화,0.005394
+overall,all,일자리,0.005323
+overall,all,일러스트,0.005323
+overall,all,클라우드,0.005236
+overall,all,보통,0.00521
+overall,all,시설,0.005203
+overall,all,변화,0.005196
+overall,all,구조,0.005178
+overall,all,필수,0.005142
+overall,all,적용,0.005114
+overall,all,관리,0.005106
+overall,all,주관,0.005066
+overall,all,영상,0.005034
+overall,all,대응,0.004958
+overall,all,육성,0.004921
+overall,all,조리,0.00491
+overall,all,실전,0.004899
+overall,all,음료,0.004866
+overall,all,온라인,0.004858
+overall,all,요양보호사,0.004811
+overall,all,발굴,0.00481
+overall,all,스케,0.0048
+overall,all,구현,0.004761
+overall,all,코딩,0.00476
+overall,all,파워포인트,0.004746
+overall,all,초기,0.004712
+overall,all,프리미어,0.004705
+overall,all,금천구,0.004684
+overall,all,대비,0.004648
+overall,all,아이디어,0.004636
+overall,all,팩토리,0.004599
+overall,all,사회,0.004516
+overall,all,스마트워크,0.004515
+overall,all,관리사,0.004497
+overall,all,네트워크,0.00449
+overall,all,스타트업,0.004461
+overall,all,산업혁명,0.004447
+overall,all,개발자,0.004434
+overall,all,지식,0.004427
+overall,all,거주,0.00442
+overall,all,기획,0.004405
+overall,all,보육,0.004323
+overall,all,서구,0.004271
+overall,all,세상,0.004253
+overall,all,영상편집,0.004245
+overall,all,누구,0.00422
+overall,all,미용,0.004213
+overall,all,창업가,0.004212
+overall,all,통한,0.004182
+overall,all,플랫폼,0.004157
+overall,all,참가자,0.004128
+overall,all,합격,0.004111
+overall,all,나이,0.004095
+overall,all,건축,0.004066
+overall,all,안산시,0.004051
+overall,all,활동,0.003974
+overall,all,보유,0.003959
+overall,all,컨설팅,0.003938
+overall,all,왕초보,0.003931
+overall,all,광고,0.003921
+overall,all,실습,0.003885
+overall,all,스킬,0.00387
+overall,all,문화,0.003852
+overall,all,멘토링,0.003846
+overall,all,경제,0.003806
+overall,all,활성화,0.003802
+overall,all,가이드,0.003798
+overall,all,대구,0.003772
+overall,all,성남시,0.003771
+overall,all,당장,0.003744
+overall,all,원격,0.003721
+overall,all,평가,0.003682
+overall,all,모델링,0.003647
+overall,all,아래,0.003641
+overall,all,성공,0.003629
+overall,all,핵집,0.003624
+overall,all,미디어,0.003595
+overall,all,안산,0.00358
+overall,all,성장,0.003574
+overall,all,개월,0.003549
+overall,all,광주,0.003502
+overall,all,프론트엔드,0.003499
+overall,all,단원구,0.003495
+overall,all,캠퍼스,0.003489
+overall,all,행사,0.003476
+overall,all,트레이닝,0.003452
+overall,all,하이,0.003402
+overall,all,현장,0.003377
+overall,all,모두,0.003352
+overall,all,전북,0.003342
+overall,all,등록,0.003324
+overall,all,전기,0.003324
+overall,all,경남,0.003292
+overall,all,인력,0.003265
+overall,all,와우,0.003254
+overall,all,아이템,0.00325
+overall,all,고객,0.003243
+overall,all,전문,0.003227
+overall,all,우대,0.003211
+overall,all,웹디자인,0.003201
+overall,all,대전,0.003191
+overall,all,계획,0.003154
+overall,all,자동화,0.003151
+overall,all,클래스,0.003128
+overall,all,준비,0.003112
+overall,all,동래구,0.003099
+overall,all,소재,0.003089
+overall,all,개념,0.003083
+overall,all,신규,0.003053
+overall,all,패키지,0.003034
+overall,all,펙트,0.003025
+overall,all,인디자인,0.002988
+overall,all,직원,0.002964
+overall,all,시각,0.002956
+overall,all,제풀이,0.002951
+overall,all,처리,0.002926
+overall,all,캐드,0.00292
+overall,all,인재,0.002917
+overall,all,올인원,0.002905
+overall,all,경북,0.0029
+overall,all,모든,0.002894
+overall,all,편집디자인,0.002879
+overall,all,사원,0.002878
+overall,all,여성,0.002871
+overall,all,미용사,0.002861
+overall,all,나무,0.002853
+overall,all,커피,0.002815
+overall,all,이용,0.002807
+overall,all,진행,0.0028
+overall,all,캠프,0.002767
+overall,all,출판,0.002759
+overall,all,멀티미디어,0.00275
+overall,all,산대특,0.002743
+overall,all,컴맹,0.002721
+overall,all,주민등록,0.002718
+overall,all,퍼블리셔,0.002714
+overall,all,국제,0.00271
+overall,all,부트캠프,0.002696
+overall,all,개인,0.002685
+overall,all,참여자,0.002657
+overall,all,충남,0.00264
+overall,all,작성,0.002623
+overall,all,실내,0.002615
+overall,all,코칭,0.002606
+overall,all,글로벌,0.002606
+overall,all,한글,0.0026
+overall,all,서류,0.002588
+overall,all,주택,0.002584
+overall,all,의료인,0.002581
+overall,all,레시피,0.002575
+overall,all,중구,0.00256
+overall,all,안정,0.002554
+overall,all,상담,0.002548
+overall,all,경영,0.002514
+overall,all,바리스타,0.002509
+overall,all,누리,0.002508
+overall,all,자바,0.002502
+overall,all,설계,0.002495
+overall,all,울산,0.002493
+source_category,policy,정책,0.082183
+source_category,policy,분야,0.065355
+source_category,policy,청년,0.064559
+source_category,policy,워드,0.056581
+source_category,policy,제한,0.056463
+source_category,policy,조건,0.053844
+source_category,policy,주관,0.049276
+source_category,policy,연령,0.042878
+source_category,policy,일자리,0.040291
+source_category,policy,나이,0.038235
+source_category,policy,요약,0.03588
+source_category,policy,교육,0.034861
+source_category,policy,취업,0.032299
+source_category,policy,활동,0.03026
+source_category,policy,방법,0.029254
+source_category,policy,문화,0.028636
+source_category,policy,강화,0.024098
+source_category,policy,서류,0.02408
+source_category,policy,통한,0.023517
+source_category,policy,맞춤,0.022861
+source_category,policy,복지,0.022097
+source_category,policy,소득,0.021432
+source_category,policy,지급,0.021319
+source_category,policy,역량,0.020434
+source_category,policy,최대,0.019964
+source_category,policy,보조금,0.019558
+source_category,policy,상담,0.019382
+source_category,policy,거주,0.0187
+source_category,policy,주거,0.01817
+source_category,policy,부담,0.018108
+source_category,policy,창업,0.017679
+source_category,policy,안정,0.017651
+source_category,policy,사회,0.017626
+source_category,policy,제출,0.017625
+source_category,policy,정착,0.017181
+source_category,policy,출처,0.01718
+source_category,policy,경제,0.016581
+source_category,policy,기회,0.016528
+source_category,policy,기반,0.016221
+source_category,policy,금융,0.015786
+source_category,policy,개월,0.015268
+source_category,policy,인재,0.015089
+source_category,policy,활성화,0.014827
+source_category,policy,심사,0.014806
+source_category,policy,구직,0.014385
+source_category,policy,주택,0.013973
+source_category,policy,발굴,0.013961
+source_category,policy,생활,0.013859
+source_category,policy,구축,0.013826
+source_category,policy,대학,0.013351
+source_category,policy,도내,0.013339
+source_category,policy,육성,0.012936
+source_category,policy,미래,0.012876
+source_category,policy,도모,0.012834
+source_category,policy,추진,0.012719
+source_category,policy,주민등록,0.012622
+source_category,policy,체계,0.012393
+source_category,policy,목적,0.012195
+source_category,policy,인력,0.012152
+source_category,policy,조성,0.012132
+source_category,policy,관내,0.011949
+source_category,policy,백만원,0.011799
+source_category,policy,중소기업,0.011752
+source_category,policy,채용,0.011602
+source_category,policy,고용,0.01155
+source_category,policy,가구,0.011367
+source_category,policy,미취,0.011243
+source_category,policy,양성,0.011243
+source_category,policy,이내,0.011184
+source_category,policy,마련,0.011066
+source_category,policy,건강,0.010942
+source_category,policy,전문,0.010928
+source_category,policy,홍보,0.010748
+source_category,policy,자격,0.010668
+source_category,policy,기술,0.010557
+source_category,policy,공간,0.01053
+source_category,policy,준비,0.010361
+source_category,policy,중위,0.010356
+source_category,policy,자립,0.010156
+source_category,policy,울산,0.010095
+source_category,startup_notice,창업,0.10766
+source_category,startup_notice,예비,0.099178
+source_category,startup_notice,제목,0.095494
+source_category,startup_notice,통합,0.090362
+source_category,startup_notice,분류,0.088446
+source_category,startup_notice,청년,0.084008
+source_category,startup_notice,요약,0.082599
+source_category,startup_notice,일반인,0.077471
+source_category,startup_notice,대학생,0.077051
+source_category,startup_notice,업력,0.071586
+source_category,startup_notice,연령,0.067657
+source_category,startup_notice,창조,0.058804
+source_category,startup_notice,대학,0.052667
+source_category,startup_notice,오니,0.052144
+source_category,startup_notice,미만,0.046214
+source_category,startup_notice,전국,0.045966
+source_category,startup_notice,관심,0.045719
+source_category,startup_notice,다음,0.045558
+source_category,startup_notice,청소년,0.045425
+source_category,startup_notice,교육,0.040946
+source_category,startup_notice,연구기관,0.040176
+source_category,startup_notice,일반,0.035504
+source_category,startup_notice,희망,0.032806
+source_category,startup_notice,이내,0.031341
+source_category,startup_notice,아이디어,0.030083
+source_category,startup_notice,스타트업,0.029589
+source_category,startup_notice,보육,0.029334
+source_category,startup_notice,공간,0.029116
+source_category,startup_notice,참가자,0.028555
+source_category,startup_notice,초기,0.028553
+source_category,startup_notice,혁신,0.028183
+source_category,startup_notice,창업가,0.027585
+source_category,startup_notice,시설,0.026716
+source_category,startup_notice,보유,0.026504
+source_category,startup_notice,방법,0.025085
+source_category,startup_notice,아래,0.024878
+source_category,startup_notice,기술,0.024496
+source_category,startup_notice,발굴,0.024402
+source_category,startup_notice,멘토링,0.023698
+source_category,startup_notice,육성,0.022491
+source_category,startup_notice,우대,0.022087
+source_category,startup_notice,컨설팅,0.021762
+source_category,startup_notice,아이템,0.021675
+source_category,startup_notice,행사,0.020591
+source_category,startup_notice,네트워크,0.020577
+source_category,startup_notice,분야,0.020449
+source_category,startup_notice,등록,0.019324
+source_category,startup_notice,거주,0.018321
+source_category,startup_notice,온라인,0.017948
+source_category,startup_notice,성장,0.017833
+source_category,startup_notice,소재,0.017458
+source_category,startup_notice,진행,0.017261
+source_category,startup_notice,대표자,0.016719
+source_category,startup_notice,활성화,0.015746
+source_category,startup_notice,계획,0.015741
+source_category,startup_notice,상세,0.015694
+source_category,startup_notice,개인,0.015662
+source_category,startup_notice,역량,0.015596
+source_category,startup_notice,참여자,0.015398
+source_category,startup_notice,대회,0.015143
+source_category,startup_notice,참가,0.014606
+source_category,startup_notice,개월,0.01452
+source_category,startup_notice,유망,0.014353
+source_category,startup_notice,경진,0.014199
+source_category,startup_notice,캠퍼스,0.013483
+source_category,startup_notice,법인,0.013338
+source_category,startup_notice,준비,0.013249
+source_category,startup_notice,이전,0.013202
+source_category,startup_notice,도전,0.013194
+source_category,startup_notice,이후,0.0128
+source_category,startup_notice,타운,0.012676
+source_category,startup_notice,학교,0.012056
+source_category,startup_notice,강동구,0.011861
+source_category,startup_notice,여성,0.011744
+source_category,startup_notice,진흥,0.011644
+source_category,startup_notice,신규,0.01139
+source_category,startup_notice,성공,0.011058
+source_category,startup_notice,기반,0.010939
+source_category,startup_notice,추가,0.010718
+source_category,startup_notice,주민등록,0.010529
+source_category,training,훈련기,0.084522
+source_category,training,코드,0.08452
+source_category,training,상세,0.081499
+source_category,training,데이터,0.070324
+source_category,training,근로자,0.066661
+source_category,training,서울,0.063834
+source_category,training,협회,0.045403
+source_category,training,한국,0.045302
+source_category,training,실업자,0.043898
+source_category,training,강남구,0.041178
+source_category,training,평생교육,0.040974
+source_category,training,러닝,0.039243
+source_category,training,부산,0.038686
+source_category,training,디지털,0.038002
+source_category,training,부산진구,0.036983
+source_category,training,주식회사,0.036864
+source_category,training,활용,0.036669
+source_category,training,경기,0.035551
+source_category,training,플러스,0.035538
+source_category,training,에듀,0.035203
+source_category,training,배움,0.03515
+source_category,training,카드,0.035053
+source_category,training,국민,0.034933
+source_category,training,일반,0.032325
+source_category,training,산업,0.032179
+source_category,training,구로구,0.02857
+source_category,training,고양시,0.028402
+source_category,training,일산동구,0.028303
+source_category,training,이러닝,0.026859
+source_category,training,지능,0.02685
+source_category,training,인공,0.026812
+source_category,training,분석,0.025507
+source_category,training,컴퓨터,0.025404
+source_category,training,자격증,0.025216
+source_category,training,윈스,0.025067
+source_category,training,펙원격,0.025067
+source_category,training,실무,0.024596
+source_category,training,빅데이터,0.024556
+source_category,training,개발,0.024466
+source_category,training,기타,0.024352
+source_category,training,시대,0.022549
+source_category,training,학원,0.022462
+source_category,training,아카데미,0.022462
+source_category,training,사단법인,0.02237
+source_category,training,취득,0.022259
+source_category,training,테크,0.022254
+source_category,training,그린,0.018811
+source_category,training,필기,0.018077
+source_category,training,퓨어,0.017171
+source_category,training,실기,0.016551
+source_category,training,비원,0.016109
+source_category,training,영등포구,0.015904
+source_category,training,능력,0.015883
+source_category,training,컨버전,0.0146
+source_category,training,기사,0.013974
+source_category,training,인천,0.013424
+source_category,training,기초,0.013385
+source_category,training,양성,0.012981
+source_category,training,종합,0.012203
+source_category,training,전략,0.012202
+source_category,training,국가,0.011872
+source_category,training,미래,0.011717
+source_category,training,회계,0.011702
+source_category,training,패스,0.011625
+source_category,training,기술,0.01154
+source_category,training,직업,0.011358
+source_category,training,상위,0.011135
+source_category,training,스마트,0.010974
+source_category,training,자격,0.010911
+source_category,training,보건,0.010467
+source_category,training,파이썬,0.010457
+source_category,training,프로그래밍,0.010234
+source_category,training,향상,0.010103
+source_category,training,업무,0.009981
+source_category,training,직종,0.009957
+source_category,training,제작,0.00994
+source_category,training,시작,0.009903
+source_category,training,제조,0.009794
+source_category,training,엑셀,0.009708
+source_category,training,디자인,0.00963
+domain,,옷장,0.294944
+domain,,상태,0.258082
+domain,,정장,0.244536
+domain,,대여,0.233772
+domain,,시청,0.230303
+domain,,세부,0.223861
+domain,,방문,0.214554
+domain,,업체,0.213558
+domain,,면접,0.212911
+domain,,무료,0.211655
+domain,,불가,0.210445
+domain,,참고,0.204497
+domain,,고문,0.204251
+domain,,미취,0.192298
+domain,,경기도,0.190327
+domain,,구직,0.178126
+domain,,추가,0.173452
+domain,,서류,0.166883
+domain,,주민등록,0.165671
+domain,,경제,0.159037
+domain,,주관,0.143658
+domain,,일자리,0.141263
+domain,,조건,0.136281
+domain,,정책,0.119368
+domain,,기타,0.110825
+domain,,요약,0.101755
+domain,,청년,0.086894
+domain,,가격,0.0
+domain,,가공,0.0
+domain,,가공업,0.0
+domain,,가구,0.0
+domain,,가능성,0.0
+domain,,가사,0.0
+domain,,가산,0.0
+domain,,가상,0.0
+domain,,가속,0.0
+domain,,가스,0.0
+domain,,가압류,0.0
+domain,,가야,0.0
+domain,,가이드,0.0
+domain,,가이드라인,0.0
+domain,,가입,0.0
+domain,,가입자,0.0
+domain,,가장,0.0
+domain,,가점,0.0
+domain,,가정,0.0
+domain,,가정위탁,0.0
+domain,,가족,0.0
+domain,,가지,0.0
+domain,,가처분,0.0
+domain,,가치,0.0
+domain,,가치관,0.0
+domain,,각종,0.0
+domain,,간담,0.0
+domain,,간반,0.0
+domain,,간의,0.0
+domain,,간호,0.0
+domain,,간호조무사,0.0
+domain,,간호학,0.0
+domain,,감성,0.0
+domain,,감소,0.0
+domain,,갑자기,0.0
+domain,,강남,0.0
+domain,,강남구,0.0
+domain,,강동,0.0
+domain,,강동구,0.0
+domain,,강릉,0.0
+domain,,강릉시,0.0
+domain,,강림,0.0
+domain,,강북,0.0
+domain,,강북구,0.0
+domain,,강사,0.0
+domain,,강서구,0.0
+domain,,강소기업,0.0
+domain,,강연,0.0
+domain,,강원,0.0
+domain,,강원도,0.0
+domain,,강의,0.0
+domain,,강점,0.0
+domain,,강좌,0.0
+domain,education,훈련기,0.084522
+domain,education,코드,0.08452
+domain,education,상세,0.081499
+domain,education,데이터,0.070324
+domain,education,근로자,0.066661
+domain,education,서울,0.063834
+domain,education,협회,0.045403
+domain,education,한국,0.045302
+domain,education,실업자,0.043898
+domain,education,강남구,0.041178
+domain,education,평생교육,0.040974
+domain,education,러닝,0.039243
+domain,education,부산,0.038686
+domain,education,디지털,0.038002
+domain,education,부산진구,0.036983
+domain,education,주식회사,0.036864
+domain,education,활용,0.036669
+domain,education,경기,0.035551
+domain,education,플러스,0.035538
+domain,education,에듀,0.035203
+domain,education,배움,0.03515
+domain,education,카드,0.035053
+domain,education,국민,0.034933
+domain,education,일반,0.032325
+domain,education,산업,0.032179
+domain,education,구로구,0.02857
+domain,education,고양시,0.028402
+domain,education,일산동구,0.028303
+domain,education,이러닝,0.026859
+domain,education,지능,0.02685
+domain,education,인공,0.026812
+domain,education,분석,0.025507
+domain,education,컴퓨터,0.025404
+domain,education,자격증,0.025216
+domain,education,윈스,0.025067
+domain,education,펙원격,0.025067
+domain,education,실무,0.024596
+domain,education,빅데이터,0.024556
+domain,education,개발,0.024466
+domain,education,기타,0.024352
+domain,education,시대,0.022549
+domain,education,학원,0.022462
+domain,education,아카데미,0.022462
+domain,education,사단법인,0.02237
+domain,education,취득,0.022259
+domain,education,테크,0.022254
+domain,education,그린,0.018811
+domain,education,필기,0.018077
+domain,education,퓨어,0.017171
+domain,education,실기,0.016551
+domain,education,비원,0.016109
+domain,education,영등포구,0.015904
+domain,education,능력,0.015883
+domain,education,컨버전,0.0146
+domain,education,기사,0.013974
+domain,education,인천,0.013424
+domain,education,기초,0.013385
+domain,education,양성,0.012981
+domain,education,종합,0.012203
+domain,education,전략,0.012202
+domain,education,국가,0.011872
+domain,education,미래,0.011717
+domain,education,회계,0.011702
+domain,education,패스,0.011625
+domain,education,기술,0.01154
+domain,education,직업,0.011358
+domain,education,상위,0.011135
+domain,education,스마트,0.010974
+domain,education,자격,0.010911
+domain,education,보건,0.010467
+domain,education,파이썬,0.010457
+domain,education,프로그래밍,0.010234
+domain,education,향상,0.010103
+domain,education,업무,0.009981
+domain,education,직종,0.009957
+domain,education,제작,0.00994
+domain,education,시작,0.009903
+domain,education,제조,0.009794
+domain,education,엑셀,0.009708
+domain,education,디자인,0.00963
+domain,startup,창업,0.10766
+domain,startup,예비,0.099178
+domain,startup,제목,0.095494
+domain,startup,통합,0.090362
+domain,startup,분류,0.088446
+domain,startup,청년,0.084008
+domain,startup,요약,0.082599
+domain,startup,일반인,0.077471
+domain,startup,대학생,0.077051
+domain,startup,업력,0.071586
+domain,startup,연령,0.067657
+domain,startup,창조,0.058804
+domain,startup,대학,0.052667
+domain,startup,오니,0.052144
+domain,startup,미만,0.046214
+domain,startup,전국,0.045966
+domain,startup,관심,0.045719
+domain,startup,다음,0.045558
+domain,startup,청소년,0.045425
+domain,startup,교육,0.040946
+domain,startup,연구기관,0.040176
+domain,startup,일반,0.035504
+domain,startup,희망,0.032806
+domain,startup,이내,0.031341
+domain,startup,아이디어,0.030083
+domain,startup,스타트업,0.029589
+domain,startup,보육,0.029334
+domain,startup,공간,0.029116
+domain,startup,참가자,0.028555
+domain,startup,초기,0.028553
+domain,startup,혁신,0.028183
+domain,startup,창업가,0.027585
+domain,startup,시설,0.026716
+domain,startup,보유,0.026504
+domain,startup,방법,0.025085
+domain,startup,아래,0.024878
+domain,startup,기술,0.024496
+domain,startup,발굴,0.024402
+domain,startup,멘토링,0.023698
+domain,startup,육성,0.022491
+domain,startup,우대,0.022087
+domain,startup,컨설팅,0.021762
+domain,startup,아이템,0.021675
+domain,startup,행사,0.020591
+domain,startup,네트워크,0.020577
+domain,startup,분야,0.020449
+domain,startup,등록,0.019324
+domain,startup,거주,0.018321
+domain,startup,온라인,0.017948
+domain,startup,성장,0.017833
+domain,startup,소재,0.017458
+domain,startup,진행,0.017261
+domain,startup,대표자,0.016719
+domain,startup,활성화,0.015746
+domain,startup,계획,0.015741
+domain,startup,상세,0.015694
+domain,startup,개인,0.015662
+domain,startup,역량,0.015596
+domain,startup,참여자,0.015398
+domain,startup,대회,0.015143
+domain,startup,참가,0.014606
+domain,startup,개월,0.01452
+domain,startup,유망,0.014353
+domain,startup,경진,0.014199
+domain,startup,캠퍼스,0.013483
+domain,startup,법인,0.013338
+domain,startup,준비,0.013249
+domain,startup,이전,0.013202
+domain,startup,도전,0.013194
+domain,startup,이후,0.0128
+domain,startup,타운,0.012676
+domain,startup,학교,0.012056
+domain,startup,강동구,0.011861
+domain,startup,여성,0.011744
+domain,startup,진흥,0.011644
+domain,startup,신규,0.01139
+domain,startup,성공,0.011058
+domain,startup,기반,0.010939
+domain,startup,추가,0.010718
+domain,startup,주민등록,0.010529
+domain,교육 > 교육비지원,학자금,0.113211
+domain,교육 > 교육비지원,장학재단,0.090698
+domain,교육 > 교육비지원,등록금,0.080641
+domain,교육 > 교육비지원,제한,0.079802
+domain,교육 > 교육비지원,이자,0.077289
+domain,교육 > 교육비지원,학업,0.071617
+domain,교육 > 교육비지원,대출,0.069094
+domain,교육 > 교육비지원,학자금대출,0.068008
+domain,교육 > 교육비지원,교육비,0.067365
+domain,교육 > 교육비지원,소득,0.062693
+domain,교육 > 교육비지원,장학금,0.060728
+domain,교육 > 교육비지원,교육,0.059149
+domain,교육 > 교육비지원,대학,0.058768
+domain,교육 > 교육비지원,정책,0.057063
+domain,교육 > 교육비지원,연령,0.05655
+domain,교육 > 교육비지원,상환,0.053334
+domain,교육 > 교육비지원,조건,0.050548
+domain,교육 > 교육비지원,인재,0.049201
+domain,교육 > 교육비지원,재학생,0.048495
+domain,교육 > 교육비지원,부담,0.048244
+domain,교육 > 교육비지원,대학생,0.047902
+domain,교육 > 교육비지원,계속,0.046689
+domain,교육 > 교육비지원,발생,0.045742
+domain,교육 > 교육비지원,장학,0.045407
+domain,교육 > 교육비지원,졸업,0.04332
+domain,교육 > 교육비지원,경제,0.043152
+domain,교육 > 교육비지원,학생,0.040969
+domain,교육 > 교육비지원,분야,0.038702
+domain,교육 > 교육비지원,제외,0.038578
+domain,교육 > 교육비지원,지급,0.038211
+domain,교육 > 교육비지원,학기,0.038078
+domain,교육 > 교육비지원,본인,0.038013
+domain,교육 > 교육비지원,심사,0.037805
+domain,교육 > 교육비지원,직계존속,0.036501
+domain,교육 > 교육비지원,구간,0.035604
+domain,교육 > 교육비지원,고문,0.035396
+domain,교육 > 교육비지원,전액,0.034765
+domain,교육 > 교육비지원,주민등록,0.032777
+domain,교육 > 교육비지원,워드,0.032495
+domain,교육 > 교육비지원,신용,0.032472
+domain,교육 > 교육비지원,미취,0.032
+domain,교육 > 교육비지원,안정,0.031215
+domain,교육 > 교육비지원,대학원생,0.030483
+domain,교육 > 교육비지원,상반기,0.029964
+domain,교육 > 교육비지원,주관,0.029368
+domain,교육 > 교육비지원,증명서,0.028118
+domain,교육 > 교육비지원,한국,0.027715
+domain,교육 > 교육비지원,회복,0.027628
+domain,교육 > 교육비지원,업자,0.027082
+domain,교육 > 교육비지원,다자,0.026835
+domain,교육 > 교육비지원,이자지,0.026047
+domain,교육 > 교육비지원,나이,0.02579
+domain,교육 > 교육비지원,자녀,0.025719
+domain,교육 > 교육비지원,약정,0.025698
+domain,교육 > 교육비지원,충청남도,0.025446
+domain,교육 > 교육비지원,거주,0.024705
+domain,교육 > 교육비지원,취업,0.024698
+domain,교육 > 교육비지원,휴학,0.024607
+domain,교육 > 교육비지원,수준,0.024401
+domain,교육 > 교육비지원,도내,0.0239
+domain,교육 > 교육비지원,이내,0.023381
+domain,교육 > 교육비지원,하반기,0.023197
+domain,교육 > 교육비지원,졸업생,0.022837
+domain,교육 > 교육비지원,수급,0.022781
+domain,교육 > 교육비지원,제출,0.022633
+domain,교육 > 교육비지원,경감,0.022566
+domain,교육 > 교육비지원,충남,0.022366
+domain,교육 > 교육비지원,휴학생,0.021866
+domain,교육 > 교육비지원,필수,0.021556
+domain,교육 > 교육비지원,추진,0.021292
+domain,교육 > 교육비지원,재학,0.020343
+domain,교육 > 교육비지원,계층,0.020294
+domain,교육 > 교육비지원,어려움,0.02023
+domain,교육 > 교육비지원,제도,0.020203
+domain,교육 > 교육비지원,도민,0.020102
+domain,교육 > 교육비지원,상위,0.019779
+domain,교육 > 교육비지원,가구,0.019384
+domain,교육 > 교육비지원,개요,0.018913
+domain,교육 > 교육비지원,진흥,0.018514
+domain,교육 > 교육비지원,유의,0.018396
+domain,교육 > 미래역량강화,교육,0.088688
+domain,교육 > 미래역량강화,제한,0.081294
+domain,교육 > 미래역량강화,분야,0.079076
+domain,교육 > 미래역량강화,강화,0.076415
+domain,교육 > 미래역량강화,인재,0.07635
+domain,교육 > 미래역량강화,정책,0.07394
+domain,교육 > 미래역량강화,미래,0.073606
+domain,교육 > 미래역량강화,역량,0.071624
+domain,교육 > 미래역량강화,양성,0.066669
+domain,교육 > 미래역량강화,연령,0.063233
+domain,교육 > 미래역량강화,워드,0.04877
+domain,교육 > 미래역량강화,대학,0.044261
+domain,교육 > 미래역량강화,주관,0.043704
+domain,교육 > 미래역량강화,조건,0.043085
+domain,교육 > 미래역량강화,인력,0.042426
+domain,교육 > 미래역량강화,전문,0.038869
+domain,교육 > 미래역량강화,요약,0.032583
+domain,교육 > 미래역량강화,나이,0.032114
+domain,교육 > 미래역량강화,기술,0.031918
+domain,교육 > 미래역량강화,학생,0.03102
+domain,교육 > 미래역량강화,현장,0.03003
+domain,교육 > 미래역량강화,청년,0.028868
+domain,교육 > 미래역량강화,교육과정,0.028622
+domain,교육 > 미래역량강화,방법,0.028007
+domain,교육 > 미래역량강화,연구,0.027696
+domain,교육 > 미래역량강화,산업,0.025597
+domain,교육 > 미래역량강화,통한,0.024739
+domain,교육 > 미래역량강화,산학,0.024243
+domain,교육 > 미래역량강화,혁신,0.02377
+domain,교육 > 미래역량강화,서류,0.023266
+domain,교육 > 미래역량강화,중심,0.02279
+domain,교육 > 미래역량강화,융합,0.022508
+domain,교육 > 미래역량강화,맞춤,0.022233
+domain,교육 > 미래역량강화,체계,0.021858
+domain,교육 > 미래역량강화,도내,0.021699
+domain,교육 > 미래역량강화,구축,0.021283
+domain,교육 > 미래역량강화,협력,0.021231
+domain,교육 > 미래역량강화,학과,0.021151
+domain,교육 > 미래역량강화,사회,0.02113
+domain,교육 > 미래역량강화,프로젝트,0.019376
+domain,교육 > 미래역량강화,육성,0.01935
+domain,교육 > 미래역량강화,출처,0.019166
+domain,교육 > 미래역량강화,박사,0.018607
+domain,교육 > 미래역량강화,개발,0.018457
+domain,교육 > 미래역량강화,대학원,0.018297
+domain,교육 > 미래역량강화,장학금,0.018244
+domain,교육 > 미래역량강화,수행,0.01798
+domain,교육 > 미래역량강화,재학생,0.017514
+domain,교육 > 미래역량강화,추진,0.016782
+domain,교육 > 미래역량강화,경쟁력,0.016566
+domain,교육 > 미래역량강화,대학생,0.016314
+domain,교육 > 미래역량강화,학교,0.0163
+domain,교육 > 미래역량강화,울산,0.015855
+domain,교육 > 미래역량강화,전공,0.015751
+domain,교육 > 미래역량강화,진흥,0.015745
+domain,교육 > 미래역량강화,수요,0.015578
+domain,교육 > 미래역량강화,특성,0.014953
+domain,교육 > 미래역량강화,심사,0.014883
+domain,교육 > 미래역량강화,경제,0.014859
+domain,교육 > 미래역량강화,선발,0.014803
+domain,교육 > 미래역량강화,실습,0.014625
+domain,교육 > 미래역량강화,취업,0.014391
+domain,교육 > 미래역량강화,충청남도,0.014331
+domain,교육 > 미래역량강화,소득,0.014289
+domain,교육 > 미래역량강화,실시,0.014228
+domain,교육 > 미래역량강화,정착,0.01404
+domain,교육 > 미래역량강화,기회,0.013936
+domain,교육 > 미래역량강화,기반,0.013551
+domain,교육 > 미래역량강화,우수,0.013471
+domain,교육 > 미래역량강화,학년,0.01336
+domain,교육 > 미래역량강화,활용,0.013304
+domain,교육 > 미래역량강화,해외,0.013095
+domain,교육 > 미래역량강화,진로,0.012804
+domain,교육 > 미래역량강화,실무,0.012685
+domain,교육 > 미래역량강화,직업,0.012656
+domain,교육 > 미래역량강화,추가,0.012345
+domain,교육 > 미래역량강화,특별자치도,0.012268
+domain,교육 > 미래역량강화,첨단,0.012266
+domain,교육 > 미래역량강화,강사,0.01222
+domain,교육 > 미래역량강화,고급,0.012151
+domain,교육 > 온라인교육,학습,0.162023
+domain,교육 > 온라인교육,교수,0.142645
+domain,교육 > 온라인교육,학위,0.140607
+domain,교육 > 온라인교육,강좌,0.129965
+domain,교육 > 온라인교육,온라인,0.122712
+domain,교육 > 온라인교육,맞춤,0.112475
+domain,교육 > 온라인교육,제한,0.104688
+domain,교육 > 온라인교육,연령,0.083348
+domain,교육 > 온라인교육,학점,0.075688
+domain,교육 > 온라인교육,평생,0.075112
+domain,교육 > 온라인교육,고등교육,0.073502
+domain,교육 > 온라인교육,컨텐츠,0.071497
+domain,교육 > 온라인교육,교재,0.069783
+domain,교육 > 온라인교육,예외,0.069726
+domain,교육 > 온라인교육,매치,0.069418
+domain,교육 > 온라인교육,통상,0.069142
+domain,교육 > 온라인교육,결과,0.068133
+domain,교육 > 온라인교육,병행,0.067291
+domain,교육 > 온라인교육,숙련,0.066625
+domain,교육 > 온라인교육,취업,0.066043
+domain,교육 > 온라인교육,양질,0.065316
+domain,교육 > 온라인교육,이력,0.064776
+domain,교육 > 온라인교육,대학,0.063727
+domain,교육 > 온라인교육,개설,0.06359
+domain,교육 > 온라인교육,실용,0.061441
+domain,교육 > 온라인교육,특성,0.061066
+domain,교육 > 온라인교육,연도,0.060423
+domain,교육 > 온라인교육,학력,0.060145
+domain,교육 > 온라인교육,소속,0.059748
+domain,교육 > 온라인교육,자료,0.059195
+domain,교육 > 온라인교육,국적,0.059124
+domain,교육 > 온라인교육,학기,0.058847
+domain,교육 > 온라인교육,공공기관,0.058692
+domain,교육 > 온라인교육,지정,0.05866
+domain,교육 > 온라인교육,반영,0.057715
+domain,교육 > 온라인교육,공유,0.056854
+domain,교육 > 온라인교육,강사,0.056374
+domain,교육 > 온라인교육,고용노동부,0.055865
+domain,교육 > 온라인교육,전용,0.055542
+domain,교육 > 온라인교육,강의,0.055211
+domain,교육 > 온라인교육,수요,0.054093
+domain,교육 > 온라인교육,전공,0.052816
+domain,교육 > 온라인교육,교육,0.052213
+domain,교육 > 온라인교육,촉진,0.052073
+domain,교육 > 온라인교육,자체,0.051206
+domain,교육 > 온라인교육,직무,0.050529
+domain,교육 > 온라인교육,평생교육,0.050429
+domain,교육 > 온라인교육,확대,0.050398
+domain,교육 > 온라인교육,무관,0.049821
+domain,교육 > 온라인교육,구축,0.048045
+domain,교육 > 온라인교육,플랫폼,0.047058
+domain,교육 > 온라인교육,우수,0.046521
+domain,교육 > 온라인교육,개인,0.04641
+domain,교육 > 온라인교육,체계,0.046162
+domain,교육 > 온라인교육,직원,0.045853
+domain,교육 > 온라인교육,보험,0.04546
+domain,교육 > 온라인교육,요건,0.045341
+domain,교육 > 온라인교육,채용,0.045341
+domain,교육 > 온라인교육,산업,0.044446
+domain,교육 > 온라인교육,관리,0.043701
+domain,교육 > 온라인교육,금융,0.043684
+domain,교육 > 온라인교육,고용,0.042535
+domain,교육 > 온라인교육,현장,0.040741
+domain,교육 > 온라인교육,사회,0.040033
+domain,교육 > 온라인교육,평가,0.040001
+domain,교육 > 온라인교육,인력,0.039599
+domain,교육 > 온라인교육,영상,0.038913
+domain,교육 > 온라인교육,향상,0.038625
+domain,교육 > 온라인교육,콘텐츠,0.03778
+domain,교육 > 온라인교육,혁신,0.037102
+domain,교육 > 온라인교육,능력,0.034572
+domain,교육 > 온라인교육,조건,0.032218
+domain,교육 > 온라인교육,다음,0.031697
+domain,교육 > 온라인교육,취득,0.030316
+domain,교육 > 온라인교육,자격,0.030215
+domain,교육 > 온라인교육,통합,0.030031
+domain,교육 > 온라인교육,분야,0.029783
+domain,교육 > 온라인교육,대학생,0.028817
+domain,교육 > 온라인교육,양성,0.028786
+domain,교육 > 온라인교육,개발,0.028727
+domain,"교육,교육 > 미래역량강화,온라인교육",금융,0.137794
+domain,"교육,교육 > 미래역량강화,온라인교육",온라인,0.122744
+domain,"교육,교육 > 미래역량강화,온라인교육",재무,0.11988
+domain,"교육,교육 > 미래역량강화,온라인교육",교육,0.108791
+domain,"교육,교육 > 미래역량강화,온라인교육",방법,0.106154
+domain,"교육,교육 > 미래역량강화,온라인교육",제한,0.103967
+domain,"교육,교육 > 미래역량강화,온라인교육",나이,0.08594
+domain,"교육,교육 > 미래역량강화,온라인교육",강화,0.082749
+domain,"교육,교육 > 미래역량강화,온라인교육",여성가족부,0.082487
+domain,"교육,교육 > 미래역량강화,온라인교육",소비자,0.081908
+domain,"교육,교육 > 미래역량강화,온라인교육",주관,0.080598
+domain,"교육,교육 > 미래역량강화,온라인교육",워드,0.077267
+domain,"교육,교육 > 미래역량강화,온라인교육",조건,0.076459
+domain,"교육,교육 > 미래역량강화,온라인교육",미래,0.076358
+domain,"교육,교육 > 미래역량강화,온라인교육",게시,0.076261
+domain,"교육,교육 > 미래역량강화,온라인교육",업데이트,0.07453
+domain,"교육,교육 > 미래역량강화,온라인교육",상황,0.074137
+domain,"교육,교육 > 미래역량강화,온라인교육",역량,0.070687
+domain,"교육,교육 > 미래역량강화,온라인교육",개설,0.068545
+domain,"교육,교육 > 미래역량강화,온라인교육",수강,0.068219
+domain,"교육,교육 > 미래역량강화,온라인교육",비대,0.068152
+domain,"교육,교육 > 미래역량강화,온라인교육",강좌,0.067905
+domain,"교육,교육 > 미래역량강화,온라인교육",청년,0.067868
+domain,"교육,교육 > 미래역량강화,온라인교육",동영상,0.067297
+domain,"교육,교육 > 미래역량강화,온라인교육",정책,0.06697
+domain,"교육,교육 > 미래역량강화,온라인교육",인터넷,0.066486
+domain,"교육,교육 > 미래역량강화,온라인교육",실용,0.066229
+domain,"교육,교육 > 미래역량강화,온라인교육",버스,0.066064
+domain,"교육,교육 > 미래역량강화,온라인교육",고려,0.065409
+domain,"교육,교육 > 미래역량강화,온라인교육",메타,0.065098
+domain,"교육,교육 > 미래역량강화,온라인교육",범위,0.065092
+domain,"교육,교육 > 미래역량강화,온라인교육",양육비,0.064925
+domain,"교육,교육 > 미래역량강화,온라인교육",보기,0.063531
+domain,"교육,교육 > 미래역량강화,온라인교육",분야,0.063479
+domain,"교육,교육 > 미래역량강화,온라인교육",초년,0.060429
+domain,"교육,교육 > 미래역량강화,온라인교육",기존,0.059631
+domain,"교육,교육 > 미래역량강화,온라인교육",강의,0.059513
+domain,"교육,교육 > 미래역량강화,온라인교육",무료,0.058778
+domain,"교육,교육 > 미래역량강화,온라인교육",학자금,0.058666
+domain,"교육,교육 > 미래역량강화,온라인교육",연령,0.057718
+domain,"교육,교육 > 미래역량강화,온라인교육",공개,0.05754
+domain,"교육,교육 > 미래역량강화,온라인교육",요약,0.057088
+domain,"교육,교육 > 미래역량강화,온라인교육",채널,0.056522
+domain,"교육,교육 > 미래역량강화,온라인교육",결혼,0.055565
+domain,"교육,교육 > 미래역량강화,온라인교육",드림,0.054777
+domain,"교육,교육 > 미래역량강화,온라인교육",홈페이지,0.054714
+domain,"교육,교육 > 미래역량강화,온라인교육",목표,0.054714
+domain,"교육,교육 > 미래역량강화,온라인교육",사례,0.054036
+domain,"교육,교육 > 미래역량강화,온라인교육",환경,0.053971
+domain,"교육,교육 > 미래역량강화,온라인교육",출산,0.053143
+domain,"교육,교육 > 미래역량강화,온라인교육",체계,0.052821
+domain,"교육,교육 > 미래역량강화,온라인교육",시험,0.051147
+domain,"교육,교육 > 미래역량강화,온라인교육",장기,0.050969
+domain,"교육,교육 > 미래역량강화,온라인교육",심사,0.05036
+domain,"교육,교육 > 미래역량강화,온라인교육",학교,0.049279
+domain,"교육,교육 > 미래역량강화,온라인교육",예정,0.049036
+domain,"교육,교육 > 미래역량강화,온라인교육",플랫폼,0.048374
+domain,"교육,교육 > 미래역량강화,온라인교육",추가,0.048169
+domain,"교육,교육 > 미래역량강화,온라인교육",상담,0.04791
+domain,"교육,교육 > 미래역량강화,온라인교육",유튜브,0.045505
+domain,"교육,교육 > 미래역량강화,온라인교육",누구,0.045408
+domain,"교육,교육 > 미래역량강화,온라인교육",계획,0.044359
+domain,"교육,교육 > 미래역량강화,온라인교육",자금,0.04411
+domain,"교육,교육 > 미래역량강화,온라인교육",마련,0.043592
+domain,"교육,교육 > 미래역량강화,온라인교육",설계,0.043106
+domain,"교육,교육 > 미래역량강화,온라인교육",부담,0.042594
+domain,"교육,교육 > 미래역량강화,온라인교육",생활,0.042457
+domain,"교육,교육 > 미래역량강화,온라인교육",주택,0.041054
+domain,"교육,교육 > 미래역량강화,온라인교육",맞춤,0.040291
+domain,"교육,교육 > 미래역량강화,온라인교육",실전,0.039566
+domain,"교육,교육 > 미래역량강화,온라인교육",청소년,0.039532
+domain,"교육,교육 > 미래역량강화,온라인교육",콘텐츠,0.038836
+domain,"교육,교육 > 미래역량강화,온라인교육",준비,0.038545
+domain,"교육,교육 > 미래역량강화,온라인교육",기반,0.037933
+domain,"교육,교육 > 미래역량강화,온라인교육",영상,0.037156
+domain,"교육,교육 > 미래역량강화,온라인교육",제작,0.036045
+domain,"교육,교육 > 미래역량강화,온라인교육",사회,0.035957
+domain,"교육,교육 > 미래역량강화,온라인교육",대학,0.033297
+domain,"교육,교육 > 미래역량강화,온라인교육",대학생,0.031063
+domain,"교육,교육 > 미래역량강화,온라인교육",개발,0.030922
+domain,교육･직업훈련 > 교육비지원,제한,0.088057
+domain,교육･직업훈련 > 교육비지원,장학재단,0.075152
+domain,교육･직업훈련 > 교육비지원,교육,0.074758
+domain,교육･직업훈련 > 교육비지원,정책,0.073071
+domain,교육･직업훈련 > 교육비지원,교육비,0.073032
+domain,교육･직업훈련 > 교육비지원,학자금,0.072726
+domain,교육･직업훈련 > 교육비지원,연령,0.06571
+domain,교육･직업훈련 > 교육비지원,대출,0.061593
+domain,교육･직업훈련 > 교육비지원,인재,0.061273
+domain,교육･직업훈련 > 교육비지원,장학금,0.055419
+domain,교육･직업훈련 > 교육비지원,분야,0.054646
+domain,교육･직업훈련 > 교육비지원,이자,0.053592
+domain,교육･직업훈련 > 교육비지원,육성,0.053366
+domain,교육･직업훈련 > 교육비지원,직업,0.051917
+domain,교육･직업훈련 > 교육비지원,학생,0.051227
+domain,교육･직업훈련 > 교육비지원,상환,0.049616
+domain,교육･직업훈련 > 교육비지원,본인,0.048639
+domain,교육･직업훈련 > 교육비지원,대학생,0.047118
+domain,교육･직업훈련 > 교육비지원,장학,0.046343
+domain,교육･직업훈련 > 교육비지원,학자금대출,0.043591
+domain,교육･직업훈련 > 교육비지원,대학,0.042606
+domain,교육･직업훈련 > 교육비지원,학업,0.042577
+domain,교육･직업훈련 > 교육비지원,발생,0.041412
+domain,교육･직업훈련 > 교육비지원,워드,0.040535
+domain,교육･직업훈련 > 교육비지원,학기,0.040421
+domain,교육･직업훈련 > 교육비지원,부담,0.037394
+domain,교육･직업훈련 > 교육비지원,하반기,0.036871
+domain,교육･직업훈련 > 교육비지원,입학,0.036207
+domain,교육･직업훈련 > 교육비지원,주관,0.035772
+domain,교육･직업훈련 > 교육비지원,온라인,0.035578
+domain,교육･직업훈련 > 교육비지원,방법,0.034345
+domain,교육･직업훈련 > 교육비지원,재학,0.034286
+domain,교육･직업훈련 > 교육비지원,접수,0.032664
+domain,교육･직업훈련 > 교육비지원,경제,0.032579
+domain,교육･직업훈련 > 교육비지원,조건,0.032245
+domain,교육･직업훈련 > 교육비지원,우수,0.031431
+domain,교육･직업훈련 > 교육비지원,관내,0.030866
+domain,교육･직업훈련 > 교육비지원,요약,0.029949
+domain,교육･직업훈련 > 교육비지원,전액,0.02974
+domain,교육･직업훈련 > 교육비지원,부모,0.029358
+domain,교육･직업훈련 > 교육비지원,주민등록,0.028513
+domain,교육･직업훈련 > 교육비지원,청년,0.02828
+domain,교육･직업훈련 > 교육비지원,평생,0.028182
+domain,교육･직업훈련 > 교육비지원,상반기,0.027808
+domain,교육･직업훈련 > 교육비지원,출연,0.025283
+domain,교육･직업훈련 > 교육비지원,지급,0.024973
+domain,교육･직업훈련 > 교육비지원,선발,0.024591
+domain,교육･직업훈련 > 교육비지원,한국,0.024441
+domain,교육･직업훈련 > 교육비지원,심사,0.024415
+domain,교육･직업훈련 > 교육비지원,결과,0.024363
+domain,교육･직업훈련 > 교육비지원,다자,0.024199
+domain,교육･직업훈련 > 교육비지원,전념,0.023851
+domain,교육･직업훈련 > 교육비지원,생활,0.023797
+domain,교육･직업훈련 > 교육비지원,광역시,0.023783
+domain,교육･직업훈련 > 교육비지원,졸업,0.023725
+domain,교육･직업훈련 > 교육비지원,광양시,0.022795
+domain,교육･직업훈련 > 교육비지원,재능,0.022675
+domain,교육･직업훈련 > 교육비지원,울산,0.02224
+domain,교육･직업훈련 > 교육비지원,통한,0.02182
+domain,교육･직업훈련 > 교육비지원,이자지,0.021703
+domain,교육･직업훈련 > 교육비지원,강좌,0.021687
+domain,교육･직업훈련 > 교육비지원,학습,0.021613
+domain,교육･직업훈련 > 교육비지원,직전,0.02144
+domain,교육･직업훈련 > 교육비지원,약정,0.021349
+domain,교육･직업훈련 > 교육비지원,입금,0.021349
+domain,교육･직업훈련 > 교육비지원,소득,0.021059
+domain,교육･직업훈련 > 교육비지원,근거,0.019924
+domain,교육･직업훈련 > 교육비지원,출신,0.019706
+domain,교육･직업훈련 > 교육비지원,미래,0.01955
+domain,교육･직업훈련 > 교육비지원,분할,0.019523
+domain,교육･직업훈련 > 교육비지원,역량,0.019001
+domain,교육･직업훈련 > 교육비지원,체결,0.018759
+domain,교육･직업훈련 > 교육비지원,인천광역시,0.018499
+domain,교육･직업훈련 > 교육비지원,경감,0.018204
+domain,교육･직업훈련 > 교육비지원,조례,0.017745
+domain,교육･직업훈련 > 교육비지원,플랫폼,0.017656
+domain,교육･직업훈련 > 교육비지원,금액,0.0175
+domain,교육･직업훈련 > 교육비지원,홈페이지,0.017211
+domain,교육･직업훈련 > 교육비지원,회복,0.01717
+domain,교육･직업훈련 > 교육비지원,재단,0.016875
+domain,교육･직업훈련 > 미래역량강화,교육,0.092407
+domain,교육･직업훈련 > 미래역량강화,제한,0.08229
+domain,교육･직업훈련 > 미래역량강화,인재,0.076358
+domain,교육･직업훈련 > 미래역량강화,양성,0.073047
+domain,교육･직업훈련 > 미래역량강화,정책,0.066476
+domain,교육･직업훈련 > 미래역량강화,강화,0.065046
+domain,교육･직업훈련 > 미래역량강화,연령,0.064201
+domain,교육･직업훈련 > 미래역량강화,분야,0.063932
+domain,교육･직업훈련 > 미래역량강화,역량,0.062967
+domain,교육･직업훈련 > 미래역량강화,미래,0.053614
+domain,교육･직업훈련 > 미래역량강화,인력,0.051113
+domain,교육･직업훈련 > 미래역량강화,청년,0.050912
+domain,교육･직업훈련 > 미래역량강화,직업,0.050098
+domain,교육･직업훈련 > 미래역량강화,전문,0.038733
+domain,교육･직업훈련 > 미래역량강화,기술,0.034144
+domain,교육･직업훈련 > 미래역량강화,산업,0.03181
+domain,교육･직업훈련 > 미래역량강화,조건,0.030787
+domain,교육･직업훈련 > 미래역량강화,맞춤,0.030211
+domain,교육･직업훈련 > 미래역량강화,울산,0.030209
+domain,교육･직업훈련 > 미래역량강화,연구,0.029942
+domain,교육･직업훈련 > 미래역량강화,대학,0.029653
+domain,교육･직업훈련 > 미래역량강화,육성,0.029035
+domain,교육･직업훈련 > 미래역량강화,기반,0.027931
+domain,교육･직업훈련 > 미래역량강화,박사,0.027623
+domain,교육･직업훈련 > 미래역량강화,혁신,0.02595
+domain,교육･직업훈련 > 미래역량강화,워드,0.025387
+domain,교육･직업훈련 > 미래역량강화,현장,0.025045
+domain,교육･직업훈련 > 미래역량강화,거주,0.024872
+domain,교육･직업훈련 > 미래역량강화,수행,0.024385
+domain,교육･직업훈련 > 미래역량강화,실무,0.024235
+domain,교육･직업훈련 > 미래역량강화,주관,0.024088
+domain,교육･직업훈련 > 미래역량강화,취업,0.023887
+domain,교육･직업훈련 > 미래역량강화,제주,0.023786
+domain,교육･직업훈련 > 미래역량강화,실습,0.023479
+domain,교육･직업훈련 > 미래역량강화,글로벌,0.023478
+domain,교육･직업훈련 > 미래역량강화,구축,0.022876
+domain,교육･직업훈련 > 미래역량강화,방법,0.022807
+domain,교육･직업훈련 > 미래역량강화,통한,0.022571
+domain,교육･직업훈련 > 미래역량강화,경쟁력,0.022314
+domain,교육･직업훈련 > 미래역량강화,선발,0.022107
+domain,교육･직업훈련 > 미래역량강화,교육과정,0.021337
+domain,교육･직업훈련 > 미래역량강화,환경,0.020883
+domain,교육･직업훈련 > 미래역량강화,진로,0.020787
+domain,교육･직업훈련 > 미래역량강화,체계,0.0205
+domain,교육･직업훈련 > 미래역량강화,재직,0.019003
+domain,교육･직업훈련 > 미래역량강화,우수,0.018711
+domain,교육･직업훈련 > 미래역량강화,오프라인,0.018184
+domain,교육･직업훈련 > 미래역량강화,협력,0.01802
+domain,교육･직업훈련 > 미래역량강화,도내,0.017948
+domain,교육･직업훈련 > 미래역량강화,성교육,0.017874
+domain,교육･직업훈련 > 미래역량강화,융합,0.017639
+domain,교육･직업훈련 > 미래역량강화,추진,0.017562
+domain,교육･직업훈련 > 미래역량강화,문화,0.017375
+domain,교육･직업훈련 > 미래역량강화,핵심,0.017242
+domain,교육･직업훈련 > 미래역량강화,산학,0.017229
+domain,교육･직업훈련 > 미래역량강화,요약,0.016041
+domain,교육･직업훈련 > 미래역량강화,전공,0.015928
+domain,교육･직업훈련 > 미래역량강화,농업인,0.014803
+domain,교육･직업훈련 > 미래역량강화,특별자치도,0.014787
+domain,교육･직업훈련 > 미래역량강화,농업,0.014784
+domain,교육･직업훈련 > 미래역량강화,활용,0.014767
+domain,교육･직업훈련 > 미래역량강화,학교,0.014478
+domain,교육･직업훈련 > 미래역량강화,활동,0.014453
+domain,교육･직업훈련 > 미래역량강화,백만원,0.014416
+domain,교육･직업훈련 > 미래역량강화,학생,0.014321
+domain,교육･직업훈련 > 미래역량강화,안정,0.014297
+domain,교육･직업훈련 > 미래역량강화,지식,0.014186
+domain,교육･직업훈련 > 미래역량강화,콘텐츠,0.013769
+domain,교육･직업훈련 > 미래역량강화,대응,0.013635
+domain,교육･직업훈련 > 미래역량강화,개발,0.013632
+domain,교육･직업훈련 > 미래역량강화,중심,0.013555
+domain,교육･직업훈련 > 미래역량강화,정보산업,0.013401
+domain,교육･직업훈련 > 미래역량강화,관리,0.013358
+domain,교육･직업훈련 > 미래역량강화,경험,0.012898
+domain,교육･직업훈련 > 미래역량강화,개월,0.012871
+domain,교육･직업훈련 > 미래역량강화,기회,0.012613
+domain,교육･직업훈련 > 미래역량강화,수요,0.012608
+domain,교육･직업훈련 > 미래역량강화,지능,0.012575
+domain,교육･직업훈련 > 미래역량강화,전문가,0.01233
+domain,교육･직업훈련 > 미래역량강화,상담,0.012311
+domain,교육･직업훈련 > 온·오프라인교육,오프라인,0.132361
+domain,교육･직업훈련 > 온·오프라인교육,별도,0.123658
+domain,교육･직업훈련 > 온·오프라인교육,조건,0.120329
+domain,교육･직업훈련 > 온·오프라인교육,분야,0.113113
+domain,교육･직업훈련 > 온·오프라인교육,제한,0.109141
+domain,교육･직업훈련 > 온·오프라인교육,교육,0.102182
+domain,교육･직업훈련 > 온·오프라인교육,연령,0.092478
+domain,교육･직업훈련 > 온·오프라인교육,직업,0.088024
+domain,교육･직업훈련 > 온·오프라인교육,방법,0.086024
+domain,교육･직업훈련 > 온·오프라인교육,정책,0.085316
+domain,교육･직업훈련 > 온·오프라인교육,워드,0.074637
+domain,교육･직업훈련 > 온·오프라인교육,나이,0.07314
+domain,교육･직업훈련 > 온·오프라인교육,주관,0.068594
+domain,교육･직업훈련 > 온·오프라인교육,요약,0.055145
+domain,교육･직업훈련 > 온·오프라인교육,제출,0.052337
+domain,교육･직업훈련 > 온·오프라인교육,도립대,0.048056
+domain,교육･직업훈련 > 온·오프라인교육,취업,0.047084
+domain,교육･직업훈련 > 온·오프라인교육,접수,0.04599
+domain,교육･직업훈련 > 온·오프라인교육,재학생,0.045616
+domain,교육･직업훈련 > 온·오프라인교육,연합,0.045385
+domain,교육･직업훈련 > 온·오프라인교육,도내,0.043873
+domain,교육･직업훈련 > 온·오프라인교육,추진,0.043531
+domain,교육･직업훈련 > 온·오프라인교육,청년,0.041372
+domain,교육･직업훈련 > 온·오프라인교육,충남,0.040554
+domain,교육･직업훈련 > 온·오프라인교육,학교,0.039806
+domain,교육･직업훈련 > 온·오프라인교육,역량,0.036603
+domain,교육･직업훈련 > 온·오프라인교육,맞춤,0.035738
+domain,교육･직업훈련 > 온·오프라인교육,프로젝트,0.035434
+domain,교육･직업훈련 > 온·오프라인교육,강화,0.035076
+domain,교육･직업훈련 > 온·오프라인교육,홍보,0.034698
+domain,교육･직업훈련 > 온·오프라인교육,본교,0.034036
+domain,교육･직업훈련 > 온·오프라인교육,상담,0.031655
+domain,교육･직업훈련 > 온·오프라인교육,현장,0.031299
+domain,교육･직업훈련 > 온·오프라인교육,컨설턴트,0.030829
+domain,교육･직업훈련 > 온·오프라인교육,서류,0.029631
+domain,교육･직업훈련 > 온·오프라인교육,수산,0.029396
+domain,교육･직업훈련 > 온·오프라인교육,워크숍,0.028961
+domain,교육･직업훈련 > 온·오프라인교육,그룹,0.028908
+domain,교육･직업훈련 > 온·오프라인교육,전문,0.028773
+domain,교육･직업훈련 > 온·오프라인교육,광주,0.028759
+domain,교육･직업훈련 > 온·오프라인교육,연도,0.028333
+domain,교육･직업훈련 > 온·오프라인교육,졸업생,0.028034
+domain,교육･직업훈련 > 온·오프라인교육,창업,0.02734
+domain,교육･직업훈련 > 온·오프라인교육,컨설팅,0.027017
+domain,교육･직업훈련 > 온·오프라인교육,교육과정,0.026679
+domain,교육･직업훈련 > 온·오프라인교육,산업,0.026573
+domain,교육･직업훈련 > 온·오프라인교육,전액,0.025961
+domain,교육･직업훈련 > 온·오프라인교육,미만,0.024893
+domain,교육･직업훈련 > 온·오프라인교육,농업인,0.024269
+domain,교육･직업훈련 > 온·오프라인교육,공동,0.023298
+domain,교육･직업훈련 > 온·오프라인교육,비용,0.02328
+domain,교육･직업훈련 > 온·오프라인교육,출처,0.023123
+domain,교육･직업훈련 > 온·오프라인교육,학생,0.022162
+domain,교육･직업훈련 > 온·오프라인교육,자격,0.021841
+domain,교육･직업훈련 > 온·오프라인교육,포함,0.021315
+domain,교육･직업훈련 > 온·오프라인교육,양성,0.021277
+domain,교육･직업훈련 > 온·오프라인교육,심사,0.0212
+domain,교육･직업훈련 > 온·오프라인교육,설계,0.020918
+domain,교육･직업훈련 > 온·오프라인교육,추가,0.020499
+domain,교육･직업훈련 > 온·오프라인교육,행사,0.019766
+domain,교육･직업훈련 > 온·오프라인교육,중심,0.019584
+domain,교육･직업훈련 > 온·오프라인교육,관리,0.019359
+domain,교육･직업훈련 > 온·오프라인교육,마케팅,0.019217
+domain,교육･직업훈련 > 온·오프라인교육,인재,0.01912
+domain,교육･직업훈련 > 온·오프라인교육,활성화,0.018999
+domain,교육･직업훈련 > 온·오프라인교육,예비,0.018484
+domain,교육･직업훈련 > 온·오프라인교육,희망,0.018055
+domain,교육･직업훈련 > 온·오프라인교육,교부,0.017476
+domain,교육･직업훈련 > 온·오프라인교육,스마트,0.017133
+domain,교육･직업훈련 > 온·오프라인교육,성공사례,0.01709
+domain,교육･직업훈련 > 온·오프라인교육,사회,0.017027
+domain,교육･직업훈련 > 온·오프라인교육,반려동물,0.016654
+domain,교육･직업훈련 > 온·오프라인교육,고등교육,0.016546
+domain,교육･직업훈련 > 온·오프라인교육,재배,0.016345
+domain,교육･직업훈련 > 온·오프라인교육,농가,0.016104
+domain,교육･직업훈련 > 온·오프라인교육,작품,0.016091
+domain,교육･직업훈련 > 온·오프라인교육,어촌,0.015821
+domain,교육･직업훈련 > 온·오프라인교육,미래,0.015734
+domain,교육･직업훈련 > 온·오프라인교육,서산시,0.015709
+domain,교육･직업훈련 > 온·오프라인교육,커리큘럼,0.015702
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",강화,0.133951
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",현장,0.126467
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",교육,0.110837
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",양성,0.110176
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",학생,0.106595
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",제한,0.094559
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",역량,0.093671
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",교과,0.089987
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",인재,0.089722
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",인력,0.089476
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",대학,0.087838
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",분야,0.08412
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",오프라인,0.083531
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",항공,0.082216
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",맞춤,0.081812
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",교육과정,0.080764
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",연령,0.075283
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",산학,0.075097
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",미래,0.074177
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",직업,0.074058
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",체계,0.068119
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",협력,0.06713
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",산업,0.064261
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",구축,0.063693
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",실습,0.061946
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",실무,0.057815
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",전문,0.057617
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",주관,0.054631
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",고교생,0.052894
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",워드,0.052374
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",해양,0.050277
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",즉시,0.049657
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",학점,0.04931
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",영남대,0.047957
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",지구,0.047884
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",첨단,0.047553
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",고교,0.047356
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",인증,0.046923
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",생명,0.046887
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",정비,0.046665
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",정책,0.045394
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",학년,0.042938
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",주력,0.04273
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",부합,0.042102
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",학기,0.041874
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",과제,0.041637
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",유출,0.041541
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",고려,0.041454
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",조기,0.041257
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",학과,0.041197
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",고급,0.040874
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",개발,0.04082
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",규모,0.040703
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",협업,0.040011
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",멘토,0.039853
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",확보,0.039586
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",전공,0.039365
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",문제해결,0.038978
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",요약,0.038696
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",인천광역시,0.03868
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",장려,0.038588
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",단기,0.038392
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",특성,0.038214
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",내외,0.037628
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",학습,0.037528
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",대표,0.037427
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",직무,0.037329
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",수행,0.036745
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",촉진,0.036324
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",수당,0.036299
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",반도체,0.035746
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",복합,0.034336
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",완화,0.033978
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",수요,0.033851
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",채용,0.033793
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",선발,0.033341
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",마련,0.033108
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",지식,0.03292
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",경쟁력,0.032587
+domain,"교육･직업훈련,교육･직업훈련 > 온·오프라인교육 ,미래역량강화",관내,0.032432
+domain,금융･복지･문화 > 건강,건강,0.124123
+domain,금융･복지･문화 > 건강,정신건강,0.098823
+domain,금융･복지･문화 > 건강,제한,0.077797
+domain,금융･복지･문화 > 건강,상담,0.071745
+domain,금융･복지･문화 > 건강,복지,0.071014
+domain,금융･복지･문화 > 건강,조기,0.068933
+domain,금융･복지･문화 > 건강,문화,0.067228
+domain,금융･복지･문화 > 건강,마음,0.065103
+domain,금융･복지･문화 > 건강,치료,0.064725
+domain,금융･복지･문화 > 건강,예방,0.062973
+domain,금융･복지･문화 > 건강,금융,0.062842
+domain,금융･복지･문화 > 건강,개입,0.059514
+domain,금융･복지･문화 > 건강,청년,0.059325
+domain,금융･복지･문화 > 건강,정신질환,0.059234
+domain,금융･복지･문화 > 건강,연령,0.05922
+domain,금융･복지･문화 > 건강,정책,0.054582
+domain,금융･복지･문화 > 건강,발견,0.052495
+domain,금융･복지･문화 > 건강,사회,0.047351
+domain,금융･복지･문화 > 건강,위험,0.046927
+domain,금융･복지･문화 > 건강,회복,0.045534
+domain,금융･복지･문화 > 건강,관리,0.04427
+domain,금융･복지･문화 > 건강,수행,0.04069
+domain,금융･복지･문화 > 건강,분야,0.040303
+domain,금융･복지･문화 > 건강,증진,0.03945
+domain,금융･복지･문화 > 건강,일상,0.0394
+domain,금융･복지･문화 > 건강,울산,0.03651
+domain,금융･복지･문화 > 건강,워드,0.036475
+domain,금융･복지･문화 > 건강,방법,0.036189
+domain,금융･복지･문화 > 건강,아침밥,0.034697
+domain,금융･복지･문화 > 건강,천원,0.033952
+domain,금융･복지･문화 > 건강,자살,0.033715
+domain,금융･복지･문화 > 건강,심리상담,0.033436
+domain,금융･복지･문화 > 건강,심리,0.033383
+domain,금융･복지･문화 > 건강,관내,0.032794
+domain,금융･복지･문화 > 건강,별도,0.031056
+domain,금융･복지･문화 > 건강,본인,0.030622
+domain,금융･복지･문화 > 건강,조건,0.030538
+domain,금융･복지･문화 > 건강,사례,0.030159
+domain,금융･복지･문화 > 건강,보조금,0.029706
+domain,금융･복지･문화 > 건강,발굴,0.029006
+domain,금융･복지･문화 > 건강,신체,0.028856
+domain,금융･복지･문화 > 건강,아침,0.027487
+domain,금융･복지･문화 > 건강,우울,0.027312
+domain,금융･복지･문화 > 건강,주관,0.026797
+domain,금융･복지･문화 > 건강,맞춤,0.026722
+domain,금융･복지･문화 > 건강,식사,0.026527
+domain,금융･복지･문화 > 건강,고립,0.026041
+domain,금융･복지･문화 > 건강,정서,0.025614
+domain,금융･복지･문화 > 건강,소비,0.02544
+domain,금융･복지･문화 > 건강,부담,0.025318
+domain,금융･복지･문화 > 건강,출산,0.023705
+domain,금융･복지･문화 > 건강,임산부,0.023148
+domain,금융･복지･문화 > 건강,성화,0.02277
+domain,금융･복지･문화 > 건강,개선,0.022126
+domain,금융･복지･문화 > 건강,인원,0.021855
+domain,금융･복지･문화 > 건강,지지,0.021576
+domain,금융･복지･문화 > 건강,요약,0.021558
+domain,금융･복지･문화 > 건강,서류,0.021306
+domain,금융･복지･문화 > 건강,불안,0.0207
+domain,금융･복지･문화 > 건강,나이,0.020576
+domain,금융･복지･문화 > 건강,학생,0.020552
+domain,금융･복지･문화 > 건강,광역시,0.020504
+domain,금융･복지･문화 > 건강,은둔,0.0204
+domain,금융･복지･문화 > 건강,자원,0.020255
+domain,금융･복지･문화 > 건강,검사,0.019266
+domain,금융･복지･문화 > 건강,홍보,0.019175
+domain,금융･복지･문화 > 건강,보장,0.018848
+domain,금융･복지･문화 > 건강,체계,0.018728
+domain,금융･복지･문화 > 건강,최대,0.018596
+domain,금융･복지･문화 > 건강,방지,0.018243
+domain,금융･복지･문화 > 건강,전문,0.017894
+domain,금융･복지･문화 > 건강,신규,0.017566
+domain,금융･복지･문화 > 건강,소재,0.017526
+domain,금융･복지･문화 > 건강,도모,0.017367
+domain,금융･복지･문화 > 건강,확산,0.017186
+domain,금융･복지･문화 > 건강,등록,0.016728
+domain,금융･복지･문화 > 건강,인천광역시,0.016388
+domain,금융･복지･문화 > 건강,필요,0.016256
+domain,금융･복지･문화 > 건강,학교,0.016209
+domain,금융･복지･문화 > 건강,촉진,0.016156
+domain,금융･복지･문화 > 문화활동 및 생활지원,문화,0.132173
+domain,금융･복지･문화 > 문화활동 및 생활지원,제한,0.101247
+domain,금융･복지･문화 > 문화활동 및 생활지원,생활,0.100467
+domain,금융･복지･문화 > 문화활동 및 생활지원,활동,0.099627
+domain,금융･복지･문화 > 문화활동 및 생활지원,금융,0.093212
+domain,금융･복지･문화 > 문화활동 및 생활지원,정책,0.091229
+domain,금융･복지･문화 > 문화활동 및 생활지원,연령,0.079659
+domain,금융･복지･문화 > 문화활동 및 생활지원,분야,0.07531
+domain,금융･복지･문화 > 문화활동 및 생활지원,복지,0.074213
+domain,금융･복지･문화 > 문화활동 및 생활지원,워드,0.061493
+domain,금융･복지･문화 > 문화활동 및 생활지원,조건,0.058428
+domain,금융･복지･문화 > 문화활동 및 생활지원,방법,0.055716
+domain,금융･복지･문화 > 문화활동 및 생활지원,청년,0.054038
+domain,금융･복지･문화 > 문화활동 및 생활지원,주관,0.047052
+domain,금융･복지･문화 > 문화활동 및 생활지원,예술,0.039407
+domain,금융･복지･문화 > 문화활동 및 생활지원,광양시,0.039022
+domain,금융･복지･문화 > 문화활동 및 생활지원,육아,0.034765
+domain,금융･복지･문화 > 문화활동 및 생활지원,요약,0.034243
+domain,금융･복지･문화 > 문화활동 및 생활지원,기회,0.031495
+domain,금융･복지･문화 > 문화활동 및 생활지원,공연,0.030754
+domain,금융･복지･문화 > 문화활동 및 생활지원,부담,0.02998
+domain,금융･복지･문화 > 문화활동 및 생활지원,보조금,0.029858
+domain,금융･복지･문화 > 문화활동 및 생활지원,나이,0.028172
+domain,금융･복지･문화 > 문화활동 및 생활지원,교육,0.026276
+domain,금융･복지･문화 > 문화활동 및 생활지원,출산,0.026064
+domain,금융･복지･문화 > 문화활동 및 생활지원,서류,0.024489
+domain,금융･복지･문화 > 문화활동 및 생활지원,부부,0.023546
+domain,금융･복지･문화 > 문화활동 및 생활지원,향유,0.023521
+domain,금융･복지･문화 > 문화활동 및 생활지원,전시,0.022679
+domain,금융･복지･문화 > 문화활동 및 생활지원,행사,0.022314
+domain,금융･복지･문화 > 문화활동 및 생활지원,최대,0.021756
+domain,금융･복지･문화 > 문화활동 및 생활지원,통한,0.021478
+domain,금융･복지･문화 > 문화활동 및 생활지원,지급,0.020919
+domain,금융･복지･문화 > 문화활동 및 생활지원,전라남도,0.020784
+domain,금융･복지･문화 > 문화활동 및 생활지원,제출,0.020762
+domain,금융･복지･문화 > 문화활동 및 생활지원,별도,0.020409
+domain,금융･복지･문화 > 문화활동 및 생활지원,결혼,0.020163
+domain,금융･복지･문화 > 문화활동 및 생활지원,확대,0.01904
+domain,금융･복지･문화 > 문화활동 및 생활지원,확산,0.018593
+domain,금융･복지･문화 > 문화활동 및 생활지원,개최,0.018305
+domain,금융･복지･문화 > 문화활동 및 생활지원,시설,0.017651
+domain,금융･복지･문화 > 문화활동 및 생활지원,창작,0.01765
+domain,금융･복지･문화 > 문화활동 및 생활지원,도시,0.017619
+domain,금융･복지･문화 > 문화활동 및 생활지원,조성,0.017538
+domain,금융･복지･문화 > 문화활동 및 생활지원,강화,0.017464
+domain,금융･복지･문화 > 문화활동 및 생활지원,주민등록,0.017427
+domain,금융･복지･문화 > 문화활동 및 생활지원,활성화,0.016635
+domain,금융･복지･문화 > 문화활동 및 생활지원,이용,0.016464
+domain,금융･복지･문화 > 문화활동 및 생활지원,맞춤,0.016403
+domain,금융･복지･문화 > 문화활동 및 생활지원,비용,0.016346
+domain,금융･복지･문화 > 문화활동 및 생활지원,울산,0.015687
+domain,금융･복지･문화 > 문화활동 및 생활지원,관람,0.015099
+domain,금융･복지･문화 > 문화활동 및 생활지원,공간,0.014819
+domain,금융･복지･문화 > 문화활동 및 생활지원,시민,0.014694
+domain,금융･복지･문화 > 문화활동 및 생활지원,경제,0.014593
+domain,금융･복지･문화 > 문화활동 및 생활지원,백만원,0.014473
+domain,금융･복지･문화 > 문화활동 및 생활지원,페스티벌,0.0142
+domain,금융･복지･문화 > 문화활동 및 생활지원,교류,0.014133
+domain,금융･복지･문화 > 문화활동 및 생활지원,홍보,0.013547
+domain,금융･복지･문화 > 문화활동 및 생활지원,사회,0.013516
+domain,금융･복지･문화 > 문화활동 및 생활지원,소통,0.013322
+domain,금융･복지･문화 > 문화활동 및 생활지원,직접,0.013242
+domain,금융･복지･문화 > 문화활동 및 생활지원,거주,0.013128
+domain,금융･복지･문화 > 문화활동 및 생활지원,패스,0.012981
+domain,금융･복지･문화 > 문화활동 및 생활지원,위원회,0.01267
+domain,금융･복지･문화 > 문화활동 및 생활지원,발굴,0.012613
+domain,금융･복지･문화 > 문화활동 및 생활지원,완화,0.012305
+domain,금융･복지･문화 > 문화활동 및 생활지원,축제,0.012224
+domain,금융･복지･문화 > 문화활동 및 생활지원,보건소,0.012168
+domain,금융･복지･문화 > 문화활동 및 생활지원,역량,0.012134
+domain,금융･복지･문화 > 문화활동 및 생활지원,기획,0.012125
+domain,금융･복지･문화 > 문화활동 및 생활지원,가족,0.012056
+domain,금융･복지･문화 > 문화활동 및 생활지원,예술인,0.011985
+domain,금융･복지･문화 > 문화활동 및 생활지원,접수,0.011864
+domain,금융･복지･문화 > 문화활동 및 생활지원,콘텐츠,0.011783
+domain,금융･복지･문화 > 문화활동 및 생활지원,남녀,0.011672
+domain,금융･복지･문화 > 문화활동 및 생활지원,관내,0.011659
+domain,금융･복지･문화 > 문화활동 및 생활지원,추가,0.011623
+domain,금융･복지･문화 > 문화활동 및 생활지원,서산시,0.011556
+domain,금융･복지･문화 > 문화활동 및 생활지원,영화,0.011505
+domain,금융･복지･문화 > 예술인지원,예술인,0.176562
+domain,금융･복지･문화 > 예술인지원,예술,0.141349
+domain,금융･복지･문화 > 예술인지원,문화,0.134084
+domain,금융･복지･문화 > 예술인지원,창작,0.126031
+domain,금융･복지･문화 > 예술인지원,활동,0.087831
+domain,금융･복지･문화 > 예술인지원,청년,0.081079
+domain,금융･복지･문화 > 예술인지원,제한,0.08002
+domain,금융･복지･문화 > 예술인지원,원금,0.069306
+domain,금융･복지･문화 > 예술인지원,경력,0.068149
+domain,금융･복지･문화 > 예술인지원,연령,0.063708
+domain,금융･복지･문화 > 예술인지원,정책,0.06324
+domain,금융･복지･문화 > 예술인지원,분야,0.060689
+domain,금융･복지･문화 > 예술인지원,작품,0.056366
+domain,금융･복지･문화 > 예술인지원,금융,0.055448
+domain,금융･복지･문화 > 예술인지원,복지,0.053526
+domain,금융･복지･문화 > 예술인지원,육성,0.052897
+domain,금융･복지･문화 > 예술인지원,아트,0.051234
+domain,금융･복지･문화 > 예술인지원,공연,0.049173
+domain,금융･복지･문화 > 예술인지원,기회,0.048458
+domain,금융･복지･문화 > 예술인지원,발표,0.047633
+domain,금융･복지･문화 > 예술인지원,지급,0.045763
+domain,금융･복지･문화 > 예술인지원,워드,0.043285
+domain,금융･복지･문화 > 예술인지원,발굴,0.041041
+domain,금융･복지･문화 > 예술인지원,향유,0.040654
+domain,금융･복지･문화 > 예술인지원,거주,0.040235
+domain,금융･복지･문화 > 예술인지원,수행,0.040224
+domain,금융･복지･문화 > 예술인지원,신진,0.039335
+domain,금융･복지･문화 > 예술인지원,기반,0.039255
+domain,금융･복지･문화 > 예술인지원,심사,0.038196
+domain,금융･복지･문화 > 예술인지원,작가,0.037862
+domain,금융･복지･문화 > 예술인지원,도모,0.036876
+domain,금융･복지･문화 > 예술인지원,활성화,0.036129
+domain,금융･복지･문화 > 예술인지원,전시,0.03413
+domain,금융･복지･문화 > 예술인지원,인천광역시,0.032952
+domain,금융･복지･문화 > 예술인지원,조건,0.031854
+domain,금융･복지･문화 > 예술인지원,교류,0.030593
+domain,금융･복지･문화 > 예술인지원,멘토,0.030032
+domain,금융･복지･문화 > 예술인지원,제작,0.029893
+domain,금융･복지･문화 > 예술인지원,직접,0.029828
+domain,금융･복지･문화 > 예술인지원,공모,0.029478
+domain,금융･복지･문화 > 예술인지원,발급,0.028976
+domain,금융･복지･문화 > 예술인지원,홍보,0.028564
+domain,금융･복지･문화 > 예술인지원,농업인,0.02847
+domain,금융･복지･문화 > 예술인지원,마련,0.027975
+domain,금융･복지･문화 > 예술인지원,확대,0.027784
+domain,금융･복지･문화 > 예술인지원,방법,0.027743
+domain,금융･복지･문화 > 예술인지원,국내,0.027713
+domain,금융･복지･문화 > 예술인지원,불가,0.027507
+domain,금융･복지･문화 > 예술인지원,상담,0.027311
+domain,금융･복지･문화 > 예술인지원,국제,0.026243
+domain,금융･복지･문화 > 예술인지원,조성,0.025232
+domain,금융･복지･문화 > 예술인지원,제출,0.024886
+domain,금융･복지･문화 > 예술인지원,관내,0.024856
+domain,금융･복지･문화 > 예술인지원,네트워크,0.024842
+domain,금융･복지･문화 > 예술인지원,프로젝트,0.024715
+domain,금융･복지･문화 > 예술인지원,안정,0.024408
+domain,금융･복지･문화 > 예술인지원,이후,0.024163
+domain,금융･복지･문화 > 예술인지원,교육,0.02389
+domain,금융･복지･문화 > 예술인지원,요약,0.023784
+domain,금융･복지･문화 > 예술인지원,서류,0.023745
+domain,금융･복지･문화 > 예술인지원,맞춤,0.022967
+domain,금융･복지･문화 > 예술인지원,주관,0.022742
+domain,금융･복지･문화 > 예술인지원,성장,0.022527
+domain,금융･복지･문화 > 예술인지원,소득,0.02235
+domain,금융･복지･문화 > 예술인지원,공간,0.022043
+domain,금융･복지･문화 > 예술인지원,계기,0.021372
+domain,금융･복지･문화 > 예술인지원,강화,0.021288
+domain,금융･복지･문화 > 예술인지원,고자,0.021258
+domain,금융･복지･문화 > 예술인지원,제로,0.021124
+domain,금융･복지･문화 > 예술인지원,대중,0.021027
+domain,금융･복지･문화 > 예술인지원,예술가,0.020792
+domain,금융･복지･문화 > 예술인지원,콘텐츠,0.020586
+domain,금융･복지･문화 > 예술인지원,포기,0.020527
+domain,금융･복지･문화 > 예술인지원,재정,0.020315
+domain,금융･복지･문화 > 예술인지원,워크숍,0.019914
+domain,금융･복지･문화 > 예술인지원,문학,0.019721
+domain,금융･복지･문화 > 예술인지원,업로드,0.019718
+domain,금융･복지･문화 > 예술인지원,영화,0.019482
+domain,금융･복지･문화 > 예술인지원,재료,0.019467
+domain,금융･복지･문화 > 예술인지원,응모,0.019359
+domain,금융･복지･문화 > 취약계층 및 금융지원,금융,0.109203
+domain,금융･복지･문화 > 취약계층 및 금융지원,제한,0.093878
+domain,금융･복지･문화 > 취약계층 및 금융지원,정책,0.078407
+domain,금융･복지･문화 > 취약계층 및 금융지원,연령,0.070001
+domain,금융･복지･문화 > 취약계층 및 금융지원,계층,0.062334
+domain,금융･복지･문화 > 취약계층 및 금융지원,자립,0.059887
+domain,금융･복지･문화 > 취약계층 및 금융지원,복지,0.058958
+domain,금융･복지･문화 > 취약계층 및 금융지원,청년,0.057736
+domain,금융･복지･문화 > 취약계층 및 금융지원,취약,0.055307
+domain,금융･복지･문화 > 취약계층 및 금융지원,문화,0.0492
+domain,금융･복지･문화 > 취약계층 및 금융지원,조건,0.048575
+domain,금융･복지･문화 > 취약계층 및 금융지원,지급,0.045446
+domain,금융･복지･문화 > 취약계층 및 금융지원,안정,0.042692
+domain,금융･복지･문화 > 취약계층 및 금융지원,분야,0.042466
+domain,금융･복지･문화 > 취약계층 및 금융지원,아동,0.038396
+domain,금융･복지･문화 > 취약계층 및 금융지원,워드,0.036257
+domain,금융･복지･문화 > 취약계층 및 금융지원,정착,0.035414
+domain,금융･복지･문화 > 취약계층 및 금융지원,보조금,0.034947
+domain,금융･복지･문화 > 취약계층 및 금융지원,형성,0.034825
+domain,금융･복지･문화 > 취약계층 및 금융지원,부담,0.034475
+domain,금융･복지･문화 > 취약계층 및 금융지원,소득,0.034275
+domain,금융･복지･문화 > 취약계층 및 금융지원,방법,0.033887
+domain,금융･복지･문화 > 취약계층 및 금융지원,자산,0.033
+domain,금융･복지･문화 > 취약계층 및 금융지원,경제,0.032199
+domain,금융･복지･문화 > 취약계층 및 금융지원,사회,0.031804
+domain,금융･복지･문화 > 취약계층 및 금융지원,생활,0.031534
+domain,금융･복지･문화 > 취약계층 및 금융지원,준비,0.031466
+domain,금융･복지･문화 > 취약계층 및 금융지원,보호,0.030814
+domain,금융･복지･문화 > 취약계층 및 금융지원,목적,0.029895
+domain,금융･복지･문화 > 취약계층 및 금융지원,종료,0.029701
+domain,금융･복지･문화 > 취약계층 및 금융지원,주관,0.029625
+domain,금융･복지･문화 > 취약계층 및 금융지원,개월,0.02962
+domain,금융･복지･문화 > 취약계층 및 금융지원,양육,0.028415
+domain,금융･복지･문화 > 취약계층 및 금융지원,계좌,0.02692
+domain,금융･복지･문화 > 취약계층 및 금융지원,체계,0.025669
+domain,금융･복지･문화 > 취약계층 및 금융지원,나이,0.024374
+domain,금융･복지･문화 > 취약계층 및 금융지원,수당,0.024372
+domain,금융･복지･문화 > 취약계층 및 금융지원,요약,0.023928
+domain,금융･복지･문화 > 취약계층 및 금융지원,장려,0.023693
+domain,금융･복지･문화 > 취약계층 및 금융지원,관리,0.02323
+domain,금융･복지･문화 > 취약계층 및 금융지원,저축,0.023138
+domain,금융･복지･문화 > 취약계층 및 금융지원,가정위탁,0.022912
+domain,금융･복지･문화 > 취약계층 및 금융지원,광주,0.022217
+domain,금융･복지･문화 > 취약계층 및 금융지원,전달,0.021438
+domain,금융･복지･문화 > 취약계층 및 금융지원,완화,0.021093
+domain,금융･복지･문화 > 취약계층 및 금융지원,본인,0.02039
+domain,금융･복지･문화 > 취약계층 및 금융지원,이내,0.020266
+domain,금융･복지･문화 > 취약계층 및 금융지원,가족,0.020137
+domain,금융･복지･문화 > 취약계층 및 금융지원,원금,0.020112
+domain,금융･복지･문화 > 취약계층 및 금융지원,통장,0.019949
+domain,금융･복지･문화 > 취약계층 및 금융지원,가정,0.019471
+domain,금융･복지･문화 > 취약계층 및 금융지원,출산,0.018679
+domain,금융･복지･문화 > 취약계층 및 금융지원,최대,0.01859
+domain,금융･복지･문화 > 취약계층 및 금융지원,중위,0.018589
+domain,금융･복지･문화 > 취약계층 및 금융지원,연속,0.018304
+domain,금융･복지･문화 > 취약계층 및 금융지원,근로,0.018247
+domain,금융･복지･문화 > 취약계층 및 금융지원,주거,0.018092
+domain,금융･복지･문화 > 취약계층 및 금융지원,공동,0.018004
+domain,금융･복지･문화 > 취약계층 및 금융지원,육아,0.017892
+domain,금융･복지･문화 > 취약계층 및 금융지원,가구,0.017595
+domain,금융･복지･문화 > 취약계층 및 금융지원,접수,0.017059
+domain,금융･복지･문화 > 취약계층 및 금융지원,유도,0.017016
+domain,금융･복지･문화 > 취약계층 및 금융지원,상담,0.016942
+domain,금융･복지･문화 > 취약계층 및 금융지원,제출,0.016681
+domain,금융･복지･문화 > 취약계층 및 금융지원,주소지,0.016591
+domain,금융･복지･문화 > 취약계층 및 금융지원,재무,0.016534
+domain,금융･복지･문화 > 취약계층 및 금융지원,자녀,0.016339
+domain,금융･복지･문화 > 취약계층 및 금융지원,가입,0.016254
+domain,금융･복지･문화 > 취약계층 및 금융지원,교육,0.015943
+domain,금융･복지･문화 > 취약계층 및 금융지원,아동복,0.015932
+domain,금융･복지･문화 > 취약계층 및 금융지원,시설,0.015931
+domain,금융･복지･문화 > 취약계층 및 금융지원,이후,0.015843
+domain,금융･복지･문화 > 취약계층 및 금융지원,통한,0.015243
+domain,금융･복지･문화 > 취약계층 및 금융지원,마련,0.014914
+domain,금융･복지･문화 > 취약계층 및 금융지원,대상자,0.014777
+domain,금융･복지･문화 > 취약계층 및 금융지원,제주,0.014741
+domain,금융･복지･문화 > 취약계층 및 금융지원,매월,0.014086
+domain,금융･복지･문화 > 취약계층 및 금융지원,주민등록,0.014033
+domain,금융･복지･문화 > 취약계층 및 금융지원,적립,0.013812
+domain,금융･복지･문화 > 취약계층 및 금융지원,과거,0.013616
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",관점,0.266515
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",제주도,0.261455
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",문학,0.249959
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",예술가,0.246928
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",규모,0.21224
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",처음,0.210894
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",예술인,0.207571
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",발표,0.206413
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",장기,0.201852
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",장지원,0.200266
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",창작,0.200266
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",공모,0.199352
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",백만원,0.185417
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",원금,0.185417
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",예술,0.18253
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",목적,0.175496
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",체계,0.174556
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",도내,0.169011
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",조성,0.166884
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",기회,0.161021
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",기획,0.154161
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",성장,0.147795
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",문화,0.143757
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",활동,0.14141
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",거주,0.137783
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",콘텐츠,0.128341
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",제작,0.126446
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",분야,0.10594
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",청년,0.08136
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가격,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가공,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가공업,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가구,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가능성,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가사,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가산,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가상,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가속,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가스,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가압류,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가야,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가이드,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가이드라인,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가입,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가입자,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가장,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가점,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가정,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가정위탁,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가족,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가지,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가처분,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가치,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",가치관,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",각종,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",간담,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",간반,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",간의,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",간호,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",간호조무사,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",간호학,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",감성,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",감소,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",갑자기,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강남,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강남구,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강동,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강동구,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강릉,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강릉시,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강림,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강북,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강북구,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강사,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강서구,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강소기업,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강연,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강원,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강원도,0.0
+domain,"금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원",강의,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",소식,0.282077
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",지역화폐,0.267056
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",피드백,0.267056
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",공지,0.246823
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",보장,0.232281
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",완료,0.218721
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",오픈,0.212832
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",예술인,0.212018
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",오프라인,0.210071
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",전달,0.206849
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",제주,0.189778
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",원금,0.189389
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",드림,0.184897
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",단계,0.180104
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",체계,0.178295
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",금융,0.168726
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",지급,0.165705
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",상담,0.164994
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",플랫폼,0.163284
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",온라인,0.149224
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",문화,0.146837
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",맞춤,0.138753
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",공간,0.136225
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",복지,0.134308
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",제한,0.127306
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",정책,0.11416
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",분야,0.108209
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",연령,0.101356
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",청년,0.083103
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가격,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가공,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가공업,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가구,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가능성,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가사,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가산,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가상,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가속,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가스,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가압류,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가야,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가이드,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가이드라인,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가입,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가입자,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가장,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가점,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가정,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가정위탁,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가족,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가지,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가처분,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가치,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",가치관,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",각종,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",간담,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",간반,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",간의,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",간호,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",간호조무사,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",간호학,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",감성,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",감소,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",갑자기,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강남,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강남구,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강동,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강동구,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강릉,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강릉시,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강림,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강북,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강북구,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강사,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강서구,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강소기업,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강연,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강원,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강원도,0.0
+domain,"금융･복지･문화,금융･복지･문화,금융･복지･문화,금융･복지･문화 > 예술인지원,문화활동 및 생활지원,건강,취약계층 및 금융지원",강의,0.0
+domain,복지문화 > 건강,건강,0.143188
+domain,복지문화 > 건강,복지,0.087544
+domain,복지문화 > 건강,정책,0.082806
+domain,복지문화 > 건강,정신건강,0.076179
+domain,복지문화 > 건강,문화,0.071898
+domain,복지문화 > 건강,상담,0.067976
+domain,복지문화 > 건강,분야,0.062937
+domain,복지문화 > 건강,예방,0.062602
+domain,복지문화 > 건강,워드,0.062076
+domain,복지문화 > 건강,청년,0.059208
+domain,복지문화 > 건강,사회,0.054358
+domain,복지문화 > 건강,주관,0.054125
+domain,복지문화 > 건강,증진,0.052456
+domain,복지문화 > 건강,관리,0.052249
+domain,복지문화 > 건강,마음,0.05152
+domain,복지문화 > 건강,개입,0.04939
+domain,복지문화 > 건강,치료,0.048133
+domain,복지문화 > 건강,위험,0.047498
+domain,복지문화 > 건강,조건,0.04658
+domain,복지문화 > 건강,제한,0.045219
+domain,복지문화 > 건강,출산,0.045012
+domain,복지문화 > 건강,맞춤,0.044675
+domain,복지문화 > 건강,나이,0.044149
+domain,복지문화 > 건강,심리,0.043401
+domain,복지문화 > 건강,회복,0.039381
+domain,복지문화 > 건강,통한,0.039181
+domain,복지문화 > 건강,보건소,0.038975
+domain,복지문화 > 건강,조기,0.038728
+domain,복지문화 > 건강,요약,0.038721
+domain,복지문화 > 건강,연령,0.036318
+domain,복지문화 > 건강,정신질환,0.036263
+domain,복지문화 > 건강,임신,0.034544
+domain,복지문화 > 건강,우울,0.034422
+domain,복지문화 > 건강,주민등록,0.033234
+domain,복지문화 > 건강,중독,0.030142
+domain,복지문화 > 건강,홍보,0.02953
+domain,복지문화 > 건강,방법,0.02923
+domain,복지문화 > 건강,스트레스,0.027
+domain,복지문화 > 건강,검사,0.02659
+domain,복지문화 > 건강,발견,0.026283
+domain,복지문화 > 건강,부담,0.026236
+domain,복지문화 > 건강,진단,0.025545
+domain,복지문화 > 건강,자원,0.025348
+domain,복지문화 > 건강,약물,0.025069
+domain,복지문화 > 건강,자살,0.024076
+domain,복지문화 > 건강,향상,0.023802
+domain,복지문화 > 건강,완화,0.023187
+domain,복지문화 > 건강,발굴,0.022825
+domain,복지문화 > 건강,인원,0.022728
+domain,복지문화 > 건강,개선,0.02266
+domain,복지문화 > 건강,문제,0.022329
+domain,복지문화 > 건강,산모,0.022028
+domain,복지문화 > 건강,교육,0.021695
+domain,복지문화 > 건강,가정,0.020723
+domain,복지문화 > 건강,출생,0.02058
+domain,복지문화 > 건강,검진,0.020544
+domain,복지문화 > 건강,방문,0.019872
+domain,복지문화 > 건강,사례,0.019811
+domain,복지문화 > 건강,충청남도,0.019564
+domain,복지문화 > 건강,원기준,0.018986
+domain,복지문화 > 건강,관내,0.018871
+domain,복지문화 > 건강,비용,0.018732
+domain,복지문화 > 건강,가족,0.018587
+domain,복지문화 > 건강,거주,0.018548
+domain,복지문화 > 건강,출처,0.018517
+domain,복지문화 > 건강,보험,0.018416
+domain,복지문화 > 건강,심리상담,0.018252
+domain,복지문화 > 건강,서류,0.017598
+domain,복지문화 > 건강,보조금,0.017313
+domain,복지문화 > 건강,경제,0.017042
+domain,복지문화 > 건강,임산부,0.016725
+domain,복지문화 > 건강,상해,0.016677
+domain,복지문화 > 건강,등록,0.016539
+domain,복지문화 > 건강,인식,0.016389
+domain,복지문화 > 건강,도내,0.01615
+domain,복지문화 > 건강,특별자치도,0.016007
+domain,복지문화 > 건강,군복무,0.015743
+domain,복지문화 > 건강,불안,0.015612
+domain,복지문화 > 건강,경감,0.015314
+domain,복지문화 > 건강,신체,0.015072
+domain,복지문화 > 문화활동,문화,0.148709
+domain,복지문화 > 문화활동,활동,0.115112
+domain,복지문화 > 문화활동,정책,0.102103
+domain,복지문화 > 문화활동,복지,0.0958
+domain,복지문화 > 문화활동,워드,0.079574
+domain,복지문화 > 문화활동,분야,0.078402
+domain,복지문화 > 문화활동,청년,0.077941
+domain,복지문화 > 문화활동,주관,0.074552
+domain,복지문화 > 문화활동,나이,0.066363
+domain,복지문화 > 문화활동,조건,0.065383
+domain,복지문화 > 문화활동,공연,0.057259
+domain,복지문화 > 문화활동,예술,0.056671
+domain,복지문화 > 문화활동,활성화,0.055016
+domain,복지문화 > 문화활동,요약,0.052591
+domain,복지문화 > 문화활동,출처,0.036319
+domain,복지문화 > 문화활동,기회,0.034774
+domain,복지문화 > 문화활동,관람,0.034426
+domain,복지문화 > 문화활동,보조금,0.034088
+domain,복지문화 > 문화활동,관광,0.033349
+domain,복지문화 > 문화활동,동아리,0.033298
+domain,복지문화 > 문화활동,제한,0.033291
+domain,복지문화 > 문화활동,공간,0.032344
+domain,복지문화 > 문화활동,교육,0.030789
+domain,복지문화 > 문화활동,연령,0.030166
+domain,복지문화 > 문화활동,전시,0.030113
+domain,복지문화 > 문화활동,방법,0.027976
+domain,복지문화 > 문화활동,페스티벌,0.026397
+domain,복지문화 > 문화활동,생활,0.025074
+domain,복지문화 > 문화활동,향유,0.025022
+domain,복지문화 > 문화활동,행사,0.02433
+domain,복지문화 > 문화활동,직접,0.023866
+domain,복지문화 > 문화활동,통한,0.02374
+domain,복지문화 > 문화활동,목적,0.023256
+domain,복지문화 > 문화활동,홍보,0.022603
+domain,복지문화 > 문화활동,단체,0.021618
+domain,복지문화 > 문화활동,개최,0.021334
+domain,복지문화 > 문화활동,도서,0.020755
+domain,복지문화 > 문화활동,관내,0.020661
+domain,복지문화 > 문화활동,도서관,0.020538
+domain,복지문화 > 문화활동,조성,0.02053
+domain,복지문화 > 문화활동,이용,0.020314
+domain,복지문화 > 문화활동,체육,0.019881
+domain,복지문화 > 문화활동,맞춤,0.019783
+domain,복지문화 > 문화활동,체험,0.019615
+domain,복지문화 > 문화활동,창작,0.019249
+domain,복지문화 > 문화활동,커뮤니티,0.019156
+domain,복지문화 > 문화활동,예매,0.0188
+domain,복지문화 > 문화활동,기념,0.018179
+domain,복지문화 > 문화활동,시설,0.017635
+domain,복지문화 > 문화활동,경상남도,0.01752
+domain,복지문화 > 문화활동,마련,0.017423
+domain,복지문화 > 문화활동,대회,0.017368
+domain,복지문화 > 문화활동,전달,0.016666
+domain,복지문화 > 문화활동,추진단,0.016585
+domain,복지문화 > 문화활동,구성,0.016064
+domain,복지문화 > 문화활동,백만원,0.016046
+domain,복지문화 > 문화활동,스포츠,0.015861
+domain,복지문화 > 문화활동,기획,0.015794
+domain,복지문화 > 문화활동,충남,0.01576
+domain,복지문화 > 문화활동,진행,0.015534
+domain,복지문화 > 문화활동,추진,0.015388
+domain,복지문화 > 문화활동,강화,0.01536
+domain,복지문화 > 문화활동,축제,0.015268
+domain,복지문화 > 문화활동,울산,0.015081
+domain,복지문화 > 문화활동,패스,0.014744
+domain,복지문화 > 문화활동,페스,0.014689
+domain,복지문화 > 문화활동,주간,0.01446
+domain,복지문화 > 문화활동,체계,0.014365
+domain,복지문화 > 문화활동,시민,0.014225
+domain,복지문화 > 문화활동,콘텐츠,0.013565
+domain,복지문화 > 문화활동,여행,0.013453
+domain,복지문화 > 문화활동,상담,0.013158
+domain,복지문화 > 문화활동,충청남도,0.013138
+domain,복지문화 > 문화활동,대관,0.012873
+domain,복지문화 > 문화활동,음악,0.012639
+domain,복지문화 > 문화활동,소통,0.012624
+domain,복지문화 > 문화활동,버스킹,0.012506
+domain,복지문화 > 문화활동,재료,0.012262
+domain,복지문화 > 문화활동,재능,0.012233
+domain,복지문화 > 문화활동,인원,0.012146
+domain,복지문화 > 예술인지원,예술인,0.191158
+domain,복지문화 > 예술인지원,문화,0.138806
+domain,복지문화 > 예술인지원,예술,0.105647
+domain,복지문화 > 예술인지원,창작,0.092626
+domain,복지문화 > 예술인지원,정책,0.08633
+domain,복지문화 > 예술인지원,복지,0.085225
+domain,복지문화 > 예술인지원,분야,0.084127
+domain,복지문화 > 예술인지원,활동,0.077409
+domain,복지문화 > 예술인지원,청년,0.071996
+domain,복지문화 > 예술인지원,워드,0.065039
+domain,복지문화 > 예술인지원,교육,0.056773
+domain,복지문화 > 예술인지원,조건,0.053748
+domain,복지문화 > 예술인지원,주관,0.051884
+domain,복지문화 > 예술인지원,기획,0.049575
+domain,복지문화 > 예술인지원,예술가,0.047642
+domain,복지문화 > 예술인지원,육성,0.047286
+domain,복지문화 > 예술인지원,강화,0.044873
+domain,복지문화 > 예술인지원,제한,0.044461
+domain,복지문화 > 예술인지원,공연,0.044375
+domain,복지문화 > 예술인지원,나이,0.039493
+domain,복지문화 > 예술인지원,기회,0.038973
+domain,복지문화 > 예술인지원,활성화,0.036653
+domain,복지문화 > 예술인지원,충청남도,0.036136
+domain,복지문화 > 예술인지원,서류,0.035664
+domain,복지문화 > 예술인지원,역량,0.035425
+domain,복지문화 > 예술인지원,요약,0.035375
+domain,복지문화 > 예술인지원,제작,0.035008
+domain,복지문화 > 예술인지원,통한,0.034183
+domain,복지문화 > 예술인지원,양성,0.030871
+domain,복지문화 > 예술인지원,개최,0.030081
+domain,복지문화 > 예술인지원,발표,0.029931
+domain,복지문화 > 예술인지원,연령,0.029196
+domain,복지문화 > 예술인지원,도내,0.028764
+domain,복지문화 > 예술인지원,인력,0.028482
+domain,복지문화 > 예술인지원,추가,0.026686
+domain,복지문화 > 예술인지원,조성,0.026574
+domain,복지문화 > 예술인지원,콘텐츠,0.026439
+domain,복지문화 > 예술인지원,거주,0.026422
+domain,복지문화 > 예술인지원,출처,0.025874
+domain,복지문화 > 예술인지원,단체,0.025648
+domain,복지문화 > 예술인지원,전문,0.02497
+domain,복지문화 > 예술인지원,작품,0.024643
+domain,복지문화 > 예술인지원,추진,0.024477
+domain,복지문화 > 예술인지원,보조금,0.023454
+domain,복지문화 > 예술인지원,발굴,0.023236
+domain,복지문화 > 예술인지원,충남,0.022931
+domain,복지문화 > 예술인지원,원금,0.022763
+domain,복지문화 > 예술인지원,홍보,0.021966
+domain,복지문화 > 예술인지원,자격,0.02189
+domain,복지문화 > 예술인지원,전시,0.021804
+domain,복지문화 > 예술인지원,도모,0.021695
+domain,복지문화 > 예술인지원,글로벌,0.021687
+domain,복지문화 > 예술인지원,관광,0.021113
+domain,복지문화 > 예술인지원,버스킹,0.019748
+domain,복지문화 > 예술인지원,생태계,0.019729
+domain,복지문화 > 예술인지원,기반,0.019414
+domain,복지문화 > 예술인지원,신진,0.019349
+domain,복지문화 > 예술인지원,축제,0.019134
+domain,복지문화 > 예술인지원,공모,0.018895
+domain,복지문화 > 예술인지원,공간,0.018567
+domain,복지문화 > 예술인지원,게임,0.018177
+domain,복지문화 > 예술인지원,구성원,0.01796
+domain,복지문화 > 예술인지원,방법,0.017543
+domain,복지문화 > 예술인지원,심사,0.017479
+domain,복지문화 > 예술인지원,포함,0.017436
+domain,복지문화 > 예술인지원,교류,0.017256
+domain,복지문화 > 예술인지원,최근,0.016888
+domain,복지문화 > 예술인지원,합격자,0.016729
+domain,복지문화 > 예술인지원,단계,0.016321
+domain,복지문화 > 예술인지원,체육,0.016002
+domain,복지문화 > 예술인지원,문화재단,0.015702
+domain,복지문화 > 예술인지원,경력,0.015699
+domain,복지문화 > 예술인지원,지급,0.015682
+domain,복지문화 > 예술인지원,맞춤,0.015405
+domain,복지문화 > 예술인지원,제주,0.01533
+domain,복지문화 > 예술인지원,확대,0.015117
+domain,복지문화 > 예술인지원,시설,0.015012
+domain,복지문화 > 예술인지원,개인,0.01499
+domain,복지문화 > 예술인지원,구성,0.014976
+domain,복지문화 > 예술인지원,문학,0.014927
+domain,복지문화 > 취약계층 및 금융지원,정책,0.074695
+domain,복지문화 > 취약계층 및 금융지원,복지,0.072644
+domain,복지문화 > 취약계층 및 금융지원,취약,0.071282
+domain,복지문화 > 취약계층 및 금융지원,계층,0.064513
+domain,복지문화 > 취약계층 및 금융지원,금융,0.063661
+domain,복지문화 > 취약계층 및 금융지원,문화,0.06354
+domain,복지문화 > 취약계층 및 금융지원,청년,0.063301
+domain,복지문화 > 취약계층 및 금융지원,자립,0.058622
+domain,복지문화 > 취약계층 및 금융지원,소득,0.050025
+domain,복지문화 > 취약계층 및 금융지원,분야,0.048149
+domain,복지문화 > 취약계층 및 금융지원,사회,0.04689
+domain,복지문화 > 취약계층 및 금융지원,조건,0.046289
+domain,복지문화 > 취약계층 및 금융지원,지급,0.043869
+domain,복지문화 > 취약계층 및 금융지원,아동,0.043547
+domain,복지문화 > 취약계층 및 금융지원,안정,0.037428
+domain,복지문화 > 취약계층 및 금융지원,부담,0.035616
+domain,복지문화 > 취약계층 및 금융지원,중위,0.034499
+domain,복지문화 > 취약계층 및 금융지원,워드,0.033257
+domain,복지문화 > 취약계층 및 금융지원,보호,0.03308
+domain,복지문화 > 취약계층 및 금융지원,종료,0.032641
+domain,복지문화 > 취약계층 및 금융지원,정착,0.031326
+domain,복지문화 > 취약계층 및 금융지원,제한,0.030158
+domain,복지문화 > 취약계층 및 금융지원,개월,0.030125
+domain,복지문화 > 취약계층 및 금융지원,연령,0.02939
+domain,복지문화 > 취약계층 및 금융지원,경제,0.028697
+domain,복지문화 > 취약계층 및 금융지원,거주,0.028454
+domain,복지문화 > 취약계층 및 금융지원,생활,0.028435
+domain,복지문화 > 취약계층 및 금융지원,준비,0.02808
+domain,복지문화 > 취약계층 및 금융지원,수당,0.026743
+domain,복지문화 > 취약계층 및 금융지원,가족,0.026598
+domain,복지문화 > 취약계층 및 금융지원,주관,0.026268
+domain,복지문화 > 취약계층 및 금융지원,가정위탁,0.026119
+domain,복지문화 > 취약계층 및 금융지원,주민등록,0.026048
+domain,복지문화 > 취약계층 및 금융지원,시설,0.025097
+domain,복지문화 > 취약계층 및 금융지원,상담,0.023592
+domain,복지문화 > 취약계층 및 금융지원,방법,0.023149
+domain,복지문화 > 취약계층 및 금융지원,서류,0.022828
+domain,복지문화 > 취약계층 및 금융지원,자산,0.022251
+domain,복지문화 > 취약계층 및 금융지원,이후,0.021804
+domain,복지문화 > 취약계층 및 금융지원,형성,0.021614
+domain,복지문화 > 취약계층 및 금융지원,고립,0.021362
+domain,복지문화 > 취약계층 및 금융지원,관리,0.02128
+domain,복지문화 > 취약계층 및 금융지원,최대,0.02116
+domain,복지문화 > 취약계층 및 금융지원,아동복,0.021018
+domain,복지문화 > 취약계층 및 금융지원,나이,0.020893
+domain,복지문화 > 취약계층 및 금융지원,근로,0.02065
+domain,복지문화 > 취약계층 및 금융지원,완화,0.020613
+domain,복지문화 > 취약계층 및 금융지원,결혼,0.020479
+domain,복지문화 > 취약계층 및 금융지원,부부,0.019501
+domain,복지문화 > 취약계층 및 금융지원,요약,0.019299
+domain,복지문화 > 취약계층 및 금융지원,맞춤,0.019012
+domain,복지문화 > 취약계층 및 금융지원,보조금,0.018935
+domain,복지문화 > 취약계층 및 금융지원,사례,0.018676
+domain,복지문화 > 취약계층 및 금융지원,매월,0.018424
+domain,복지문화 > 취약계층 및 금융지원,양육,0.018351
+domain,복지문화 > 취약계층 및 금융지원,가구,0.018347
+domain,복지문화 > 취약계층 및 금융지원,저축,0.017947
+domain,복지문화 > 취약계층 및 금융지원,교육,0.017744
+domain,복지문화 > 취약계층 및 금융지원,가정,0.016611
+domain,복지문화 > 취약계층 및 금융지원,백만원,0.01636
+domain,복지문화 > 취약계층 및 금융지원,이내,0.016262
+domain,복지문화 > 취약계층 및 금융지원,본인,0.016189
+domain,복지문화 > 취약계층 및 금융지원,은둔,0.016032
+domain,복지문화 > 취약계층 및 금융지원,자녀,0.015977
+domain,복지문화 > 취약계층 및 금융지원,출산,0.015565
+domain,복지문화 > 취약계층 및 금융지원,회복,0.015563
+domain,복지문화 > 취약계층 및 금융지원,도모,0.0153
+domain,복지문화 > 취약계층 및 금융지원,혼인신고,0.015214
+domain,복지문화 > 취약계층 및 금융지원,초과,0.015052
+domain,복지문화 > 취약계층 및 금융지원,제외,0.015016
+domain,복지문화 > 취약계층 및 금융지원,장려,0.014936
+domain,복지문화 > 취약계층 및 금융지원,건강,0.014894
+domain,복지문화 > 취약계층 및 금융지원,주거,0.014595
+domain,복지문화 > 취약계층 및 금융지원,추진,0.014451
+domain,복지문화 > 취약계층 및 금융지원,통한,0.014072
+domain,복지문화 > 취약계층 및 금융지원,제출,0.013807
+domain,복지문화 > 취약계층 및 금융지원,활동,0.013789
+domain,복지문화 > 취약계층 및 금융지원,비용,0.01377
+domain,복지문화 > 취약계층 및 금융지원,경감,0.013759
+domain,복지문화 > 취약계층 및 금융지원,재직,0.013627
+domain,일자리 > 권익보호,개월,0.11851
+domain,일자리 > 권익보호,제출,0.092046
+domain,일자리 > 권익보호,중소기업,0.09083
+domain,일자리 > 권익보호,지급,0.090185
+domain,일자리 > 권익보호,추첨,0.0781
+domain,일자리 > 권익보호,공원,0.077186
+domain,일자리 > 권익보호,이용권,0.076359
+domain,일자리 > 권익보호,제국,0.075604
+domain,일자리 > 권익보호,경제정책,0.074939
+domain,일자리 > 권익보호,일자리,0.074688
+domain,일자리 > 권익보호,지역화폐,0.072616
+domain,일자리 > 권익보호,홍성,0.070468
+domain,일자리 > 권익보호,제한,0.070379
+domain,일자리 > 권익보호,권익,0.06953
+domain,일자리 > 권익보호,수령,0.069424
+domain,일자리 > 권익보호,방법,0.069286
+domain,일자리 > 권익보호,대기업,0.06825
+domain,일자리 > 권익보호,동의,0.067816
+domain,일자리 > 권익보호,조건,0.066951
+domain,일자리 > 권익보호,유관,0.065155
+domain,일자리 > 권익보호,정책,0.063112
+domain,일자리 > 권익보호,관외,0.062552
+domain,일자리 > 권익보호,직전,0.060524
+domain,일자리 > 권익보호,익산시,0.06033
+domain,일자리 > 권익보호,연도,0.058995
+domain,일자리 > 권익보호,상시,0.058912
+domain,일자리 > 권익보호,한도,0.058821
+domain,일자리 > 권익보호,명의,0.058452
+domain,일자리 > 권익보호,시일,0.057726
+domain,일자리 > 권익보호,관계,0.057542
+domain,일자리 > 권익보호,개사,0.057273
+domain,일자리 > 권익보호,양육,0.056642
+domain,일자리 > 권익보호,상공,0.056443
+domain,일자리 > 권익보호,가족,0.056338
+domain,일자리 > 권익보호,초과,0.056249
+domain,일자리 > 권익보호,연령,0.056033
+domain,일자리 > 권익보호,증명서,0.055972
+domain,일자리 > 권익보호,인천광역시,0.05584
+domain,일자리 > 권익보호,매칭,0.055794
+domain,일자리 > 권익보호,공유,0.055336
+domain,일자리 > 권익보호,보호,0.054658
+domain,일자리 > 권익보호,자원,0.054282
+domain,일자리 > 권익보호,비용,0.053779
+domain,일자리 > 권익보호,개업,0.053682
+domain,일자리 > 권익보호,수당,0.053574
+domain,일자리 > 권익보호,자녀,0.053032
+domain,일자리 > 권익보호,재직,0.051958
+domain,일자리 > 권익보호,출산,0.051881
+domain,일자리 > 권익보호,원금,0.051577
+domain,일자리 > 권익보호,학생,0.051393
+domain,일자리 > 권익보호,이메일,0.050919
+domain,일자리 > 권익보호,중인,0.050399
+domain,일자리 > 권익보호,매출,0.050257
+domain,일자리 > 권익보호,영업,0.050257
+domain,일자리 > 권익보호,채용,0.049953
+domain,일자리 > 권익보호,접수,0.04953
+domain,일자리 > 권익보호,일로,0.049522
+domain,일자리 > 권익보호,업체,0.049293
+domain,일자리 > 권익보호,선발,0.049285
+domain,일자리 > 권익보호,소상,0.048643
+domain,일자리 > 권익보호,이용,0.047844
+domain,일자리 > 권익보호,보조금,0.047325
+domain,일자리 > 권익보호,등록증,0.04619
+domain,일자리 > 권익보호,백만원,0.045708
+domain,일자리 > 권익보호,거주지,0.044996
+domain,일자리 > 권익보호,전북,0.044985
+domain,일자리 > 권익보호,공인,0.044117
+domain,일자리 > 권익보호,서구,0.044072
+domain,일자리 > 권익보호,신규,0.043689
+domain,일자리 > 권익보호,서류,0.043398
+domain,일자리 > 권익보호,주소지,0.04333
+domain,일자리 > 권익보호,기본,0.043129
+domain,일자리 > 권익보호,주민등록,0.043083
+domain,일자리 > 권익보호,필수,0.042945
+domain,일자리 > 권익보호,울산,0.040721
+domain,일자리 > 권익보호,모두,0.040462
+domain,일자리 > 권익보호,나이,0.039896
+domain,일자리 > 권익보호,전국,0.038162
+domain,일자리 > 권익보호,복지,0.037673
+domain,일자리 > 권익보호,주관,0.037416
+domain,일자리 > 재직자,재직,0.101782
+domain,일자리 > 재직자,일자리,0.085437
+domain,일자리 > 재직자,중소기업,0.078149
+domain,일자리 > 재직자,정책,0.06598
+domain,일자리 > 재직자,청년,0.065319
+domain,일자리 > 재직자,조건,0.062273
+domain,일자리 > 재직자,분야,0.056714
+domain,일자리 > 재직자,지급,0.050235
+domain,일자리 > 재직자,워드,0.049283
+domain,일자리 > 재직자,주관,0.049077
+domain,일자리 > 재직자,장기,0.04883
+domain,일자리 > 재직자,고용,0.048248
+domain,일자리 > 재직자,유도,0.04692
+domain,일자리 > 재직자,근무,0.04649
+domain,일자리 > 재직자,장려,0.043786
+domain,일자리 > 재직자,개월,0.043237
+domain,일자리 > 재직자,제한,0.042805
+domain,일자리 > 재직자,센티,0.036812
+domain,일자리 > 재직자,나이,0.036671
+domain,일자리 > 재직자,인건비,0.036398
+domain,일자리 > 재직자,소득,0.035673
+domain,일자리 > 재직자,만기,0.035284
+domain,일자리 > 재직자,연령,0.033447
+domain,일자리 > 재직자,근속,0.032851
+domain,일자리 > 재직자,요약,0.032618
+domain,일자리 > 재직자,도내,0.031642
+domain,일자리 > 재직자,정착,0.031437
+domain,일자리 > 재직자,보조금,0.030614
+domain,일자리 > 재직자,신규,0.030042
+domain,일자리 > 재직자,통한,0.029979
+domain,일자리 > 재직자,포함,0.029018
+domain,일자리 > 재직자,제출,0.028472
+domain,일자리 > 재직자,적립,0.028384
+domain,일자리 > 재직자,채용,0.02718
+domain,일자리 > 재직자,공제,0.026988
+domain,일자리 > 재직자,방법,0.026789
+domain,일자리 > 재직자,근로,0.026566
+domain,일자리 > 재직자,출처,0.025087
+domain,일자리 > 재직자,관내,0.024457
+domain,일자리 > 재직자,취업,0.023968
+domain,일자리 > 재직자,최대,0.023778
+domain,일자리 > 재직자,보험료,0.023545
+domain,일자리 > 재직자,백만원,0.023395
+domain,일자리 > 재직자,중위,0.02255
+domain,일자리 > 재직자,중인,0.021392
+domain,일자리 > 재직자,수준,0.020069
+domain,일자리 > 재직자,서류,0.01996
+domain,일자리 > 재직자,내일,0.019193
+domain,일자리 > 재직자,주민등록,0.01889
+domain,일자리 > 재직자,직무,0.018652
+domain,일자리 > 재직자,근로자,0.018641
+domain,일자리 > 재직자,부담,0.018514
+domain,일자리 > 재직자,원금,0.018432
+domain,일자리 > 재직자,정규직,0.018164
+domain,일자리 > 재직자,건강,0.018025
+domain,일자리 > 재직자,우수,0.017511
+domain,일자리 > 재직자,확산,0.017424
+domain,일자리 > 재직자,자기개발,0.017154
+domain,일자리 > 재직자,특별자치도,0.017109
+domain,일자리 > 재직자,산업,0.016685
+domain,일자리 > 재직자,상품권,0.016541
+domain,일자리 > 재직자,체험,0.016475
+domain,일자리 > 재직자,복지,0.016151
+domain,일자리 > 재직자,고령화,0.015945
+domain,일자리 > 재직자,촉진,0.01551
+domain,일자리 > 재직자,수령,0.015418
+domain,일자리 > 재직자,중소,0.015267
+domain,일자리 > 재직자,문화,0.015163
+domain,일자리 > 재직자,유출,0.015036
+domain,일자리 > 재직자,전북,0.0147
+domain,일자리 > 재직자,보험,0.014437
+domain,일자리 > 재직자,선발,0.014435
+domain,일자리 > 재직자,외국인,0.014402
+domain,일자리 > 재직자,소속,0.014367
+domain,일자리 > 재직자,기회,0.013572
+domain,일자리 > 재직자,안정,0.013466
+domain,일자리 > 재직자,결혼,0.013421
+domain,일자리 > 재직자,동안,0.013409
+domain,일자리 > 재직자,유지,0.013146
+domain,일자리 > 재직자,소재,0.012986
+domain,일자리 > 창업,창업,0.091183
+domain,일자리 > 창업,일자리,0.090205
+domain,일자리 > 창업,정책,0.085059
+domain,일자리 > 창업,분야,0.079384
+domain,일자리 > 창업,워드,0.075291
+domain,일자리 > 창업,주관,0.070942
+domain,일자리 > 창업,조건,0.069332
+domain,일자리 > 창업,청년,0.068861
+domain,일자리 > 창업,나이,0.05611
+domain,일자리 > 창업,요약,0.051352
+domain,일자리 > 창업,제한,0.050039
+domain,일자리 > 창업,자금,0.044346
+domain,일자리 > 창업,육성,0.037018
+domain,일자리 > 창업,교육,0.03662
+domain,일자리 > 창업,보조금,0.036341
+domain,일자리 > 창업,연령,0.035608
+domain,일자리 > 창업,농업,0.032529
+domain,일자리 > 창업,농업인,0.031217
+domain,일자리 > 창업,심사,0.030557
+domain,일자리 > 창업,방법,0.028694
+domain,일자리 > 창업,출처,0.028386
+domain,일자리 > 창업,최대,0.027976
+domain,일자리 > 창업,정착,0.02761
+domain,일자리 > 창업,발굴,0.027577
+domain,일자리 > 창업,예비,0.027428
+domain,일자리 > 창업,초기,0.027237
+domain,일자리 > 창업,컨설팅,0.027198
+domain,일자리 > 창업,영농,0.027007
+domain,일자리 > 창업,성장,0.026516
+domain,일자리 > 창업,통한,0.026394
+domain,일자리 > 창업,서류,0.024822
+domain,일자리 > 창업,경영,0.024777
+domain,일자리 > 창업,공간,0.024647
+domain,일자리 > 창업,기반,0.023812
+domain,일자리 > 창업,중소기업,0.023433
+domain,일자리 > 창업,안정,0.022963
+domain,일자리 > 창업,기술,0.022503
+domain,일자리 > 창업,맞춤,0.022479
+domain,일자리 > 창업,이내,0.022166
+domain,일자리 > 창업,활성화,0.021821
+domain,일자리 > 창업,창업가,0.021488
+domain,일자리 > 창업,조성,0.021167
+domain,일자리 > 창업,제출,0.0204
+domain,일자리 > 창업,제품,0.019383
+domain,일자리 > 창업,도모,0.017411
+domain,일자리 > 창업,중소,0.016785
+domain,일자리 > 창업,투자,0.016613
+domain,일자리 > 창업,아이디어,0.016555
+domain,일자리 > 창업,시설,0.016517
+domain,일자리 > 창업,우수,0.016479
+domain,일자리 > 창업,도내,0.016042
+domain,일자리 > 창업,멘토링,0.015998
+domain,일자리 > 창업,등록,0.015887
+domain,일자리 > 창업,강화,0.015827
+domain,일자리 > 창업,백만원,0.015453
+domain,일자리 > 창업,거주,0.015228
+domain,일자리 > 창업,스타트업,0.0152
+domain,일자리 > 창업,혁신,0.015097
+domain,일자리 > 창업,체계,0.015091
+domain,일자리 > 창업,모델,0.01444
+domain,일자리 > 창업,임차료,0.014347
+domain,일자리 > 창업,목적,0.01419
+domain,일자리 > 창업,구축,0.014177
+domain,일자리 > 창업,벤처기업,0.014102
+domain,일자리 > 창업,충청남도,0.013703
+domain,일자리 > 창업,장비,0.013654
+domain,일자리 > 창업,원금,0.01343
+domain,일자리 > 창업,마케팅,0.013341
+domain,일자리 > 창업,관내,0.013164
+domain,일자리 > 창업,아이템,0.012891
+domain,일자리 > 창업,산업,0.012877
+domain,일자리 > 창업,상담,0.012768
+domain,일자리 > 창업,평가,0.012542
+domain,일자리 > 창업,경상북도,0.012409
+domain,일자리 > 창업,활동,0.012202
+domain,일자리 > 창업,미만,0.012169
+domain,일자리 > 창업,자격,0.012039
+domain,일자리 > 창업,고도화,0.01196
+domain,일자리 > 창업,생산,0.011906
+domain,일자리 > 창업,마련,0.01183
+domain,일자리 > 취업,취업,0.101935
+domain,일자리 > 취업,일자리,0.091889
+domain,일자리 > 취업,정책,0.079684
+domain,일자리 > 취업,청년,0.067357
+domain,일자리 > 취업,분야,0.064391
+domain,일자리 > 취업,워드,0.06021
+domain,일자리 > 취업,제한,0.056265
+domain,일자리 > 취업,주관,0.052428
+domain,일자리 > 취업,구직,0.050957
+domain,일자리 > 취업,조건,0.049584
+domain,일자리 > 취업,나이,0.041006
+domain,일자리 > 취업,채용,0.040331
+domain,일자리 > 취업,연령,0.038072
+domain,일자리 > 취업,요약,0.037996
+domain,일자리 > 취업,고용,0.034661
+domain,일자리 > 취업,미취,0.03407
+domain,일자리 > 취업,교육,0.032126
+domain,일자리 > 취업,통한,0.029887
+domain,일자리 > 취업,맞춤,0.029064
+domain,일자리 > 취업,서류,0.02861
+domain,일자리 > 취업,강화,0.028599
+domain,일자리 > 취업,방법,0.02703
+domain,일자리 > 취업,역량,0.025842
+domain,일자리 > 취업,상담,0.025138
+domain,일자리 > 취업,면접,0.025016
+domain,일자리 > 취업,활동,0.024849
+domain,일자리 > 취업,개월,0.023875
+domain,일자리 > 취업,인턴,0.023694
+domain,일자리 > 취업,직무,0.023585
+domain,일자리 > 취업,경제,0.022757
+domain,일자리 > 취업,응시,0.021977
+domain,일자리 > 취업,중소기업,0.021712
+domain,일자리 > 취업,경험,0.021641
+domain,일자리 > 취업,기회,0.021288
+domain,일자리 > 취업,인건비,0.020966
+domain,일자리 > 취업,지급,0.020814
+domain,일자리 > 취업,기미,0.020656
+domain,일자리 > 취업,정착,0.019858
+domain,일자리 > 취업,최대,0.019187
+domain,일자리 > 취업,부담,0.018601
+domain,일자리 > 취업,인력,0.018144
+domain,일자리 > 취업,제출,0.018138
+domain,일자리 > 취업,진로,0.018014
+domain,일자리 > 취업,보험,0.017884
+domain,일자리 > 취업,직업,0.0167
+domain,일자리 > 취업,도내,0.016612
+domain,일자리 > 취업,준비,0.016589
+domain,일자리 > 취업,체험,0.016585
+domain,일자리 > 취업,근무,0.01649
+domain,일자리 > 취업,거주,0.015883
+domain,일자리 > 취업,기술,0.015782
+domain,일자리 > 취업,시험,0.015376
+domain,일자리 > 취업,주민등록,0.015129
+domain,일자리 > 취업,출처,0.014828
+domain,일자리 > 취업,보조금,0.014618
+domain,일자리 > 취업,수당,0.014519
+domain,일자리 > 취업,센티,0.014495
+domain,일자리 > 취업,현장,0.014479
+domain,일자리 > 취업,촉진,0.014469
+domain,일자리 > 취업,사회,0.014389
+domain,일자리 > 취업,특별자치도,0.014382
+domain,일자리 > 취업,대학,0.014145
+domain,일자리 > 취업,관내,0.014036
+domain,일자리 > 취업,자격,0.013854
+domain,일자리 > 취업,산업,0.013827
+domain,일자리 > 취업,인재,0.013776
+domain,일자리 > 취업,전문,0.013198
+domain,일자리 > 취업,도모,0.013143
+domain,일자리 > 취업,행정,0.013057
+domain,일자리 > 취업,소득,0.012505
+domain,일자리 > 취업,국가,0.0125
+domain,일자리 > 취업,농업인,0.012487
+domain,일자리 > 취업,장기,0.012137
+domain,일자리 > 취업,접수,0.012117
+domain,일자리 > 취업,활성화,0.012106
+domain,일자리 > 취업,목적,0.012013
+domain,일자리 > 취업,유도,0.011974
+domain,일자리 > 취업,원금,0.011919
+domain,일자리 > 취업,창업,0.011912
+domain,일자리 > 취업,정장,0.011911
+domain,"일자리,교육 > 취업,미래역량강화",일자리,0.094964
+domain,"일자리,교육 > 취업,미래역량강화",취업,0.093379
+domain,"일자리,교육 > 취업,미래역량강화",분야,0.088766
+domain,"일자리,교육 > 취업,미래역량강화",정책,0.08711
+domain,"일자리,교육 > 취업,미래역량강화",교육,0.08701
+domain,"일자리,교육 > 취업,미래역량강화",미래,0.083093
+domain,"일자리,교육 > 취업,미래역량강화",강화,0.078914
+domain,"일자리,교육 > 취업,미래역량강화",역량,0.074301
+domain,"일자리,교육 > 취업,미래역량강화",청년,0.053563
+domain,"일자리,교육 > 취업,미래역량강화",인재,0.050595
+domain,"일자리,교육 > 취업,미래역량강화",인력,0.048887
+domain,"일자리,교육 > 취업,미래역량강화",워드,0.047571
+domain,"일자리,교육 > 취업,미래역량강화",주관,0.046234
+domain,"일자리,교육 > 취업,미래역량강화",양성,0.043588
+domain,"일자리,교육 > 취업,미래역량강화",나이,0.040043
+domain,"일자리,교육 > 취업,미래역량강화",조건,0.039918
+domain,"일자리,교육 > 취업,미래역량강화",통한,0.039323
+domain,"일자리,교육 > 취업,미래역량강화",제한,0.037061
+domain,"일자리,교육 > 취업,미래역량강화",현장,0.036666
+domain,"일자리,교육 > 취업,미래역량강화",구축,0.035864
+domain,"일자리,교육 > 취업,미래역량강화",육성,0.0351
+domain,"일자리,교육 > 취업,미래역량강화",전문,0.034318
+domain,"일자리,교육 > 취업,미래역량강화",기반,0.034007
+domain,"일자리,교육 > 취업,미래역량강화",연령,0.033883
+domain,"일자리,교육 > 취업,미래역량강화",실습,0.033277
+domain,"일자리,교육 > 취업,미래역량강화",대학,0.032829
+domain,"일자리,교육 > 취업,미래역량강화",특성,0.032157
+domain,"일자리,교육 > 취업,미래역량강화",우수,0.031494
+domain,"일자리,교육 > 취업,미래역량강화",요약,0.030882
+domain,"일자리,교육 > 취업,미래역량강화",방법,0.030791
+domain,"일자리,교육 > 취업,미래역량강화",산업,0.025695
+domain,"일자리,교육 > 취업,미래역량강화",산학,0.025096
+domain,"일자리,교육 > 취업,미래역량강화",미취,0.024492
+domain,"일자리,교육 > 취업,미래역량강화",학업,0.024182
+domain,"일자리,교육 > 취업,미래역량강화",기술,0.024086
+domain,"일자리,교육 > 취업,미래역량강화",서류,0.023586
+domain,"일자리,교육 > 취업,미래역량강화",출처,0.023414
+domain,"일자리,교육 > 취업,미래역량강화",맞춤,0.022384
+domain,"일자리,교육 > 취업,미래역량강화",해외,0.021749
+domain,"일자리,교육 > 취업,미래역량강화",창업,0.021629
+domain,"일자리,교육 > 취업,미래역량강화",재학생,0.020595
+domain,"일자리,교육 > 취업,미래역량강화",지급,0.020339
+domain,"일자리,교육 > 취업,미래역량강화",박사,0.020234
+domain,"일자리,교육 > 취업,미래역량강화",연수,0.020006
+domain,"일자리,교육 > 취업,미래역량강화",충청남도,0.019818
+domain,"일자리,교육 > 취업,미래역량강화",협력,0.019554
+domain,"일자리,교육 > 취업,미래역량강화",연구,0.019289
+domain,"일자리,교육 > 취업,미래역량강화",학년,0.019173
+domain,"일자리,교육 > 취업,미래역량강화",학기,0.019031
+domain,"일자리,교육 > 취업,미래역량강화",추진,0.01887
+domain,"일자리,교육 > 취업,미래역량강화",도내,0.018669
+domain,"일자리,교육 > 취업,미래역량강화",자동차,0.018658
+domain,"일자리,교육 > 취업,미래역량강화",바이오,0.01822
+domain,"일자리,교육 > 취업,미래역량강화",인턴십,0.018012
+domain,"일자리,교육 > 취업,미래역량강화",농업인,0.017945
+domain,"일자리,교육 > 취업,미래역량강화",수요,0.017938
+domain,"일자리,교육 > 취업,미래역량강화",장학금,0.017857
+domain,"일자리,교육 > 취업,미래역량강화",농업,0.017687
+domain,"일자리,교육 > 취업,미래역량강화",인프라,0.017263
+domain,"일자리,교육 > 취업,미래역량강화",교육과정,0.016448
+domain,"일자리,교육 > 취업,미래역량강화",정규,0.016273
+domain,"일자리,교육 > 취업,미래역량강화",장려,0.01627
+domain,"일자리,교육 > 취업,미래역량강화",불가,0.016226
+domain,"일자리,교육 > 취업,미래역량강화",프로젝트,0.015987
+domain,"일자리,교육 > 취업,미래역량강화",수혜자,0.015818
+domain,"일자리,교육 > 취업,미래역량강화",성적,0.015777
+domain,"일자리,교육 > 취업,미래역량강화",체계,0.015411
+domain,"일자리,교육 > 취업,미래역량강화",주력,0.015377
+domain,"일자리,교육 > 취업,미래역량강화",학과,0.015128
+domain,"일자리,교육 > 취업,미래역량강화",직무,0.014984
+domain,"일자리,교육 > 취업,미래역량강화",졸업,0.014928
+domain,"일자리,교육 > 취업,미래역량강화",구직,0.014918
+domain,"일자리,교육 > 취업,미래역량강화",함양,0.014913
+domain,"일자리,교육 > 취업,미래역량강화",경남,0.014571
+domain,"일자리,교육 > 취업,미래역량강화",정착,0.014534
+domain,"일자리,교육 > 취업,미래역량강화",공급,0.01453
+domain,"일자리,교육 > 취업,미래역량강화",대학생,0.01447
+domain,"일자리,교육 > 취업,미래역량강화",교육비,0.014331
+domain,"일자리,교육 > 취업,미래역량강화",글로벌,0.014326
+domain,"일자리,교육 > 취업,미래역량강화",컨설팅,0.014118
+domain,"일자리,일자리 > 재직자,권익보호",의사,0.136477
+domain,"일자리,일자리 > 재직자,권익보호",일자리,0.131749
+domain,"일자리,일자리 > 재직자,권익보호",권익,0.129278
+domain,"일자리,일자리 > 재직자,권익보호",직문,0.127631
+domain,"일자리,일자리 > 재직자,권익보호",시범,0.124979
+domain,"일자리,일자리 > 재직자,권익보호",동행,0.123203
+domain,"일자리,일자리 > 재직자,권익보호",안정화,0.123132
+domain,"일자리,일자리 > 재직자,권익보호",퇴사,0.120487
+domain,"일자리,일자리 > 재직자,권익보호",경상남도,0.117615
+domain,"일자리,일자리 > 재직자,권익보호",적응,0.117577
+domain,"일자리,일자리 > 재직자,권익보호",정주,0.115089
+domain,"일자리,일자리 > 재직자,권익보호",실패,0.113569
+domain,"일자리,일자리 > 재직자,권익보호",여건,0.112344
+domain,"일자리,일자리 > 재직자,권익보호",평택,0.111695
+domain,"일자리,일자리 > 재직자,권익보호",정책,0.111329
+domain,"일자리,일자리 > 재직자,권익보호",담당자,0.111262
+domain,"일자리,일자리 > 재직자,권익보호",원함,0.111262
+domain,"일자리,일자리 > 재직자,권익보호",조직,0.108546
+domain,"일자리,일자리 > 재직자,권익보호",분야,0.105525
+domain,"일자리,일자리 > 재직자,권익보호",가족,0.104911
+domain,"일자리,일자리 > 재직자,권익보호",계약,0.104911
+domain,"일자리,일자리 > 재직자,권익보호",전입,0.104738
+domain,"일자리,일자리 > 재직자,권익보호",근무,0.104064
+domain,"일자리,일자리 > 재직자,권익보호",조기,0.103022
+domain,"일자리,일자리 > 재직자,권익보호",보호,0.101625
+domain,"일자리,일자리 > 재직자,권익보호",수당,0.099764
+domain,"일자리,일자리 > 재직자,권익보호",예방,0.099404
+domain,"일자리,일자리 > 재직자,권익보호",직장,0.096822
+domain,"일자리,일자리 > 재직자,권익보호",백만원,0.095897
+domain,"일자리,일자리 > 재직자,권익보호",소통,0.09423
+domain,"일자리,일자리 > 재직자,권익보호",재직,0.093793
+domain,"일자리,일자리 > 재직자,권익보호",출처,0.092401
+domain,"일자리,일자리 > 재직자,권익보호",협업,0.09226
+domain,"일자리,일자리 > 재직자,권익보호",인사,0.091152
+domain,"일자리,일자리 > 재직자,권익보호",인프라,0.09094
+domain,"일자리,일자리 > 재직자,권익보호",보조금,0.087992
+domain,"일자리,일자리 > 재직자,권익보호",대표,0.086301
+domain,"일자리,일자리 > 재직자,권익보호",환경,0.085413
+domain,"일자리,일자리 > 재직자,권익보호",정착,0.084795
+domain,"일자리,일자리 > 재직자,권익보호",도모,0.082262
+domain,"일자리,일자리 > 재직자,권익보호",관내,0.0792
+domain,"일자리,일자리 > 재직자,권익보호",필수,0.077522
+domain,"일자리,일자리 > 재직자,권익보호",중소기업,0.077031
+domain,"일자리,일자리 > 재직자,권익보호",인력,0.075109
+domain,"일자리,일자리 > 재직자,권익보호",나이,0.074178
+domain,"일자리,일자리 > 재직자,권익보호",주관,0.069568
+domain,"일자리,일자리 > 재직자,권익보호",문화,0.068844
+domain,"일자리,일자리 > 재직자,권익보호",업무,0.066736
+domain,"일자리,일자리 > 재직자,권익보호",워드,0.066693
+domain,"일자리,일자리 > 재직자,권익보호",조건,0.065995
+domain,"일자리,일자리 > 재직자,권익보호",초기,0.065964
+domain,"일자리,일자리 > 재직자,권익보호",요약,0.049276
+domain,"일자리,일자리 > 재직자,권익보호",교육,0.045831
+domain,"일자리,일자리 > 재직자,권익보호",가격,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가공,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가공업,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가구,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가능성,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가사,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가산,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가상,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가속,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가스,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가압류,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가야,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가이드,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가이드라인,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가입,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가입자,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가장,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가점,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가정,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가정위탁,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가지,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가처분,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가치,0.0
+domain,"일자리,일자리 > 재직자,권익보호",가치관,0.0
+domain,"일자리,일자리 > 재직자,권익보호",각종,0.0
+domain,"일자리,일자리 > 재직자,권익보호",간담,0.0
+domain,"일자리,일자리 > 재직자,권익보호",간반,0.0
+domain,"일자리,일자리 > 재직자,취업",번호,0.261942
+domain,"일자리,일자리 > 재직자,취업",요원,0.259352
+domain,"일자리,일자리 > 재직자,취업",인부,0.254762
+domain,"일자리,일자리 > 재직자,취업",공기업,0.244144
+domain,"일자리,일자리 > 재직자,취업",보험료,0.229235
+domain,"일자리,일자리 > 재직자,취업",평균,0.218706
+domain,"일자리,일자리 > 재직자,취업",근로,0.206008
+domain,"일자리,일자리 > 재직자,취업",공공기관,0.205193
+domain,"일자리,일자리 > 재직자,취업",진주시,0.205193
+domain,"일자리,일자리 > 재직자,취업",근무,0.197755
+domain,"일자리,일자리 > 재직자,취업",업체,0.196527
+domain,"일자리,일자리 > 재직자,취업",소상,0.193937
+domain,"일자리,일자리 > 재직자,취업",급여,0.184556
+domain,"일자리,일자리 > 재직자,취업",원금,0.182235
+domain,"일자리,일자리 > 재직자,취업",충족,0.180961
+domain,"일자리,일자리 > 재직자,취업",제외,0.17991
+domain,"일자리,일자리 > 재직자,취업",재직,0.178237
+domain,"일자리,일자리 > 재직자,취업",건강,0.176807
+domain,"일자리,일자리 > 재직자,취업",공인,0.175891
+domain,"일자리,일자리 > 재직자,취업",중인,0.17289
+domain,"일자리,일자리 > 재직자,취업",중소기업,0.158093
+domain,"일자리,일자리 > 재직자,취업",아래,0.143843
+domain,"일자리,일자리 > 재직자,취업",개월,0.143588
+domain,"일자리,일자리 > 재직자,취업",사회,0.139957
+domain,"일자리,일자리 > 재직자,취업",복지,0.129235
+domain,"일자리,일자리 > 재직자,취업",취업,0.118698
+domain,"일자리,일자리 > 재직자,취업",자격,0.117617
+domain,"일자리,일자리 > 재직자,취업",청년,0.079964
+domain,"일자리,일자리 > 재직자,취업",근로자,0.063964
+domain,"일자리,일자리 > 재직자,취업",가격,0.0
+domain,"일자리,일자리 > 재직자,취업",가공,0.0
+domain,"일자리,일자리 > 재직자,취업",가공업,0.0
+domain,"일자리,일자리 > 재직자,취업",가구,0.0
+domain,"일자리,일자리 > 재직자,취업",가능성,0.0
+domain,"일자리,일자리 > 재직자,취업",가사,0.0
+domain,"일자리,일자리 > 재직자,취업",가산,0.0
+domain,"일자리,일자리 > 재직자,취업",가상,0.0
+domain,"일자리,일자리 > 재직자,취업",가속,0.0
+domain,"일자리,일자리 > 재직자,취업",가스,0.0
+domain,"일자리,일자리 > 재직자,취업",가압류,0.0
+domain,"일자리,일자리 > 재직자,취업",가야,0.0
+domain,"일자리,일자리 > 재직자,취업",가이드,0.0
+domain,"일자리,일자리 > 재직자,취업",가이드라인,0.0
+domain,"일자리,일자리 > 재직자,취업",가입,0.0
+domain,"일자리,일자리 > 재직자,취업",가입자,0.0
+domain,"일자리,일자리 > 재직자,취업",가장,0.0
+domain,"일자리,일자리 > 재직자,취업",가점,0.0
+domain,"일자리,일자리 > 재직자,취업",가정,0.0
+domain,"일자리,일자리 > 재직자,취업",가정위탁,0.0
+domain,"일자리,일자리 > 재직자,취업",가족,0.0
+domain,"일자리,일자리 > 재직자,취업",가지,0.0
+domain,"일자리,일자리 > 재직자,취업",가처분,0.0
+domain,"일자리,일자리 > 재직자,취업",가치,0.0
+domain,"일자리,일자리 > 재직자,취업",가치관,0.0
+domain,"일자리,일자리 > 재직자,취업",각종,0.0
+domain,"일자리,일자리 > 재직자,취업",간담,0.0
+domain,"일자리,일자리 > 재직자,취업",간반,0.0
+domain,"일자리,일자리 > 재직자,취업",간의,0.0
+domain,"일자리,일자리 > 재직자,취업",간호,0.0
+domain,"일자리,일자리 > 재직자,취업",간호조무사,0.0
+domain,"일자리,일자리 > 재직자,취업",간호학,0.0
+domain,"일자리,일자리 > 재직자,취업",감성,0.0
+domain,"일자리,일자리 > 재직자,취업",감소,0.0
+domain,"일자리,일자리 > 재직자,취업",갑자기,0.0
+domain,"일자리,일자리 > 재직자,취업",강남,0.0
+domain,"일자리,일자리 > 재직자,취업",강남구,0.0
+domain,"일자리,일자리 > 재직자,취업",강동,0.0
+domain,"일자리,일자리 > 재직자,취업",강동구,0.0
+domain,"일자리,일자리 > 재직자,취업",강릉,0.0
+domain,"일자리,일자리 > 재직자,취업",강릉시,0.0
+domain,"일자리,일자리 > 재직자,취업",강림,0.0
+domain,"일자리,일자리 > 재직자,취업",강북,0.0
+domain,"일자리,일자리 > 재직자,취업",강북구,0.0
+domain,"일자리,일자리 > 재직자,취업",강사,0.0
+domain,"일자리,일자리 > 재직자,취업",강서구,0.0
+domain,"일자리,일자리 > 재직자,취업",강소기업,0.0
+domain,"일자리,일자리 > 재직자,취업",강연,0.0
+domain,"일자리,일자리 > 재직자,취업",강원,0.0
+domain,"일자리,일자리 > 재직자,취업",강원도,0.0
+domain,"일자리,일자리 > 재직자,취업",강의,0.0
+domain,"일자리,일자리 > 창업,취업",자영,0.248339
+domain,"일자리,일자리 > 창업,취업",출금,0.248339
+domain,"일자리,일자리 > 창업,취업",브릿지,0.230416
+domain,"일자리,일자리 > 창업,취업",일시,0.226323
+domain,"일자리,일자리 > 창업,취업",실패,0.218609
+domain,"일자리,일자리 > 창업,취업",의무,0.218609
+domain,"일자리,일자리 > 창업,취업",폐업,0.212571
+domain,"일자리,일자리 > 창업,취업",상환,0.211062
+domain,"일자리,일자리 > 창업,취업",보장,0.209629
+domain,"일자리,일자리 > 창업,취업",지점,0.20761
+domain,"일자리,일자리 > 창업,취업",전액,0.202303
+domain,"일자리,일자리 > 창업,취업",기존,0.192831
+domain,"일자리,일자리 > 창업,취업",보증,0.187932
+domain,"일자리,일자리 > 창업,취업",업체,0.184324
+domain,"일자리,일자리 > 창업,취업",신용,0.180879
+domain,"일자리,일자리 > 창업,취업",완화,0.178037
+domain,"일자리,일자리 > 창업,취업",유도,0.175458
+domain,"일자리,일자리 > 창업,취업",업자,0.173286
+domain,"일자리,일자리 > 창업,취업",지속,0.173286
+domain,"일자리,일자리 > 창업,취업",제주,0.171271
+domain,"일자리,일자리 > 창업,취업",드림,0.166866
+domain,"일자리,일자리 > 창업,취업",재단,0.164411
+domain,"일자리,일자리 > 창업,취업",이용,0.158795
+domain,"일자리,일자리 > 창업,취업",부담,0.155494
+domain,"일자리,일자리 > 창업,취업",기회,0.148432
+domain,"일자리,일자리 > 창업,취업",강화,0.127302
+domain,"일자리,일자리 > 창업,취업",일자리,0.121926
+domain,"일자리,일자리 > 창업,취업",정책,0.103028
+domain,"일자리,일자리 > 창업,취업",가격,0.0
+domain,"일자리,일자리 > 창업,취업",가공,0.0
+domain,"일자리,일자리 > 창업,취업",가공업,0.0
+domain,"일자리,일자리 > 창업,취업",가구,0.0
+domain,"일자리,일자리 > 창업,취업",가능성,0.0
+domain,"일자리,일자리 > 창업,취업",가사,0.0
+domain,"일자리,일자리 > 창업,취업",가산,0.0
+domain,"일자리,일자리 > 창업,취업",가상,0.0
+domain,"일자리,일자리 > 창업,취업",가속,0.0
+domain,"일자리,일자리 > 창업,취업",가스,0.0
+domain,"일자리,일자리 > 창업,취업",가압류,0.0
+domain,"일자리,일자리 > 창업,취업",가야,0.0
+domain,"일자리,일자리 > 창업,취업",가이드,0.0
+domain,"일자리,일자리 > 창업,취업",가이드라인,0.0
+domain,"일자리,일자리 > 창업,취업",가입,0.0
+domain,"일자리,일자리 > 창업,취업",가입자,0.0
+domain,"일자리,일자리 > 창업,취업",가장,0.0
+domain,"일자리,일자리 > 창업,취업",가점,0.0
+domain,"일자리,일자리 > 창업,취업",가정,0.0
+domain,"일자리,일자리 > 창업,취업",가정위탁,0.0
+domain,"일자리,일자리 > 창업,취업",가족,0.0
+domain,"일자리,일자리 > 창업,취업",가지,0.0
+domain,"일자리,일자리 > 창업,취업",가처분,0.0
+domain,"일자리,일자리 > 창업,취업",가치,0.0
+domain,"일자리,일자리 > 창업,취업",가치관,0.0
+domain,"일자리,일자리 > 창업,취업",각종,0.0
+domain,"일자리,일자리 > 창업,취업",간담,0.0
+domain,"일자리,일자리 > 창업,취업",간반,0.0
+domain,"일자리,일자리 > 창업,취업",간의,0.0
+domain,"일자리,일자리 > 창업,취업",간호,0.0
+domain,"일자리,일자리 > 창업,취업",간호조무사,0.0
+domain,"일자리,일자리 > 창업,취업",간호학,0.0
+domain,"일자리,일자리 > 창업,취업",감성,0.0
+domain,"일자리,일자리 > 창업,취업",감소,0.0
+domain,"일자리,일자리 > 창업,취업",갑자기,0.0
+domain,"일자리,일자리 > 창업,취업",강남,0.0
+domain,"일자리,일자리 > 창업,취업",강남구,0.0
+domain,"일자리,일자리 > 창업,취업",강동,0.0
+domain,"일자리,일자리 > 창업,취업",강동구,0.0
+domain,"일자리,일자리 > 창업,취업",강릉,0.0
+domain,"일자리,일자리 > 창업,취업",강릉시,0.0
+domain,"일자리,일자리 > 창업,취업",강림,0.0
+domain,"일자리,일자리 > 창업,취업",강북,0.0
+domain,"일자리,일자리 > 창업,취업",강북구,0.0
+domain,"일자리,일자리 > 창업,취업",강사,0.0
+domain,"일자리,일자리 > 창업,취업",강서구,0.0
+domain,"일자리,일자리 > 창업,취업",강소기업,0.0
+domain,"일자리,일자리 > 창업,취업",강연,0.0
+domain,"일자리,일자리 > 창업,취업",강원,0.0
+domain,"일자리,일자리 > 창업,취업",강원도,0.0
+domain,"일자리,일자리 > 창업,취업",강의,0.0
+domain,"일자리,일자리 > 창업,취업",강점,0.0
+domain,"일자리,일자리 > 취업,창업",청년,0.088665
+domain,"일자리,일자리 > 취업,창업",분야,0.087578
+domain,"일자리,일자리 > 취업,창업",김천시,0.080537
+domain,"일자리,일자리 > 취업,창업",아이디어,0.074146
+domain,"일자리,일자리 > 취업,창업",일자리,0.073374
+domain,"일자리,일자리 > 취업,창업",이스터,0.073026
+domain,"일자리,일자리 > 취업,창업",실증,0.072122
+domain,"일자리,일자리 > 취업,창업",창업,0.072039
+domain,"일자리,일자리 > 취업,창업",상금,0.071409
+domain,"일자리,일자리 > 취업,창업",시상,0.071409
+domain,"일자리,일자리 > 취업,창업",임업,0.06958
+domain,"일자리,일자리 > 취업,창업",제한,0.069306
+domain,"일자리,일자리 > 취업,창업",방법,0.069141
+domain,"일자리,일자리 > 취업,창업",점포,0.068861
+domain,"일자리,일자리 > 취업,창업",모빌리티,0.068543
+domain,"일자리,일자리 > 취업,창업",취업,0.066996
+domain,"일자리,일자리 > 취업,창업",의거,0.066653
+domain,"일자리,일자리 > 취업,창업",임대료,0.066101
+domain,"일자리,일자리 > 취업,창업",강연,0.064567
+domain,"일자리,일자리 > 취업,창업",임팩트,0.063629
+domain,"일자리,일자리 > 취업,창업",구체화,0.062991
+domain,"일자리,일자리 > 취업,창업",함양,0.062176
+domain,"일자리,일자리 > 취업,창업",정책,0.062001
+domain,"일자리,일자리 > 취업,창업",성북구,0.061865
+domain,"일자리,일자리 > 취업,창업",산림,0.061747
+domain,"일자리,일자리 > 취업,창업",어학,0.060035
+domain,"일자리,일자리 > 취업,창업",실비,0.059445
+domain,"일자리,일자리 > 취업,창업",사전,0.059191
+domain,"일자리,일자리 > 취업,창업",방문,0.058586
+domain,"일자리,일자리 > 취업,창업",각종,0.058033
+domain,"일자리,일자리 > 취업,창업",관광,0.057224
+domain,"일자리,일자리 > 취업,창업",자동차,0.057021
+domain,"일자리,일자리 > 취업,창업",비용,0.056468
+domain,"일자리,일자리 > 취업,창업",한도,0.055723
+domain,"일자리,일자리 > 취업,창업",공모전,0.055458
+domain,"일자리,일자리 > 취업,창업",전공,0.055316
+domain,"일자리,일자리 > 취업,창업",연령,0.055178
+domain,"일자리,일자리 > 취업,창업",응시,0.054824
+domain,"일자리,일자리 > 취업,창업",지자체,0.054824
+domain,"일자리,일자리 > 취업,창업",정신,0.054287
+domain,"일자리,일자리 > 취업,창업",백만원,0.054073
+domain,"일자리,일자리 > 취업,창업",공모,0.053947
+domain,"일자리,일자리 > 취업,창업",기업가,0.052715
+domain,"일자리,일자리 > 취업,창업",조례,0.052611
+domain,"일자리,일자리 > 취업,창업",서울특별시,0.052452
+domain,"일자리,일자리 > 취업,창업",출처,0.052102
+domain,"일자리,일자리 > 취업,창업",접수,0.051927
+domain,"일자리,일자리 > 취업,창업",린지,0.051569
+domain,"일자리,일자리 > 취업,창업",자원,0.05127
+domain,"일자리,일자리 > 취업,창업",국내,0.050818
+domain,"일자리,일자리 > 취업,창업",모델링,0.049818
+domain,"일자리,일자리 > 취업,창업",대상자,0.04968
+domain,"일자리,일자리 > 취업,창업",보조금,0.049616
+domain,"일자리,일자리 > 취업,창업",촉진,0.048735
+domain,"일자리,일자리 > 취업,창업",해결,0.047869
+domain,"일자리,일자리 > 취업,창업",미취,0.047374
+domain,"일자리,일자리 > 취업,창업",시험,0.047208
+domain,"일자리,일자리 > 취업,창업",최대,0.047133
+domain,"일자리,일자리 > 취업,창업",공인,0.047087
+domain,"일자리,일자리 > 취업,창업",문제,0.046921
+domain,"일자리,일자리 > 취업,창업",개최,0.046228
+domain,"일자리,일자리 > 취업,창업",기본,0.046033
+domain,"일자리,일자리 > 취업,창업",경험,0.045618
+domain,"일자리,일자리 > 취업,창업",캠프,0.045585
+domain,"일자리,일자리 > 취업,창업",참가,0.044834
+domain,"일자리,일자리 > 취업,창업",심사,0.044674
+domain,"일자리,일자리 > 취업,창업",진흥,0.044267
+domain,"일자리,일자리 > 취업,창업",구직,0.043882
+domain,"일자리,일자리 > 취업,창업",우수,0.043758
+domain,"일자리,일자리 > 취업,창업",제출,0.043565
+domain,"일자리,일자리 > 취업,창업",경제,0.043426
+domain,"일자리,일자리 > 취업,창업",누구,0.043107
+domain,"일자리,일자리 > 취업,창업",개월,0.042606
+domain,"일자리,일자리 > 취업,창업",이후,0.0423
+domain,"일자리,일자리 > 취업,창업",평가,0.041893
+domain,"일자리,일자리 > 취업,창업",나이,0.041827
+domain,"일자리,일자리 > 취업,창업",서류,0.041112
+domain,"일자리,일자리 > 취업,창업",준비,0.040365
+domain,"일자리,일자리 > 취업,창업",통한,0.039437
+domain,"일자리,일자리 > 취업,창업",주관,0.039227
+domain,"일자리,일자리 > 취업,취업",취업,0.127721
+domain,"일자리,일자리 > 취업,취업",구직,0.119924
+domain,"일자리,일자리 > 취업,취업",일자리,0.118481
+domain,"일자리,일자리 > 취업,취업",경감,0.110085
+domain,"일자리,일자리 > 취업,취업",진주시,0.103556
+domain,"일자리,일자리 > 취업,취업",정책,0.096323
+domain,"일자리,일자리 > 취업,취업",청년,0.086043
+domain,"일자리,일자리 > 취업,취업",경제,0.080268
+domain,"일자리,일자리 > 취업,취업",정장,0.078607
+domain,"일자리,일자리 > 취업,취업",기미,0.07683
+domain,"일자리,일자리 > 취업,취업",활동,0.076226
+domain,"일자리,일자리 > 취업,취업",대여,0.075147
+domain,"일자리,일자리 > 취업,취업",응시,0.07292
+domain,"일자리,일자리 > 취업,취업",시간,0.071784
+domain,"일자리,일자리 > 취업,취업",면접,0.068441
+domain,"일자리,일자리 > 취업,취업",촉진,0.063592
+domain,"일자리,일자리 > 취업,취업",미취,0.060456
+domain,"일자리,일자리 > 취업,취업",부담,0.060306
+domain,"일자리,일자리 > 취업,취업",분야,0.057823
+domain,"일자리,일자리 > 취업,취업",주민등록,0.054286
+domain,"일자리,일자리 > 취업,취업",준비,0.052407
+domain,"일자리,일자리 > 취업,취업",강화,0.051888
+domain,"일자리,일자리 > 취업,취업",거제시,0.051174
+domain,"일자리,일자리 > 취업,취업",의왕,0.050889
+domain,"일자리,일자리 > 취업,취업",기술자,0.049709
+domain,"일자리,일자리 > 취업,취업",희망,0.047986
+domain,"일자리,일자리 > 취업,취업",워드,0.047171
+domain,"일자리,일자리 > 취업,취업",연도,0.04684
+domain,"일자리,일자리 > 취업,취업",수시,0.046658
+domain,"일자리,일자리 > 취업,취업",의왕시,0.045774
+domain,"일자리,일자리 > 취업,취업",입사,0.045673
+domain,"일자리,일자리 > 취업,취업",재능,0.044757
+domain,"일자리,일자리 > 취업,취업",역량,0.044324
+domain,"일자리,일자리 > 취업,취업",부품,0.044194
+domain,"일자리,일자리 > 취업,취업",연중,0.044194
+domain,"일자리,일자리 > 취업,취업",조건,0.044157
+domain,"일자리,일자리 > 취업,취업",비고,0.0437
+domain,"일자리,일자리 > 취업,취업",바지,0.043585
+domain,"일자리,일자리 > 취업,취업",자켓,0.043585
+domain,"일자리,일자리 > 취업,취업",설치,0.042979
+domain,"일자리,일자리 > 취업,취업",국가,0.042945
+domain,"일자리,일자리 > 취업,취업",원서,0.042593
+domain,"일자리,일자리 > 취업,취업",승인,0.042043
+domain,"일자리,일자리 > 취업,취업",지원기,0.041105
+domain,"일자리,일자리 > 취업,취업",지자체,0.040783
+domain,"일자리,일자리 > 취업,취업",판매,0.040334
+domain,"일자리,일자리 > 취업,취업",소진,0.040325
+domain,"일자리,일자리 > 취업,취업",한국사,0.039979
+domain,"일자리,일자리 > 취업,취업",시청,0.039736
+domain,"일자리,일자리 > 취업,취업",커뮤니티,0.039195
+domain,"일자리,일자리 > 취업,취업",제도,0.03896
+domain,"일자리,일자리 > 취업,취업",자격시험,0.038805
+domain,"일자리,일자리 > 취업,취업",정부,0.038512
+domain,"일자리,일자리 > 취업,취업",대학원,0.038201
+domain,"일자리,일자리 > 취업,취업",날개,0.038127
+domain,"일자리,일자리 > 취업,취업",특화,0.037961
+domain,"일자리,일자리 > 취업,취업",판로,0.037898
+domain,"일자리,일자리 > 취업,취업",임금,0.037587
+domain,"일자리,일자리 > 취업,취업",항공,0.037506
+domain,"일자리,일자리 > 취업,취업",상태,0.03727
+domain,"일자리,일자리 > 취업,취업",모의,0.03667
+domain,"일자리,일자리 > 취업,취업",시행,0.036479
+domain,"일자리,일자리 > 취업,취업",교육과정,0.036393
+domain,"일자리,일자리 > 취업,취업",예정자,0.036334
+domain,"일자리,일자리 > 취업,취업",무료,0.035976
+domain,"일자리,일자리 > 취업,취업",반드시,0.035833
+domain,"일자리,일자리 > 취업,취업",생산,0.035724
+domain,"일자리,일자리 > 취업,취업",각종,0.035505
+domain,"일자리,일자리 > 취업,취업",어려움,0.035334
+domain,"일자리,일자리 > 취업,취업",보험,0.035241
+domain,"일자리,일자리 > 취업,취업",어학,0.035192
+domain,"일자리,일자리 > 취업,취업",비용,0.035151
+domain,"일자리,일자리 > 취업,취업",시험,0.035118
+domain,"일자리,일자리 > 취업,취업",자격증,0.034933
+domain,"일자리,일자리 > 취업,취업",실비,0.034846
+domain,"일자리,일자리 > 취업,취업",가장,0.034594
+domain,"일자리,일자리 > 취업,취업",근로,0.03391
+domain,"일자리,일자리 > 취업,취업",적극,0.033333
+domain,"일자리,일자리 > 취업,취업",출처,0.032922
+domain,"일자리,일자리 > 취업,취업",교육,0.03271
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",최저임금,0.308395
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",직계,0.304411
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",사업인,0.297623
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",유사,0.267248
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",서식,0.262575
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",중복,0.254809
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",배우자,0.250729
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가족,0.226522
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",면접,0.222621
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",비용,0.216231
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",수당,0.215409
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",접수,0.198841
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",제출,0.184905
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",지급,0.181165
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",대표자,0.179628
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",서류,0.174494
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",거주,0.153866
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",일자리,0.147705
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",미만,0.14234
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",취업,0.134867
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",청년,0.090857
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가격,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가공,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가공업,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가구,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가능성,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가사,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가산,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가상,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가속,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가스,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가압류,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가야,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가이드,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가이드라인,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가입,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가입자,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가장,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가점,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가정,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가정위탁,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가지,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가처분,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가치,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",가치관,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",각종,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",간담,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",간반,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",간의,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",간호,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",간호조무사,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",간호학,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",감성,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",감소,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",갑자기,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강남,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강남구,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강동,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강동구,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강릉,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강릉시,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강림,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강북,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강북구,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강사,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강서구,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강소기업,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강연,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강원,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강원도,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강의,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강점,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강좌,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강화,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",강화군,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",개념,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",개론,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",개발,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",개발자,0.0
+domain,"일자리,일자리,일자리 > 취업,재직자,취업",개방,0.0
+domain,주거 > 기숙사,기숙사,0.17737
+domain,주거 > 기숙사,주거,0.114929
+domain,주거 > 기숙사,출신,0.109305
+domain,주거 > 기숙사,조건,0.090881
+domain,주거 > 기숙사,거주,0.081616
+domain,주거 > 기숙사,소득,0.075859
+domain,주거 > 기숙사,인재,0.074974
+domain,주거 > 기숙사,설립,0.069955
+domain,주거 > 기숙사,홈페이지,0.068185
+domain,주거 > 기숙사,재학,0.067156
+domain,주거 > 기숙사,처분,0.065614
+domain,주거 > 기숙사,학생,0.065341
+domain,주거 > 기숙사,대학생,0.064247
+domain,주거 > 기숙사,환경,0.063361
+domain,주거 > 기숙사,심사,0.060821
+domain,주거 > 기숙사,퇴사,0.06056
+domain,주거 > 기숙사,학사,0.059481
+domain,주거 > 기숙사,제한,0.059233
+domain,주거 > 기숙사,공기업,0.057959
+domain,주거 > 기숙사,휴학,0.056835
+domain,주거 > 기숙사,대학,0.054805
+domain,주거 > 기숙사,수도권,0.054688
+domain,주거 > 기숙사,안정,0.054553
+domain,주거 > 기숙사,개사,0.054209
+domain,주거 > 기숙사,테이,0.053805
+domain,주거 > 기숙사,평균,0.051872
+domain,주거 > 기숙사,여건,0.051771
+domain,주거 > 기숙사,성장,0.051099
+domain,주거 > 기숙사,부모,0.050654
+domain,주거 > 기숙사,업주,0.050557
+domain,주거 > 기숙사,명의,0.049105
+domain,주거 > 기숙사,종료,0.048665
+domain,주거 > 기숙사,유입,0.04825
+domain,주거 > 기숙사,우리,0.047841
+domain,주거 > 기숙사,인구,0.046307
+domain,주거 > 기숙사,증명서,0.046048
+domain,주거 > 기숙사,대학교,0.042025
+domain,주거 > 기숙사,건강,0.041935
+domain,주거 > 기숙사,경기도,0.04072
+domain,주거 > 기숙사,마련,0.04028
+domain,주거 > 기숙사,진흥,0.039843
+domain,주거 > 기숙사,도내,0.039398
+domain,주거 > 기숙사,고용,0.039307
+domain,주거 > 기숙사,조성,0.038938
+domain,주거 > 기숙사,이전,0.038679
+domain,주거 > 기숙사,관내,0.038588
+domain,주거 > 기숙사,울산,0.038542
+domain,주거 > 기숙사,제출,0.037834
+domain,주거 > 기숙사,서류,0.037782
+domain,주거 > 기숙사,중소기업,0.037531
+domain,주거 > 기숙사,소재,0.037243
+domain,주거 > 기숙사,연령,0.03525
+domain,주거 > 기숙사,통한,0.034003
+domain,주거 > 기숙사,시설,0.033713
+domain,주거 > 기숙사,전념,0.033672
+domain,주거 > 기숙사,자치행정,0.032676
+domain,주거 > 기숙사,조치,0.031655
+domain,주거 > 기숙사,구간,0.031631
+domain,주거 > 기숙사,육성,0.031595
+domain,주거 > 기숙사,지향,0.031112
+domain,주거 > 기숙사,성적,0.031072
+domain,주거 > 기숙사,방법,0.030635
+domain,주거 > 기숙사,확충,0.030587
+domain,주거 > 기숙사,이내,0.030338
+domain,주거 > 기숙사,편의,0.030307
+domain,주거 > 기숙사,장학,0.030168
+domain,주거 > 기숙사,은행권,0.029998
+domain,주거 > 기숙사,보호자,0.02996
+domain,주거 > 기숙사,인근,0.029883
+domain,주거 > 기숙사,청주,0.029802
+domain,주거 > 기숙사,기반,0.029249
+domain,주거 > 기숙사,기부,0.02895
+domain,주거 > 기숙사,고등학교,0.028883
+domain,주거 > 기숙사,정주,0.028021
+domain,주거 > 기숙사,고양,0.02793
+domain,주거 > 기숙사,학자금,0.02785
+domain,주거 > 기숙사,정책,0.027471
+domain,주거 > 기숙사,창원,0.027449
+domain,주거 > 기숙사,계속,0.027098
+domain,주거 > 기숙사,임차,0.026774
+domain,주거 > 전월세 및 주거급여 지원,주거,0.146738
+domain,주거 > 전월세 및 주거급여 지원,주택,0.12591
+domain,주거 > 전월세 및 주거급여 지원,소득,0.115363
+domain,주거 > 전월세 및 주거급여 지원,가구,0.09924
+domain,주거 > 전월세 및 주거급여 지원,월세,0.09895
+domain,주거 > 전월세 및 주거급여 지원,급여,0.091374
+domain,주거 > 전월세 및 주거급여 지원,최대,0.087314
+domain,주거 > 전월세 및 주거급여 지원,중위,0.076561
+domain,주거 > 전월세 및 주거급여 지원,대출,0.069809
+domain,주거 > 전월세 및 주거급여 지원,전월세,0.066771
+domain,주거 > 전월세 및 주거급여 지원,이자,0.066646
+domain,주거 > 전월세 및 주거급여 지원,부담,0.065186
+domain,주거 > 전월세 및 주거급여 지원,청년,0.064963
+domain,주거 > 전월세 및 주거급여 지원,신혼부부,0.063875
+domain,주거 > 전월세 및 주거급여 지원,조건,0.06063
+domain,주거 > 전월세 및 주거급여 지원,정책,0.05885
+domain,주거 > 전월세 및 주거급여 지원,임차보증금,0.058648
+domain,주거 > 전월세 및 주거급여 지원,거주,0.055679
+domain,주거 > 전월세 및 주거급여 지원,지급,0.054598
+domain,주거 > 전월세 및 주거급여 지원,서류,0.048409
+domain,주거 > 전월세 및 주거급여 지원,배우자,0.047049
+domain,주거 > 전월세 및 주거급여 지원,부부,0.040507
+domain,주거 > 전월세 및 주거급여 지원,전세,0.039144
+domain,주거 > 전월세 및 주거급여 지원,이내,0.038752
+domain,주거 > 전월세 및 주거급여 지원,경감,0.037398
+domain,주거 > 전월세 및 주거급여 지원,합산,0.03666
+domain,주거 > 전월세 및 주거급여 지원,주거지,0.036601
+domain,주거 > 전월세 및 주거급여 지원,안정,0.035995
+domain,주거 > 전월세 및 주거급여 지원,개월,0.035697
+domain,주거 > 전월세 및 주거급여 지원,납부,0.034657
+domain,주거 > 전월세 및 주거급여 지원,포함,0.033611
+domain,주거 > 전월세 및 주거급여 지원,미혼,0.032742
+domain,주거 > 전월세 및 주거급여 지원,수혜,0.032727
+domain,주거 > 전월세 및 주거급여 지원,방법,0.032635
+domain,주거 > 전월세 및 주거급여 지원,제출,0.03232
+domain,주거 > 전월세 및 주거급여 지원,금액,0.031906
+domain,주거 > 전월세 및 주거급여 지원,분야,0.031538
+domain,주거 > 전월세 및 주거급여 지원,가족,0.031412
+domain,주거 > 전월세 및 주거급여 지원,자금,0.030752
+domain,주거 > 전월세 및 주거급여 지원,임대주택,0.030676
+domain,주거 > 전월세 및 주거급여 지원,완화,0.030084
+domain,주거 > 전월세 및 주거급여 지원,백만원,0.030035
+domain,주거 > 전월세 및 주거급여 지원,제한,0.029675
+domain,주거 > 전월세 및 주거급여 지원,별도,0.028975
+domain,주거 > 전월세 및 주거급여 지원,부모,0.028487
+domain,주거 > 전월세 및 주거급여 지원,재산,0.028401
+domain,주거 > 전월세 및 주거급여 지원,워드,0.027965
+domain,주거 > 전월세 및 주거급여 지원,임차료,0.027775
+domain,주거 > 전월세 및 주거급여 지원,계약,0.027561
+domain,주거 > 전월세 및 주거급여 지원,보증금,0.027057
+domain,주거 > 전월세 및 주거급여 지원,독립,0.026068
+domain,주거 > 전월세 및 주거급여 지원,연령,0.025995
+domain,주거 > 전월세 및 주거급여 지원,본인,0.025413
+domain,주거 > 전월세 및 주거급여 지원,주관,0.025405
+domain,주거 > 전월세 및 주거급여 지원,수급,0.024006
+domain,주거 > 전월세 및 주거급여 지원,임대료,0.022492
+domain,주거 > 전월세 및 주거급여 지원,직계혈족,0.021682
+domain,주거 > 전월세 및 주거급여 지원,증명서,0.021267
+domain,주거 > 전월세 및 주거급여 지원,임대차,0.020659
+domain,주거 > 전월세 및 주거급여 지원,자녀,0.02063
+domain,주거 > 전월세 및 주거급여 지원,경제,0.019927
+domain,주거 > 전월세 및 주거급여 지원,이자지,0.019745
+domain,주거 > 전월세 및 주거급여 지원,도모,0.019253
+domain,주거 > 전월세 및 주거급여 지원,주민등록,0.018898
+domain,주거 > 전월세 및 주거급여 지원,임차,0.018849
+domain,주거 > 전월세 및 주거급여 지원,한도,0.018762
+domain,주거 > 전월세 및 주거급여 지원,잔액,0.018483
+domain,주거 > 전월세 및 주거급여 지원,필수,0.018264
+domain,주거 > 전월세 및 주거급여 지원,보조금,0.017612
+domain,주거 > 전월세 및 주거급여 지원,비용,0.017092
+domain,주거 > 전월세 및 주거급여 지원,유도,0.016859
+domain,주거 > 전월세 및 주거급여 지원,요약,0.015994
+domain,주거 > 전월세 및 주거급여 지원,가입,0.015603
+domain,주거 > 전월세 및 주거급여 지원,부모님,0.015419
+domain,주거 > 전월세 및 주거급여 지원,대상자,0.015274
+domain,주거 > 전월세 및 주거급여 지원,주소,0.015032
+domain,주거 > 전월세 및 주거급여 지원,생계,0.014928
+domain,주거 > 전월세 및 주거급여 지원,세대주,0.014893
+domain,주거 > 전월세 및 주거급여 지원,통장,0.014887
+domain,주거 > 전월세 및 주거급여 지원,정착,0.014886
+domain,주거 > 주택 및 거주지,주거,0.142968
+domain,주거 > 주택 및 거주지,주택,0.139409
+domain,주거 > 주택 및 거주지,거주지,0.087861
+domain,주거 > 주택 및 거주지,정책,0.085378
+domain,주거 > 주택 및 거주지,주거지,0.078088
+domain,주거 > 주택 및 거주지,청년,0.072754
+domain,주거 > 주택 및 거주지,조건,0.061745
+domain,주거 > 주택 및 거주지,안정,0.061338
+domain,주거 > 주택 및 거주지,워드,0.058218
+domain,주거 > 주택 및 거주지,신혼부부,0.058015
+domain,주거 > 주택 및 거주지,분야,0.055189
+domain,주거 > 주택 및 거주지,임대주택,0.054395
+domain,주거 > 주택 및 거주지,소득,0.053509
+domain,주거 > 주택 및 거주지,가구,0.04917
+domain,주거 > 주택 및 거주지,제한,0.046949
+domain,주거 > 주택 및 거주지,공급,0.045329
+domain,주거 > 주택 및 거주지,주관,0.043913
+domain,주거 > 주택 및 거주지,연령,0.036801
+domain,주거 > 주택 및 거주지,면적,0.035267
+domain,주거 > 주택 및 거주지,요약,0.034655
+domain,주거 > 주택 및 거주지,건립,0.034589
+domain,주거 > 주택 및 거주지,나이,0.033638
+domain,주거 > 주택 및 거주지,주차장,0.031457
+domain,주거 > 주택 및 거주지,부담,0.030927
+domain,주거 > 주택 및 거주지,백만원,0.030853
+domain,주거 > 주택 및 거주지,공유,0.030431
+domain,주거 > 주택 및 거주지,지상,0.03024
+domain,주거 > 주택 및 거주지,조성,0.029192
+domain,주거 > 주택 및 거주지,전세,0.028837
+domain,주거 > 주택 및 거주지,광역시,0.028524
+domain,주거 > 주택 및 거주지,선호,0.027637
+domain,주거 > 주택 및 거주지,부지면적,0.027563
+domain,주거 > 주택 및 거주지,만족도,0.026566
+domain,주거 > 주택 및 거주지,특화된,0.026426
+domain,주거 > 주택 및 거주지,소유,0.026285
+domain,주거 > 주택 및 거주지,번지,0.026157
+domain,주거 > 주택 및 거주지,사기,0.026032
+domain,주거 > 주택 및 거주지,임차,0.025949
+domain,주거 > 주택 및 거주지,거주,0.025706
+domain,주거 > 주택 및 거주지,도모,0.025384
+domain,주거 > 주택 및 거주지,보증금,0.024986
+domain,주거 > 주택 및 거주지,정착,0.024175
+domain,주거 > 주택 및 거주지,울산,0.023867
+domain,주거 > 주택 및 거주지,완화,0.022743
+domain,주거 > 주택 및 거주지,목적,0.022387
+domain,주거 > 주택 및 거주지,피해,0.022063
+domain,주거 > 주택 및 거주지,임대,0.02152
+domain,주거 > 주택 및 거주지,전달,0.021358
+domain,주거 > 주택 및 거주지,안심,0.021207
+domain,주거 > 주택 및 거주지,도시,0.021193
+domain,주거 > 주택 및 거주지,전입,0.02114
+domain,주거 > 주택 및 거주지,체계,0.021066
+domain,주거 > 주택 및 거주지,공간,0.020479
+domain,주거 > 주택 및 거주지,최대,0.020456
+domain,주거 > 주택 및 거주지,계약,0.020261
+domain,주거 > 주택 및 거주지,출처,0.020029
+domain,주거 > 주택 및 거주지,주자,0.019745
+domain,주거 > 주택 및 거주지,반환,0.019575
+domain,주거 > 주택 및 거주지,오피스,0.019487
+domain,주거 > 주택 및 거주지,매입,0.01937
+domain,주거 > 주택 및 거주지,임차보증금,0.019022
+domain,주거 > 주택 및 거주지,설계,0.018574
+domain,주거 > 주택 및 거주지,금액,0.018468
+domain,주거 > 주택 및 거주지,임대차,0.018222
+domain,주거 > 주택 및 거주지,보수,0.018026
+domain,주거 > 주택 및 거주지,환경,0.018023
+domain,주거 > 주택 및 거주지,중개,0.017753
+domain,주거 > 주택 및 거주지,희망,0.017527
+domain,주거 > 주택 및 거주지,부동산,0.017513
+domain,주거 > 주택 및 거주지,서류,0.017369
+domain,주거 > 주택 및 거주지,보증,0.017302
+domain,주거 > 주택 및 거주지,신축,0.017105
+domain,주거 > 주택 및 거주지,향상,0.017102
+domain,주거 > 주택 및 거주지,중위,0.016869
+domain,주거 > 주택 및 거주지,예방,0.016411
+domain,주거 > 주택 및 거주지,초년,0.01619
+domain,주거 > 주택 및 거주지,주민등록,0.016189
+domain,주거 > 주택 및 거주지,납부,0.01611
+domain,주거 > 주택 및 거주지,본인,0.015915
+domain,주거 > 주택 및 거주지,복지,0.015696
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가구,0.1799
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",부담,0.1653
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",주택,0.159324
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",주거,0.158977
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",최대,0.158379
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",월세,0.140889
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",경감,0.134983
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",신혼부부,0.126624
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",경제,0.094152
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",세대주,0.09012
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",거취,0.085401
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",횟수,0.084401
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",지원기,0.083496
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",제한,0.08238
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",이내,0.082213
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",잔액,0.080809
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",수수료,0.080553
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",입자,0.079734
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",혼인,0.079734
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",중개,0.079365
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",임차료,0.078302
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",전월세,0.07806
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",한부모,0.07736
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",초년,0.076339
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",부모,0.075151
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",도민,0.074111
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",금리,0.07207
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",전세,0.070983
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가정,0.070779
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",주거지,0.06952
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",일부,0.069319
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",우리,0.069103
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",별도,0.068701
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",자녀,0.068623
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",출산,0.067134
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",수급,0.066785
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",규모,0.066493
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",연령,0.065587
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",중위,0.065429
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",급여,0.065285
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",해소,0.064923
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",제주,0.064597
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가족,0.063549
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",계약,0.063549
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",거주지,0.06346
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",주소,0.06305
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",이자,0.063034
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",일로,0.062937
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",대출,0.062766
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",금액,0.062645
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",요건,0.062435
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",사람,0.059578
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",계층,0.059493
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",시행,0.059453
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",확대,0.057185
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",자금,0.055724
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",소득,0.055664
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",청년,0.053776
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",생활,0.052677
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",이전,0.051936
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",개월,0.050793
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",거주,0.047903
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",사회,0.045424
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",워드,0.044833
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",조건,0.044364
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",상위,0.043776
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",기초,0.039055
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",정책,0.038858
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",취업,0.038524
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",분야,0.036832
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가격,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가공,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가공업,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가능성,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가사,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가산,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가상,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가속,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가스,0.0
+domain,"주거,주거 > 주택 및 거주지,전월세 및 주거급여 지원",가압류,0.0
+domain,참여권리 > 권익보호,권익,0.181291
+domain,참여권리 > 권익보호,보호,0.142513
+domain,참여권리 > 권익보호,권리,0.138873
+domain,참여권리 > 권익보호,정책,0.102017
+domain,참여권리 > 권익보호,분야,0.097522
+domain,참여권리 > 권익보호,워드,0.093526
+domain,참여권리 > 권익보호,교육,0.068561
+domain,참여권리 > 권익보호,청년,0.065904
+domain,참여권리 > 권익보호,주관,0.061765
+domain,참여권리 > 권익보호,조건,0.058298
+domain,참여권리 > 권익보호,노동,0.05371
+domain,참여권리 > 권익보호,활동,0.053424
+domain,참여권리 > 권익보호,요약,0.049918
+domain,참여권리 > 권익보호,제한,0.046379
+domain,참여권리 > 권익보호,충청남도,0.046324
+domain,참여권리 > 권익보호,나이,0.04622
+domain,참여권리 > 권익보호,출처,0.04523
+domain,참여권리 > 권익보호,서귀포시,0.045188
+domain,참여권리 > 권익보호,맞춤,0.040681
+domain,참여권리 > 권익보호,소통,0.040674
+domain,참여권리 > 권익보호,통한,0.039329
+domain,참여권리 > 권익보호,사회,0.038328
+domain,참여권리 > 권익보호,홍보,0.036658
+domain,참여권리 > 권익보호,강화,0.036346
+domain,참여권리 > 권익보호,카페,0.035552
+domain,참여권리 > 권익보호,방법,0.033321
+domain,참여권리 > 권익보호,원데이,0.032784
+domain,참여권리 > 권익보호,콘서트,0.031468
+domain,참여권리 > 권익보호,취미,0.031387
+domain,참여권리 > 권익보호,역량,0.031048
+domain,참여권리 > 권익보호,경제,0.030721
+domain,참여권리 > 권익보호,연령,0.030666
+domain,참여권리 > 권익보호,서류,0.029798
+domain,참여권리 > 권익보호,활성화,0.02941
+domain,참여권리 > 권익보호,만남,0.029013
+domain,참여권리 > 권익보호,증진,0.02858
+domain,참여권리 > 권익보호,커뮤니티,0.028553
+domain,참여권리 > 권익보호,발전,0.026504
+domain,참여권리 > 권익보호,상담,0.026381
+domain,참여권리 > 권익보호,실시,0.026199
+domain,참여권리 > 권익보호,네트워킹,0.024641
+domain,참여권리 > 권익보호,동아리,0.024327
+domain,참여권리 > 권익보호,단체,0.023543
+domain,참여권리 > 권익보호,제외,0.023473
+domain,참여권리 > 권익보호,추진,0.023134
+domain,참여권리 > 권익보호,경찰,0.022432
+domain,참여권리 > 권익보호,조성,0.022335
+domain,참여권리 > 권익보호,창업,0.02229
+domain,참여권리 > 권익보호,인재,0.021724
+domain,참여권리 > 권익보호,보조금,0.021712
+domain,참여권리 > 권익보호,행사,0.021458
+domain,참여권리 > 권익보호,클래스,0.021145
+domain,참여권리 > 권익보호,제출,0.02113
+domain,참여권리 > 권익보호,자치,0.020846
+domain,참여권리 > 권익보호,의제,0.020569
+domain,참여권리 > 권익보호,발굴,0.02046
+domain,참여권리 > 권익보호,이벤트,0.020139
+domain,참여권리 > 권익보호,계획,0.019858
+domain,참여권리 > 권익보호,부스,0.019254
+domain,참여권리 > 권익보호,시책,0.019185
+domain,참여권리 > 권익보호,전문가,0.019154
+domain,참여권리 > 권익보호,멤버십,0.019081
+domain,참여권리 > 권익보호,정치,0.019015
+domain,참여권리 > 권익보호,소비자,0.018394
+domain,참여권리 > 권익보호,견인,0.018238
+domain,참여권리 > 권익보호,노동자,0.018163
+domain,참여권리 > 권익보호,대중교통,0.017944
+domain,참여권리 > 권익보호,기별,0.017638
+domain,참여권리 > 권익보호,특수,0.017415
+domain,참여권리 > 권익보호,관심사,0.017087
+domain,참여권리 > 권익보호,학점,0.016982
+domain,참여권리 > 권익보호,자기개발,0.01693
+domain,참여권리 > 권익보호,응원,0.01687
+domain,참여권리 > 권익보호,현안,0.016856
+domain,참여권리 > 권익보호,함안군,0.016829
+domain,참여권리 > 권익보호,거래,0.016758
+domain,참여권리 > 권익보호,공간,0.016738
+domain,참여권리 > 권익보호,교통,0.016696
+domain,참여권리 > 권익보호,금정구,0.016696
+domain,참여권리 > 권익보호,한해,0.01647
+domain,참여권리 > 정책인프라구축,권리,0.142295
+domain,참여권리 > 정책인프라구축,인프라,0.141152
+domain,참여권리 > 정책인프라구축,구축,0.12501
+domain,참여권리 > 정책인프라구축,정책,0.122145
+domain,참여권리 > 정책인프라구축,청년,0.081509
+domain,참여권리 > 정책인프라구축,분야,0.080778
+domain,참여권리 > 정책인프라구축,워드,0.078751
+domain,참여권리 > 정책인프라구축,나이,0.070712
+domain,참여권리 > 정책인프라구축,주관,0.066317
+domain,참여권리 > 정책인프라구축,조건,0.059612
+domain,참여권리 > 정책인프라구축,활동,0.051553
+domain,참여권리 > 정책인프라구축,요약,0.049212
+domain,참여권리 > 정책인프라구축,출처,0.046652
+domain,참여권리 > 정책인프라구축,추진,0.04561
+domain,참여권리 > 정책인프라구축,홍보,0.043438
+domain,참여권리 > 정책인프라구축,상담,0.038382
+domain,참여권리 > 정책인프라구축,소통,0.036265
+domain,참여권리 > 정책인프라구축,활성화,0.031789
+domain,참여권리 > 정책인프라구축,맞춤,0.029821
+domain,참여권리 > 정책인프라구축,체계,0.029582
+domain,참여권리 > 정책인프라구축,전달,0.028737
+domain,참여권리 > 정책인프라구축,발굴,0.028132
+domain,참여권리 > 정책인프라구축,온라인,0.027886
+domain,참여권리 > 정책인프라구축,교육,0.027002
+domain,참여권리 > 정책인프라구축,충청남도,0.025829
+domain,참여권리 > 정책인프라구축,단체,0.024567
+domain,참여권리 > 정책인프라구축,체감,0.024346
+domain,참여권리 > 정책인프라구축,커뮤니티,0.024244
+domain,참여권리 > 정책인프라구축,거주,0.023843
+domain,참여권리 > 정책인프라구축,확대,0.023645
+domain,참여권리 > 정책인프라구축,위원회,0.023536
+domain,참여권리 > 정책인프라구축,포털,0.023158
+domain,참여권리 > 정책인프라구축,방법,0.02277
+domain,참여권리 > 정책인프라구축,접근성,0.022625
+domain,참여권리 > 정책인프라구축,플랫폼,0.022615
+domain,참여권리 > 정책인프라구축,교류,0.022251
+domain,참여권리 > 정책인프라구축,인재,0.022193
+domain,참여권리 > 정책인프라구축,통한,0.02212
+domain,참여권리 > 정책인프라구축,강화,0.022053
+domain,참여권리 > 정책인프라구축,설치,0.020958
+domain,참여권리 > 정책인프라구축,협의,0.020922
+domain,참여권리 > 정책인프라구축,채널,0.02024
+domain,참여권리 > 정책인프라구축,문화,0.020189
+domain,참여권리 > 정책인프라구축,부서,0.019444
+domain,참여권리 > 정책인프라구축,심사,0.018902
+domain,참여권리 > 정책인프라구축,기본,0.018812
+domain,참여권리 > 정책인프라구축,거나,0.018476
+domain,참여권리 > 정책인프라구축,네트워킹,0.018388
+domain,참여권리 > 정책인프라구축,보조금,0.01835
+domain,참여권리 > 정책인프라구축,제안,0.018068
+domain,참여권리 > 정책인프라구축,제한,0.017878
+domain,참여권리 > 정책인프라구축,조례,0.0176
+domain,참여권리 > 정책인프라구축,담당,0.017513
+domain,참여권리 > 정책인프라구축,정기,0.017343
+domain,참여권리 > 정책인프라구축,사회,0.017295
+domain,참여권리 > 정책인프라구축,조직,0.016962
+domain,참여권리 > 정책인프라구축,발전,0.016905
+domain,참여권리 > 정책인프라구축,생활,0.016721
+domain,참여권리 > 정책인프라구축,네트워크,0.016469
+domain,참여권리 > 정책인프라구축,협력,0.015818
+domain,참여권리 > 정책인프라구축,고용,0.015758
+domain,참여권리 > 정책인프라구축,공간,0.015626
+domain,참여권리 > 정책인프라구축,기획,0.015558
+domain,참여권리 > 정책인프라구축,위원,0.015441
+domain,참여권리 > 정책인프라구축,제주,0.01539
+domain,참여권리 > 정책인프라구축,회의,0.015225
+domain,참여권리 > 정책인프라구축,위촉,0.015077
+domain,참여권리 > 정책인프라구축,유관,0.014923
+domain,참여권리 > 정책인프라구축,기회,0.014895
+domain,참여권리 > 정책인프라구축,결정,0.01487
+domain,참여권리 > 정책인프라구축,구성,0.014788
+domain,참여권리 > 정책인프라구축,근거,0.0146
+domain,참여권리 > 정책인프라구축,안정,0.014582
+domain,참여권리 > 정책인프라구축,보장,0.014561
+domain,참여권리 > 정책인프라구축,정실,0.014477
+domain,참여권리 > 정책인프라구축,울산,0.014426
+domain,참여권리 > 정책인프라구축,행정,0.014423
+domain,참여권리 > 정책인프라구축,편의,0.014144
+domain,참여권리 > 정책인프라구축,활용,0.014039
+domain,참여권리 > 정책인프라구축,연령,0.013903
+domain,참여권리 > 청년국제교류,파견,0.130311
+domain,참여권리 > 청년국제교류,국제,0.114753
+domain,참여권리 > 청년국제교류,교류,0.104144
+domain,참여권리 > 청년국제교류,봉사,0.080105
+domain,참여권리 > 청년국제교류,청년,0.069218
+domain,참여권리 > 청년국제교류,해외,0.066001
+domain,참여권리 > 청년국제교류,제한,0.065605
+domain,참여권리 > 청년국제교류,협력,0.063628
+domain,참여권리 > 청년국제교류,분야,0.061263
+domain,참여권리 > 청년국제교류,권리,0.059488
+domain,참여권리 > 청년국제교류,연령,0.059389
+domain,참여권리 > 청년국제교류,조건,0.056227
+domain,참여권리 > 청년국제교류,현지,0.055609
+domain,참여권리 > 청년국제교류,경험,0.054853
+domain,참여권리 > 청년국제교류,정책,0.054198
+domain,참여권리 > 청년국제교류,학력,0.047414
+domain,참여권리 > 청년국제교류,서류,0.045764
+domain,참여권리 > 청년국제교류,단원,0.044888
+domain,참여권리 > 청년국제교류,대한민국,0.043673
+domain,참여권리 > 청년국제교류,통한,0.043578
+domain,참여권리 > 청년국제교류,전공,0.040466
+domain,참여권리 > 청년국제교류,증진,0.040311
+domain,참여권리 > 청년국제교류,증명서,0.03928
+domain,참여권리 > 청년국제교류,참고,0.037694
+domain,참여권리 > 청년국제교류,경력,0.037182
+domain,참여권리 > 청년국제교류,워드,0.036635
+domain,참여권리 > 청년국제교류,해외진출,0.036596
+domain,참여권리 > 청년국제교류,공지,0.03634
+domain,참여권리 > 청년국제교류,교육,0.035191
+domain,참여권리 > 청년국제교류,대학,0.03484
+domain,참여권리 > 청년국제교류,기회,0.034806
+domain,참여권리 > 청년국제교류,주관,0.034782
+domain,참여권리 > 청년국제교류,기구,0.033518
+domain,참여권리 > 청년국제교류,글로벌,0.033285
+domain,참여권리 > 청년국제교류,국내,0.032882
+domain,참여권리 > 청년국제교류,우리,0.032862
+domain,참여권리 > 청년국제교류,발전,0.032683
+domain,참여권리 > 청년국제교류,학생,0.03219
+domain,참여권리 > 청년국제교류,상호,0.030598
+domain,참여권리 > 청년국제교류,인력,0.030576
+domain,참여권리 > 청년국제교류,봉사활동,0.029216
+domain,참여권리 > 청년국제교류,개발,0.028631
+domain,참여권리 > 청년국제교류,국가,0.027988
+domain,참여권리 > 청년국제교류,요건,0.026188
+domain,참여권리 > 청년국제교류,개최,0.02538
+domain,참여권리 > 청년국제교류,관계,0.025307
+domain,참여권리 > 청년국제교류,사무소,0.02431
+domain,참여권리 > 청년국제교류,심사,0.024016
+domain,참여권리 > 청년국제교류,인재,0.023603
+domain,참여권리 > 청년국제교류,기여,0.023178
+domain,참여권리 > 청년국제교류,나이,0.022467
+domain,참여권리 > 청년국제교류,요약,0.022412
+domain,참여권리 > 청년국제교류,인턴,0.022054
+domain,참여권리 > 청년국제교류,활동,0.021688
+domain,참여권리 > 청년국제교류,환경,0.021514
+domain,참여권리 > 청년국제교류,에너지,0.021186
+domain,참여권리 > 청년국제교류,선발,0.021183
+domain,참여권리 > 청년국제교류,문화,0.021141
+domain,참여권리 > 청년국제교류,차세대,0.021092
+domain,참여권리 > 청년국제교류,확대,0.02095
+domain,참여권리 > 청년국제교류,사회,0.019894
+domain,참여권리 > 청년국제교류,근무,0.019772
+domain,참여권리 > 청년국제교류,현장,0.019749
+domain,참여권리 > 청년국제교류,농림,0.019079
+domain,참여권리 > 청년국제교류,전형,0.019052
+domain,참여권리 > 청년국제교류,정부,0.018735
+domain,참여권리 > 청년국제교류,학위,0.018717
+domain,참여권리 > 청년국제교류,지향,0.018505
+domain,참여권리 > 청년국제교류,대학생,0.018438
+domain,참여권리 > 청년국제교류,민간,0.018415
+domain,참여권리 > 청년국제교류,통보,0.018293
+domain,참여권리 > 청년국제교류,전문,0.01814
+domain,참여권리 > 청년국제교류,이해,0.018009
+domain,참여권리 > 청년국제교류,전문가,0.017983
+domain,참여권리 > 청년국제교류,상이,0.017637
+domain,참여권리 > 청년국제교류,국적,0.016953
+domain,참여권리 > 청년국제교류,월간,0.016796
+domain,참여권리 > 청년국제교류,미래,0.016458
+domain,참여권리 > 청년국제교류,실시,0.016109
+domain,참여권리 > 청년국제교류,구축,0.015746
+domain,참여권리 > 청년참여,권리,0.127396
+domain,참여권리 > 청년참여,정책,0.116131
+domain,참여권리 > 청년참여,청년,0.087832
+domain,참여권리 > 청년참여,워드,0.079749
+domain,참여권리 > 청년참여,분야,0.074794
+domain,참여권리 > 청년참여,주관,0.073444
+domain,참여권리 > 청년참여,활동,0.073408
+domain,참여권리 > 청년참여,나이,0.066014
+domain,참여권리 > 청년참여,조건,0.064463
+domain,참여권리 > 청년참여,제안,0.056813
+domain,참여권리 > 청년참여,요약,0.054389
+domain,참여권리 > 청년참여,의견,0.046648
+domain,참여권리 > 청년참여,발굴,0.042754
+domain,참여권리 > 청년참여,위촉,0.041363
+domain,참여권리 > 청년참여,맞춤,0.040198
+domain,참여권리 > 청년참여,위원회,0.040135
+domain,참여권리 > 청년참여,상담,0.039906
+domain,참여권리 > 청년참여,위원,0.039388
+domain,참여권리 > 청년참여,교육,0.038468
+domain,참여권리 > 청년참여,방법,0.038391
+domain,참여권리 > 청년참여,네트워크,0.035452
+domain,참여권리 > 청년참여,심의,0.035007
+domain,참여권리 > 청년참여,분과,0.034389
+domain,참여권리 > 청년참여,추진,0.034272
+domain,참여권리 > 청년참여,회의,0.034263
+domain,참여권리 > 청년참여,확대,0.033257
+domain,참여권리 > 청년참여,소통,0.032575
+domain,참여권리 > 청년참여,구성,0.032372
+domain,참여권리 > 청년참여,기회,0.03116
+domain,참여권리 > 청년참여,수렴,0.028867
+domain,참여권리 > 청년참여,행사,0.026896
+domain,참여권리 > 청년참여,홍보,0.026761
+domain,참여권리 > 청년참여,사회,0.026664
+domain,참여권리 > 청년참여,수립,0.025287
+domain,참여권리 > 청년참여,강화,0.024597
+domain,참여권리 > 청년참여,심사,0.024483
+domain,참여권리 > 청년참여,활성화,0.024368
+domain,참여권리 > 청년참여,기획,0.023755
+domain,참여권리 > 청년참여,반영,0.023425
+domain,참여권리 > 청년참여,기본,0.023271
+domain,참여권리 > 청년참여,단체,0.02324
+domain,참여권리 > 청년참여,기구,0.023183
+domain,참여권리 > 청년참여,보조금,0.022937
+domain,참여권리 > 청년참여,마련,0.02262
+domain,참여권리 > 청년참여,교류,0.022481
+domain,참여권리 > 청년참여,통한,0.021947
+domain,참여권리 > 청년참여,시정,0.021514
+domain,참여권리 > 청년참여,목적,0.021393
+domain,참여권리 > 청년참여,홈페이지,0.021116
+domain,참여권리 > 청년참여,모니터링,0.021034
+domain,참여권리 > 청년참여,당사자,0.020642
+domain,참여권리 > 청년참여,전달,0.020149
+domain,참여권리 > 청년참여,예산,0.019772
+domain,참여권리 > 청년참여,공유,0.019709
+domain,참여권리 > 청년참여,조정,0.019696
+domain,참여권리 > 청년참여,조례,0.019245
+domain,참여권리 > 청년참여,직접,0.018346
+domain,참여권리 > 청년참여,문화,0.017897
+domain,참여권리 > 청년참여,시행,0.017669
+domain,참여권리 > 청년참여,역량,0.017664
+domain,참여권리 > 청년참여,연령,0.017308
+domain,참여권리 > 청년참여,수요,0.017154
+domain,참여권리 > 청년참여,체감,0.016858
+domain,참여권리 > 청년참여,제한,0.016698
+domain,참여권리 > 청년참여,계획,0.016695
+domain,참여권리 > 청년참여,거주,0.016675
+domain,참여권리 > 청년참여,비율,0.016254
+domain,참여권리 > 청년참여,네트워킹,0.016139
+domain,참여권리 > 청년참여,개선,0.015543
+domain,참여권리 > 청년참여,지급,0.015463
+domain,참여권리 > 청년참여,내외,0.015319
+domain,참여권리 > 청년참여,도내,0.015137
+domain,참여권리 > 청년참여,특정,0.01509
+domain,참여권리 > 청년참여,결정,0.015021
+domain,참여권리 > 청년참여,담당,0.015009
+domain,참여권리 > 청년참여,체계,0.014864
+domain,참여권리 > 청년참여,신청서,0.01475
+domain,참여권리 > 청년참여,문제,0.014405
+domain,참여권리 > 청년참여,개최,0.014334
+domain,참여권리 > 청년참여,역할,0.01405
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",권리,0.128452
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",정책,0.120025
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",구축,0.108686
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",인프라,0.107676
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",청년,0.087372
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",활동,0.083777
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",분야,0.082622
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",워드,0.073118
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",주관,0.069367
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",커뮤니티,0.057238
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",회의,0.056553
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",활성화,0.056208
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",자발,0.055692
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",기회,0.054008
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",방법,0.052611
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",나이,0.051139
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",소통,0.04861
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",홍보,0.047869
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",요약,0.043991
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",봉사활동,0.041952
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",보조금,0.040017
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",공동체,0.039106
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",발전,0.038824
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",사회,0.038403
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",발굴,0.034835
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",도내,0.034391
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",규모,0.033537
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",형성,0.031897
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",교육,0.031586
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",조건,0.031234
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",진로,0.030523
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",교류,0.029645
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",통한,0.02957
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",공유,0.028542
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",기여,0.028199
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",관심사,0.027735
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",문제,0.027272
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",구성,0.027081
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",울산,0.02668
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",마련,0.026667
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",봉사,0.026628
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",중인,0.026619
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",최대,0.025674
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",자원,0.025053
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",네트워크,0.024777
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",사무실,0.024666
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",수시,0.024629
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",창구,0.024431
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",농촌,0.023403
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",주제,0.023402
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",자료,0.023243
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",역할,0.023019
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",자문,0.022891
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",워크숍,0.022454
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",탐색,0.022421
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",담당,0.022278
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",공통,0.0219
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",수렴,0.021888
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",공간,0.021495
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",보장,0.021416
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",증명서,0.021229
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",고민,0.020607
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",의견,0.020598
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",기반,0.019808
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",제안,0.019784
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",주도,0.019739
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",조성,0.019659
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",해결,0.019484
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",전환,0.01942
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",재학,0.019238
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",소셜,0.019188
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",네트워킹,0.019168
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",확대,0.018633
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",체계,0.018404
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",개최,0.018281
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",관내,0.017698
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",우수,0.017255
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",정착,0.017197
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",지급,0.017174
+domain,"참여권리,참여권리 > 청년참여,정책인프라구축",행사,0.017093
+domain,참여･기반 > 정책인프라구축,인프라,0.160437
+domain,참여･기반 > 정책인프라구축,구축,0.159313
+domain,참여･기반 > 정책인프라구축,정책,0.124462
+domain,참여･기반 > 정책인프라구축,기반,0.114256
+domain,참여･기반 > 정책인프라구축,분야,0.10429
+domain,참여･기반 > 정책인프라구축,워드,0.096982
+domain,참여･기반 > 정책인프라구축,청년,0.090602
+domain,참여･기반 > 정책인프라구축,제한,0.089156
+domain,참여･기반 > 정책인프라구축,연령,0.070982
+domain,참여･기반 > 정책인프라구축,조건,0.070239
+domain,참여･기반 > 정책인프라구축,상담,0.069462
+domain,참여･기반 > 정책인프라구축,맞춤,0.068468
+domain,참여･기반 > 정책인프라구축,주관,0.067591
+domain,참여･기반 > 정책인프라구축,소통,0.060102
+domain,참여･기반 > 정책인프라구축,활동,0.058146
+domain,참여･기반 > 정책인프라구축,인천광역시,0.056858
+domain,참여･기반 > 정책인프라구축,요약,0.052058
+domain,참여･기반 > 정책인프라구축,공간,0.051514
+domain,참여･기반 > 정책인프라구축,교육,0.050968
+domain,참여･기반 > 정책인프라구축,나이,0.04754
+domain,참여･기반 > 정책인프라구축,교류,0.0422
+domain,참여･기반 > 정책인프라구축,추가,0.042026
+domain,참여･기반 > 정책인프라구축,출처,0.040306
+domain,참여･기반 > 정책인프라구축,일자리,0.038025
+domain,참여･기반 > 정책인프라구축,비고,0.034787
+domain,참여･기반 > 정책인프라구축,커뮤니티,0.03439
+domain,참여･기반 > 정책인프라구축,강화,0.034049
+domain,참여･기반 > 정책인프라구축,추진,0.033977
+domain,참여･기반 > 정책인프라구축,문화,0.033646
+domain,참여･기반 > 정책인프라구축,방법,0.031888
+domain,참여･기반 > 정책인프라구축,울산,0.031177
+domain,참여･기반 > 정책인프라구축,홍보,0.030036
+domain,참여･기반 > 정책인프라구축,채널,0.030012
+domain,참여･기반 > 정책인프라구축,통한,0.029889
+domain,참여･기반 > 정책인프라구축,활성화,0.029726
+domain,참여･기반 > 정책인프라구축,제국,0.02872
+domain,참여･기반 > 정책인프라구축,역량,0.028555
+domain,참여･기반 > 정책인프라구축,기지,0.027764
+domain,참여･기반 > 정책인프라구축,전달,0.027676
+domain,참여･기반 > 정책인프라구축,특별자치도,0.027515
+domain,참여･기반 > 정책인프라구축,경제,0.026848
+domain,참여･기반 > 정책인프라구축,자격,0.026593
+domain,참여･기반 > 정책인프라구축,거주,0.02627
+domain,참여･기반 > 정책인프라구축,환경,0.025881
+domain,참여･기반 > 정책인프라구축,포털,0.025879
+domain,참여･기반 > 정책인프라구축,온라인,0.025327
+domain,참여･기반 > 정책인프라구축,제주,0.024843
+domain,참여･기반 > 정책인프라구축,모임,0.024474
+domain,참여･기반 > 정책인프라구축,제출,0.024119
+domain,참여･기반 > 정책인프라구축,체계,0.023208
+domain,참여･기반 > 정책인프라구축,서류,0.022761
+domain,참여･기반 > 정책인프라구축,주거,0.022689
+domain,참여･기반 > 정책인프라구축,플랫폼,0.022013
+domain,참여･기반 > 정책인프라구축,심사,0.019031
+domain,참여･기반 > 정책인프라구축,네트워크,0.019014
+domain,참여･기반 > 정책인프라구축,확대,0.018814
+domain,참여･기반 > 정책인프라구축,중앙,0.018697
+domain,참여･기반 > 정책인프라구축,종합,0.018678
+domain,참여･기반 > 정책인프라구축,단체,0.018666
+domain,참여･기반 > 정책인프라구축,목적,0.018413
+domain,참여･기반 > 정책인프라구축,보조금,0.018356
+domain,참여･기반 > 정책인프라구축,응원,0.018263
+domain,참여･기반 > 정책인프라구축,네트워킹,0.01797
+domain,참여･기반 > 정책인프라구축,의제,0.017412
+domain,참여･기반 > 정책인프라구축,조성,0.017398
+domain,참여･기반 > 정책인프라구축,인천,0.017099
+domain,참여･기반 > 정책인프라구축,체감,0.016679
+domain,참여･기반 > 정책인프라구축,협의,0.016674
+domain,참여･기반 > 정책인프라구축,별로,0.016463
+domain,참여･기반 > 정책인프라구축,재정,0.016458
+domain,참여･기반 > 정책인프라구축,천안,0.016367
+domain,참여･기반 > 정책인프라구축,공감,0.016187
+domain,참여･기반 > 정책인프라구축,리창,0.016016
+domain,참여･기반 > 정책인프라구축,만족도,0.015996
+domain,참여･기반 > 정책인프라구축,기획,0.015982
+domain,참여･기반 > 정책인프라구축,원스톱,0.015961
+domain,참여･기반 > 정책인프라구축,누구,0.015955
+domain,참여･기반 > 정책인프라구축,안정,0.015836
+domain,참여･기반 > 정책인프라구축,계양구,0.015798
+domain,참여･기반 > 정책인프라구축,모니터링,0.015649
+domain,참여･기반 > 청년국제교류,재단,0.140986
+domain,참여･기반 > 청년국제교류,세계,0.12267
+domain,참여･기반 > 청년국제교류,파견,0.114738
+domain,참여･기반 > 청년국제교류,교류,0.109624
+domain,참여･기반 > 청년국제교류,해외,0.100719
+domain,참여･기반 > 청년국제교류,홈페이지,0.100371
+domain,참여･기반 > 청년국제교류,국제,0.092858
+domain,참여･기반 > 청년국제교류,선발,0.09082
+domain,참여･기반 > 청년국제교류,상금,0.073328
+domain,참여･기반 > 청년국제교류,빈곤,0.072931
+domain,참여･기반 > 청년국제교류,이슈,0.072655
+domain,참여･기반 > 청년국제교류,유학생,0.072031
+domain,참여･기반 > 청년국제교류,정규,0.071761
+domain,참여･기반 > 청년국제교류,상호,0.070035
+domain,참여･기반 > 청년국제교류,기반,0.069242
+domain,참여･기반 > 청년국제교류,사무소,0.067313
+domain,참여･기반 > 청년국제교류,공지,0.06715
+domain,참여･기반 > 청년국제교류,차별,0.067018
+domain,참여･기반 > 청년국제교류,체류,0.066664
+domain,참여･기반 > 청년국제교류,단원,0.066015
+domain,참여･기반 > 청년국제교류,제한,0.065176
+domain,참여･기반 > 청년국제교류,축제,0.064809
+domain,참여･기반 > 청년국제교류,학과,0.064272
+domain,참여･기반 > 청년국제교류,역량,0.063941
+domain,참여･기반 > 청년국제교류,이해도,0.062526
+domain,참여･기반 > 청년국제교류,주제,0.062392
+domain,참여･기반 > 청년국제교류,봉사활동,0.061652
+domain,참여･기반 > 청년국제교류,극복,0.061258
+domain,참여･기반 > 청년국제교류,외국인,0.060986
+domain,참여･기반 > 청년국제교류,농촌,0.059535
+domain,참여･기반 > 청년국제교류,시범,0.059214
+domain,참여･기반 > 청년국제교류,대학생,0.059063
+domain,참여･기반 > 청년국제교류,부여,0.059034
+domain,참여･기반 > 청년국제교류,봉사,0.05786
+domain,참여･기반 > 청년국제교류,기존,0.057415
+domain,참여･기반 > 청년국제교류,대한민국,0.05615
+domain,참여･기반 > 청년국제교류,경상북도,0.055397
+domain,참여･기반 > 청년국제교류,동아리,0.054553
+domain,참여･기반 > 청년국제교류,근무,0.053832
+domain,참여･기반 > 청년국제교류,마을,0.05284
+domain,참여･기반 > 청년국제교류,실현,0.052365
+domain,참여･기반 > 청년국제교류,연령,0.05189
+domain,참여･기반 > 청년국제교류,공동,0.050737
+domain,참여･기반 > 청년국제교류,수행,0.05013
+domain,참여･기반 > 청년국제교류,예술,0.050099
+domain,참여･기반 > 청년국제교류,참조,0.049706
+domain,참여･기반 > 청년국제교류,홍보,0.049439
+domain,참여･기반 > 청년국제교류,가치,0.04915
+domain,참여･기반 > 청년국제교류,내외,0.048998
+domain,참여･기반 > 청년국제교류,면접,0.04885
+domain,참여･기반 > 청년국제교류,확산,0.048284
+domain,참여･기반 > 청년국제교류,인턴,0.047678
+domain,참여･기반 > 청년국제교류,개최,0.04747
+domain,참여･기반 > 청년국제교류,성과,0.047448
+domain,참여･기반 > 청년국제교류,대학교,0.046953
+domain,참여･기반 > 청년국제교류,고문,0.046863
+domain,참여･기반 > 청년국제교류,대회,0.045743
+domain,참여･기반 > 청년국제교류,관내,0.045392
+domain,참여･기반 > 청년국제교류,지급,0.045081
+domain,참여･기반 > 청년국제교류,청년,0.044376
+domain,참여･기반 > 청년국제교류,경북,0.044221
+domain,참여･기반 > 청년국제교류,글로벌,0.044195
+domain,참여･기반 > 청년국제교류,전공자,0.043252
+domain,참여･기반 > 청년국제교류,기회,0.04308
+domain,참여･기반 > 청년국제교류,대구,0.042407
+domain,참여･기반 > 청년국제교류,심사,0.041606
+domain,참여･기반 > 청년국제교류,중심,0.041221
+domain,참여･기반 > 청년국제교류,조성,0.040894
+domain,참여･기반 > 청년국제교류,소재,0.040721
+domain,참여･기반 > 청년국제교류,제출,0.040574
+domain,참여･기반 > 청년국제교류,성장,0.040565
+domain,참여･기반 > 청년국제교류,프로젝트,0.039847
+domain,참여･기반 > 청년국제교류,참여자,0.038995
+domain,참여･기반 > 청년국제교류,서류,0.038289
+domain,참여･기반 > 청년국제교류,주관,0.037378
+domain,참여･기반 > 청년국제교류,업무,0.037284
+domain,참여･기반 > 청년국제교류,워드,0.035834
+domain,참여･기반 > 청년국제교류,조건,0.035459
+domain,참여･기반 > 청년국제교류,일자리,0.035387
+domain,참여･기반 > 청년국제교류,미래,0.034977
+domain,참여･기반 > 청년참여,정책,0.102767
+domain,참여･기반 > 청년참여,활동,0.086004
+domain,참여･기반 > 청년참여,청년,0.082621
+domain,참여･기반 > 청년참여,제한,0.082264
+domain,참여･기반 > 청년참여,기반,0.07012
+domain,참여･기반 > 청년참여,분야,0.066657
+domain,참여･기반 > 청년참여,워드,0.065179
+domain,참여･기반 > 청년참여,연령,0.060936
+domain,참여･기반 > 청년참여,주관,0.05596
+domain,참여･기반 > 청년참여,조건,0.050612
+domain,참여･기반 > 청년참여,제안,0.047527
+domain,참여･기반 > 청년참여,나이,0.044112
+domain,참여･기반 > 청년참여,발굴,0.044017
+domain,참여･기반 > 청년참여,요약,0.043071
+domain,참여･기반 > 청년참여,방법,0.036739
+domain,참여･기반 > 청년참여,지급,0.035715
+domain,참여･기반 > 청년참여,광주,0.035477
+domain,참여･기반 > 청년참여,수당,0.035211
+domain,참여･기반 > 청년참여,소통,0.031622
+domain,참여･기반 > 청년참여,교류,0.031576
+domain,참여･기반 > 청년참여,의견,0.030953
+domain,참여･기반 > 청년참여,서류,0.030639
+domain,참여･기반 > 청년참여,보조금,0.030311
+domain,참여･기반 > 청년참여,홍보,0.030042
+domain,참여･기반 > 청년참여,위원회,0.029047
+domain,참여･기반 > 청년참여,네트워크,0.028886
+domain,참여･기반 > 청년참여,회의,0.028546
+domain,참여･기반 > 청년참여,교육,0.028369
+domain,참여･기반 > 청년참여,출처,0.027968
+domain,참여･기반 > 청년참여,심사,0.027292
+domain,참여･기반 > 청년참여,직접,0.026529
+domain,참여･기반 > 청년참여,제출,0.02639
+domain,참여･기반 > 청년참여,추진,0.026149
+domain,참여･기반 > 청년참여,활성화,0.026055
+domain,참여･기반 > 청년참여,분과,0.025808
+domain,참여･기반 > 청년참여,위원,0.025525
+domain,참여･기반 > 청년참여,인천광역시,0.025349
+domain,참여･기반 > 청년참여,광역시,0.02454
+domain,참여･기반 > 청년참여,수렴,0.024468
+domain,참여･기반 > 청년참여,맞춤,0.023572
+domain,참여･기반 > 청년참여,시정,0.022785
+domain,참여･기반 > 청년참여,거주,0.021933
+domain,참여･기반 > 청년참여,추가,0.021678
+domain,참여･기반 > 청년참여,통한,0.021628
+domain,참여･기반 > 청년참여,강화,0.021447
+domain,참여･기반 > 청년참여,기회,0.02112
+domain,참여･기반 > 청년참여,참석,0.02093
+domain,참여･기반 > 청년참여,사회,0.020469
+domain,참여･기반 > 청년참여,확대,0.02037
+domain,참여･기반 > 청년참여,위촉,0.020072
+domain,참여･기반 > 청년참여,상담,0.019705
+domain,참여･기반 > 청년참여,행사,0.019544
+domain,참여･기반 > 청년참여,기획,0.019397
+domain,참여･기반 > 청년참여,단체,0.019294
+domain,참여･기반 > 청년참여,문제,0.01927
+domain,참여･기반 > 청년참여,시청,0.01908
+domain,참여･기반 > 청년참여,구성,0.018949
+domain,참여･기반 > 청년참여,역량,0.018313
+domain,참여･기반 > 청년참여,조성,0.018312
+domain,참여･기반 > 청년참여,예산,0.017407
+domain,참여･기반 > 청년참여,협의,0.017276
+domain,참여･기반 > 청년참여,목적,0.017206
+domain,참여･기반 > 청년참여,광양시,0.016702
+domain,참여･기반 > 청년참여,커뮤니티,0.016645
+domain,참여･기반 > 청년참여,아이디어,0.016574
+domain,참여･기반 > 청년참여,공유,0.016514
+domain,참여･기반 > 청년참여,공동체,0.016479
+domain,참여･기반 > 청년참여,반영,0.016376
+domain,참여･기반 > 청년참여,보장,0.016194
+domain,참여･기반 > 청년참여,전라남도,0.016025
+domain,참여･기반 > 청년참여,취미,0.015875
+domain,참여･기반 > 청년참여,자격,0.015817
+domain,참여･기반 > 청년참여,수여,0.015607
+domain,참여･기반 > 청년참여,개최,0.015391
+domain,참여･기반 > 청년참여,콘텐츠,0.015345
+domain,참여･기반 > 청년참여,의제,0.015303
+domain,참여･기반 > 청년참여,자율,0.015274
+domain,참여･기반 > 청년참여,심의,0.014825
+domain,참여･기반 > 청년참여,서포터즈,0.014717
+domain,참여･기반 > 청년참여,행정,0.014645
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",의제,0.279779
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",현안,0.270475
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",바탕,0.254539
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",주제,0.251308
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",의견,0.249801
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",제안,0.227045
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",소통,0.220241
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",특별자치도,0.216454
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",인프라,0.212552
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",네트워킹,0.209725
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",제주,0.207963
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",마련,0.193229
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",구축,0.182686
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",상담,0.180804
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",현장,0.180612
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",기획,0.172552
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",네트워크,0.164462
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",활성화,0.162218
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",아이디어,0.155112
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",맞춤,0.152049
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",주관,0.150556
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",워드,0.144335
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",기반,0.140313
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",정책,0.1251
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",분야,0.118578
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",요약,0.106641
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",청년,0.091067
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가격,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가공,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가공업,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가구,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가능성,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가사,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가산,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가상,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가속,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가스,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가압류,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가야,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가이드,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가이드라인,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가입,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가입자,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가장,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가점,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가정,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가정위탁,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가족,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가지,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가처분,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가치,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",가치관,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",각종,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",간담,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",간반,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",간의,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",간호,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",간호조무사,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",간호학,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",감성,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",감소,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",갑자기,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강남,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강남구,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강동,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강동구,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강릉,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강릉시,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강림,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강북,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강북구,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강사,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강서구,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강소기업,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강연,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강원,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강원도,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강의,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강점,0.0
+domain,"참여･기반,참여･기반 > 정책인프라구축,청년참여",강좌,0.0
