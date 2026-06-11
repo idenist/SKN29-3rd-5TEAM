@@ -45,3 +45,22 @@ training 데이터가 많으므로 전체 검색에서는 source_category별 균
 - 주거/복지/수당 → policy 우선
 - 창업/사업화/IR → startup_notice 우선
 - 교육/국비/AI/파이썬 → training 우선
+
+
+## 4. Ground Truth 평가 데이터셋
+
+RAG 검색 품질 검증을 위해 아래 파일을 제공한다.
+
+```text
+tests/evaluation_dataset.jsonl
+```
+
+각 row는 사용자 질문 `question`과 정답으로 기대되는 `answer_item_ids`를 포함한다.
+
+검증 스크립트:
+
+```bash
+python scripts/validate_evaluation_dataset.py
+```
+
+검증 결과 `missing_item_ids=0`으로, Ground Truth의 정답 ID가 최종 통합 데이터 `opportunities.json`에 모두 존재함을 확인했다.

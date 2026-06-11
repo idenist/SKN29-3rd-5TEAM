@@ -13,9 +13,12 @@
 → raw_text 생성
 → 공통 스키마 통합
 → RAG 청크 생성
-→ KoNLPy 형태소 분석
+→ KoNLPy Okt 형태소 분석
 → 불용어 제거
 → BoW / TF-IDF 키워드 리포트 생성
+→ Gensim Word2Vec / FastText 샘플 학습 리포트 생성
+→ Ground Truth 평가 데이터셋 추가
+→ Ground Truth answer_item_ids와 opportunities.json item_id 연결 검증
 → 최종 백엔드/RAG 산출물 생성
 ```
 
@@ -27,39 +30,49 @@
 | 출처별 전처리 | raw 데이터 | 컬럼 표준화, 결측/중복 확인 | 출처별 processed 파일 |
 | 청년 관련성 분류 | 정제 데이터 | high/medium/low 분류 | high 데이터 |
 | 통합 | high 데이터 | 공통 스키마 매핑 | `opportunities.json` |
-| 청킹 | 통합 데이터 | content/metadata 생성 | `opportunity_chunks.jsonl` |
-| 형태소 분석 | 통합 데이터 | KoNLPy/fallback 명사 추출 | `opportunities_with_keywords.json` |
-| 키워드 분석 | 텍스트 토큰 | BoW/TF-IDF 분석 | keyword reports |
-| 검증 | 최종 데이터 | 결측/중복/청크 통계 | reports |
+| 청킹 | 통합 데이터 | search_profile chunk 생성 | `opportunity_chunks.jsonl` |
+| 데이터 검증 | 통합 데이터/청크 | 건수, 중복, 결측 확인 | `data/reports/*` |
+| KoNLPy 형태소 분석 | 통합 텍스트 | Okt 기반 명사 추출, 불용어 제거 | `opportunities_with_keywords.json`, `konlpy_keyword_report.csv` |
+| BoW/TF-IDF 분석 | 정규화 텍스트 | 키워드 빈도 및 중요도 분석 | `bow_keyword_report.csv`, `tfidf_keyword_report.csv` |
+| Word2Vec/FastText | 명사 토큰 | Gensim 샘플 학습 및 유사어 리포트 생성 | `word2vec_fasttext_status_report.csv` |
+| Ground Truth | 평가 질문/정답 item_id | JSONL 형식 검증, 정답 item_id 연결 검증 | `tests/evaluation_dataset.jsonl`, `evaluation_dataset_summary.csv` |
+| 문서화 | 산출물 | 스키마, 청킹, 전처리, 평가 대응 문서화 | `docs/`, `README.md` |
 
 ## 3. 최종 데이터 수량
 
-| 구분 | 건수 |
+| 항목 | 수량 |
 |---|---:|
+| 최종 통합 데이터 | 26,803 |
+| RAG 청크 | 33,950 |
 | 온통청년 정책 | 2,611 |
 | K-Startup 청년 HIGH 창업공고 | 3,789 |
 | HRD 청년 HIGH 교육훈련 | 20,403 |
-| 최종 opportunities.json | 26,803 |
-| 최종 opportunity_chunks.jsonl | 33,950 |
+| Ground Truth 평가 질문 | 50 |
 
-## 4. 편향성 관리
+## 4. 핵심 실행 스크립트
 
-본 프로젝트는 청년 지원 탐색 서비스이므로 모든 공공 데이터를 무조건 통합하지 않았다.
+| 스크립트 | 역할 |
+|---|---|
+| `scripts/build_opportunities.py` | 통합 데이터 재생성 |
+| `scripts/validate_final_dataset.py` | 최종 데이터 건수, 중복, 결측, 청크 검증 |
+| `scripts/analyze_korean_text.py` | KoNLPy Okt 형태소 분석 및 키워드 추출 |
+| `scripts/build_text_features.py` | BoW, TF-IDF, Word2Vec/FastText 리포트 생성 |
+| `scripts/validate_evaluation_dataset.py` | Ground Truth 정답 item_id 검증 |
 
-- K-Startup은 청년 관련성 HIGH 데이터만 통합
-- HRD는 청년 취업·디지털 교육 관련성 HIGH 데이터만 통합
-- 공모전/경진대회는 공식 OpenAPI 기반 다건 수집원이 불명확하여 제외
+## 5. Ground Truth 검증 단계
 
-이 방식은 서비스 목적과 무관한 데이터가 검색 결과를 오염시키는 것을 줄이기 위한 것이다.
+RAG 검색 품질 평가를 위해 `tests/evaluation_dataset.jsonl`을 추가했다.
 
-## 5. 결측치 처리 원칙
+검증 스크립트는 `answer_item_ids`가 `data/processed/opportunities.json`의 `item_id`에 실제 존재하는지 확인한다.
 
-- 원본에 없는 값은 임의 생성하지 않는다.
-- 빈 값은 “해당 없음”이 아니라 “정보 미제공”으로 본다.
-- 결측률은 `data/reports/missing_value_report.csv`와 `data/processed/source_coverage_report.csv`에 기록한다.
+검증 결과:
 
-## 6. 중복 처리 원칙
+```text
+rows=50
+missing_field_rows=0
+empty_answer_rows=0
+missing_item_ids=0
+duplicate_questions=0
+```
 
-- 통합 기준은 `item_id`
-- `policy_id`는 온통청년 원본 내부 key로만 유지
-- 최종 중복 확인 결과는 `data/reports/duplicate_check_report.csv`에 기록한다.
+따라서 Ground Truth 평가 데이터셋의 정답 ID가 최종 통합 데이터와 정상적으로 연결되어 있음을 확인했다.
