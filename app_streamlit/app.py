@@ -8,7 +8,7 @@ from views.detail_page import render_detail_page
 from views.guide_page import render_guide_page
 from views.chatbot_page import render_chatbot_page
 
-APP_VERSION = "v1.0"
+APP_VERSION = "v1.1"
 
 # -----------------------------------
 # 기본 설정
@@ -123,8 +123,6 @@ render_html("""
 # -----------------------------------
 # 네비게이션
 # -----------------------------------
-
-st.markdown("<br>", unsafe_allow_html=True)
 
 pages = [
     "홈",

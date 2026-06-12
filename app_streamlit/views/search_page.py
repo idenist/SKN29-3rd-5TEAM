@@ -13,7 +13,7 @@ REGIONS = ["서울", "부산", "대구", "인천", "광주", "대전", "경기",
 JOB_STATUSES = ["구직자", "재직자", "중소기업 재직자", "프리랜서", "예비창업자", "사업자", "학생"]
 HOUSING_STATUSES = ["월세", "전세", "자가", "무주택", "기타"]
 INTERESTS = ["취업", "교육", "창업", "주거", "금융", "복지"]
-RESULT_LIMIT = 30
+RESULTS_PER_PAGE = 10
 
 
 def _is_closed_policy(policy, today=None):
@@ -345,9 +345,35 @@ def render_search_page(policies):
             key=lambda policy: _relevance_score(policy, keyword),
             reverse=True
         )
-        visible_policies = filtered_policies[:RESULT_LIMIT]
+        result_signature = (
+            keyword,
+            profile["age"],
+            profile["region"],
+            profile["income"],
+            profile["job_status"],
+            profile["housing_status"],
+            tuple(selected_interests),
+            exclude_closed,
+        )
+        if st.session_state.get("search_result_signature") != result_signature:
+            st.session_state.search_result_signature = result_signature
+            st.session_state.search_result_page = 1
+
+        total_pages = max(
+            1,
+            (len(filtered_policies) + RESULTS_PER_PAGE - 1)
+            // RESULTS_PER_PAGE
+        )
+        current_page = min(
+            st.session_state.get("search_result_page", 1),
+            total_pages
+        )
+        st.session_state.search_result_page = current_page
+        page_start = (current_page - 1) * RESULTS_PER_PAGE
+        page_end = page_start + RESULTS_PER_PAGE
+        visible_policies = filtered_policies[page_start:page_end]
         st.session_state.recommended_policy_ids = [
-            policy["id"] for policy in visible_policies
+            policy["id"] for policy in filtered_policies
         ]
         interest_text = ", ".join(selected_interests) if selected_interests else "전체"
         condition_summary = (
@@ -380,7 +406,7 @@ def render_search_page(policies):
                 render_html(f"""
 <div class="result-filter-heading">
     <div class="result-title">총 {len(filtered_policies)}개의 관련 정책을 찾았습니다.</div>
-    <div class="small-muted">관련도 순으로 상위 {min(len(filtered_policies), RESULT_LIMIT)}개를 보여드려요.</div>
+    <div class="small-muted">관련도 순으로 한 페이지에 {RESULTS_PER_PAGE}개씩 보여드려요.</div>
 </div>
 """)
 
@@ -397,7 +423,7 @@ def render_search_page(policies):
                     else "마감된 정책도 함께 표시 중"
                 )
 
-        for display_rank, p in enumerate(visible_policies, 1):
+        for display_rank, p in enumerate(visible_policies, page_start + 1):
             apply_link = _external_link(
                 "신청하기 ↗",
                 p["application_url"],
@@ -455,7 +481,7 @@ def render_search_page(policies):
                     </div>
                 </div>
 
-                <div>
+                <div class="policy-actions">
                     {apply_link}
                     {source_link}
                 </div>
@@ -463,7 +489,38 @@ def render_search_page(policies):
         </div>
 """)
 
-        policies_by_id = {policy["id"]: policy for policy in visible_policies}
+        if total_pages > 1:
+            previous_page, page_status, next_page = st.columns(
+                [1, 1.4, 1],
+                vertical_alignment="center"
+            )
+            with previous_page:
+                if st.button(
+                    "← 이전",
+                    width="stretch",
+                    disabled=current_page == 1,
+                    key="previous_result_page"
+                ):
+                    st.session_state.search_result_page = current_page - 1
+                    st.rerun()
+            with page_status:
+                st.markdown(
+                    f'<div class="pagination-status">'
+                    f'{current_page} / {total_pages} 페이지'
+                    f'</div>',
+                    unsafe_allow_html=True
+                )
+            with next_page:
+                if st.button(
+                    "다음 →",
+                    width="stretch",
+                    disabled=current_page == total_pages,
+                    key="next_result_page"
+                ):
+                    st.session_state.search_result_page = current_page + 1
+                    st.rerun()
+
+        policies_by_id = {policy["id"]: policy for policy in filtered_policies}
         dialog_policy_id = st.session_state.get("policy_dialog_id")
         if dialog_policy_id in policies_by_id:
             _render_policy_dialog(policies_by_id[dialog_policy_id], profile)

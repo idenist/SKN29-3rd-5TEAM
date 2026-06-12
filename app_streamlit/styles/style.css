@@ -329,6 +329,27 @@ div[data-testid="stVerticalBlockBorderWrapper"]:has(.result-filter-heading)
     color: #111827;
 }
 
+.pagination-status {
+    color: #4C566A;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.st-key-previous_result_page button,
+.st-key-next_result_page button {
+    border: 1px solid #DDE4F0 !important;
+    background: #FFFFFF !important;
+    color: #4058C9 !important;
+}
+
+.st-key-previous_result_page button:disabled,
+.st-key-next_result_page button:disabled {
+    background: #F3F5F9 !important;
+    color: #A1A9B8 !important;
+    opacity: 1;
+}
+
 .small-muted {
     color: #64748B;
     font-size: 13px;
@@ -480,8 +501,11 @@ div[class*="st-key-policy_card_"]
 
 div[class*="st-key-open_policy_detail_"] {
     position: absolute;
-    inset: 0;
-    z-index: 2;
+    top: 0;
+    right: 180px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -513,7 +537,22 @@ div[class*="st-key-policy_card_"]:hover .policy-card {
 
 div[class*="st-key-policy_card_"] .policy-link {
     position: relative;
-    z-index: 4;
+    z-index: 20;
+    pointer-events: auto !important;
+}
+
+.policy-actions {
+    position: relative;
+    z-index: 20;
+    isolation: isolate;
+    pointer-events: auto !important;
+}
+
+.policy-actions .action-btn,
+.policy-actions .sub-btn {
+    position: relative;
+    z-index: 21;
+    pointer-events: auto !important;
 }
 
 .policy-dialog-header {
@@ -1005,12 +1044,25 @@ div[data-testid="stForm"] div[data-testid="stCheckbox"] {
     min-height: 27px;
 }
 
+div[data-testid="stForm"] button[kind="primaryFormSubmit"] {
+    border-color: #DE7774 !important;
+    background: #DE7774 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 6px 14px rgba(190, 92, 88, 0.14) !important;
+}
+
+div[data-testid="stForm"] button[kind="primaryFormSubmit"]:hover {
+    border-color: #D46865 !important;
+    background: #D46865 !important;
+}
+
 div[data-testid="stForm"]
     [data-testid="InputInstructions"] {
     display: none !important;
 }
 
 div[data-testid="stForm"] div[data-testid="stCheckbox"] label p {
+    background: transparent !important;
     font-size: 15px;
     font-weight: 700;
 }
@@ -1202,6 +1254,13 @@ div[data-testid="stDataFrame"] {
         margin-left: 0;
     }
 
+    div[class*="st-key-open_policy_detail_"] {
+        top: 0;
+        right: 0;
+        bottom: 112px;
+        left: 0;
+    }
+
 }
 
 /* Reference-inspired landing page */
@@ -1245,9 +1304,10 @@ div[data-testid="stDataFrame"] {
 .st-key-main_navigation
     div[data-testid="stHorizontalBlock"]:has(button[kind]) {
     max-width: 770px;
-    margin: -58px calc((100% - 1120px) / 2 + 24px) 15px auto;
+    margin: -57px calc((100% - 1120px) / 2 + 24px) 14px auto;
     position: relative;
     z-index: 5;
+    align-items: center;
 }
 
 .st-key-main_navigation
