@@ -31,7 +31,7 @@ class PolicyRecommendation(BaseModel):
     source_category: str = Field("", description="데이터 유형 (policy/startup_notice/training)")
     deadline_status: str = Field("unknown", description="마감 상태 (open/expired/unknown)")
     application_end_date: Optional[str] = Field(None, description="신청 종료일 (파싱된 값)")
-    is_expired: bool = Field(False, description="마감 여부") 
+    is_expired: bool = Field(False, description="마감 여부")
 
 
 class UserConditions(BaseModel):
@@ -70,6 +70,18 @@ class ChatResponse(BaseModel):
     external_used: bool = Field(
         False,
         description="외부 공식 출처 검색 도구 사용 여부",
+    )
+    external_search_status: str = Field(
+        "",
+        description="외부 공식 출처 검색 상태",
+    )
+    external_search_targets: list[str] = Field(
+        default_factory=list,
+        description="외부 검색 대상으로 선택된 공식 출처 목록",
+    )
+    external_search_queries: list[str] = Field(
+        default_factory=list,
+        description="외부 공식 출처 검색에 사용할 검색어 후보",
     )
 
 

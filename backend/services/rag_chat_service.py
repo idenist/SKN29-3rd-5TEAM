@@ -37,6 +37,9 @@ def _build_fallback_response(error_detail: str) -> ChatResponse:
         sufficiency_reasons=["workflow 실행 중 오류가 발생했습니다."],
         next_action="fallback_response",
         external_used=False,
+        external_search_status="error",
+        external_search_targets=[],
+        external_search_queries=[],
     )
 
 
@@ -239,6 +242,9 @@ def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
         sufficiency_reasons=_safe_list(raw.get("sufficiency_reasons")),
         next_action=_safe_str(raw.get("next_action")),
         external_used=_safe_bool(raw.get("external_used"), default=False),
+        external_search_status=_safe_str(raw.get("external_search_status")),
+        external_search_targets=_safe_list(raw.get("external_search_targets")),
+        external_search_queries=_safe_list(raw.get("external_search_queries")),
     )
 
 # def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:

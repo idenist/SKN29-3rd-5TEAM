@@ -8,13 +8,12 @@ from backend.services.condition_extractor import (
 from backend.services.rag_service import retrieve_policies
 from backend.services.policy_matcher import attach_eligibility_to_policies
 from backend.services.answer_generator import generate_answer
+from backend.services.external_search_service import plan_official_external_search
 
 
 class GraphState(TypedDict, total=False):
     # input
     user_query: str
-    top_k: int
-    use_llm: bool
 
     # intermediate
     user_conditions: dict[str, Any]
@@ -31,6 +30,9 @@ class GraphState(TypedDict, total=False):
     sufficiency_reasons: list[str]
     next_action: str
     external_used: bool
+    external_search_status: str
+    external_search_targets: list[str]
+    external_search_queries: list[str]
 
     # output
     answer: str
@@ -227,7 +229,6 @@ def _append_warning(state: GraphState, message: str) -> list[str]:
 def _append_error(state: GraphState, message: str) -> list[str]:
     return state.get("errors", []) + [message]
 
-
 def _append_tool_trace(
     state: GraphState,
     step: str,
@@ -235,22 +236,15 @@ def _append_tool_trace(
     observation: Any,
     next_action: str | None = None,
 ) -> list[dict[str, Any]]:
-    """
-    ReAct 설명을 위한 tool 실행 이력 기록.
-
-    Thought/Reason은 노드의 판단 근거로, Action은 실제 수행한 도구/처리로,
-    Observation은 실행 결과 요약으로 남긴다.
-    """
+    """ReAct 설명을 위한 tool 실행 이력을 기록한다."""
     trace = list(state.get("tool_trace") or [])
     item: dict[str, Any] = {
         "step": step,
         "action": action,
         "observation": observation,
     }
-
     if next_action:
         item["next_action"] = next_action
-
     trace.append(item)
     return trace
 
@@ -299,6 +293,7 @@ def _has_freshness_intent(query: str) -> bool:
         "2026",
     ]
     return any(keyword in text for keyword in keywords)
+
 
 
 def normalize_domain(domain: Any) -> str | None:
@@ -645,53 +640,33 @@ def retriever_node(state: GraphState) -> GraphState:
 
 
 def result_sufficiency_checker_node(state: GraphState) -> GraphState:
-    retrieved_chunks = state.get("retrieved_chunks", [])
+    """
+    내부 Vector DB 검색 결과가 답변 생성에 충분한지 판단한다.
+
+    결과 수만 보지 않고, 마감 여부·출처 URL·최신성 의도까지 함께 판단한다.
+    """
+    if state.get("errors"):
+        return state
+
+    chunks = state.get("retrieved_chunks") or []
     query = state.get("user_query", "")
 
-    total = len(retrieved_chunks)
-
-    expired_count = sum(
-        1 for item in retrieved_chunks
-        if item.get("is_expired") is True
-        or (item.get("metadata") or {}).get("is_expired") is True
-        or item.get("deadline_status") == "expired"
-        or (item.get("metadata") or {}).get("deadline_status") == "expired"
-    )
-
+    total = len(chunks)
+    expired_count = sum(1 for item in chunks if _is_expired_item(item))
     open_count = sum(
-        1 for item in retrieved_chunks
-        if item.get("deadline_status") == "open"
-        or (item.get("metadata") or {}).get("deadline_status") == "open"
+        1
+        for item in chunks
+        if str(_get_nested_value(item, "deadline_status", "") or "").strip() == "open"
     )
-
-    source_count = sum(
-        1 for item in retrieved_chunks
-        if item.get("source_url")
-        or (item.get("metadata") or {}).get("source_url")
-    )
-
-    freshness_keywords = [
-        "지금",
-        "현재",
-        "신청 가능한",
-        "신청가능한",
-        "모집 중",
-        "모집중",
-        "접수 중",
-        "접수중",
-        "마감 전",
-        "마감전",
-        "2026",
-    ]
-
-    freshness_intent = any(keyword in query for keyword in freshness_keywords)
+    source_count = sum(1 for item in chunks if _has_source_url(item))
+    freshness_intent = _has_freshness_intent(query)
 
     sufficient = True
-    reasons = []
+    reasons: list[str] = []
 
     if total == 0:
         sufficient = False
-        reasons.append("검색 결과가 없습니다.")
+        reasons.append("내부 Vector DB 검색 결과가 없습니다.")
 
     if total > 0 and expired_count == total:
         sufficient = False
@@ -699,26 +674,30 @@ def result_sufficiency_checker_node(state: GraphState) -> GraphState:
 
     if total > 0 and source_count == 0:
         sufficient = False
-        reasons.append("출처 URL이 있는 검색 결과가 없습니다.")
+        reasons.append("출처 URL이 포함된 검색 결과가 없습니다.")
 
-    # 최신성 질문인데 open 결과가 하나라도 있으면 결과 수가 적어도 우선 충분하다고 본다.
+    # 최신성 질문에서는 open 결과가 하나라도 있고 출처가 있으면 충분한 후보로 인정한다.
     if freshness_intent and open_count >= 1 and source_count >= 1:
         sufficient = True
         reasons = []
 
-    # 일반 질문에서는 결과가 1~2개여도 source가 있으면 부족 처리하지 않는다.
+    # 일반 질문에서는 결과가 적더라도, 마감 결과만 있는 경우가 아니고 출처가 있으면 허용한다.
     if not freshness_intent and total > 0 and source_count > 0 and expired_count < total:
         sufficient = True
         reasons = []
 
     next_action = "answer_generation" if sufficient else "external_search"
 
-    tool_trace = state.get("tool_trace", [])
-    tool_trace.append(
-        {
-            "step": "result_sufficiency_checker",
-            "action": "check_internal_search_results",
-            "observation": {
+    return {
+        **state,
+        "internal_search_sufficient": sufficient,
+        "sufficiency_reasons": reasons,
+        "next_action": next_action,
+        "tool_trace": _append_tool_trace(
+            state,
+            step="result_sufficiency_checker",
+            action="check_internal_search_results",
+            observation={
                 "total": total,
                 "expired_count": expired_count,
                 "open_count": open_count,
@@ -727,48 +706,53 @@ def result_sufficiency_checker_node(state: GraphState) -> GraphState:
                 "sufficient": sufficient,
                 "reasons": reasons,
             },
-            "next_action": next_action,
-        }
-    )
-
-    return {
-        **state,
-        "internal_search_sufficient": sufficient,
-        "sufficiency_reasons": reasons,
-        "next_action": next_action,
-        "tool_trace": tool_trace,
+            next_action=next_action,
+        ),
     }
+
 
 def external_search_placeholder_node(state: GraphState) -> GraphState:
-    tool_trace = state.get("tool_trace", [])
-    reasons = state.get("sufficiency_reasons", [])
+    """
+    외부 공식 출처 fallback 계획 노드.
 
-    tool_trace.append(
-        {
-            "step": "external_search",
-            "action": "placeholder_official_source_search",
-            "observation": {
-                "status": "not_implemented",
-                "reason": reasons,
-                "message": "외부 공식 API fallback은 추후 온통청년/K-Startup/고용24 연동 노드로 교체 예정입니다.",
-            },
-            "next_action": "eligibility_checker",
-        }
+    현재는 실제 외부 API를 호출하지 않고, 어떤 공식 출처를 조회해야 하는지 계획을 남긴다.
+    내부 검색 결과가 부족한 경우 부정확한 내부 후보가 답변에 섞이지 않도록 retrieved_chunks를 비운다.
+    """
+    if state.get("errors"):
+        return state
+
+    reasons = state.get("sufficiency_reasons") or []
+    plan = plan_official_external_search(
+        query=state.get("user_query", ""),
+        user_conditions=state.get("user_conditions") or {},
+        route=state.get("route"),
+        filters=state.get("filters") or {},
+        sufficiency_reasons=reasons,
     )
 
-    warnings = state.get("warnings", [])
-    warnings.append(
-        "내부 데이터 검색 결과가 충분하지 않아 외부 공식 출처 검색이 필요합니다. 현재 버전에서는 부정확한 내부 검색 결과를 추천에서 제외합니다."
+    warning_message = (
+        "내부 데이터 검색 결과가 충분하지 않아 외부 공식 출처 검색이 필요합니다. "
+        "현재 버전에서는 부정확한 내부 검색 결과를 추천에서 제외합니다."
     )
 
     return {
         **state,
+        "external_used": False,
+        "external_search_status": plan.get("status", "planned_not_executed"),
+        "external_search_targets": plan.get("target_names", []),
+        "external_search_queries": plan.get("queries", []),
         "retrieved_chunks": [],
         "eligibility_results": [],
-        "external_used": False,
-        "tool_trace": tool_trace,
-        "warnings": warnings,
+        "warnings": state.get("warnings", []) + [warning_message],
+        "tool_trace": _append_tool_trace(
+            state,
+            step="external_search",
+            action="plan_official_source_search",
+            observation=plan,
+            next_action="eligibility_checker",
+        ),
     }
+
 
 def eligibility_checker_node(state: GraphState) -> GraphState:
     if state.get("errors"):

@@ -1,0 +1,1326 @@
+[
+  {
+    "case_id": "TC001_startup_open_2026",
+    "query": "2026년에 신청 가능한 창업지원 공고 추천해줘",
+    "passed": true,
+    "score": 1.0,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "사용자 입력 기준으로 창업에 관심이 있는 분을 위한 2026년에 신청 가능한 창업지원 공고를 추천드립니다.\n\n### 1. 2026년 강북창업지원센터 6월 창업 상담 참가자 모집(정부지원사업 사업계획서 작성 그룹 멘토링)\n- 항목 유형: 창업지원 공고\n- 추천 이유: 예비 및 초기 창업자를 위한 상담 프로그램으로, 사업계획서 작성에 대한 멘토링을 제공하여 창업 준비에 도움을 줄 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 예비 및 초기 창업자, 강북구 거주자 우선 선발\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태에 대한 정보가 없어 자격 조건을 확인할 필요가 있습니다.\n- 지원 내용: 창업상담 DAY 프로그램을 통해 예비 및 초기 창업자에게 멘토링 제공\n- 신청/접수 기간: 2026년 6월 4일 ~ 2026년 6월 17일\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [K-Startup](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=177981)\n- 신청 URL: [신청하기](https://forms.gle/YvtMQ5VBGYMiayyD6)\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으므로, 추가 확인이 필요합니다. \n\n정확한 자격 조건 및 신청 방법은 추가 확인이 필요합니다.",
+      "user_conditions": {
+        "age": null,
+        "region": null,
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "창업"
+      },
+      "route": "창업",
+      "route_reason": "사용자 질문에 창업, 창업지원 키워드가 포함됨 / 조건 추출 결과 interest_domain이 창업로 판단됨 / 질문과 route를 기준으로 startup_notice 데이터를 우선 검색",
+      "recommendations": [
+        {
+          "policy_id": "startup_80fc1d0f28c4",
+          "policy_name": "2026년 강북창업지원센터 6월  창업 상담 참가자 모집(정부지원사업 사업계획서 작성 그룹 멘토링)",
+          "eligibility": "추가 확인 필요",
+          "score": 0.6508,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=177981",
+          "needs_detail_check": false,
+          "cautions": [
+            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "startup_notice",
+          "deadline_status": "open",
+          "application_end_date": "2026-06-17",
+          "is_expired": false
+        }
+      ],
+      "warnings": [],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "창업",
+            "source_category": "startup_notice",
+            "filters": {
+              "domain": "창업",
+              "source_category": "startup_notice"
+            },
+            "reason": "사용자 질문에 창업, 창업지원 키워드가 포함됨 / 조건 추출 결과 interest_domain이 창업로 판단됨 / 질문과 route를 기준으로 startup_notice 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "2026년에 신청 가능한 창업지원 공고 추천해줘\n검색 키워드: 창업 지원 공고",
+            "filters": {
+              "domain": "창업",
+              "source_category": "startup_notice"
+            },
+            "total": 1,
+            "expired_count": 0,
+            "source_count": 1
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 1,
+            "expired_count": 0,
+            "open_count": 1,
+            "source_count": 1,
+            "freshness_intent": true,
+            "sufficient": true,
+            "reasons": []
+          },
+          "next_action": "answer_generation"
+        }
+      ],
+      "internal_search_sufficient": true,
+      "sufficiency_reasons": [],
+      "next_action": "answer_generation",
+      "external_used": false,
+      "external_search_status": "",
+      "external_search_targets": [],
+      "external_search_queries": []
+    }
+  },
+  {
+    "case_id": "TC002_startup_exclude_old",
+    "query": "2019년에 했던 청년 창업 지원사업 말고 지금 신청 가능한 공고 알려줘",
+    "passed": false,
+    "score": 0.9286,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": false,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "현재 청년 창업 지원사업에 대한 정보는 다음과 같습니다. 사용자가 입력하신 조건은 창업에 관심이 있는 청년으로, 나이와 지역에 대한 정보는 제공되지 않았습니다.\n\n### 1. [창업] 내 아이디어로 창업 가능할까?\n- 항목 유형: 창업지원 공고\n- 추천 이유: 예비 및 초기 청년 창업자를 위한 창업 교육 프로그램으로, 창업에 대한 아이디어를 구체화할 수 있는 기회를 제공합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 지역 조건은 전국 대상이며, 소득 조건에 대한 명확한 제한은 확인되지 않았습니다.\n- 추가 확인 필요: 사용자의 나이와 고용 상태에 대한 정보가 없어 해당 조건을 확인해야 합니다.\n- 지원 내용: 창업 교육을 통해 아이디어를 구체화할 수 있도록 지원합니다.\n- 신청/접수 기간: 2026년 6월 8일부터 2026년 6월 17일까지 신청 가능성이 있습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [K-Startup](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178034)\n- 신청 URL: [Naroo](https://www.naroo.or.kr/bbs/content.php?co_id=program_view&np_seq=1269)\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으므로, 추가 확인이 필요합니다.\n\n위의 정보를 바탕으로 신청 가능성을 검토해 보시기 바랍니다.",
+      "user_conditions": {
+        "age": null,
+        "region": null,
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "창업"
+      },
+      "route": "창업",
+      "route_reason": "사용자 질문에 창업, 사업 키워드가 포함됨 / 조건 추출 결과 interest_domain이 창업로 판단됨 / 질문과 route를 기준으로 startup_notice 데이터를 우선 검색",
+      "recommendations": [
+        {
+          "policy_id": "startup_2ff8e434dc6e",
+          "policy_name": "[창업] 내 아이디어로 창업 가능할까?",
+          "eligibility": "추가 확인 필요",
+          "score": 0.7174,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178034",
+          "needs_detail_check": false,
+          "cautions": [
+            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "startup_notice",
+          "deadline_status": "open",
+          "application_end_date": "2026-06-17",
+          "is_expired": false
+        }
+      ],
+      "warnings": [],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "창업",
+            "source_category": "startup_notice",
+            "filters": {
+              "domain": "창업",
+              "source_category": "startup_notice"
+            },
+            "reason": "사용자 질문에 창업, 사업 키워드가 포함됨 / 조건 추출 결과 interest_domain이 창업로 판단됨 / 질문과 route를 기준으로 startup_notice 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "2019년에 했던 청년 창업 지원사업 말고 지금 신청 가능한 공고 알려줘\n검색 키워드: 청년 창업 지원사업 신청 공고",
+            "filters": {
+              "domain": "창업",
+              "source_category": "startup_notice"
+            },
+            "total": 1,
+            "expired_count": 0,
+            "source_count": 1
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 1,
+            "expired_count": 0,
+            "open_count": 1,
+            "source_count": 1,
+            "freshness_intent": true,
+            "sufficient": true,
+            "reasons": []
+          },
+          "next_action": "answer_generation"
+        }
+      ],
+      "internal_search_sufficient": true,
+      "sufficiency_reasons": [],
+      "next_action": "answer_generation",
+      "external_used": false,
+      "external_search_status": "",
+      "external_search_targets": [],
+      "external_search_queries": []
+    }
+  },
+  {
+    "case_id": "TC003_react_fallback_unrealistic",
+    "query": "화성에서 받을 수 있는 청년 우주창업 지원금 알려줘",
+    "passed": true,
+    "score": 1.0,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "제공된 데이터에서 조건에 맞는 지원 정보를 찾지 못했습니다. 지역, 나이, 관심 분야 조건을 조금 넓혀 다시 검색해 주세요.",
+      "user_conditions": {
+        "age": null,
+        "region": "화성",
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "창업"
+      },
+      "route": "창업",
+      "route_reason": "사용자 질문에 창업 키워드가 포함됨 / 조건 추출 결과 interest_domain이 창업로 판단됨 / 질문과 route를 기준으로 startup_notice 데이터를 우선 검색",
+      "recommendations": [],
+      "warnings": [
+        "내부 데이터 검색 결과가 충분하지 않아 외부 공식 출처 검색이 필요합니다. 현재 버전에서는 부정확한 내부 검색 결과를 추천에서 제외합니다."
+      ],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "창업",
+            "source_category": "startup_notice",
+            "filters": {
+              "domain": "창업",
+              "source_category": "startup_notice"
+            },
+            "reason": "사용자 질문에 창업 키워드가 포함됨 / 조건 추출 결과 interest_domain이 창업로 판단됨 / 질문과 route를 기준으로 startup_notice 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "화성에서 받을 수 있는 청년 우주창업 지원금 알려줘\n검색 키워드: 청년 우주창업 지원금",
+            "filters": {
+              "domain": "창업",
+              "source_category": "startup_notice"
+            },
+            "total": 5,
+            "expired_count": 5,
+            "source_count": 5
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 5,
+            "expired_count": 5,
+            "open_count": 0,
+            "source_count": 5,
+            "freshness_intent": false,
+            "sufficient": false,
+            "reasons": [
+              "검색 결과가 모두 마감된 항목입니다."
+            ]
+          },
+          "next_action": "external_search"
+        },
+        {
+          "step": "external_search",
+          "action": "plan_official_source_search",
+          "observation": {
+            "status": "planned_not_executed",
+            "reason": [
+              "검색 결과가 모두 마감된 항목입니다."
+            ],
+            "targets": [
+              {
+                "name": "K-Startup",
+                "kind": "창업지원 공고",
+                "official_url": "https://www.k-startup.go.kr"
+              }
+            ],
+            "target_names": [
+              "K-Startup"
+            ],
+            "queries": [
+              "화성에서 받을 수 있는 청년 우주창업 지원금 알려줘"
+            ],
+            "message": "공식 외부 출처 검색 계획을 생성했습니다. 실제 API 호출은 추후 K-Startup/온통청년/고용24 연동으로 교체 예정입니다."
+          },
+          "next_action": "eligibility_checker"
+        }
+      ],
+      "internal_search_sufficient": false,
+      "sufficiency_reasons": [
+        "검색 결과가 모두 마감된 항목입니다."
+      ],
+      "next_action": "external_search",
+      "external_used": false,
+      "external_search_status": "planned_not_executed",
+      "external_search_targets": [
+        "K-Startup"
+      ],
+      "external_search_queries": [
+        "화성에서 받을 수 있는 청년 우주창업 지원금 알려줘"
+      ]
+    }
+  },
+  {
+    "case_id": "TC004_housing_monthly_rent",
+    "query": "서울에 사는 25세 청년이 받을 수 있는 월세 지원 정책 알려줘",
+    "passed": true,
+    "score": 1.0,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "사용자 입력 기준으로 서울에 거주하는 25세 청년이 받을 수 있는 월세 지원 정책을 안내드립니다.\n\n### 1. (국토부) 26년 청년월세 지원사업\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 연령 조건 충족, 서울 지역 조건 충족\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 2026년 3월 30일 ~ 2026년 5월 29일\n- 신청/접수 방법: 주소지 관할 주민센터에 청년 본인이 방문하거나 복지로에서 온라인으로 신청 가능\n- 제출 서류: 월세지원 신청서, 소득·재산 신고서, 임대차계약서 및 최근 3개월간 월세 이체 증빙서류, 통장 사본, 가족관계증명서 등\n- 출처 URL: [복지로](https://www.bokjiro.go.kr/ssis-tbu/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004661)\n- 신청 URL: [복지로 신청](https://bokjiro.go.kr)\n- 유의사항: 대리인 신청 시 위임장 및 대리인 신분증 지참 필요\n\n### 2. 청년월세 한시 특별지원\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 연령 조건 충족, 서울 지역 조건 충족\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 월 최대 20만원 임대료 지원(최대 24개월)\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요\n\n### 3. 청년안심주택 공급활성화(임차보증금 무이자지원)\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 연령 조건 충족, 서울 지역 조건 충족\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 임차보증금 무이자 지원\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요\n\n### 4. 서울시 청년수당\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 연령 조건 충족, 서울 지역 조건 충족\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 매월 50만원 × 최대 6개월\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [서울시 청년수당](https://youth.seoul.go.kr/youthConts.do?key=2310100061&sc_pbancSeCd=012&sc_bbsStngSn=2212200001&sc_bbsCtgrySn=2310200011&sc_qnaCtgryCd=004&sc_faqCtgryCd=005)\n- 신청 URL: [서울시 청년수당 신청](https://youth.seoul.go.kr/youthConts.do?key=2310100061&sc_detailAt=&pageIndex=1&orderBy=regYmd+desc&tabKind=201&pwKind=&sc_pbancSe=&sc_pbancSeCd=012&sc_bbsStngSn=2212200001&sc_bbsCtgrySn=2310200011&sc_pstSn=2503040001&sc_rvwSn=0&sc_userId=&sc_ntcPstYn=&sc_delYn=&sc_ctgry=&useYn=&sc_faqCtgryCd=005&sc_qnaCtgryCd=004&sc_plcyQnaSn=0&pstSn=&recordCountPerPage=10&sc_wDateS=&sc_wDateE=&sc=&sw=)\n- 유의사항: 지원방법은 체크카드 사용으로 제한됨\n\n위 정책들을 참고하여 추가 확인 후 신청하시기 바랍니다.",
+      "user_conditions": {
+        "age": 25,
+        "region": "서울",
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "주거"
+      },
+      "route": "주거",
+      "route_reason": "사용자 질문에 월세 키워드가 포함됨 / 조건 추출 결과 interest_domain이 주거로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색",
+      "recommendations": [
+        {
+          "policy_id": "policy_20260319005400112218",
+          "policy_name": "(국토부) 26년 청년월세 지원사업",
+          "eligibility": "추가 확인 필요",
+          "score": 0.543,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "20260330 ~ 20260529",
+          "required_documents": "월세지원 신청서, 소득·재산 신고서, 임대차계약서 및 최근 3개월간 월세 이체 증빙서류, 통장 사본, 가족관계증명서 등",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004661",
+          "needs_detail_check": false,
+          "cautions": [],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "policy_20250502005400110774",
+          "policy_name": "청년월세 한시 특별지원",
+          "eligibility": "추가 확인 필요",
+          "score": 0.525,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "월 최대 20만원 임대료 지원(최대 24개월)",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "정보 없음",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요",
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "policy_20250316005400210633",
+          "policy_name": "청년안심주택 공급활성화(임차보증금 무이자지원)",
+          "eligibility": "추가 확인 필요",
+          "score": 0.5203,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "ㅇ (사업 근거)\n - 「서울시 보증금지원형 장기안심주택 업무처리 지침」\n ㅇ (추진 경과)\n - ‘16.03.25. 역세권 청년주택 공급계획 수립\n - ‘19.11.26. 청년·신혼부부 주거비 지원계획 수립\n - `19.12.09 역세권 청년주택 혁신방안\n ㅇ (사업 기간)\n - 2021년 1월 ~ \n ㅇ (사업 대상)\n - 지원대상 : 청년안심주택, 민간임대주택 입주(예정)자\n - 연령기준 : 19~39세\n - 소득 : 전년도 도시근로자 가구당 월평균소득의 100%(신혼부부 120%) 이하\n - 자산 : 청년 2억 7,300만원 이하 / 신혼부부 3억 4,500만원 이하\n ㅇ (사업 내용)\n - 임차보증금 무이자 지원\n · 1억원 초과시 보증금의 30%, 1억 이하는 보증금의 50%\n · 최대 지원금액 청년 4,500만원 / 신혼부부 6,000만원\n ㅇ (사업 주체)\n - 서울시, SH공사\n ㅇ (사업 추진절차)\n - 신청인이 임대차 계약 체결 후 약정서 작성 및 구비서류 제출\n - 소득심사 등을 거쳐 확정시 지원금액 지급하고 보증보험 가입",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "정보 없음",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "정책 정보 완성도 점수(info_score=60)가 낮아 세부 조건 확인 필요",
+            "출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요",
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "policy_20250305005400110593",
+          "policy_name": "서울시 청년수당",
+          "eligibility": "추가 확인 필요",
+          "score": 0.6157,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "ㅇ (금전적 지원) 매월 50만원 × 최대 6개월\nㅇ (성장 지원) 청년 유형별 맞춤형 프로그램 지원- 단계별 진로설계 과정에 따른 맞춤형 지원, 장기 멘토링 프로그램 제공- 진로준비에 도움을 줄 서울시 정책사업 연계 지원\nㅇ 지원방법 : 체크카드(*클린카드) 사용 \n* 해외사용이 불가하고, 사용 업종이 제한된 카드(호텔, 주점, 귀금속판매 등 48개 업종)",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://youth.seoul.go.kr/youthConts.do?key=2310100061&sc_pbancSeCd=012&sc_bbsStngSn=2212200001&sc_bbsCtgrySn=2310200011&sc_qnaCtgryCd=004&sc_faqCtgryCd=005",
+          "needs_detail_check": false,
+          "cautions": [
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "policy_20260520005400213208",
+          "policy_name": "2026년 서울청년정책네트워크 하반기 모집",
+          "eligibility": "추가 확인 필요",
+          "score": 0.5924,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "20260520 ~ 20260529",
+          "required_documents": "1. 활동신청서 (필수): 지원동기, 제안정책, 선호활동 3개 문항 작성 (총 500자 이상, 청년몽땅정보통 신청페이지 내 신청서 작성)\n\n2. 거주·생활 증빙서류 (필수)\n(서울 거주자) 주민등록표 초본 (성명, 생년월일, 현주소만 표시)\n(서울 생활권자) 재학·휴학증명서, 재직증명서, 사업자등록증 중 택 1\n\n3. 우선선발 증빙서류 (해당자): 기초생활수급자 증명서, 차상위계층 확인서, 한부모가족증명서, 장애인증명서, 가족돌봄청년 신청서 등 (미제출 시 일반선발로 전환)\n\n4. 市 위원회 추천 이력서 (선택): 향후 서울시 위원회 청년위원 추천 인력풀 활용 희망자 양식 제출",
+          "source_url": "https://youth.seoul.go.kr/bbs/view.do?pstSn=2605150002&key=2303300002&sc_detailAt=&pageIndex=1&orderBy=regYmd+desc&sc_wDateS=&sc_wDateE=&sc_bbsCtgrySn=2304110001&sc=&sw=&recordCountPerPage=10",
+          "needs_detail_check": false,
+          "cautions": [],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        }
+      ],
+      "warnings": [],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "주거",
+            "source_category": "policy",
+            "filters": {
+              "user_age": 25,
+              "user_region_code": "11000",
+              "domain": "주거",
+              "source_category": "policy"
+            },
+            "reason": "사용자 질문에 월세 키워드가 포함됨 / 조건 추출 결과 interest_domain이 주거로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "서울에 사는 25세 청년이 받을 수 있는 월세 지원 정책 알려줘\n검색 키워드: 월세 지원",
+            "filters": {
+              "user_age": 25,
+              "user_region_code": "11000",
+              "domain": "주거",
+              "source_category": "policy"
+            },
+            "total": 5,
+            "expired_count": 0,
+            "source_count": 3
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 5,
+            "expired_count": 0,
+            "open_count": 0,
+            "source_count": 3,
+            "freshness_intent": false,
+            "sufficient": true,
+            "reasons": []
+          },
+          "next_action": "answer_generation"
+        }
+      ],
+      "internal_search_sufficient": true,
+      "sufficiency_reasons": [],
+      "next_action": "answer_generation",
+      "external_used": false,
+      "external_search_status": "",
+      "external_search_targets": [],
+      "external_search_queries": []
+    }
+  },
+  {
+    "case_id": "TC005_training_ai_data",
+    "query": "국민내일배움카드로 들을 수 있는 AI 데이터 분석 훈련 과정 추천해줘",
+    "passed": true,
+    "score": 1.0,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "사용자 입력 기준으로 AI 데이터 분석 관련 교육훈련 과정을 추천드립니다.\n\n### 1. [AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정 (필기&실기)\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI와 관련된 컴퓨터 활용 능력을 배울 수 있는 과정으로, AI 업무 활용에 적합합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건에 대한 정보가 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보 확인 필요\n- 지원 내용: [AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정 (필기&실기)\n- 신청/접수 기간: 2026-06-11 ~ 2026-07-02\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642)\n- 신청 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요\n\n### 2. Ai를 활용한 유튜브영상편집\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI를 활용한 영상 편집 기술을 배울 수 있는 과정으로, 데이터 분석과 관련된 실무 능력을 향상시킬 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건에 대한 정보가 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보 확인 필요\n- 지원 내용: Ai를 활용한 유튜브영상편집\n- 신청/접수 기간: 2026-06-24 ~ 2026-08-26\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026)\n- 신청 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요\n\n### 3. [기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무 (포토_일러_AI툴)\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI를 활용한 디자인 및 포트폴리오 실무를 배울 수 있는 과정으로, 데이터 분석과 관련된 창의적 기술을 익힐 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건에 대한 정보가 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보 확인 필요\n- 지원 내용: [기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무 (포토_일러_AI툴)\n- 신청/접수 기간: 2026-07-20 ~ 2026-09-28\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000545026&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500041645611)\n- 신청 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000545026&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500041645611)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요\n\n위의 과정들을 참고하시어 추가 확인 후 신청하시기 바랍니다.",
+      "user_conditions": {
+        "age": null,
+        "region": null,
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "교육"
+      },
+      "route": "교육",
+      "route_reason": "사용자 질문에 훈련 키워드가 포함됨 / 조건 추출 결과 interest_domain이 교육로 판단됨 / 질문과 route를 기준으로 training 데이터를 우선 검색",
+      "recommendations": [
+        {
+          "policy_id": "training_4fb4a7139c63",
+          "policy_name": "[AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정 (필기&실기)",
+          "eligibility": "추가 확인 필요",
+          "score": 0.6498,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642",
+          "needs_detail_check": true,
+          "cautions": [
+            "교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "교육훈련 과정의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "교육훈련 과정의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "training",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "training_e0a4daf3cc4d",
+          "policy_name": "Ai를 활용한 유튜브영상편집",
+          "eligibility": "추가 확인 필요",
+          "score": 0.6461,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026",
+          "needs_detail_check": true,
+          "cautions": [
+            "교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "교육훈련 과정의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "교육훈련 과정의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "training",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "training_e8c0833290a4",
+          "policy_name": "Ai를 활용한 유튜브영상편집",
+          "eligibility": "추가 확인 필요",
+          "score": 0.6456,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=1&crseTracseSe=C0061&trainstCstmrId=500020052026",
+          "needs_detail_check": true,
+          "cautions": [
+            "교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "교육훈련 과정의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "교육훈련 과정의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "training",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "training_4ef02f5da654",
+          "policy_name": "[기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무 (포토_일러_AI툴)",
+          "eligibility": "추가 확인 필요",
+          "score": 0.6448,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000545026&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500041645611",
+          "needs_detail_check": true,
+          "cautions": [
+            "교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "교육훈련 과정의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "교육훈련 과정의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "training",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "training_a1c300f1e7db",
+          "policy_name": "[기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무 (포토_일러_AI툴)",
+          "eligibility": "추가 확인 필요",
+          "score": 0.6444,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000545026&tracseTme=1&crseTracseSe=C0061&trainstCstmrId=500041645611",
+          "needs_detail_check": true,
+          "cautions": [
+            "교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "교육훈련 과정의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "교육훈련 과정의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "training",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        }
+      ],
+      "warnings": [],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "교육",
+            "source_category": "training",
+            "filters": {
+              "domain": "교육",
+              "source_category": "training"
+            },
+            "reason": "사용자 질문에 훈련 키워드가 포함됨 / 조건 추출 결과 interest_domain이 교육로 판단됨 / 질문과 route를 기준으로 training 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "국민내일배움카드로 들을 수 있는 AI 데이터 분석 훈련 과정 추천해줘\n검색 키워드: 국민내일배움카드 AI 데이터 분석 훈련 과정",
+            "filters": {
+              "domain": "교육",
+              "source_category": "training"
+            },
+            "total": 5,
+            "expired_count": 0,
+            "source_count": 5
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 5,
+            "expired_count": 0,
+            "open_count": 0,
+            "source_count": 5,
+            "freshness_intent": false,
+            "sufficient": true,
+            "reasons": []
+          },
+          "next_action": "answer_generation"
+        }
+      ],
+      "internal_search_sufficient": true,
+      "sufficiency_reasons": [],
+      "next_action": "answer_generation",
+      "external_used": false,
+      "external_search_status": "",
+      "external_search_targets": [],
+      "external_search_queries": []
+    }
+  },
+  {
+    "case_id": "TC006_job_interview_allowance",
+    "query": "면접수당 받을 수 있는 정책 알려줘",
+    "passed": true,
+    "score": 1.0,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "사용자 입력 기준으로 면접수당 관련 정책을 찾았습니다. 다음은 추천하는 정책입니다.\n\n### 1. 모자건강증진 사업\n- 항목 유형: 정책\n- 추천 이유: 면접수당과 관련된 정책으로, 지원 내용이 건강 증진과 관련되어 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 주요 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 보건소 방문 또는 온라인(맘편한임신) 신청 후 택배수령\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [모자건강증진 사업](https://www.mohw.go.kr/board.es?mid=a10411010100&bid=0019&act=view&list_no=1484219&tag=&nPage=1)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n정책에 대한 추가 정보는 출처를 통해 확인하시기 바랍니다.",
+      "user_conditions": {
+        "age": null,
+        "region": null,
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "일자리"
+      },
+      "route": "일자리",
+      "route_reason": "사용자 질문에 면접 키워드가 포함됨 / 조건 추출 결과 interest_domain이 일자리로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색",
+      "recommendations": [
+        {
+          "policy_id": "policy_20250407005400210695",
+          "policy_name": "모자건강증진 사업",
+          "eligibility": "추가 확인 필요",
+          "score": 0.4668,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.mohw.go.kr/board.es?mid=a10411010100&bid=0019&act=view&list_no=1484219&tag=&nPage=1",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        }
+      ],
+      "warnings": [],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "일자리",
+            "source_category": "policy",
+            "filters": {
+              "domain": "일자리",
+              "source_category": "policy"
+            },
+            "reason": "사용자 질문에 면접 키워드가 포함됨 / 조건 추출 결과 interest_domain이 일자리로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "면접수당 받을 수 있는 정책 알려줘\n검색 키워드: 면접수당 정책",
+            "filters": {
+              "domain": "일자리",
+              "source_category": "policy"
+            },
+            "total": 1,
+            "expired_count": 0,
+            "source_count": 1
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 1,
+            "expired_count": 0,
+            "open_count": 0,
+            "source_count": 1,
+            "freshness_intent": false,
+            "sufficient": true,
+            "reasons": []
+          },
+          "next_action": "answer_generation"
+        }
+      ],
+      "internal_search_sufficient": true,
+      "sufficiency_reasons": [],
+      "next_action": "answer_generation",
+      "external_used": false,
+      "external_search_status": "",
+      "external_search_targets": [],
+      "external_search_queries": []
+    }
+  },
+  {
+    "case_id": "TC007_finance_savings",
+    "query": "청년도약계좌 같은 금융 정책 알려줘",
+    "passed": true,
+    "score": 1.0,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "사용자 입력 기준으로 금융 관련 정책을 찾았습니다. 다음은 추천하는 정책 목록입니다.\n\n### 1. 청년미래적금('26.6.22 출시예정)\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 금융 지원 정책으로, 자산 형성을 도와주는 적금 상품입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년미래적금](https://www.kinfa.or.kr/financialProduct/youthFutureSavings.do)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요\n\n### 2. (접수 마감)2026년 11기 광주 청년 13(일+삶)통장\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 금융 지원 정책으로, 자산 형성을 도와주는 통장입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [광주 청년 13(일+삶)통장](https://youth.gwangju.go.kr/www/)\n- 신청 URL: [광주 청년 13(일+삶)통장](https://youth.gwangju.go.kr/www/)\n- 유의사항: 출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요\n\n### 3. 청년 자산형성 지원(청년도약계좌)\n- 항목 유형: 정책\n- 추천 이유: 청년의 자산 형성을 지원하는 정책으로, 다양한 금융 상품과 연계되어 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년 자산형성 지원](https://ylaccount.kinfa.or.kr/main)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요\n\n### 4. 금융감독원 e-금융교육센터\n- 항목 유형: 정책\n- 추천 이유: 청년층을 위한 맞춤형 금융 교육을 제공하여 재무 관리 능력을 향상시킬 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 청년 특화과정 및 생애 주기별 필수 과정 제공\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [금융감독원 e-금융교육센터](https://www.fss.or.kr/edu/fem/eduProgram/view.do?programSlno=1&menuNo=300020)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 정보 완성도 점수가 낮아 세부 조건 확인 필요\n\n### 5. 청년미래적금 운영\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 적금 상품으로, 자산 형성을 지원합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 관내 근로 청년이 월 15만원 적금 시 시에서 동일 금액을 적립하여 만기 시 지급\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년미래적금 운영](https://sjyouth.sjepa.or.kr/)\n- 신청 URL: [청년미래적금 운영](https://sjyouth.sjepa.or.kr/)\n- 유의사항: 정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음\n\n위 정책들을 참고하여 추가적인 정보를 확인하시기 바랍니다.",
+      "user_conditions": {
+        "age": null,
+        "region": null,
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "금융"
+      },
+      "route": "금융",
+      "route_reason": "사용자 질문에 계좌, 금융, 청년도약 키워드가 포함됨 / 조건 추출 결과 interest_domain이 금융로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색",
+      "recommendations": [
+        {
+          "policy_id": "policy_20260605005400113228",
+          "policy_name": "청년미래적금('26.6.22 출시예정)",
+          "eligibility": "추가 확인 필요",
+          "score": 0.5202,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.kinfa.or.kr/financialProduct/youthFutureSavings.do",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "policy_20260429005400212943",
+          "policy_name": "(접수 마감)2026년 11기 광주 청년 13(일+삶)통장",
+          "eligibility": "추가 확인 필요",
+          "score": 0.5021,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "정보 없음",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요",
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "policy_20250618005400111001",
+          "policy_name": "청년 자산형성 지원(청년도약계좌)",
+          "eligibility": "추가 확인 필요",
+          "score": 0.4907,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://ylaccount.kinfa.or.kr/main",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "policy_20260406005400212465",
+          "policy_name": "금융감독원 e-금융교육센터",
+          "eligibility": "추가 확인 필요",
+          "score": 0.4821,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "○ 청년 특화과정 \r\n- 청년층 재무설계: 사회 초년기 자금관리부터 주택마련, 결혼 자금 및 신혼부부 재무설계 등\r\n- 군장병/간부 과정: 목돈마련, 슬기로운 신용·부채관리, 금융사기 피해예방 등\r\n○ 생애 주기별 필수 과정(필요시 활용)\r\n- 기초/심화 과정: 초급(기초 생활 금융), 중급/고급(자산 형성 및 설계) 등 단계별 학습 기회 제공\r\n- 성인/고령층 과정: 은퇴 후 노후 관리, 금융상품 이해 등 미래 준비를 위한 금융지식 습득",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.fss.or.kr/edu/fem/eduProgram/view.do?programSlno=1&menuNo=300020",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "정책 정보 완성도 점수(info_score=70)가 낮아 세부 조건 확인 필요",
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "policy_20250904005400211630",
+          "policy_name": "청년미래적금 운영",
+          "eligibility": "추가 확인 필요",
+          "score": 0.4717,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "○ 관내 기업에 근로 중인 청년이 월 15만원의 적금 납입 시에 시도 동일금액을 적립하여 만기(3년)에 일시 지급\n ※ 만기수령액: 본인 저축액 540만원(15만원×36개월) + 시 지원금 540만원(매칭지원) + 본인 저축분에 대한 이자\n○ 지원요건\n - (연령) 19세 이상 39세인 청년\n - (거주) 공고일 기준 세종시 6개월 이상 계속 거주\n - (근로) 공고일 기준 6개월 이상 4대 보험이 가입된 관내 ‧ 동일사업장(재직 중인 기업‧기관 등의 사업자등록증 기준 세종 소재 확인)에서 주 30시간 이상 계속 근로하고 있는 자\n - (소득) 공고일 기준 최근 6개월 평균 건강보험료 본인부담금이 ’25년 건강보험료 소득판정기준표상 중위소득 120% 이하인 자",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://sjyouth.sjepa.or.kr/",
+          "needs_detail_check": false,
+          "cautions": [
+            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "policy",
+          "deadline_status": "not_applicable",
+          "application_end_date": null,
+          "is_expired": false
+        }
+      ],
+      "warnings": [],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "금융",
+            "source_category": "policy",
+            "filters": {
+              "domain": "금융",
+              "source_category": "policy"
+            },
+            "reason": "사용자 질문에 계좌, 금융, 청년도약 키워드가 포함됨 / 조건 추출 결과 interest_domain이 금융로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "청년도약계좌 같은 금융 정책 알려줘\n검색 키워드: 청년도약계좌 금융 정책",
+            "filters": {
+              "domain": "금융",
+              "source_category": "policy"
+            },
+            "total": 5,
+            "expired_count": 0,
+            "source_count": 4
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 5,
+            "expired_count": 0,
+            "open_count": 0,
+            "source_count": 4,
+            "freshness_intent": false,
+            "sufficient": true,
+            "reasons": []
+          },
+          "next_action": "answer_generation"
+        }
+      ],
+      "internal_search_sufficient": true,
+      "sufficiency_reasons": [],
+      "next_action": "answer_generation",
+      "external_used": false,
+      "external_search_status": "",
+      "external_search_targets": [],
+      "external_search_queries": []
+    }
+  },
+  {
+    "case_id": "TC008_participation_committee",
+    "query": "청년 참여위원회 모집 정보 알려줘",
+    "passed": true,
+    "score": 1.0,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "사용자 입력 기준으로 청년 참여위원회 모집 정보를 요청하셨습니다. 관련된 창업지원 공고를 아래와 같이 추천드립니다.\n\n### 1. 청년성장지원 『이룸』하반기 청년창업팀 모집\n- 항목 유형: 창업지원 공고\n- 추천 이유: 청년 예비창업팀을 모집하는 공고로, 청년들의 참여를 장려하는 내용입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 성남시 거주 혹은 재학 중인 만 19~39세 청년\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 2026년 하반기 성남시청소년청년재단 야탑유스센터와 함께할 청년 예비창업팀 모집\n- 신청/접수 기간: 2026년 6월 8일 ~ 2026년 6월 22일\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년성장지원 『이룸』하반기 청년창업팀 모집](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178005)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으니 추가 확인이 필요합니다.\n\n### 2. 청년창직인턴 운영기관 2차간담회\n- 항목 유형: 창업지원 공고\n- 추천 이유: 청년창직인턴 운영기관과 관련된 간담회로, 청년들의 참여를 유도하는 행사입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 청소년, 대학생, 일반인\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 청년창직인턴 운영기관 2차간담회\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년창직인턴 운영기관 2차간담회](https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=13594)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 신청기간 및 제출서류 정보가 명확히 포함되어 있지 않으니 추가 확인이 필요합니다.\n\n### 3. 2012 청년창업해외연수\n- 항목 유형: 창업지원 공고\n- 추천 이유: 청년 창업과 관련된 해외 연수 프로그램으로, 청년들의 글로벌 경험을 지원합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 청소년, 대학생, 일반인\n- 추가 확인 필요: 사용자 나이, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 2012 청년창업해외연수\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [2012 청년창업해외연수](https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=12768)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 신청기간 및 제출서류 정보가 명확히 포함되어 있지 않으니 추가 확인이 필요합니다.\n\n위의 정보들을 참고하시어 관심 있는 정책에 대해 추가 확인 후 신청하시기 바랍니다.",
+      "user_conditions": {
+        "age": null,
+        "region": null,
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "참여기반"
+      },
+      "route": "참여권리",
+      "route_reason": "사용자 질문에 참여, 위원 키워드가 포함됨 / 조건 추출 결과 interest_domain이 참여권리로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색",
+      "recommendations": [
+        {
+          "policy_id": "startup_b930eebdedde",
+          "policy_name": "청년성장지원 『이룸』하반기 청년창업팀 모집",
+          "eligibility": "추가 확인 필요",
+          "score": 0.5976,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178005",
+          "needs_detail_check": false,
+          "cautions": [
+            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
+          ],
+          "source_category": "startup_notice",
+          "deadline_status": "open",
+          "application_end_date": "2026-06-22",
+          "is_expired": false
+        },
+        {
+          "policy_id": "startup_86f01e5c7135",
+          "policy_name": "청년창직인턴 운영기관 2차간담회",
+          "eligibility": "추가 확인 필요",
+          "score": 0.5997,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=13594",
+          "needs_detail_check": false,
+          "cautions": [
+            "창업지원 공고의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "창업지원 공고의 마감일을 구조화 데이터에서 명확히 확인하지 못해 원문 확인 필요"
+          ],
+          "source_category": "startup_notice",
+          "deadline_status": "unknown",
+          "application_end_date": "",
+          "is_expired": false
+        },
+        {
+          "policy_id": "startup_efcce1c8f8c7",
+          "policy_name": "2012 청년창업해외연수",
+          "eligibility": "추가 확인 필요",
+          "score": 0.5919,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=12768",
+          "needs_detail_check": false,
+          "cautions": [
+            "창업지원 공고의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "창업지원 공고의 마감일을 구조화 데이터에서 명확히 확인하지 못해 원문 확인 필요"
+          ],
+          "source_category": "startup_notice",
+          "deadline_status": "unknown",
+          "application_end_date": "",
+          "is_expired": false
+        }
+      ],
+      "warnings": [],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "참여권리",
+            "source_category": "policy",
+            "filters": {
+              "domain": "참여권리",
+              "source_category": "policy"
+            },
+            "reason": "사용자 질문에 참여, 위원 키워드가 포함됨 / 조건 추출 결과 interest_domain이 참여권리로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "청년 참여위원회 모집 정보 알려줘\n검색 키워드: 청년 참여위원회 모집",
+            "filters": {
+              "domain": "참여권리",
+              "source_category": "policy"
+            },
+            "total": 3,
+            "expired_count": 0,
+            "source_count": 3
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 3,
+            "expired_count": 0,
+            "open_count": 1,
+            "source_count": 3,
+            "freshness_intent": false,
+            "sufficient": true,
+            "reasons": []
+          },
+          "next_action": "answer_generation"
+        }
+      ],
+      "internal_search_sufficient": true,
+      "sufficiency_reasons": [],
+      "next_action": "answer_generation",
+      "external_used": false,
+      "external_search_status": "",
+      "external_search_targets": [],
+      "external_search_queries": []
+    }
+  },
+  {
+    "case_id": "TC009_short_query_warning",
+    "query": "월세",
+    "passed": true,
+    "score": 1.0,
+    "checks": {
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
+    },
+    "error": null,
+    "response": {
+      "answer": "제공된 데이터에서 조건에 맞는 지원 정보를 찾지 못했습니다. 지역, 나이, 관심 분야 조건을 조금 넓혀 다시 검색해 주세요.",
+      "user_conditions": {
+        "age": null,
+        "region": null,
+        "income": null,
+        "employment_status": null,
+        "interest_domain": "주거"
+      },
+      "route": "주거",
+      "route_reason": "사용자 질문에 월세 키워드가 포함됨 / 조건 추출 결과 interest_domain이 주거로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색",
+      "recommendations": [],
+      "warnings": [
+        "질문이 짧아 검색 정확도가 낮을 수 있습니다.",
+        "검색 조건에 맞는 지원 정보 chunk를 찾지 못했습니다.",
+        "내부 데이터 검색 결과가 충분하지 않아 외부 공식 출처 검색이 필요합니다. 현재 버전에서는 부정확한 내부 검색 결과를 추천에서 제외합니다."
+      ],
+      "tool_trace": [
+        {
+          "step": "router",
+          "action": "select_domain_and_source_category",
+          "observation": {
+            "route": "주거",
+            "source_category": "policy",
+            "filters": {
+              "domain": "주거",
+              "source_category": "policy"
+            },
+            "reason": "사용자 질문에 월세 키워드가 포함됨 / 조건 추출 결과 interest_domain이 주거로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색"
+          },
+          "next_action": "internal_retriever"
+        },
+        {
+          "step": "internal_retriever",
+          "action": "search_vector_db",
+          "observation": {
+            "query": "월세\n검색 키워드: 월세",
+            "filters": {
+              "domain": "주거",
+              "source_category": "policy"
+            },
+            "total": 0,
+            "expired_count": 0,
+            "source_count": 0
+          },
+          "next_action": "result_sufficiency_checker"
+        },
+        {
+          "step": "result_sufficiency_checker",
+          "action": "check_internal_search_results",
+          "observation": {
+            "total": 0,
+            "expired_count": 0,
+            "open_count": 0,
+            "source_count": 0,
+            "freshness_intent": false,
+            "sufficient": false,
+            "reasons": [
+              "내부 Vector DB 검색 결과가 없습니다."
+            ]
+          },
+          "next_action": "external_search"
+        },
+        {
+          "step": "external_search",
+          "action": "plan_official_source_search",
+          "observation": {
+            "status": "planned_not_executed",
+            "reason": [
+              "내부 Vector DB 검색 결과가 없습니다."
+            ],
+            "targets": [
+              {
+                "name": "온통청년",
+                "kind": "청년정책",
+                "official_url": "https://www.youthcenter.go.kr"
+              }
+            ],
+            "target_names": [
+              "온통청년"
+            ],
+            "queries": [
+              "월세 주거"
+            ],
+            "message": "공식 외부 출처 검색 계획을 생성했습니다. 실제 API 호출은 추후 K-Startup/온통청년/고용24 연동으로 교체 예정입니다."
+          },
+          "next_action": "eligibility_checker"
+        }
+      ],
+      "internal_search_sufficient": false,
+      "sufficiency_reasons": [
+        "내부 Vector DB 검색 결과가 없습니다."
+      ],
+      "next_action": "external_search",
+      "external_used": false,
+      "external_search_status": "planned_not_executed",
+      "external_search_targets": [
+        "온통청년"
+      ],
+      "external_search_queries": [
+        "월세 주거"
+      ]
+    }
+  },
+  {
+    "case_id": "TC010_no_empty_query",
+    "query": "",
+    "passed": false,
+    "score": 0.0,
+    "checks": {
+      "request_success": false
+    },
+    "error": "HTTP 422: {\"detail\":[{\"type\":\"string_too_short\",\"loc\":[\"body\",\"message\"],\"msg\":\"String should have at least 1 character\",\"input\":\"\",\"ctx\":{\"min_length\":1}}]}",
+    "response": {}
+  }
+]

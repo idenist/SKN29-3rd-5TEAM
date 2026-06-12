@@ -32,7 +32,7 @@ def build_rag_workflow():
     → Router
     → Retriever
     → Result Sufficiency Checker
-    → External Search Placeholder or Eligibility Checker
+    → External Search Plan or Eligibility Checker
     → Answer Generator
     → END
     """
@@ -86,6 +86,9 @@ def run_rag_workflow(
         "errors": [],
         "tool_trace": [],
         "external_used": False,
+        "external_search_status": "",
+        "external_search_targets": [],
+        "external_search_queries": [],
         "internal_search_sufficient": False,
         "next_action": "internal_retriever",
         "top_k": top_k,
@@ -110,6 +113,9 @@ def run_rag_workflow(
         "sufficiency_reasons": result.get("sufficiency_reasons", []),
         "next_action": result.get("next_action", ""),
         "external_used": result.get("external_used", False),
+        "external_search_status": result.get("external_search_status", ""),
+        "external_search_targets": result.get("external_search_targets", []),
+        "external_search_queries": result.get("external_search_queries", []),
     }
 
 
@@ -137,6 +143,7 @@ def run_router_workflow(query: str) -> dict[str, Any]:
         "user_query": query,
         "warnings": [],
         "errors": [],
+        "tool_trace": [],
     }
 
     result = app.invoke(initial_state)
@@ -149,6 +156,7 @@ def run_router_workflow(query: str) -> dict[str, Any]:
         "filters": result.get("filters", {}),
         "warnings": result.get("warnings", []),
         "errors": result.get("errors", []),
+        "tool_trace": result.get("tool_trace", []),
     }
 
 
