@@ -2,13 +2,81 @@
 
 ## 1. 프로젝트 개요
 
+- **서비스 명**: 이젠, 안쉼 (청년들이 정보 탐색의 피로에서 벗어나 안심할 수 있는 서비스)
+- **기획 배경**: 청년 정책(온통청년), 창업 지원(K-Startup), 교육·훈련(고용24) 정보가 여러 기관에 파편화되어 있어 발생하는 청년들의 높은 탐색 비용과 정보 비대칭 문제를 해결하고자 함
+- **핵심 가치**: 규칙 기반의 하드코딩 필터링을 넘어, **자연어 기반 조건 추출(NLP)** 및 **멀티 에이전트 워크플로우(LangGraph)**를 결합하여 대용량 공공 데이터셋(2.6만 건) 안에서 유저 맞춤형 정책을 최적의 경로로 큐레이션합니다.
+
 본 패키지는 청년 지원 정보를 RAG 기반으로 탐색하기 위한 최종 데이터 산출물이다.
 
 기존 v2 통합 데이터에 평가계획서의 데이터 전처리 요구 항목을 반영하여 데이터 설명서, 전처리 파이프라인 문서, KoNLPy Okt 형태소 분석 스크립트, 불용어 처리 리포트, BoW/TF-IDF 리포트, Word2Vec/FastText 샘플 학습 리포트, Ground Truth 평가 데이터셋, 청킹 전략 문서를 추가했다.
 
 최종 백엔드 데이터는 `data/processed/opportunities.json`이며, RAG 임베딩 데이터는 `data/processed/opportunity_chunks.jsonl`이다.
 
-## 2. 현재 통합된 데이터 출처
+---
+
+## 2. 팀원 소개 및 역할 분담
+
+<table>
+  <tr align="center">
+    <th width="10%">구분</th>
+    <th width="18%">송민지</th>
+    <th width="18%">윤승혁</th>
+    <th width="18%">정승</th>
+    <th width="18%">한경찬</th>
+    <th width="18%">한예나</th>
+  </tr>
+  
+  <tr align="center">
+    <td><strong>사진</strong></td>
+    <td><img src="docs/images/minji.png" width="110" height="110" alt="송민지"></td>
+    <td><img src="docs/images/seunghyuk.png" width="11x" height="11x" alt="윤승혁"></td>
+    <td><img src="docs/images/seung.png" width="110" height="11x" alt="정승"></td>
+    <td><img src="docs/images/kyungchan.png" width="110" height="110" alt="한경찬"></td>
+    <td><img src="docs/images/yena.png" width="110" height="110" alt="한예나"></td>
+  </tr>
+  
+  <tr align="center">
+    <td><strong>역할</strong></td>
+    <td><strong>프론트엔드</strong></td>
+    <td><strong>RAG/LangGraph</strong></td>
+    <td><strong>데이터 엔지니어링</strong></td>
+    <td><strong>백엔드</strong></td>
+    <td><strong>PM/기획,평가</strong></td>
+  </tr>
+  
+  <tr valign="top">
+    <td align="center"><strong>한 일</strong></td>
+    <td>
+      • 전체 일정 관리<br>
+      • 작업 방향 컨펌<br>
+      • 파트별 진행 상황 확인
+    </td>
+    <td>
+      • 노인·고령층 관련 법령 데이터 확인<br>
+      • 문서 전처리 및 임베딩 흐름 정리
+    </td>
+    <td>
+      • 사용자 질문 화면 구성<br>
+      • API 연결 흐름 설계<br>
+      • 결과 화면 UX 정리<br>
+      • RAG 기반 테스트 케이스 설계
+    </td>
+    <td>
+      • FastAPI <code>/chat</code> 구성<br>
+      • LangGraph Agent 실행 구조 정리<br>
+      • MCP tool 연동 준비
+    </td>
+    <td>
+      • 전체 서비스 흐름 정리<br>
+      • README 및 발표 자료 구성<br>
+      • 팀 산출물 내용 정리
+    </td>
+  </tr>
+</table>
+
+---
+
+## 3. 현재 통합된 데이터 출처
 
 | source_category | 데이터 | 출처 | 통합 기준 | 건수 |
 |---|---|---|---|---:|
@@ -16,7 +84,19 @@
 | `startup_notice` | 창업지원 공고 | K-Startup / 창업진흥원 Open API | `youth_relevance = high` | 3,789 |
 | `training` | 교육·취업 훈련 과정 | 고용24/HRD 국민내일배움카드 훈련과정 API | `youth_relevance = high` | 20,403 |
 
-## 3. 데이터 출처 URL
+## 4. 핵심 기능 (Key Features)
+1. **자연어 기반 유저 프로필 추출 (NLP)**
+   - "서울 사는 27살 취준생이고 주거에 관심 있어"와 같은 사용자 질의에서 연령, 지역, 소득, 상태, 관심사를 파싱하여 유저 프로필 세션에 자동 매칭합니다.
+2. **실시간 대용량 통합 데이터 필터링**
+   - 2.6만 건 이상의 이종 데이터(정책, 창업, 교육)를 단일 스키마로 통합하여 나이, 지역, 마감 여부 정보를 실시간으로 다중 필터링합니다. 브라우저 성능 최적화를 위해 상위 30건의 고품질 카드만 선별 렌더링합니다.
+3. **데이터 완성도 점수 (`info_score`) 도입**
+   - 공공 데이터 특유의 정보 공백을 극복하기 위해 필드 완성도를 기반으로 스코어링 시스템을 구현, 유저에게 정밀하고 신뢰도 높은 공고를 최우선으로 노출합니다.
+4. **LangGraph 및 에이전트 기반 오케스트레이션 (Back-end 지향)**
+   - 단순 검색 쿼리를 넘어 복잡한 추천 로직 및 예외 처리를 에이전트의 상태 그래프(`graph/`) 흐름으로 제어하여 향후 유연한 챗봇 서비스 확장이 가능합니다.
+
+---
+
+## 5. 데이터 출처 URL
 
 1. 온통청년 Open API  
    - https://www.youthcenter.go.kr/cmnFooter/openapiIntro/oaiGuide
@@ -29,7 +109,7 @@
 3. 고용24/HRD Open API  
    - https://www.work24.go.kr/cm/e/a/0110/selectOpenApiIntro.do
 
-## 4. 최종 데이터 수량
+## 6. 최종 데이터 수량
 
 | 항목 | 수량 |
 |---|---:|
@@ -42,7 +122,7 @@
 | 출처 URL 보유 데이터 | 25,851건 |
 | Ground Truth 평가 질문 | 50개 |
 
-## 5. 최종 산출물
+## 7. 최종 산출물
 
 | 파일 | 용도 |
 |---|---|
@@ -64,22 +144,35 @@
 | `docs/data_pipeline_summary.md` | 데이터 수집→정제→통합 파이프라인 문서 |
 | `docs/evaluation_checklist.md` | 평가 지표 대응표 |
 
-## 6. 폴더 구조
+## 8. 전체 디렉터리 구조
 
 ```text
-youth-support-data-final-evaluation-package/
-├─ README.md
-├─ requirements.txt
-├─ data/
-│  ├─ raw/
-│  ├─ processed/
-│  └─ reports/
-├─ docs/
-├─ scripts/
-└─ tests/
-```
+📂 3RDPRJ
+├── 📂 app_streamlit               # Streamlit 프론트엔드 어플리케이션
+│   ├── 📄 app.py                 # 프론트엔드 메인 진입점
+│   ├── 📂 styles/                # UI 커스텀 스타일링 (style.css)
+│   ├── 📂 utils/                 # 데이터 로더, HTML 렌더러, 조건 파서 모듈
+│   └── 📂 views/                 # 화면 단위 렌더링 (홈, 추천결과, 상세, 가이드, 챗봇)
+├── 📂 backend                     # FastAPI 백엔드 어플리케이션
+│   ├── 📄 main.py                # 백엔드 API 서버 진입점
+│   ├── 📂 api/                   # API 라우터 및 엔드포인트 제어 레이어
+│   ├── 📂 db/                    # 데이터베이스 및 Vector DB 연결 설정
+│   ├── 📂 graph/                 # LangGraph 기반 에이전트 워크플로우 및 노드 정의
+│   ├── 📂 schemas/               # Pydantic 기반 데이터 검증 및 DTO 스키마
+│   └── 📂 services/              # 핵심 추천 비즈니스 로직 레이어
+├── 📂 data                        # 데이터 저장 및 분석 관리
+│   ├── 📂 raw/                   # 공공데이터 수집 원본 (Open API Raw Data)
+│   ├── 📂 processed/             # 전처리 완료 및 정규화 데이터 (opportunities.json 등)
+│   └── 📂 reports/               # 중복/결측치/형태소 분석 품질 리포트
+├── 📂 docs                        # 데이터 사전, 청킹 전략 등 개발 명세 및 문서
+├── 📂 scripts                     # 데이터 전처리, 텍스트 분석 및 자동화 스크립트
+├── 📂 tests                       # 단위 및 통합 테스트 코드
+├── 📄 .env                        # API 키 및 DB 접속 정보 환경변수 파일
+├── 📄 requirements.txt            # 의존성 패키지 목록 (Streamlit, FastAPI, Pandas 등)
+├── 📄 run_konlpy_setup.bat        # Java 환경 검증 및 KoNLPy 패키지 자동 설치 스크립트
+└── 📄 update_readme_eval.py       # 데이터 전처리 평가 리포트 README 반영 스크립트
 
-## 7. 데이터 수집 및 전처리 흐름
+## 9. 데이터 수집 및 전처리 흐름
 
 ```text
 1. 온통청년 / K-Startup / HRD 데이터 수집
@@ -99,7 +192,7 @@ youth-support-data-final-evaluation-package/
 15. 평가용 문서 및 리포트 정리
 ```
 
-## 8. 평가 지표 대응 현황
+## 10. 평가 지표 대응 현황
 
 | 평가 항목 | 반영 내용 | 산출물 |
 |---|---|---|
@@ -119,7 +212,7 @@ youth-support-data-final-evaluation-package/
 | 파이프라인 문서화 | 수집→전처리→통합→청크→텍스트 분석→Ground Truth 검증 흐름 작성 | `docs/data_pipeline_summary.md` |
 | 데이터 수량 문서화 | source_category별 건수 및 청크 수 기록 | `README.md`, `data/processed/preprocessing_summary.json` |
 
-## 9. KoNLPy 형태소 분석 및 불용어 처리
+## 11. KoNLPy 형태소 분석 및 불용어 처리
 
 `scripts/analyze_korean_text.py`는 다음 필드를 결합하여 분석한다.
 
@@ -141,7 +234,7 @@ output: data/processed/opportunities_with_keywords.json
 
 `analyze_korean_text.py` 안에는 Java/KoNLPy가 없는 환경에서도 스크립트가 중단되지 않도록 정규표현식 기반 예외 처리 경로를 포함했다. 이 예외 처리는 환경 이식성을 위한 안전장치이며, 최종 제출 산출물은 KoNLPy Okt 실행 결과를 기준으로 한다.
 
-## 10. BoW / TF-IDF / Word2Vec / FastText 대응
+## 12. BoW / TF-IDF / Word2Vec / FastText 대응
 
 `scripts/build_text_features.py`는 다음 리포트를 생성한다.
 
@@ -160,7 +253,7 @@ FastText: trained_sample
 
 해당 모델은 평가/분석용 샘플 학습이며, 실제 서비스 검색에는 사용하지 않는다. 실제 RAG 검색은 `opportunity_chunks.jsonl`의 `content`를 Chroma 등 Vector DB에 임베딩하여 수행한다.
 
-## 11. RAG 청킹 전략
+## 13. RAG 청킹 전략
 
 현재 청킹은 `item_id` 기준 search_profile chunk를 생성한다.
 
@@ -169,7 +262,7 @@ FastText: trained_sample
 
 자세한 내용은 `docs/chunking_strategy.md`에 작성했다.
 
-## 12. 백엔드 사용 방법
+## 14. 백엔드 사용 방법
 
 백엔드는 다음 파일을 사용한다.
 
@@ -181,7 +274,7 @@ data/processed/opportunities.json
 
 `application_url`이 없으면 신청 버튼을 숨기고, `source_url`이 있으면 출처 링크로 표시한다.
 
-## 13. RAG 사용 방법
+## 15. RAG 사용 방법
 
 RAG 담당자는 다음 파일을 사용한다.
 
@@ -191,7 +284,7 @@ data/processed/opportunity_chunks.jsonl
 
 `content`를 임베딩하고 `metadata`를 Chroma metadata로 저장한다. 검색 결과의 `item_id`를 `opportunities.json`의 상세 데이터와 연결한다.
 
-## 14. 제외한 데이터와 이유
+## 16. 제외한 데이터와 이유
 
 공모전·경진대회·모집공고 데이터는 이번 최종 범위에서 제외했다.
 
@@ -201,7 +294,7 @@ data/processed/opportunity_chunks.jsonl
 - 현재 통합 데이터만으로 정책/창업/교육훈련 영역을 충분히 구성함
 - 평가 대응을 위해 추가 수집보다 전처리 품질과 문서화를 우선함
 
-## 15. 실행 방법
+## 17. 실행 방법
 
 기본 통합 파일 재생성:
 
@@ -243,7 +336,7 @@ python scripts/build_text_features.py
 python scripts/validate_evaluation_dataset.py
 ```
 
-## 16. Ground Truth 평가 데이터셋 및 검증 스크립트
+## 18. Ground Truth 평가 데이터셋 및 검증 스크립트
 
 RAG 검색 결과를 평가하기 위해 `tests/evaluation_dataset.jsonl` 파일을 추가했다.
 
@@ -303,7 +396,7 @@ data/reports/evaluation_dataset_validation_errors.json
 
 따라서 본 패키지는 RAG 검색 품질 평가를 위한 Ground Truth 데이터셋과, 해당 데이터셋이 최종 통합 데이터와 정상 연결되는지 확인하는 검증 스크립트를 함께 포함한다.
 
-## 17. 주의사항
+## 19. 주의사항
 
 - 원본 raw 데이터는 절대 덮어쓰지 않는다.
 - 원본에 없는 신청방법, 제출서류, 조건은 임의 생성하지 않는다.
