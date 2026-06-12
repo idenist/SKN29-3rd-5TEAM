@@ -150,6 +150,10 @@ def _policy_to_recommendation(policy: dict[str, Any]) -> PolicyRecommendation:
             default=True,
         ),
         cautions=cautions,
+        source_category=_safe_str(policy.get("source_category") or metadata.get("source_category")),
+        deadline_status=_safe_str(policy.get("deadline_status"), "unknown"),
+        application_end_date=policy.get("application_end_date"),
+        is_expired=_safe_bool(policy.get("is_expired"), default=False),
     )
 
 
@@ -167,6 +171,7 @@ def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
             interest_domain=conditions.get("interest_domain"),
         ),
         route=_safe_str(raw.get("route"), "전체"),
+        route_reason=raw.get("route_reason"),
         recommendations=[
             _policy_to_recommendation(policy)
             for policy in recommendations
@@ -188,6 +193,7 @@ def run_rag_chat(
     """
     raw = run_rag_workflow(
         query=message,
+        top_k=top_k,
         return_full_state=False,
     )
 

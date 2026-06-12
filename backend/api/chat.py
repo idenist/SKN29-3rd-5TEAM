@@ -3,7 +3,7 @@ import logging
 from fastapi import APIRouter, HTTPException
 from backend.schemas.chat_schema import (
     ChatRequest, ChatResponse, 
-    UserConditions, PolicyRecommendation,
+#    UserConditions, PolicyRecommendation,
 )
 
 logger = logging.getLogger(__name__)
@@ -68,50 +68,20 @@ def _mock_response(request: ChatRequest) -> ChatResponse:
     summary="정책 추천 채팅",
     description="사용자 자연어 질문을 받아 RAG 기반 청년 정책을 추천합니다.",
 )
+
 async def chat(request: ChatRequest):
     start = time.time()
     logger.info(f"[CHAT] message=\"{request.message[:50]}\"")
 
-    # 1. 빈 메시지 검증 (Pydantic min_length=1 로 이미 잡히지만 명시적 처리)
     if not request.message.strip():
         raise HTTPException(status_code=422, detail="질문을 입력해 주세요.")
 
     try:
-        if USE_MOCK:
-            result = _mock_response(request)
-        # else:
-        #     # RAG 연동 시 아래 주석 해제
-        #     raw = run_rag_chat(
-        #         message=request.message,
-        #         user_profile=request.user_profile,
-        #         top_k=request.top_k,
-        #     )
-        #     result = ChatResponse(**raw)
-        #     raise NotImplementedError("RAG 서비스가 아직 연동되지 않았습니다.")
-        # 나중에 이렇게 교체
-        else:
-            try:
-                result = run_rag_chat(
-                    message=request.message,
-                    user_profile=request.user_profile,
-                    top_k=request.top_k,
-                )
-                
-            except ConnectionError:
-                raise HTTPException(
-                    status_code=503,
-                    detail="Vector DB 연결에 실패했습니다. 잠시 후 다시 시도해 주세요."
-                )
-            except ValueError:
-                raise HTTPException(
-                    status_code=500,
-                    detail="LLM 응답 처리 중 오류가 발생했습니다."
-                )
-            except TimeoutError:
-                raise HTTPException(
-                    status_code=504,
-                    detail="응답 시간이 초과됐습니다. 잠시 후 다시 시도해 주세요."
-                )
+        result = run_rag_chat(
+            message=request.message,
+            user_profile=request.user_profile,
+            top_k=request.top_k,
+        )
 
         elapsed = time.time() - start
         logger.info(
@@ -121,6 +91,12 @@ async def chat(request: ChatRequest):
         )
         return result
 
+    except ConnectionError:
+        raise HTTPException(status_code=503, detail="Vector DB 연결에 실패했습니다. 잠시 후 다시 시도해 주세요.")
+    except ValueError:
+        raise HTTPException(status_code=500, detail="LLM 응답 처리 중 오류가 발생했습니다.")
+    except TimeoutError:
+        raise HTTPException(status_code=504, detail="응답 시간이 초과됐습니다. 잠시 후 다시 시도해 주세요.")
     except HTTPException:
         raise
     except Exception as e:
@@ -135,3 +111,77 @@ async def chat(request: ChatRequest):
                 "recoverable": True,
             },
         )
+
+
+
+############################################################
+# 06/12 09:42 수정(목업 코드 불필요 -> 수정)
+############################################################
+
+# async def chat(request: ChatRequest):
+#     start = time.time()
+#     logger.info(f"[CHAT] message=\"{request.message[:50]}\"")
+
+#     # 1. 빈 메시지 검증 (Pydantic min_length=1 로 이미 잡히지만 명시적 처리)
+#     if not request.message.strip():
+#         raise HTTPException(status_code=422, detail="질문을 입력해 주세요.")
+
+#     try:
+#         if USE_MOCK:
+#             result = _mock_response(request)
+#         # else:
+#         #     # RAG 연동 시 아래 주석 해제
+#         #     raw = run_rag_chat(
+#         #         message=request.message,
+#         #         user_profile=request.user_profile,
+#         #         top_k=request.top_k,
+#         #     )
+#         #     result = ChatResponse(**raw)
+#         #     raise NotImplementedError("RAG 서비스가 아직 연동되지 않았습니다.")
+#         # 나중에 이렇게 교체
+#         else:
+#             try:
+#                 result = run_rag_chat(
+#                     message=request.message,
+#                     user_profile=request.user_profile,
+#                     top_k=request.top_k,
+#                 )
+                
+#             except ConnectionError:
+#                 raise HTTPException(
+#                     status_code=503,
+#                     detail="Vector DB 연결에 실패했습니다. 잠시 후 다시 시도해 주세요."
+#                 )
+#             except ValueError:
+#                 raise HTTPException(
+#                     status_code=500,
+#                     detail="LLM 응답 처리 중 오류가 발생했습니다."
+#                 )
+#             except TimeoutError:
+#                 raise HTTPException(
+#                     status_code=504,
+#                     detail="응답 시간이 초과됐습니다. 잠시 후 다시 시도해 주세요."
+#                 )
+
+#         elapsed = time.time() - start
+#         logger.info(
+#             f"[CHAT] route=\"{result.route}\", "
+#             f"retrieved={len(result.recommendations)}, "
+#             f"elapsed={elapsed:.2f}s"
+#         )
+#         return result
+
+#     except HTTPException:
+#         raise
+#     except Exception as e:
+#         elapsed = time.time() - start
+#         logger.error(f"[ERROR] rag_service failed ({elapsed:.2f}s): {e}")
+#         raise HTTPException(
+#             status_code=500,
+#             detail={
+#                 "error": True,
+#                 "message": "정책 검색 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.",
+#                 "detail": str(e),
+#                 "recoverable": True,
+#             },
+#         )
