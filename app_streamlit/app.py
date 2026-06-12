@@ -132,25 +132,26 @@ pages = [
     "챗봇"
 ]
 
-tabs = st.columns(len(pages))
+with st.container(key="main_navigation"):
+    tabs = st.columns(len(pages))
 
-for idx, page in enumerate(pages):
+    for idx, page in enumerate(pages):
 
-    with tabs[idx]:
+        with tabs[idx]:
 
-        button_type = (
-            "primary"
-            if st.session_state.page == page
-            else "secondary"
-        )
+            button_type = (
+                "primary"
+                if st.session_state.page == page
+                else "secondary"
+            )
 
-        if st.button(
-            page,
-            use_container_width=True,
-            type=button_type
-        ):
-            st.session_state.page = page
-            st.rerun()
+            if st.button(
+                page,
+                width="stretch",
+                type=button_type
+            ):
+                st.session_state.page = page
+                st.rerun()
 
 st.divider()
 
@@ -159,7 +160,7 @@ st.divider()
 # -----------------------------------
 
 if st.session_state.page == "홈":
-    render_home_page()
+    render_home_page(policies)
 
 elif st.session_state.page == "추천 결과":
     render_search_page(policies)

@@ -20,12 +20,17 @@ def render_detail_page(policies):
         if policy_id in policies_by_id
     ]
     selectable_ids = recommended_ids or list(policies_by_id)
+    current_selected_id = st.session_state.get("detail_selected_policy_id")
+    if current_selected_id not in selectable_ids:
+        st.session_state.detail_selected_policy_id = selectable_ids[0]
 
     selected_id = st.selectbox(
         "검색된 정책 선택",
         selectable_ids,
-        format_func=lambda policy_id: policies_by_id[policy_id]["title"]
+        format_func=lambda policy_id: policies_by_id[policy_id]["title"],
+        key="detail_selected_policy_id"
     )
+    st.session_state.selected_policy_id = selected_id
     policy = policies_by_id[selected_id]
     profile = st.session_state.profile
 
@@ -80,7 +85,7 @@ def render_detail_page(policies):
             st.link_button(
                 "신청 사이트 바로가기 ↗",
                 policy["application_url"],
-                use_container_width=True,
+                width="stretch",
                 type="primary"
             )
     with link_columns[1]:
@@ -88,8 +93,19 @@ def render_detail_page(policies):
             st.link_button(
                 "공식 출처 확인 ↗",
                 policy["source_url"],
-                use_container_width=True
+                width="stretch"
             )
+
+    if st.button(
+        "선택한 정책 신청 가이드 보기",
+        width="stretch",
+        type="primary",
+        key="open_selected_policy_guide"
+    ):
+        st.session_state.guide_selected_policy_id = selected_id
+        st.session_state.pop("guide_policy_select", None)
+        st.session_state.page = "신청 가이드"
+        st.rerun()
 
     st.markdown("### 내 조건과 비교")
 
@@ -101,7 +117,7 @@ def render_detail_page(policies):
         ["주거 상태", profile["housing_status"], policy["housing_status"], "공식 공고 확인"],
     ], columns=["조건", "내 정보", "정책 조건", "판정"])
 
-    st.dataframe(df, use_container_width=True, hide_index=True)
+    st.dataframe(df, width="stretch", hide_index=True)
 
     detail_notice = (
         "원본 데이터에 일부 세부 조건이 없어 공식 공고 확인이 필요합니다."

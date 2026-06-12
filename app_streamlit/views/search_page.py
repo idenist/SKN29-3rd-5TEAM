@@ -89,6 +89,7 @@ def _shorten(text, limit):
 
 def render_search_page(policies):
     render_html("""
+<div class="search-page-marker"></div>
 <div class="search-layout">
     <div class="left-panel">
         <div class="side-title">추천 조건</div>
@@ -124,7 +125,7 @@ def render_search_page(policies):
             key="result_query_input"
         )
 
-        if st.button("조건 다시 추출", use_container_width=True):
+        if st.button("조건 다시 추출", width="stretch"):
             extracted = parse_user_query(keyword)
             updated_profile = profile.copy()
 
@@ -193,7 +194,7 @@ def render_search_page(policies):
 
             filter_submitted = st.form_submit_button(
                 "조건 적용",
-                use_container_width=True,
+                width="stretch",
                 type="primary"
             )
 
