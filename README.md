@@ -2,11 +2,29 @@
 
 ## 1. 프로젝트 개요
 
+- **서비스 명**: 이젠, 안쉼 (청년들이 정보 탐색의 피로에서 벗어나 안심할 수 있는 서비스)
+- **기획 배경**: 청년 정책(온통청년), 창업 지원(K-Startup), 교육·훈련(고용24) 정보가 여러 기관에 파편화되어 있어 발생하는 청년들의 높은 탐색 비용과 정보 비대칭 문제를 해결하고자 함
+- **핵심 가치**: 규칙 기반의 하드코딩 필터링을 넘어, **자연어 기반 조건 추출(NLP)** 및 **멀티 에이전트 워크플로우(LangGraph)**를 결합하여 대용량 공공 데이터셋(2.6만 건) 안에서 유저 맞춤형 정책을 최적의 경로로 큐레이션합니다.
+
 본 패키지는 청년 지원 정보를 RAG 기반으로 탐색하기 위한 최종 데이터 산출물이다.
 
 기존 v2 통합 데이터에 평가계획서의 데이터 전처리 요구 항목을 반영하여 데이터 설명서, 전처리 파이프라인 문서, KoNLPy Okt 형태소 분석 스크립트, 불용어 처리 리포트, BoW/TF-IDF 리포트, Word2Vec/FastText 샘플 학습 리포트, Ground Truth 평가 데이터셋, 청킹 전략 문서를 추가했다.
 
 최종 백엔드 데이터는 `data/processed/opportunities.json`이며, RAG 임베딩 데이터는 `data/processed/opportunity_chunks.jsonl`이다.
+
+---
+
+## 2. 팀원 소개 및 역할 분담
+
+| 이름 | 역할 | 담당 업무 및 핵심 기여 |
+| :---: | :---: | --- |
+| **한예나** | **PM / 기획 평가** | 프로젝트 리딩, LLM 평가계획서 기준 데이터 검증 및 품질 관리 프로세스 구축, 기획 및 정량적 평가 파이프라인 관리 |
+| **정승** | **데이터 엔지니어링** | 공공 Open API 데이터 수집, 중복 제거 및 결측치 처리 파이프라인 구축, 정규표현식 정규화 및 KoNLPy(Okt) 기반 형태소 분석, TF-IDF/BoW 키워드 리포트 생성 |
+| **송민지** | **프론트엔드** | Streamlit 기반 반응형 웹 애플리케이션 UI/UX 설계, 세션 상태(`st.session_state`) 중심의 동적 페이지 라우팅, 실시간 조건 필터링 및 대시보드 카드 렌더링 구현 |
+| **한경찬** | **백엔드** | FastAPI 기반 RESTful API 서버 아키텍처 설계, Pydantic 스키마 및 서비스 레이어 분리를 통한 데이터 파이프라인 연동, DB 연결 및 확장성 중심의 엔드포인트 구축 |
+| **윤승혁** | **RAG / LangGraph** | 에이전트 지향적 검색/추천 제어를 위한 LangGraph 기반 워크플로우 및 상태 그래프 설계, Vector DB 입력용 고도화 청킹 전략(`opportunity_chunks.jsonl`) 수립 및 RAG 파이프라인 최적화 |
+
+---
 
 ## 2. 현재 통합된 데이터 출처
 
@@ -16,7 +34,19 @@
 | `startup_notice` | 창업지원 공고 | K-Startup / 창업진흥원 Open API | `youth_relevance = high` | 3,789 |
 | `training` | 교육·취업 훈련 과정 | 고용24/HRD 국민내일배움카드 훈련과정 API | `youth_relevance = high` | 20,403 |
 
-## 3. 데이터 출처 URL
+## 3. 핵심 기능 (Key Features)
+1. **자연어 기반 유저 프로필 추출 (NLP)**
+   - "서울 사는 27살 취준생이고 주거에 관심 있어"와 같은 사용자 질의에서 연령, 지역, 소득, 상태, 관심사를 파싱하여 유저 프로필 세션에 자동 매칭합니다.
+2. **실시간 대용량 통합 데이터 필터링**
+   - 2.6만 건 이상의 이종 데이터(정책, 창업, 교육)를 단일 스키마로 통합하여 나이, 지역, 마감 여부 정보를 실시간으로 다중 필터링합니다. 브라우저 성능 최적화를 위해 상위 30건의 고품질 카드만 선별 렌더링합니다.
+3. **데이터 완성도 점수 (`info_score`) 도입**
+   - 공공 데이터 특유의 정보 공백을 극복하기 위해 필드 완성도를 기반으로 스코어링 시스템을 구현, 유저에게 정밀하고 신뢰도 높은 공고를 최우선으로 노출합니다.
+4. **LangGraph 및 에이전트 기반 오케스트레이션 (Back-end 지향)**
+   - 단순 검색 쿼리를 넘어 복잡한 추천 로직 및 예외 처리를 에이전트의 상태 그래프(`graph/`) 흐름으로 제어하여 향후 유연한 챗봇 서비스 확장이 가능합니다.
+
+---
+
+## 4. 데이터 출처 URL
 
 1. 온통청년 Open API  
    - https://www.youthcenter.go.kr/cmnFooter/openapiIntro/oaiGuide
@@ -29,7 +59,7 @@
 3. 고용24/HRD Open API  
    - https://www.work24.go.kr/cm/e/a/0110/selectOpenApiIntro.do
 
-## 4. 최종 데이터 수량
+## 5. 최종 데이터 수량
 
 | 항목 | 수량 |
 |---|---:|
@@ -42,7 +72,7 @@
 | 출처 URL 보유 데이터 | 25,851건 |
 | Ground Truth 평가 질문 | 50개 |
 
-## 5. 최종 산출물
+## 6. 최종 산출물
 
 | 파일 | 용도 |
 |---|---|
@@ -64,20 +94,33 @@
 | `docs/data_pipeline_summary.md` | 데이터 수집→정제→통합 파이프라인 문서 |
 | `docs/evaluation_checklist.md` | 평가 지표 대응표 |
 
-## 6. 폴더 구조
+## 6. 전체 디렉터리 구조
 
 ```text
-youth-support-data-final-evaluation-package/
-├─ README.md
-├─ requirements.txt
-├─ data/
-│  ├─ raw/
-│  ├─ processed/
-│  └─ reports/
-├─ docs/
-├─ scripts/
-└─ tests/
-```
+📂 3RDPRJ
+├── 📂 app_streamlit               # Streamlit 프론트엔드 어플리케이션
+│   ├── 📄 app.py                 # 프론트엔드 메인 진입점
+│   ├── 📂 styles/                # UI 커스텀 스타일링 (style.css)
+│   ├── 📂 utils/                 # 데이터 로더, HTML 렌더러, 조건 파서 모듈
+│   └── 📂 views/                 # 화면 단위 렌더링 (홈, 추천결과, 상세, 가이드, 챗봇)
+├── 📂 backend                     # FastAPI 백엔드 어플리케이션
+│   ├── 📄 main.py                # 백엔드 API 서버 진입점
+│   ├── 📂 api/                   # API 라우터 및 엔드포인트 제어 레이어
+│   ├── 📂 db/                    # 데이터베이스 및 Vector DB 연결 설정
+│   ├── 📂 graph/                 # LangGraph 기반 에이전트 워크플로우 및 노드 정의
+│   ├── 📂 schemas/               # Pydantic 기반 데이터 검증 및 DTO 스키마
+│   └── 📂 services/              # 핵심 추천 비즈니스 로직 레이어
+├── 📂 data                        # 데이터 저장 및 분석 관리
+│   ├── 📂 raw/                   # 공공데이터 수집 원본 (Open API Raw Data)
+│   ├── 📂 processed/             # 전처리 완료 및 정규화 데이터 (opportunities.json 등)
+│   └── 📂 reports/               # 중복/결측치/형태소 분석 품질 리포트
+├── 📂 docs                        # 데이터 사전, 청킹 전략 등 개발 명세 및 문서
+├── 📂 scripts                     # 데이터 전처리, 텍스트 분석 및 자동화 스크립트
+├── 📂 tests                       # 단위 및 통합 테스트 코드
+├── 📄 .env                        # API 키 및 DB 접속 정보 환경변수 파일
+├── 📄 requirements.txt            # 의존성 패키지 목록 (Streamlit, FastAPI, Pandas 등)
+├── 📄 run_konlpy_setup.bat        # Java 환경 검증 및 KoNLPy 패키지 자동 설치 스크립트
+└── 📄 update_readme_eval.py       # 데이터 전처리 평가 리포트 README 반영 스크립트
 
 ## 7. 데이터 수집 및 전처리 흐름
 
