@@ -15,14 +15,37 @@ OFFICIAL_SITES = {
 
 def render_guide_page(policies):
     st.markdown('<div class="page-title">신청 가이드</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-sub">선택한 정책의 신청 절차와 필요 서류를 안내합니다.</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="page-sub">검색된 정책 중에서 신청 절차와 필요 서류를 확인합니다.</div>',
+        unsafe_allow_html=True
+    )
 
     policies_by_id = {policy["id"]: policy for policy in policies}
-    selected_id = st.selectbox(
-        "정책 선택",
-        list(policies_by_id),
-        format_func=lambda policy_id: policies_by_id[policy_id]["title"]
+    recommended_ids = [
+        policy_id
+        for policy_id in st.session_state.get("recommended_policy_ids", [])
+        if policy_id in policies_by_id
+    ]
+    selectable_ids = recommended_ids or list(policies_by_id)
+    preferred_id = (
+        st.session_state.get("guide_selected_policy_id")
+        or st.session_state.get("selected_policy_id")
     )
+    current_selected_id = st.session_state.get("guide_policy_select")
+    if current_selected_id not in selectable_ids:
+        st.session_state.guide_policy_select = (
+            preferred_id
+            if preferred_id in selectable_ids
+            else selectable_ids[0]
+        )
+
+    selected_id = st.selectbox(
+        "검색된 정책 선택",
+        selectable_ids,
+        format_func=lambda policy_id: policies_by_id[policy_id]["title"],
+        key="guide_policy_select"
+    )
+    st.session_state.guide_selected_policy_id = selected_id
     policy = policies_by_id[selected_id]
 
     html = f"""
