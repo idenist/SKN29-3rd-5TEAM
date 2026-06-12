@@ -28,6 +28,10 @@ class PolicyRecommendation(BaseModel):
     source_url: Optional[str] = Field(None, description="원문 URL")
     needs_detail_check: bool = Field(False, description="상세 확인 필요 여부")
     cautions: list[str] = Field(default_factory=list, description="주의사항")
+    source_category: str = Field("", description="데이터 유형 (policy/startup_notice/training)")
+    deadline_status: str = Field("unknown", description="마감 상태 (open/expired/unknown)")
+    application_end_date: Optional[str] = Field(None, description="신청 종료일 (파싱된 값)")
+    is_expired: bool = Field(False, description="마감 여부") 
 
 
 class UserConditions(BaseModel):
@@ -42,6 +46,7 @@ class ChatResponse(BaseModel):
     answer: str = Field(..., description="LLM 생성 답변")
     user_conditions: UserConditions = Field(..., description="추출된 사용자 조건")
     route: str = Field(..., description="라우팅된 정책 도메인")
+    route_reason: Optional[str] = Field(None, description="라우팅 이유")
     recommendations: list[PolicyRecommendation] = Field(..., description="추천 정책 목록")
     warnings: list[str] = Field(default_factory=list, description="경고 메시지")
 
