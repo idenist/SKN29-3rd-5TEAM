@@ -16,13 +16,63 @@
 
 ## 2. 팀원 소개 및 역할 분담
 
-| 이름 | 역할 | 담당 업무 및 핵심 기여 |
-| :---: | :---: | --- |
-| **한예나** | **PM / 기획 평가** | 프로젝트 리딩 및 기획 총괄, LLM 평가계획서 기준 데이터 품질 검증 프로세스 구축 |
-| **정승** | **데이터 엔지니어링** | Open API 데이터 수집, 중복·결측치 전처리 및 KoNLPy 형태소 분석 파이프라인 구축 |
-| **송민지** | **프론트엔드** | Streamlit UI/UX 설계, 세션 기반 동적 페이지 라우팅 및 실시간 필터링 화면 구현 |
-| **한경찬** | **백엔드** | FastAPI 기반 RESTful API 설계, Pydantic 스키마 정의 및 DB 연동 엔드포인트 구축 |
-| **윤승혁** | **RAG / LangGraph** | LangGraph 기반 에이전트 워크플로우 설계 및 RAG 최적화 청킹 전략 수립 |
+<table>
+  <tr align="center">
+    <th width="10%">구분</th>
+    <th width="18%">송민지</th>
+    <th width="18%">윤승혁</th>
+    <th width="18%">정승</th>
+    <th width="18%">한경찬</th>
+    <th width="18%">한예나</th>
+  </tr>
+  
+  <tr align="center">
+    <td><strong>사진</strong></td>
+    <td><img src="docs/images/minji.png" width="110px" height="110px" alt="송민지"></td>
+    <td><img src="docs/images/seunghyuk.png" width="110px" height="110px" alt="윤승혁"></td>
+    <td><img src="docs/images/seung.png" width="110px" height="110px" alt="정승"></td>
+    <td><img src="docs/images/kyungchan.png" width="110px" height="110px" alt="한경찬"></td>
+    <td><img src="docs/images/yena.png" width="110px" height="110px" alt="한예"></td>
+  </tr>
+  
+  <tr align="center">
+    <td><strong>역할</strong></td>
+    <td><strong>프론트엔드</strong></td>
+    <td><strong>RAG/LangGraph</strong></td>
+    <td><strong>데이터 엔지니어링</strong></td>
+    <td><strong>백엔드</strong></td>
+    <td><strong>PM/기획,평가</strong></td>
+  </tr>
+  
+  <tr valign="top">
+    <td align="center"><strong>한 일</strong></td>
+    <td>
+      • 전체 일정 관리<br>
+      • 작업 방향 컨펌<br>
+      • 파트별 진행 상황 확인
+    </td>
+    <td>
+      • 노인·고령층 관련 법령 데이터 확인<br>
+      • 문서 전처리 및 임베딩 흐름 정리
+    </td>
+    <td>
+      • 사용자 질문 화면 구성<br>
+      • API 연결 흐름 설계<br>
+      • 결과 화면 UX 정리<br>
+      • RAG 기반 테스트 케이스 설계
+    </td>
+    <td>
+      • FastAPI <code>/chat</code> 구성<br>
+      • LangGraph Agent 실행 구조 정리<br>
+      • MCP tool 연동 준비
+    </td>
+    <td>
+      • 전체 서비스 흐름 정리<br>
+      • README 및 발표 자료 구성<br>
+      • 팀 산출물 내용 정리
+    </td>
+  </tr>
+</table>
 
 ---
 
