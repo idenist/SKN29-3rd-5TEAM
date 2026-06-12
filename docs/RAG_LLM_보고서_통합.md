@@ -1,10 +1,10 @@
-# RAG/LLM 보고서 v2
+# RAG/LLM 보고서 (통합본)
 
 ## 1. 작업 개요
 
-본 문서는 청년 정책 통합 탐색 에이전트 프로젝트에서 RAG/LLM 담당자가 수행한 백엔드 핵심 파이프라인 구현 내용을 정리한 v2 보고서이다.
+본 문서는 청년 정책 통합 탐색 에이전트 프로젝트에서 RAG/LLM 담당자가 수행한 백엔드 핵심 파이프라인 구현 내용을 정리한 최종 통합 보고서이다.
 
-v1 보고서에서는 온통청년 정책 데이터 중심의 RAG 파이프라인을 정리하였다. v2에서는 이후 수행한 통합 데이터 확장, `source_category` 기반 라우팅, 교육훈련/창업공고 대응, 창업공고 마감 상태 처리, 프론트 필터링을 위한 응답 필드 보강 내용을 추가로 반영하였다.
+초기에는 온통청년 정책 데이터(`chunks.jsonl`, `policies.json`) 중심의 RAG 파이프라인을 구축하였다. 이후 서비스 데이터 확장 필요에 따라 창업지원 공고(K-Startup)와 교육훈련 과정(HRD/고용24)을 포함한 통합 데이터(`opportunity_chunks.jsonl`, `opportunities.json`) 구조로 전환하였으며, `source_category` 기반 라우팅, 창업공고 마감 상태 처리, 프론트 필터링을 위한 응답 필드 보강을 추가로 반영하였다.
 
 최종 목표는 사용자의 자연어 질문을 입력받아 청년 정책, 창업지원 공고, 교육훈련 과정을 통합 검색하고, 사용자 조건과 지원 항목 조건을 비교한 뒤, 신청/참여 가능성과 유의사항을 포함한 최종 답변을 생성하는 것이다.
 
@@ -140,7 +140,39 @@ source_url
 application_url
 ```
 
-### 4.3 OpenAI Embedding RateLimit 대응
+### 4.3 Vector DB 구축 명령어
+
+초기 정책 전용 Vector DB 구축 명령어는 다음과 같다.
+
+```cmd
+python scripts\build_vector_db.py --input data\processed\chunks_for_chroma.jsonl --persist-dir data\vector_db --collection-name youth_policy_chunks --reset
+```
+
+통합 Vector DB 구축 명령어는 다음과 같다.
+
+```cmd
+python scripts\build_opportunity_vector_db.py --input data\processed\opportunity_chunks.jsonl --persist-dir data\vector_db --collection-name youth_opportunity_chunks --reset
+```
+
+### 4.4 Smoke Test 결과
+
+다음 질문으로 검색 테스트를 수행하였다.
+
+```text
+서울에 사는 25세 취업준비생이 받을 수 있는 청년 지원 정책 알려줘
+```
+
+상위 검색 결과는 다음과 같았다.
+
+```text
+1. 서울시 일자리카페 운영
+2. 기장군 청년 면접수당 지원 사업
+3. 2026년 서울청년정책네트워크 하반기 모집
+4. 미취업 청년 어학 및 자격증 응시료 지원(성북구)
+5. 서울시 청년수당
+```
+
+### 4.5 OpenAI Embedding RateLimit 대응
 
 통합 데이터 임베딩 중 OpenAI Embedding API의 TPM 제한으로 429 RateLimitError가 발생하였다. 이는 코드 오류가 아니라 API 사용량 제한에 의한 문제였다.
 
@@ -618,9 +650,42 @@ errors 없음
 
 ---
 
-## 11. FastAPI 및 Streamlit 연동 준비
+## 11. FastAPI 및 Streamlit 연동
 
-### 11.1 현재 상태
+### 11.1 Adapter 구현
+
+팀원이 작성한 `backend/api/chat.py` 구조를 크게 수정하지 않고, RAG 연결용 adapter 파일을 별도로 작성하였다.
+
+추가 파일:
+
+```text
+backend/services/rag_chat_service.py
+```
+
+`rag_chat_service.py`는 다음 역할을 수행한다.
+
+```text
+run_rag_workflow() 호출
+→ workflow 결과 수신
+→ ChatResponse 스키마에 맞게 변환
+→ chat.py에 반환
+```
+
+`chat.py`는 다음 세 부분만 수정하였다.
+
+```diff
+- USE_MOCK = True
++ USE_MOCK = False
+
+- # from backend.services.rag_service import run_rag_chat
++ from backend.services.rag_chat_service import run_rag_chat
+
+- raw = run_rag_chat(...)
+- result = ChatResponse(**raw)
++ result = run_rag_chat(...)
+```
+
+### 11.2 현재 상태 및 workflow 반환 필드
 
 현재 RAG/LLM 핵심 로직은 정상 동작하며, 이후 주요 작업은 FastAPI 응답 구조 확인과 Streamlit 화면 표시 및 필터링이다.
 
@@ -652,7 +717,35 @@ application_end_date
 is_expired
 ```
 
-### 11.2 FastAPI 확인 사항
+### 11.3 API 테스트
+
+테스트 명령어:
+
+```cmd
+curl -X POST "http://127.0.0.1:8000/api/chat" ^
+  -H "Content-Type: application/json" ^
+  -d "{\"message\":\"서울에 사는 25세 취준생인데 받을 수 있는 취업 지원 정책 알려줘.\",\"top_k\":5}"
+```
+
+정상 응답에서 다음 필드들이 확인되었다.
+
+```text
+route: 일자리
+user_conditions:
+  age: 25
+  region: 서울
+  employment_status: 취업준비생
+  interest_domain: 일자리
+
+recommendations:
+  1. 서울시 일자리카페 운영
+  2. 미취업 청년 어학 및 자격증 응시료 지원(성북구)
+  3. 청년 국가기술자격시험 응시료 지원사업
+  4. 서울 매력일자리
+  5. 취업날개 서비스 지원
+```
+
+### 11.4 FastAPI 확인 사항
 
 FastAPI `/api/chat` 응답에서 다음 필드가 유지되는지 확인해야 한다.
 
@@ -668,7 +761,7 @@ recommendations[].application_end_date
 recommendations[].is_expired
 ```
 
-### 11.3 Streamlit 필터링 방향
+### 11.5 Streamlit 필터링 방향
 
 프론트에서는 창업공고 마감 여부를 다음과 같이 필터링할 수 있다.
 
@@ -745,7 +838,31 @@ training → 교육훈련 과정
 해결: 함수 마지막에 return ranked 추가
 ```
 
-### 12.7 RequestsDependencyWarning
+### 12.7 Python module import 오류
+
+```text
+문제: python backend\graph\workflow.py 실행 시 ModuleNotFoundError: No module named 'backend'
+해결: python -m backend.graph.workflow 형태로 실행
+      각 패키지 폴더에 __init__.py 파일 추가
+```
+
+### 12.8 FastAPI 경로 오류
+
+```text
+문제: /chat으로 요청 시 {"detail": "Not Found"} 반환
+원인: main.py에서 router prefix가 /api로 등록되어 있음
+해결: /api/chat으로 호출
+```
+
+### 12.9 ChatResponse 이중 변환 오류
+
+```text
+문제: ChatResponse() argument after ** must be a mapping, not ChatResponse
+원인: run_rag_chat()이 이미 ChatResponse 객체를 반환하는데, chat.py에서 다시 ChatResponse(**raw)를 호출함
+해결: result = run_rag_chat(...) 으로 수정 (이중 변환 제거)
+```
+
+### 12.10 RequestsDependencyWarning
 
 ```text
 문제: RequestsDependencyWarning: Unable to find acceptable character detection dependency
@@ -767,6 +884,7 @@ scripts/build_opportunity_vector_db.py
 backend/db/vector_store.py
 
 backend/services/rag_service.py
+backend/services/rag_chat_service.py
 backend/services/condition_extractor.py
 backend/services/policy_matcher.py
 backend/services/answer_generator.py

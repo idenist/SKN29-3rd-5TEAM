@@ -69,9 +69,19 @@ def post_chat(base_url: str, endpoint: str, message: str, top_k: int, timeout: i
         with request.urlopen(req, timeout=timeout) as resp:
             body = resp.read().decode("utf-8")
             return json.loads(body)
+    # except error.HTTPError as e:
+    #     body = e.read().decode("utf-8", errors="replace")
+    #     raise RuntimeError(f"HTTP {e.code}: {body}") from e
+    
     except error.HTTPError as e:
         body = e.read().decode("utf-8", errors="replace")
+        if e.code == 422:
+            try:
+                return {"detail": json.loads(body)}
+            except Exception:
+                return {"detail": body}
         raise RuntimeError(f"HTTP {e.code}: {body}") from e
+    
     except Exception as e:
         raise RuntimeError(str(e)) from e
 

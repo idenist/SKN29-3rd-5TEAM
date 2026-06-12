@@ -1,9 +1,9 @@
 # RAG 평가 결과
 
 - 총 케이스 수: 10
-- 통과 케이스 수: 8
-- 통과율: 80.0%
-- 평균 규칙 기반 점수: 0.893
+- 통과 케이스 수: 7
+- 통과율: 70.0%
+- 평균 규칙 기반 점수: 0.836
 
 ## 케이스별 결과
 
@@ -11,7 +11,7 @@
 |---|---:|---:|---|---|
 | TC001_startup_open_2026 | ✅ | 1.000 | 2026년에 신청 가능한 창업지원 공고 추천해줘 | - |
 | TC002_startup_exclude_old | ❌ | 0.929 | 2019년에 했던 청년 창업 지원사업 말고 지금 신청 가능한 공고 알려줘 | must_not_have_any |
-| TC003_react_fallback_unrealistic | ✅ | 1.000 | 화성에서 받을 수 있는 청년 우주창업 지원금 알려줘 | - |
+| TC003_react_fallback_unrealistic | ❌ | 0.429 | 화성에서 받을 수 있는 청년 우주창업 지원금 알려줘 | must_have_any, must_not_have_any, internal_search_sufficient, next_action, external_search_status, external_search_targets, max_recommendations, no_expired_recommendations |
 | TC004_housing_monthly_rent | ✅ | 1.000 | 서울에 사는 25세 청년이 받을 수 있는 월세 지원 정책 알려줘 | - |
 | TC005_training_ai_data | ✅ | 1.000 | 국민내일배움카드로 들을 수 있는 AI 데이터 분석 훈련 과정 추천해줘 | - |
 | TC006_job_interview_allowance | ✅ | 1.000 | 면접수당 받을 수 있는 정책 알려줘 | - |

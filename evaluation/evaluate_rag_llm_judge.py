@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 EVAL_PATH = Path("tests/evaluation_dataset.jsonl")
-OUTPUT_PATH = Path("data/reports/llm_judge_results.json")
+OUTPUT_PATH = Path("evaluation/result/llm_judge_results.json")
 FASTAPI_URL = "http://127.0.0.1:8000/api/chat"
 SAMPLE_N = 10
 

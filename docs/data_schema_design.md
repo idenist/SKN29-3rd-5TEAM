@@ -1,4 +1,4 @@
-# 데이터 설명서
+# 데이터 스키마 설계서
 
 ## 1. 프로젝트 데이터 개요
 
@@ -33,7 +33,30 @@
 - `주거 > 주택 및 거주지`
 - `복지문화 > 취약계층 및 금융지원`
 
-## 5. opportunities.json 필드 설명
+## 5. 주요 참조 필드 목록
+
+백엔드/RAG 작업 시 반드시 확인해야 할 핵심 필드는 다음과 같다.
+
+| 필드 | 용도 |
+|---|---|
+| `item_id` | 모든 데이터 연결 기준 key |
+| `source_category` | 데이터 유형 분기 및 뱃지 표시 |
+| `domain` | 검색 필터 및 라우팅 |
+| `title` | 항목명 표시 |
+| `summary` | 요약 설명 |
+| `target_text` | 지원/훈련 대상 |
+| `benefit_text` | 지원내용 또는 훈련 정보 |
+| `region` | 지역 필터 |
+| `application_period_text` | 신청기간 원문 |
+| `program_period_text` | 사업/훈련 운영기간 |
+| `organization` | 운영기관 |
+| `application_url` | 신청 버튼 링크 (없으면 버튼 숨김) |
+| `source_url` | 출처 보기 링크 |
+| `raw_text` | RAG 검색용 통합 텍스트 |
+| `info_score` | 데이터 완성도 점수 |
+| `needs_detail_check` | 상세 확인 필요 여부 |
+
+## 6. opportunities.json 필드 설명
 
 | 필드 | 설명 |
 |---|---|
@@ -75,7 +98,7 @@
 | `training_type` | 교육훈련 유형 |
 | `is_open` | 모집/운영 가능 여부 |
 
-## 6. opportunity_chunks.jsonl 필드 설명
+## 7. opportunity_chunks.jsonl 필드 설명
 
 각 라인은 하나의 JSON 객체다.
 
@@ -89,7 +112,7 @@
 | `content` | 임베딩 대상 텍스트 |
 | `metadata` | Vector DB 저장용 메타데이터 |
 
-## 7. item_id 사용 원칙
+## 8. item_id 사용 원칙
 
 모든 연결 기준은 `item_id`이다.
 
@@ -99,8 +122,15 @@
 
 `policy_id`는 온통청년 원본 내부 key이므로 통합 데이터 전체의 key로 직접 사용하지 않는다.
 
-## 8. 백엔드 표시 원칙
+## 9. 화면 표시 원칙
 
 - `application_url`이 없으면 신청 버튼을 숨긴다.
 - `source_url`이 있으면 출처 링크로 표시한다.
 - 원본에 없는 신청방법, 제출서류, 자격조건은 임의 생성하지 않는다.
+- `source_category`에 따라 화면 뱃지를 다음과 같이 표시한다.
+
+| source_category | 뱃지 표시 |
+|---|---|
+| `policy` | 청년정책 |
+| `startup_notice` | 창업지원 |
+| `training` | 교육·훈련 |

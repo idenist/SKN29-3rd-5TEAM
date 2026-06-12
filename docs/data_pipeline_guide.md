@@ -1,0 +1,282 @@
+# 데이터 파이프라인 가이드
+
+## 1. 전체 흐름
+
+```text
+데이터 수집
+→ 원본 raw 데이터 보존
+→ 출처별 전처리 (컬럼 표준화, 결측/중복 확인)
+→ 청년 관련성 분류 (high/medium/low)
+→ raw_text 생성
+→ 공통 스키마 통합 (opportunities.json)
+→ RAG 청크 생성 (opportunity_chunks.jsonl)
+→ KoNLPy Okt 형태소 분석 + 불용어 제거
+→ BoW / TF-IDF 키워드 리포트 생성
+→ Gensim Word2Vec / FastText 샘플 학습 리포트 생성
+→ Ground Truth 평가 데이터셋 추가 및 검증
+→ 최종 백엔드/RAG 산출물 생성
+```
+
+---
+
+## 2. 단계별 산출물
+
+| 단계 | 입력 | 처리 | 출력 |
+|---|---|---|---|
+| 수집 | API 응답 | 원본 저장 | `data/raw/` |
+| 출처별 전처리 | raw 데이터 | 컬럼 표준화, 결측/중복 확인 | 출처별 processed 파일 |
+| 청년 관련성 분류 | 정제 데이터 | high/medium/low 분류 | high 데이터 |
+| 통합 | high 데이터 | 공통 스키마 매핑 | `opportunities.json` |
+| 청킹 | 통합 데이터 | search_profile chunk 생성 | `opportunity_chunks.jsonl` |
+| 데이터 검증 | 통합 데이터/청크 | 건수, 중복, 결측 확인 | `data/reports/*` |
+| KoNLPy 형태소 분석 | 통합 텍스트 | Okt 기반 명사 추출, 불용어 제거 | `opportunities_with_keywords.json`, `konlpy_keyword_report.csv` |
+| BoW/TF-IDF 분석 | 정규화 텍스트 | 키워드 빈도 및 중요도 분석 | `bow_keyword_report.csv`, `tfidf_keyword_report.csv` |
+| Word2Vec/FastText | 명사 토큰 | Gensim 샘플 학습 및 유사어 리포트 생성 | `word2vec_fasttext_status_report.csv` |
+| Ground Truth | 평가 질문/정답 item_id | JSONL 형식 검증, 정답 item_id 연결 검증 | `tests/evaluation_dataset.jsonl`, `evaluation_dataset_summary.csv` |
+| 문서화 | 산출물 | 스키마, 청킹, 전처리, 평가 대응 문서화 | `docs/`, `README.md` |
+
+---
+
+## 3. 최종 데이터 수량
+
+| 항목 | 수량 |
+|---|---:|
+| 최종 통합 데이터 | 26,803건 |
+| RAG 청크 | 33,950건 |
+| 온통청년 정책 | 2,611건 |
+| K-Startup 청년 HIGH 창업공고 | 3,789건 |
+| HRD 청년 HIGH 교육훈련 | 20,403건 |
+| Ground Truth 평가 질문 | 50건 |
+
+---
+
+## 4. 텍스트 정규화 및 형태소 분석
+
+### 4.1 분석 목적
+
+평가계획서의 텍스트 전처리 및 형태소 분석 항목에 대응하기 위해 최종 통합 데이터에 대해 한국어 텍스트 정규화, KoNLPy Okt 기반 형태소 분석, 불용어 처리, BoW/TF-IDF 분석, Word2Vec/FastText 샘플 학습을 수행했다.
+
+### 4.2 분석 대상 필드
+
+```text
+title, summary, benefit_text, target_text, raw_text
+```
+
+### 4.3 정규표현식 기반 정규화
+
+`scripts/analyze_korean_text.py`와 `scripts/build_text_features.py`에서 다음 처리를 수행한다.
+
+- HTML 태그 제거
+- URL 제거 또는 별도 필드에 보존
+- 특수문자 정리
+- 줄바꿈/탭 제거
+- 반복 공백 제거
+- 한글/영문/숫자 중심 토큰 보존
+
+정규표현식 처리는 형태소 분석 전 텍스트를 정리하기 위한 사전 정규화 단계다.
+
+### 4.4 KoNLPy Okt 형태소 분석
+
+KoNLPy Okt 기반 명사 추출을 기본 형태소 분석 방식으로 사용했다.
+
+최종 실행 결과:
+
+```text
+analyzer: konlpy.Okt
+rows: 26,803
+output: data/processed/opportunities_with_keywords.json
+keyword report: data/reports/konlpy_keyword_report.csv
+```
+
+Java/KoNLPy가 설치되지 않은 환경에서도 스크립트가 중단되지 않도록 `scripts/analyze_korean_text.py`에는 정규표현식 기반 예외 처리 경로를 포함했다. 이 경로는 환경 이식성을 위한 안전장치이며, 최종 제출 산출물은 KoNLPy Okt 실행 결과로 재생성하였다.
+
+### 4.5 불용어 처리
+
+정책/공고/훈련 데이터에서 반복적으로 등장하지만 의미 구분에 기여도가 낮은 일반어를 불용어로 제거했다.
+
+제거 예시:
+
+```text
+지원, 사업, 대상, 신청, 기간, 관련, 가능, 정보, 제공, 과정, 공고, 모집, 안내
+```
+
+보존 예시 (핵심 도메인 단어):
+
+```text
+청년, 창업, 교육, 취업, 주거, AI, 데이터, 인공지능, KDT, 디지털
+```
+
+산출물:
+
+```text
+data/reports/stopword_report.csv
+```
+
+### 4.6 BoW / TF-IDF 분석
+
+`build_text_features.py`에서 CountVectorizer 기반 BoW 리포트와 TfidfVectorizer 기반 TF-IDF 리포트를 생성했다.
+
+- BoW: 자주 등장하는 단어를 확인하기 위한 빈도 기반 분석
+- TF-IDF: source_category/domain별로 상대적으로 중요한 단어를 확인하기 위한 분석
+
+산출물:
+
+```text
+data/reports/bow_keyword_report.csv
+data/reports/tfidf_keyword_report.csv
+```
+
+### 4.7 Word2Vec / FastText 샘플 학습
+
+Gensim 기반 Word2Vec/FastText 샘플 학습을 수행했다.
+
+최종 확인 상태:
+
+```text
+Word2Vec: trained_sample
+FastText: trained_sample
+```
+
+해당 모델은 평가/분석용 샘플 학습이며 실제 서비스 검색에는 사용하지 않는다. 실제 RAG 검색은 `opportunity_chunks.jsonl`의 `content`를 Chroma 등 Vector DB에 임베딩하여 수행한다.
+
+산출물:
+
+```text
+data/reports/word2vec_fasttext_status_report.csv
+```
+
+---
+
+## 5. 청킹 전략
+
+### 5.1 현재 청킹 방식
+
+`item_id`당 기본 `search_profile` chunk를 생성하는 방식이다.
+
+각 chunk의 `content`는 다음 정보를 조합한다.
+
+```text
+제목, 요약, 대상, 지원내용 또는 훈련정보, 지역, 신청기간 또는 운영기간, raw_text
+```
+
+### 5.2 metadata 설계
+
+각 chunk에는 다음 metadata를 포함한다.
+
+| 필드 | 설명 |
+|---|---|
+| `item_id` | 상세 데이터 연결 key |
+| `source_category` | 데이터 유형 (policy / startup_notice / training) |
+| `domain` | 분야 |
+| `title` | 제목 |
+| `source_url` | 출처 URL |
+| `application_url` | 신청 URL |
+| `info_score` | 데이터 완성도 점수 |
+| `needs_detail_check` | 상세 확인 필요 여부 |
+| `youth_relevance` | 청년 관련성 |
+| `startup_stage` | 창업 단계 |
+| `training_type` | 교육훈련 유형 |
+| `is_digital_training` | 디지털 교육 여부 |
+| `is_job_seeker_friendly` | 구직자 친화 과정 여부 |
+
+### 5.3 Vector DB 입력 방식
+
+- 임베딩 대상: `content`
+- 저장 metadata: `metadata`
+- 상세 데이터 연결 key: `item_id`
+- 백엔드 상세 정보 조회: `opportunities.json`에서 `item_id`로 연결
+
+### 5.4 Graph DB 확장 가능성
+
+Graph DB 확장 시 다음 값을 노드/관계 후보로 사용할 수 있다.
+
+```text
+item_id, source_category, domain, organization, region, training_type, startup_stage
+```
+
+예시 관계:
+
+```text
+청년지원항목 -[:BELONGS_TO]->  domain
+청년지원항목 -[:PROVIDED_BY]-> organization
+청년지원항목 -[:AVAILABLE_IN]-> region
+청년지원항목 -[:HAS_SOURCE]->  source_category
+```
+
+### 5.5 향후 개선안
+
+현재는 item 단위 search_profile chunk를 사용한다. 향후 raw_text가 긴 데이터에 대해서는 다음 전략을 검토한다.
+
+- Recursive Character Splitting (chunk_size: 800~1000자, chunk_overlap: 100~150자)
+- 의미 단위 Semantic Chunking
+- source_category별 chunk size 차등 적용
+
+### 5.6 청크 품질 리포트
+
+청크 수와 길이 통계는 다음 파일에 기록한다.
+
+```text
+data/reports/chunk_length_report.csv
+```
+
+---
+
+## 6. Ground Truth 검증
+
+RAG 검색 품질 평가를 위해 `tests/evaluation_dataset.jsonl`을 추가했다.
+
+검증 스크립트(`scripts/validate_evaluation_dataset.py`)는 `answer_item_ids`가 `data/processed/opportunities.json`의 `item_id`에 실제 존재하는지 확인한다.
+
+검증 결과:
+
+```text
+rows=50
+missing_field_rows=0
+empty_answer_rows=0
+missing_item_ids=0
+duplicate_questions=0
+```
+
+Ground Truth 평가 데이터셋의 정답 ID가 최종 통합 데이터와 정상적으로 연결되어 있음을 확인했다.
+
+---
+
+## 7. 핵심 실행 스크립트
+
+| 스크립트 | 역할 |
+|---|---|
+| `scripts/build_opportunities.py` | 통합 데이터 재생성 |
+| `scripts/validate_final_dataset.py` | 최종 데이터 건수, 중복, 결측, 청크 검증 |
+| `scripts/analyze_korean_text.py` | KoNLPy Okt 형태소 분석 및 키워드 추출 |
+| `scripts/build_text_features.py` | BoW, TF-IDF, Word2Vec/FastText 리포트 생성 |
+| `scripts/validate_evaluation_dataset.py` | Ground Truth 정답 item_id 검증 |
+
+---
+
+## 8. 최종 산출물 전체 목록
+
+### 8.1 백엔드/RAG 핵심 데이터
+
+| 파일 | 설명 |
+|---|---|
+| `data/processed/opportunities.json` | 최종 통합 데이터 (26,803건) — 백엔드 기준 파일 |
+| `data/processed/opportunity_chunks.jsonl` | RAG 임베딩용 청크 (33,950건) |
+| `tests/evaluation_dataset.jsonl` | Ground Truth 평가 데이터셋 (50건) |
+
+### 8.2 텍스트 분석 산출물
+
+| 파일 | 설명 |
+|---|---|
+| `data/processed/opportunities_with_keywords.json` | KoNLPy Okt 기반 키워드가 추가된 평가용 데이터 |
+| `data/reports/konlpy_keyword_report.csv` | 형태소 분석 기반 키워드 빈도 리포트 |
+| `data/reports/stopword_report.csv` | 불용어 처리 기준 리포트 |
+| `data/reports/bow_keyword_report.csv` | BoW 키워드 빈도 리포트 |
+| `data/reports/tfidf_keyword_report.csv` | TF-IDF 키워드 리포트 |
+| `data/reports/word2vec_fasttext_status_report.csv` | Word2Vec/FastText 샘플 학습 결과 리포트 |
+
+### 8.3 청크 품질 리포트
+
+| 파일 | 설명 |
+|---|---|
+| `data/reports/chunk_length_report.csv` | 청크 수 및 길이 통계 |
+| `data/reports/evaluation_dataset_summary.csv` | Ground Truth 검증 요약 |
