@@ -224,6 +224,27 @@ def _get_item_collection_label(compact_policies: list[dict[str, Any]]) -> str:
     return "지원 정보"
 
 
+def _format_deadline_status(policy: dict[str, Any]) -> str:
+    deadline_status = _safe_str(policy.get("deadline_status"))
+    application_end_date = _safe_str(policy.get("application_end_date"))
+    is_expired = bool(policy.get("is_expired"))
+
+    if is_expired or deadline_status == "expired":
+        if application_end_date:
+            return f"마감됨({application_end_date} 종료)"
+        return "마감됨"
+
+    if deadline_status == "open":
+        if application_end_date:
+            return f"신청 가능성 있음({application_end_date}까지)"
+        return "신청 가능성 있음"
+
+    if deadline_status == "unknown":
+        return "마감일 확인 필요"
+
+    return MISSING_TEXT
+
+
 def _compact_policy_for_prompt(policy: dict[str, Any]) -> dict[str, Any]:
     """
     LLM에 넘길 지원 정보를 필요한 필드만 남겨 압축한다.
@@ -316,6 +337,20 @@ def _compact_policy_for_prompt(policy: dict[str, Any]) -> dict[str, Any]:
     application_url = _get_application_url(policy, text)
     source_url = _get_source_url(policy)
 
+    deadline_status = _safe_str(
+        policy.get("deadline_status")
+        or metadata.get("deadline_status")
+    )
+    application_end_date = _safe_str(
+        policy.get("application_end_date")
+        or metadata.get("application_end_date")
+    )
+    is_expired = bool(
+        policy.get("is_expired")
+        if policy.get("is_expired") is not None
+        else metadata.get("is_expired", False)
+    )
+
     # training/startup_notice는 구조화 정책 필드가 비어 있는 경우가 많으므로
     # 주요 내용에는 정리된 원문 일부를 fallback으로 사용한다.
     if not support_content and source_category in {"training", "startup_notice"}:
@@ -352,6 +387,17 @@ def _compact_policy_for_prompt(policy: dict[str, Any]) -> dict[str, Any]:
         "needs_detail_check": metadata.get("needs_detail_check", policy.get("needs_detail_check")),
         "info_score": metadata.get("info_score", policy.get("info_score")),
         "raw_text_excerpt": raw_text_excerpt,
+
+        "deadline_status": deadline_status or MISSING_TEXT,
+        "application_end_date": application_end_date or MISSING_TEXT,
+        "is_expired": is_expired,
+        "deadline_display": _format_deadline_status(
+            {
+                "deadline_status": deadline_status,
+                "application_end_date": application_end_date,
+                "is_expired": is_expired,
+            }
+        ),
     }
 
 
@@ -484,6 +530,8 @@ def generate_answer_rule_based(
         application_period = policy.get("application_period") or MISSING_TEXT
         application_method = policy.get("application_method") or MISSING_TEXT
         required_documents = policy.get("required_documents") or MISSING_TEXT
+        deadline_display = policy.get("deadline_display") or _format_deadline_status(policy)
+        is_expired = bool(policy.get("is_expired"))
 
         matched_conditions = policy.get("matched_conditions") or []
         missing_conditions = policy.get("missing_conditions") or []
@@ -491,6 +539,9 @@ def generate_answer_rule_based(
         blockers = policy.get("blockers") or []
 
         reason = f"사용자 질문과 관련성이 높은 {item_type_label}으로 검색되었습니다."
+
+        if is_expired and "마감" not in "\n".join(blockers + cautions):
+            cautions.append("마감된 항목일 수 있으므로 현재 신청 가능 항목으로 단정하지 않습니다.")
 
         if blockers:
             reason = "검색 결과에는 포함되었지만, 일부 조건이 맞지 않을 가능성이 있습니다."
@@ -505,6 +556,7 @@ def generate_answer_rule_based(
                 f"- 항목 유형: {item_type_label}",
                 f"- 추천 이유: {reason}",
                 f"- 신청/참여 가능성: {eligibility}",
+                f"- 마감 상태: {deadline_display}",
                 "- 충족 조건:",
                 _format_list(matched_conditions),
                 "- 추가 확인 필요:",

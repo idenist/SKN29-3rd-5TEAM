@@ -339,6 +339,9 @@ def _build_policy_view(policy: dict[str, Any]) -> dict[str, Any]:
         "application_url": policy.get("application_url", metadata.get("application_url", "")),
         "info_score": policy.get("info_score", metadata.get("info_score", 0)),
         "needs_detail_check": policy.get("needs_detail_check", metadata.get("needs_detail_check", True)),
+        "deadline_status": policy.get("deadline_status", metadata.get("deadline_status", "")),
+        "application_end_date": policy.get("application_end_date", metadata.get("application_end_date", "")),
+        "is_expired": policy.get("is_expired", metadata.get("is_expired", False)),
     }
 
 def _get_item_type_label(source_category: str) -> str:
@@ -454,6 +457,24 @@ def check_policy_eligibility(
     if not _has_required_documents(policy_text):
         cautions.append(f"{item_type_label}의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음")
 
+    # 6. 마감/최신성 조건
+    deadline_status = _safe_str(policy_view.get("deadline_status"))
+    application_end_date = _safe_str(policy_view.get("application_end_date"))
+    is_expired = _safe_bool(policy_view.get("is_expired"), default=False)
+
+    if is_expired or deadline_status == "expired":
+        if application_end_date:
+            blockers.append(f"마감된 {item_type_label}: 신청/접수 종료일이 {application_end_date}로 확인됨")
+        else:
+            blockers.append(f"마감된 {item_type_label}으로 표시되어 현재 신청 가능 여부가 낮음")
+    elif deadline_status == "open":
+        if application_end_date:
+            matched_conditions.append(f"신청/접수 기간 조건: {application_end_date}까지 신청 가능성이 있음")
+        else:
+            matched_conditions.append(f"신청/접수 기간 조건: 상시/수시 등 현재 신청 가능성이 있는 표현이 확인됨")
+    elif deadline_status == "unknown":
+        cautions.append(f"{item_type_label}의 마감일을 구조화 데이터에서 명확히 확인하지 못해 원문 확인 필요")
+
     # 6. 최종 등급 산정
     if blockers:
         eligibility = ELIGIBILITY_LOW
@@ -476,6 +497,9 @@ def check_policy_eligibility(
         "missing_conditions": missing_conditions,
         "cautions": cautions,
         "blockers": blockers,
+        "deadline_status": policy_view.get("deadline_status", ""),
+        "application_end_date": policy_view.get("application_end_date", ""),
+        "is_expired": policy_view.get("is_expired", False),
     }
 
 
@@ -518,6 +542,9 @@ def attach_eligibility_to_policies(
                 "missing_conditions": eligibility_result["missing_conditions"],
                 "cautions": eligibility_result["cautions"],
                 "blockers": eligibility_result["blockers"],
+                "deadline_status": policy.get("deadline_status") or eligibility_result.get("deadline_status", ""),
+                "application_end_date": policy.get("application_end_date") or eligibility_result.get("application_end_date", ""),
+                "is_expired": policy.get("is_expired", eligibility_result.get("is_expired", False)),
             }
         )
 

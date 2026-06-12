@@ -270,6 +270,7 @@ def search_policy_chunks(
     user_age = filters.get("user_age")
     user_region_code = filters.get("user_region_code")
     domain = filters.get("domain")
+    source_category = filters.get("source_category")
 
     raw_results = search_with_filters(
         vector_store=vector_store,
@@ -280,14 +281,43 @@ def search_policy_chunks(
         fetch_k=fetch_k,
     )
 
+    # source_category는 데이터 유형 필터이므로 후처리에서 우선 적용한다.
+    # 단, 결과가 너무 적으면 Retriever 단계 fallback을 위해 원본을 유지한다.
+    if source_category:
+        category_filtered = []
+
+        for result in raw_results:
+            result_source_category = str(result.metadata.get("source_category", ""))
+
+            if result_source_category == source_category:
+                category_filtered.append(result)
+
+        if len(category_filtered) >= top_k:
+            raw_results = category_filtered
+
     # domain 필터는 Chroma where로 강하게 걸기보다 후처리로 느슨하게 적용
     if domain:
+        domain_aliases = {
+            "교육": {"교육", "education", "training"},
+            "창업": {"창업", "startup", "startup_notice"},
+            "일자리": {"일자리", "job", "employment", "work"},
+            "주거": {"주거", "housing"},
+            "금융": {"금융", "finance"},
+            "복지문화": {"복지문화", "welfare", "culture"},
+            "참여권리": {"참여권리", "participation", "rights"},
+        }
+        expected_domains = domain_aliases.get(str(domain), {str(domain)})
+
         domain_filtered = []
 
         for result in raw_results:
             result_domain = str(result.metadata.get("domain", ""))
 
-            if domain in result_domain or result_domain in domain:
+            if (
+                domain in result_domain
+                or result_domain in str(domain)
+                or result_domain in expected_domains
+            ):
                 domain_filtered.append(result)
 
         # 도메인 필터 결과가 너무 적으면 fallback을 위해 원본 유지

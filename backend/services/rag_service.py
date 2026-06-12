@@ -194,8 +194,51 @@ def _filter_by_source_category(
 
     if len(matched) >= min_results:
         return matched
-
     return results
+
+
+def _has_freshness_intent(query: str) -> bool:
+    """
+    사용자가 현재 신청 가능/최신/특정 연도 신청 가능 여부를 요구했는지 판단한다.
+
+    True이면 expired 결과를 참고용으로도 섞지 않고 강하게 제외한다.
+    예: "지금 신청 가능한", "2026년에 신청 가능한", "모집 중", "마감 전"
+    """
+    text = str(query or "").strip()
+
+    if not text:
+        return False
+
+    freshness_keywords = [
+        "지금 신청",
+        "현재 신청",
+        "신청 가능한",
+        "신청가능한",
+        "신청 가능",
+        "모집 중",
+        "모집중",
+        "접수 중",
+        "접수중",
+        "마감 전",
+        "마감전",
+        "현재 모집",
+        "현재 접수",
+        "올해",
+        "올해 신청",
+        "최신",
+    ]
+
+    if any(keyword in text for keyword in freshness_keywords):
+        return True
+
+    # "2026년에 신청 가능한"처럼 현재 프로젝트 연도 또는 미래 연도를 명시한 경우
+    current_year = date.today().year
+    for match in re.finditer(r"(20\d{2})", text):
+        year = int(match.group(1))
+        if year >= current_year:
+            return True
+
+    return False
 
 def _parse_date_text(value: str) -> date | None:
     """
@@ -363,6 +406,7 @@ def _rerank_results(
     results: list[dict[str, Any]],
     preferred_domain: str | None = None,
     preferred_source_category: str | None = None,
+    strict_freshness: bool = False,
 ) -> list[dict[str, Any]]:
     """
     최종 노출 순서 재정렬.
@@ -388,20 +432,26 @@ def _rerank_results(
         reverse=True,
     )
 
-    # 창업공고 검색일 때는 이미 마감된 공고를 가능한 한 제외한다.
-    # 단, 결과가 너무 적어지는 경우에는 참고용으로 유지한다.
-    if preferred_source_category == "startup_notice":
+    # 마감 상태가 있는 데이터 유형은 이미 마감된 항목을 가능한 한 뒤로 보낸다.
+    # 특히 사용자가 "지금 신청 가능한", "2026년에 신청 가능한"처럼 최신성을 명시한 경우에는
+    # expired 결과를 참고용으로도 섞지 않고 강하게 제외한다.
+    deadline_target_categories = {"startup_notice", "policy", "training"}
+
+    if preferred_source_category in deadline_target_categories:
         non_expired = [
             item
             for item in ranked
             if _get_deadline_rank(item) in {2, 3}
         ]
 
-        # 살아있는 공고가 충분할 때만 마감 공고를 제외
-        # 프론트 필터링을 위해 기본적으로는 너무 강하게 제거하지 않는다.
+        if strict_freshness:
+            return non_expired
+
+        # 일반 검색에서는 결과가 너무 적어지는 것을 막기 위해
+        # 살아있는 후보가 충분할 때만 expired를 제거한다.
         if len(non_expired) >= 3:
             return non_expired
-        
+
     return ranked
 
 def _filter_low_score(
@@ -538,6 +588,7 @@ def retrieve_policies(
 
     fetch_k = max(DEFAULT_FETCH_K, top_k * 15)
     source_category = normalized_filters.get("source_category")
+    strict_freshness = _has_freshness_intent(query)
 
     # 1차 검색: 필터 포함
     raw_results = search_policy_chunks(
@@ -559,6 +610,7 @@ def retrieve_policies(
         deduped,
         preferred_domain=normalized_filters.get("domain"),
         preferred_source_category=source_category,
+        strict_freshness=strict_freshness,
     )
     filtered = _filter_low_score(reranked)
 
@@ -591,6 +643,7 @@ def retrieve_policies(
             deduped,
             preferred_domain=normalized_filters.get("domain"),
             preferred_source_category=source_category,
+            strict_freshness=strict_freshness,
         )
         filtered = _filter_low_score(reranked)
 

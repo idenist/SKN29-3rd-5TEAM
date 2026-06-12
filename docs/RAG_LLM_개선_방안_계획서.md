@@ -1,0 +1,545 @@
+# 청년 정책 RAG 에이전트 개선 방안 계획서
+
+## 1. 문서 목적
+
+본 문서는 팀원 피드백과 평가 계획서 기준을 반영하여, 현재 구현된 청년 정책 RAG 에이전트의 개선 방향을 정리한 계획서이다.
+
+현재 시스템은 청년 정책, 창업지원 공고, 교육훈련 과정을 통합 검색하고 사용자 조건에 따라 신청/참여 가능성을 판단하는 RAG 기반 질의응답 구조를 갖추고 있다. 다만 평가 기준과 시연 완성도를 고려할 때 다음 항목의 보완이 필요하다.
+
+- ReAct 기반 Tool 선택 및 재판단 흐름 명확화
+- 오래된 정책 및 마감 공고 추천 문제 개선
+- 내부 검색 실패 시 외부 공식 출처 검색 fallback 추가
+- BLEU, ROUGE, LLM-as-a-Judge 기반 평가 체계 보완
+- sLLM 파인튜닝 및 LoRA/QLoRA 대응 산출물 추가
+- FastAPI와 Streamlit 연동 시 응답 필드 보존 및 화면 필터링 강화
+
+---
+
+## 2. 현재 시스템 요약
+
+현재 RAG/LLM 파이프라인은 다음 구조로 동작한다.
+
+```text
+사용자 질문
+↓
+Input Validator
+↓
+Condition Extractor
+↓
+Router
+↓
+Retriever
+↓
+Eligibility Checker
+↓
+Answer Generator
+↓
+FastAPI / Streamlit 응답
+```
+
+### 2.1 주요 구현 기능
+
+| 구분 | 현재 구현 내용 |
+| --- | --- |
+| 조건 추출 | 나이, 지역, 소득, 고용 상태, 관심 분야, 키워드 추출 |
+| 라우팅 | 도메인 및 source_category 기반 분기 |
+| 검색 | Chroma Vector DB 기반 Top-k 검색 |
+| 데이터 유형 | policy, startup_notice, training 통합 검색 |
+| 자격 판단 | 가능성 높음 / 추가 확인 필요 / 가능성 낮음 분류 |
+| 답변 생성 | 추천 이유, 신청/참여 가능성, 서류, 기간, 출처 URL 제공 |
+| 마감 상태 | 창업공고에 대해 deadline_status, application_end_date, is_expired 생성 |
+| 프론트 대응 | source_category, deadline_status 기반 필터링 가능 |
+
+### 2.2 현재 한계
+
+| 문제 | 설명 |
+| --- | --- |
+| ReAct 흐름 불명확 | Router-Retriever 순차 흐름은 있으나 Reason-Action-Observation 구조가 명확히 드러나지 않음 |
+| 오래된 정책 노출 | 일부 마감 공고 또는 과거 정책이 상위에 추천될 수 있음 |
+| 외부 검색 fallback 부재 | 내부 Vector DB 검색 결과가 부족해도 외부 공식 출처를 조회하지 않음 |
+| 평가 지표 부족 | BLEU, ROUGE, LLM-as-a-Judge 평가 결과가 아직 산출물로 정리되지 않음 |
+| LoRA 대응 부족 | sLLM 파인튜닝은 평가표에 있으나 현재 메인 구현에는 포함되지 않음 |
+| UI 필터 미적용 가능성 | 백엔드 필드는 존재하지만 Streamlit에서 필터로 연결해야 함 |
+
+---
+
+## 3. 평가 기준 기반 개선 필요 항목
+
+평가 계획서 기준으로 본 프로젝트에서 보완해야 할 항목은 다음과 같다.
+
+| 평가 영역 | 관련 개선 항목 | 대응 방향 |
+| --- | --- | --- |
+| 시스템 아키텍처 | LangGraph 기반 Multi-Agent / ReAct 흐름 | ReAct Tool Selector, Result Sufficiency Checker, External Retriever 노드 추가 |
+| 개발 소프트웨어 | ReAct 워크플로우 구현 | 내부 검색 결과를 관찰한 뒤 외부 검색 여부를 판단하는 루프 구현 |
+| 개발 소프트웨어 | sLLM 파인튜닝 및 LoRA/QLoRA | 샘플 학습 코드와 실험 계획 문서 추가 |
+| 테스트 보고서 | BLEU, ROUGE | 기준 답변 대비 생성 답변의 보조 지표로 산출 |
+| 테스트 보고서 | LLM-as-a-Judge | Context Relevance, Groundedness, Answer Relevance 평가 |
+| 테스트 보고서 | 한계 및 개선안 | 오래된 정책 추천, 외부 검색, 라우팅 실패 사례 분석 |
+
+---
+
+## 4. 개선 방안 1: ReAct 기반 워크플로우 명확화
+
+### 4.1 개선 목적
+
+현재 시스템은 LangGraph 기반 노드 흐름을 갖고 있으나, 평가 기준의 ReAct 항목을 명확히 만족하려면 에이전트가 단순히 정해진 순서대로 실행되는 것이 아니라 다음 과정을 수행해야 한다.
+
+```text
+Reason: 현재 질문에 필요한 정보와 검색 전략 판단
+Action: 내부 검색, 외부 검색, 자격 판단, 추가 질문 생성 중 도구 선택
+Observation: 도구 실행 결과 확인
+Reason: 결과가 충분한지 재판단
+Final Answer: 근거 기반 최종 답변 생성
+```
+
+### 4.2 개선 후 워크플로우
+
+```text
+사용자 질문
+↓
+Input Validator
+↓
+Condition Extractor
+↓
+Router
+↓
+ReAct Tool Selector
+↓
+Internal Retriever
+↓
+Result Sufficiency Checker
+├─ 결과 충분 → Eligibility Checker
+└─ 결과 부족 / 전부 마감 / 최신성 요구 → External Retriever
+↓
+Source Validator
+↓
+Eligibility Checker
+↓
+Answer Generator
+```
+
+### 4.3 추가 노드 정의
+
+| 노드 | 역할 | 입력 | 출력 |
+| --- | --- | --- | --- |
+| ReAct Tool Selector | 현재 질의에 필요한 도구 선택 | user_query, user_conditions, route | selected_tool, tool_reason |
+| Result Sufficiency Checker | 내부 검색 결과가 충분한지 판단 | retrieved_chunks | need_external_search, reason |
+| External Retriever | 공식 외부 출처 검색 | query, route, source_category | external_results |
+| Source Validator | 외부 결과의 출처와 날짜 유효성 검증 | external_results | validated_results |
+
+### 4.4 외부 검색 fallback 실행 조건
+
+다음 조건 중 하나라도 만족하면 외부 검색 fallback을 실행한다.
+
+```text
+- 내부 검색 결과가 3개 미만인 경우
+- 검색 결과의 평균 유사도 점수가 기준치보다 낮은 경우
+- 검색 결과가 모두 expired 상태인 경우
+- 사용자가 “최신”, “현재 신청 가능”, “2026년”, “지금 신청” 등을 명시한 경우
+- source_url 또는 application_url이 없는 결과만 검색된 경우
+```
+
+### 4.5 구현 대상 파일
+
+```text
+backend/graph/workflow.py
+backend/graph/nodes.py
+backend/graph/prompts.py
+backend/services/rag_service.py
+backend/services/external_search_service.py  # 신규
+backend/services/source_validator.py         # 신규
+```
+
+---
+
+## 5. 개선 방안 2: 오래된 정책 및 마감 공고 추천 방지
+
+### 5.1 문제 정의
+
+챗봇이 오래된 정책이나 이미 마감된 창업공고를 추천하는 경우 사용자 신뢰도가 크게 떨어진다. 특히 청년 정책 서비스는 신청 기간과 현재 모집 여부가 중요하므로 최신성 필터링이 필수적이다.
+
+### 5.2 현재 구현 상태
+
+창업공고 데이터에는 다음 필드가 추가되어 있다.
+
+```text
+deadline_status
+application_end_date
+is_expired
+```
+
+정렬 우선순위는 다음과 같다.
+
+```text
+1. open
+2. unknown
+3. expired
+```
+
+### 5.3 추가 개선 방향
+
+#### 5.3.1 정책 데이터에도 기간 필드 적용
+
+창업공고뿐 아니라 policy 데이터에도 신청 기간을 파싱하여 다음 필드를 추가한다.
+
+```text
+application_start_date
+application_end_date
+deadline_status
+is_expired
+```
+
+#### 5.3.2 최신성 기반 rerank 점수 추가
+
+최종 점수 계산에 최신성 점수를 반영한다.
+
+```text
+final_score =
+  vector_similarity_score
+  + domain_match_score
+  + condition_match_score
+  + recency_score
+  - expired_penalty
+```
+
+#### 5.3.3 프론트 기본 필터 적용
+
+Streamlit에서는 기본적으로 마감된 항목을 숨긴다.
+
+```python
+show_expired = st.checkbox("마감된 항목 포함", value=False)
+
+if not show_expired:
+    recommendations = [
+        item for item in recommendations
+        if item.get("deadline_status") != "expired"
+    ]
+```
+
+### 5.4 구현 대상 파일
+
+```text
+backend/services/rag_service.py
+backend/services/policy_matcher.py
+backend/services/answer_generator.py
+app_streamlit/views/*page.py
+app_streamlit/utils/*
+```
+
+---
+
+## 6. 개선 방안 3: 내부 문서 검색 실패 시 외부 공식 출처 검색
+
+### 6.1 개선 목적
+
+내부 Vector DB에 없는 최신 정책이나 신규 공고에 대해 “찾을 수 없음”으로 끝내지 않고, 공식 외부 출처에서 추가 정보를 가져올 수 있도록 한다.
+
+### 6.2 외부 검색 대상
+
+| 데이터 유형 | 외부 출처 예시 | 목적 |
+| --- | --- | --- |
+| 청년 정책 | 온통청년 API / 청년포털 | 최신 정책 검색 |
+| 창업지원 공고 | K-Startup | 최신 창업공고 검색 |
+| 교육훈련 과정 | 고용24 / HRD-Net | 국민내일배움카드, K-Digital Training 과정 검색 |
+| 지자체 정책 | 지자체 공식 홈페이지 | 지역별 최신 공고 보완 |
+
+### 6.3 외부 검색 결과 처리 원칙
+
+외부 검색 결과는 다음 조건을 만족할 때만 답변에 포함한다.
+
+```text
+- 공식 기관 또는 공신력 있는 출처일 것
+- 제목, 신청 기간, 주요 내용, 출처 URL이 확인될 것
+- 신청 기간이 마감되지 않았거나 마감 여부를 명확히 표시할 수 있을 것
+- 출처 URL 없는 내용은 답변에서 제외할 것
+```
+
+### 6.4 답변 표시 방식
+
+외부 검색 결과는 내부 검색 결과와 구분하여 표시한다.
+
+```text
+[내부 DB 기반 추천]
+1. 서울시 청년월세지원
+   - 출처: 내부 Vector DB / 온통청년 수집 데이터
+
+[외부 공식 출처에서 추가 확인된 항목]
+1. 2026년 ○○청년지원사업
+   - 출처: 공식 홈페이지 URL
+   - 비고: 내부 DB에 없는 최신 공고이므로 신청 전 원문 확인 필요
+```
+
+---
+
+## 7. 개선 방안 4: BLEU, ROUGE, LLM-as-a-Judge 평가 추가
+
+### 7.1 평가 목적
+
+RAG 시스템의 검색 품질과 답변 품질을 정량적·정성적으로 검증한다.
+
+### 7.2 평가 데이터셋 구성
+
+```json
+{
+  "question": "서울에 사는 25세 청년이 받을 수 있는 월세 지원 정책 알려줘",
+  "user_conditions": {
+    "age": 25,
+    "region": "서울",
+    "interest_domain": "주거"
+  },
+  "ground_truth_items": ["서울시 청년월세지원"],
+  "reference_answer": "서울 거주 25세 청년은 서울시 청년월세지원 정책을 우선 확인할 수 있습니다..."
+}
+```
+
+### 7.3 평가 지표
+
+| 평가 항목 | 지표 | 설명 |
+| --- | --- | --- |
+| 검색 적합성 | Top-3 Hit Rate | 정답 정책이 검색 결과 상위 3개 안에 포함되는지 |
+| 검색 적합성 | MRR | 정답 정책이 몇 번째 순위에 등장하는지 |
+| 답변 유사도 | BLEU | 기준 답변과 생성 답변의 n-gram 유사도 |
+| 답변 유사도 | ROUGE-L | 기준 답변과 생성 답변의 문장 유사도 |
+| 근거성 | Groundedness | 답변이 검색 context에 근거하는지 |
+| 관련성 | Answer Relevance | 질문에 직접 답하는지 |
+| 맥락 적합성 | Context Relevance | 검색된 문서가 질문과 관련 있는지 |
+| 최신성 | Freshness | 마감 또는 과거 정책을 추천하지 않았는지 |
+
+### 7.4 BLEU/ROUGE 사용 시 주의점
+
+정책 추천형 RAG에서는 같은 의미의 답변도 표현이 달라질 수 있다. 따라서 BLEU/ROUGE는 핵심 지표가 아니라 보조 지표로 사용한다.
+
+핵심 평가는 다음 항목으로 둔다.
+
+```text
+- Context Relevance
+- Groundedness
+- Answer Relevance
+- Source Consistency
+- Freshness
+```
+
+### 7.5 구현 대상 파일
+
+```text
+tests/evaluation_dataset.jsonl
+tests/test_retriever.py
+tests/test_answer_quality.py
+scripts/evaluate_bleu_rouge.py
+scripts/evaluate_llm_judge.py
+docs/테스트_계획_및_결과보고서.md
+```
+
+---
+
+## 8. 개선 방안 5: sLLM 파인튜닝 및 LoRA/QLoRA 대응
+
+### 8.1 개선 목적
+
+평가 기준에는 sLLM 파인튜닝 및 LoRA/QLoRA 기반 PEFT 코드 역량이 포함되어 있다. 본 프로젝트의 핵심 서비스는 OpenAI API 기반 RAG이지만, 평가 산출물 대응을 위해 sLLM 파인튜닝 실험 계획과 샘플 코드를 추가한다.
+
+### 8.2 적용 범위
+
+실서비스 경로에서는 OpenAI 기반 RAG를 유지하고, LoRA/QLoRA는 다음 용도로 분리한다.
+
+```text
+- 청년 정책 QA 전용 sLLM 구축 가능성 검토
+- Answer Generator의 문체 및 응답 형식 학습
+- 조건 추출 JSON 형식 학습
+- 내부망 또는 API 비용 절감을 위한 향후 확장 방향 제시
+```
+
+### 8.3 학습 데이터 형식
+
+```json
+{
+  "instruction": "사용자의 조건에 맞는 청년 정책을 추천하라.",
+  "input": "나이: 25, 지역: 서울, 관심분야: 주거, 질문: 월세 지원 정책 알려줘",
+  "output": "서울 거주 25세 청년은 서울시 청년월세지원 정책을 우선 확인할 수 있습니다. 단, 소득 조건과 신청 기간은 원문에서 추가 확인이 필요합니다."
+}
+```
+
+### 8.4 산출물 구성
+
+```text
+scripts/train_lora_policy_qa.py
+scripts/prepare_sllm_dataset.py
+data/processed/sllm_train_sample.jsonl
+docs/sllm_lora_finetuning_plan.md
+```
+
+### 8.5 발표 시 설명 방향
+
+```text
+본 프로젝트의 핵심 경로는 최신 정책 검색이 중요한 RAG 구조이므로, 실서비스에서는 OpenAI Embedding과 LLM을 활용하였다.
+다만 평가 기준의 sLLM 파인튜닝 항목에 대응하기 위해 LoRA/QLoRA 기반 PEFT 학습 코드와 샘플 데이터셋을 별도 산출물로 구성하였다.
+향후에는 조건 추출기 또는 답변 생성기를 sLLM으로 대체하여 비용 절감과 내부망 배포 가능성을 높일 수 있다.
+```
+
+---
+
+## 9. 개선 방안 6: FastAPI 및 Streamlit 응답 필드 보존
+
+### 9.1 개선 목적
+
+RAG/LLM에서 생성한 필드가 FastAPI와 Streamlit으로 전달되는 과정에서 누락되지 않도록 한다. 특히 프론트 필터링과 카드 표시에는 다음 필드가 중요하다.
+
+```text
+source_category
+deadline_status
+application_end_date
+is_expired
+eligibility
+matched_conditions
+missing_conditions
+source_url
+application_url
+```
+
+### 9.2 FastAPI 응답 확인 항목
+
+`POST /api/chat` 응답에 다음 구조가 유지되어야 한다.
+
+```json
+{
+  "answer": "...",
+  "route": "주거",
+  "route_reason": "...",
+  "user_conditions": {...},
+  "recommendations": [
+    {
+      "title": "...",
+      "source_category": "policy",
+      "eligibility": "추가 확인 필요",
+      "deadline_status": "open",
+      "application_end_date": "2026-06-30",
+      "is_expired": false,
+      "source_url": "...",
+      "application_url": "..."
+    }
+  ],
+  "warnings": [],
+  "errors": []
+}
+```
+
+### 9.3 Streamlit 표시 개선
+
+Streamlit 화면에는 다음 필터를 추가한다.
+
+```text
+- 데이터 유형 필터: 전체 / 정책 / 창업지원 공고 / 교육훈련 과정
+- 마감된 항목 포함 여부
+- 신청 가능성 필터: 가능성 높음 / 추가 확인 필요 / 가능성 낮음
+- 지역 또는 관심 분야 필터
+```
+
+### 9.4 카드 표시 항목
+
+```text
+항목명
+항목 유형
+신청/참여 가능성
+마감 상태
+신청/훈련 기간
+추천 이유
+추가 확인 필요 조건
+출처 URL
+신청 URL
+```
+
+---
+
+## 10. 우선순위 및 일정
+
+프로젝트 남은 기간을 고려하여 우선순위를 다음과 같이 둔다.
+
+| 우선순위 | 작업 | 중요도 | 예상 소요 | 담당 |
+| --- | --- | --- | --- | --- |
+| 1 | 오래된 정책/마감 공고 필터링 | 매우 높음 | 0.5일 | RAG/프론트 |
+| 2 | FastAPI 응답 필드 보존 확인 | 매우 높음 | 0.5일 | 백엔드/RAG |
+| 3 | Streamlit 필터 적용 | 높음 | 0.5일 | 프론트 |
+| 4 | ReAct 흐름 문서화 및 최소 구현 | 높음 | 1일 | RAG/백엔드 |
+| 5 | BLEU/ROUGE 평가 스크립트 추가 | 중간 | 0.5일 | 검증 |
+| 6 | LLM-as-a-Judge 평가 추가 | 높음 | 0.5일 | 검증/RAG |
+| 7 | 외부 공식 출처 fallback 설계 | 중간~높음 | 1일 | RAG/백엔드 |
+| 8 | LoRA/QLoRA 샘플 코드 및 문서 | 중간 | 0.5일 | RAG |
+
+### 10.1 최소 완료 기준
+
+시연 전까지 반드시 완료해야 하는 항목은 다음과 같다.
+
+```text
+1. 마감된 공고 기본 숨김
+2. source_category 기반 데이터 유형 필터
+3. deadline_status, is_expired 필드 FastAPI 응답 유지
+4. ReAct 구조를 workflow 또는 문서에 명확히 반영
+5. LLM-as-a-Judge 평가 결과 일부라도 보고서에 포함
+```
+
+### 10.2 가능하면 추가할 항목
+
+```text
+1. 외부 공식 API fallback 실제 구현
+2. BLEU/ROUGE 자동 평가 스크립트
+3. LoRA 학습 샘플 코드
+4. LM-Eval 적용 계획 또는 샘플 실행 결과
+```
+
+---
+
+## 11. 개선 후 기대 효과
+
+개선 후 시스템은 다음 장점을 갖게 된다.
+
+| 개선 항목 | 기대 효과 |
+| --- | --- |
+| ReAct 구조 명확화 | 평가 기준의 Multi-Agent 및 ReAct 항목 대응 강화 |
+| 오래된 정책 필터링 | 사용자 신뢰도 향상 및 실제 신청 가능성 높은 결과 제공 |
+| 외부 검색 fallback | 내부 DB 한계 보완 및 최신 정책 대응 가능 |
+| BLEU/ROUGE 평가 | 자연어 생성 품질의 보조 정량 지표 확보 |
+| LLM-as-a-Judge | RAG 답변의 근거성, 관련성, 환각 여부 평가 가능 |
+| LoRA 샘플 코드 | sLLM 파인튜닝 평가 항목 방어 가능 |
+| Streamlit 필터 | 시연 시 사용자가 결과를 직관적으로 탐색 가능 |
+
+---
+
+## 12. 최종 개선 목표 구조
+
+```text
+사용자 질문
+↓
+조건 추출
+↓
+도메인 및 데이터 유형 라우팅
+↓
+ReAct Tool Selector
+↓
+내부 Vector DB 검색
+↓
+검색 결과 충분성 판단
+├─ 충분하면 내부 결과 기반 답변
+└─ 부족하면 외부 공식 출처 검색
+↓
+출처 및 최신성 검증
+↓
+자격/참여 가능성 판단
+↓
+마감 여부 및 신청 가능성 기준 rerank
+↓
+근거 기반 최종 답변 생성
+↓
+Streamlit 카드 및 필터 표시
+```
+
+---
+
+## 13. 결론
+
+현재 청년 정책 RAG 에이전트는 기본적인 RAG 검색, 조건 추출, 데이터 유형 라우팅, 자격 판단, 답변 생성 흐름을 갖추고 있다. 그러나 평가 기준과 팀원 피드백을 고려하면 ReAct 구조, 최신성 필터링, 외부 공식 출처 fallback, 평가 지표, LoRA 대응 산출물 보완이 필요하다.
+
+가장 우선적으로는 오래된 정책 추천 문제를 해결해야 한다. 이를 위해 `deadline_status`, `application_end_date`, `is_expired` 필드를 정책 및 공고 전체에 확대하고, FastAPI와 Streamlit에서 해당 필드가 유지되도록 해야 한다. 그 다음 ReAct Tool Selector와 Result Sufficiency Checker를 추가하여 내부 검색 결과가 부족하거나 오래된 경우 외부 공식 출처 검색으로 이어지는 흐름을 구현한다.
+
+평가 산출물 측면에서는 BLEU/ROUGE를 보조 지표로 추가하고, RAG 품질 평가는 LLM-as-a-Judge를 중심으로 Context Relevance, Groundedness, Answer Relevance, Freshness를 평가한다. sLLM 파인튜닝은 실서비스 핵심 경로가 아닌 별도 실험 산출물로 구성하여 LoRA/QLoRA 샘플 코드와 향후 적용 계획을 제시한다.
+
+이를 통해 본 프로젝트는 단순 정책 검색 챗봇이 아니라, 최신성·근거성·신청 가능성을 함께 고려하는 청년 지원 정보 탐색 에이전트로 완성도를 높일 수 있다.
