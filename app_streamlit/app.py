@@ -14,7 +14,7 @@ from views.chatbot_page import render_chatbot_page
 
 st.set_page_config(
     page_title="이젠, 안쉼",
-    page_icon="🏠",
+    page_icon="🌱",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
