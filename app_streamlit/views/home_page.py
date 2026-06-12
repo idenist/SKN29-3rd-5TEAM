@@ -37,6 +37,7 @@ def _apply_query_and_open_results(user_query):
         st.session_state[f"filter_interest_{interest}"] = (
             interest in profile["interest"]
         )
+    st.session_state.has_searched = True
     st.session_state.page = "추천 결과"
     st.rerun()
 
@@ -65,7 +66,7 @@ def render_home_page(policies):
             RAG 기반 AI 청년정책 추천 서비스
         </div>
         <h1 class="hero-title">
-            청년정책, 이제<br>
+            청년정책,<br>
             <span>헤매지 말고 물어보세요.</span>
         </h1>
         <p class="hero-desc">
@@ -73,7 +74,7 @@ def render_home_page(policies):
         </p>
         <div class="hero-search-label">
             <span>⌕</span>
-            궁금한 내용을 자연어로 입력하세요
+            궁금한 내용을 입력하세요
         </div>
     </div>
 </div>
@@ -142,7 +143,7 @@ def render_home_page(policies):
             <div class="flow-number">01</div>
             <div class="flow-icon">⌨</div>
             <div class="flow-name">상황을 알려주세요</div>
-            <div class="flow-desc">나이, 지역, 관심 분야를<br>자연스럽게 입력하세요.</div>
+            <div class="flow-desc">나이, 지역, 관심 분야를<br>입력하세요.</div>
         </div>
         <div class="arrow">→</div>
         <div class="flow-item">

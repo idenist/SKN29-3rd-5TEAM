@@ -1,4 +1,8 @@
+import base64
+from pathlib import Path
+
 import streamlit as st
+from PIL import Image
 
 from utils.data_loader import load_policies
 from utils.html_renderer import render_html
@@ -8,7 +12,12 @@ from views.detail_page import render_detail_page
 from views.guide_page import render_guide_page
 from views.chatbot_page import render_chatbot_page
 
-APP_VERSION = "v1.1"
+APP_VERSION = "v1.2"
+LOGO_PATH = Path(__file__).resolve().parents[1] / "KakaoTalk_20260612_161223810.png"
+LOGO_DATA_URI = (
+    "data:image/png;base64,"
+    + base64.b64encode(LOGO_PATH.read_bytes()).decode("ascii")
+)
 
 # -----------------------------------
 # 기본 설정
@@ -16,7 +25,7 @@ APP_VERSION = "v1.1"
 
 st.set_page_config(
     page_title="이젠, 안쉼",
-    page_icon="🌱",
+    page_icon=Image.open(LOGO_PATH),
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -88,6 +97,9 @@ policies = load_policies()
 if "page" not in st.session_state:
     st.session_state.page = "홈"
 
+if "has_searched" not in st.session_state:
+    st.session_state.has_searched = False
+
 if "profile" not in st.session_state:
     st.session_state.profile = {
         "age": 27,
@@ -95,7 +107,7 @@ if "profile" not in st.session_state:
         "income": 3000,
         "job_status": "중소기업 재직자",
         "housing_status": "월세",
-        "interest": ["취업", "금융", "주거"]
+        "interest": []
     }
 
 # -----------------------------------
@@ -105,7 +117,9 @@ if "profile" not in st.session_state:
 render_html("""
 <div class="top-header">
     <div class="brand">
-        <div class="brand-icon">🌱</div>
+        <div class="brand-icon">
+            <img src="{logo_data_uri}" alt="이젠, 안쉼 로고">
+        </div>
 
         <div>
             <div class="brand-title">
@@ -118,7 +132,7 @@ render_html("""
         </div>
     </div>
 </div>
-""")
+""".format(logo_data_uri=LOGO_DATA_URI))
 
 # -----------------------------------
 # 네비게이션

@@ -502,12 +502,13 @@ div[class*="st-key-policy_card_"]
 div[class*="st-key-open_policy_detail_"] {
     position: absolute;
     top: 0;
-    right: 180px;
+    right: 0;
     bottom: 0;
     left: 0;
     z-index: 1;
     margin: 0 !important;
     padding: 0 !important;
+    clip-path: inset(0 250px 0 0);
 }
 
 div[class*="st-key-open_policy_detail_"]
@@ -543,15 +544,16 @@ div[class*="st-key-policy_card_"] .policy-link {
 
 .policy-actions {
     position: relative;
-    z-index: 20;
+    z-index: 100;
     isolation: isolate;
     pointer-events: auto !important;
+    background: #FFFFFF;
 }
 
 .policy-actions .action-btn,
 .policy-actions .sub-btn {
     position: relative;
-    z-index: 21;
+    z-index: 101;
     pointer-events: auto !important;
 }
 
@@ -1018,7 +1020,67 @@ div[class*="st-key-example_query_"] button:hover {
 }
 
 .search-layout {
-    margin-bottom: 22px;
+    margin-bottom: 0;
+}
+
+.search-result-box-top {
+    min-height: 128px;
+    margin-bottom: 0;
+}
+
+.search-section-divider {
+    width: 100%;
+    height: 1px;
+    margin: 24px 0 24px;
+    background: #E5E9F0;
+}
+
+.recommendation-api-notice {
+    margin: 14px 0 0;
+}
+
+.search-condition-title {
+    margin: 22px 0 14px;
+    color: var(--ink);
+    font-size: 1.75rem;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.empty-search-state {
+    max-width: 640px;
+    margin: 90px auto 24px;
+    padding: 54px 32px;
+    border: 1px solid #E1E7F0;
+    border-radius: 22px;
+    background: #FFFFFF;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.empty-search-icon {
+    color: #5570D4;
+    font-size: 42px;
+}
+
+.empty-search-title {
+    margin-top: 14px;
+    color: #172033;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.empty-search-desc {
+    margin-top: 8px;
+    color: #6B7588;
+    font-size: 14px;
+}
+
+.empty-search-list {
+    max-width: none;
+    margin: 24px 0 0;
+    padding: 64px 32px;
 }
 
 .side-title {
@@ -1059,6 +1121,29 @@ div[data-testid="stForm"] button[kind="primaryFormSubmit"]:hover {
 div[data-testid="stForm"]
     [data-testid="InputInstructions"] {
     display: none !important;
+}
+
+.st-key-result_query_input [data-testid="InputInstructions"] {
+    display: none !important;
+}
+
+.st-key-extract_search_conditions {
+    margin-top: 8px;
+}
+
+.st-key-extract_search_conditions button {
+    min-height: 42px !important;
+    border-color: #405CD2 !important;
+    border-radius: 11px !important;
+    background: #405CD2 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 7px 16px rgba(64, 92, 210, 0.18) !important;
+}
+
+.st-key-extract_search_conditions button:hover {
+    border-color: #354FBE !important;
+    background: #354FBE !important;
+    color: #FFFFFF !important;
 }
 
 div[data-testid="stForm"] div[data-testid="stCheckbox"] label p {
@@ -1257,8 +1342,9 @@ div[data-testid="stDataFrame"] {
     div[class*="st-key-open_policy_detail_"] {
         top: 0;
         right: 0;
-        bottom: 112px;
+        bottom: 0;
         left: 0;
+        clip-path: inset(0 0 112px 0);
     }
 
 }
@@ -1285,11 +1371,16 @@ div[data-testid="stDataFrame"] {
     height: 34px;
     border: 0;
     border-radius: 50%;
-    background: #A8E3F7;
-    color: #FFFFFF;
-    box-shadow: 0 7px 18px rgba(100, 190, 225, 0.18);
-    font-size: 19px;
-    filter: drop-shadow(0 1px 1px rgba(20, 91, 79, 0.34));
+    overflow: hidden;
+    background: #DCEEFF;
+    box-shadow: 0 7px 18px rgba(72, 137, 210, 0.2);
+}
+
+.brand-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .brand-title {
@@ -1483,8 +1574,12 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-home_search_button)
 
 div[data-testid="stHorizontalBlock"]:has(.st-key-home_search_button)
     div[data-baseweb="input"] input {
+    height: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
     padding-left: 18px;
     font-size: 14px;
+    line-height: 48px !important;
 }
 
 .st-key-home_search_button button {
@@ -1501,12 +1596,21 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-home_search_button)
 }
 
 div[data-testid="stHorizontalBlock"]:has(div[class*="st-key-example_query_"]) {
-    max-width: 720px;
+    width: min(920px, calc(100% - 32px));
+    max-width: 920px;
     margin: 14px auto 66px;
     gap: 8px;
 }
 
+div[data-testid="stHorizontalBlock"]:has(div[class*="st-key-example_query_"])
+    > div[data-testid="stColumn"] {
+    flex: 1 1 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+}
+
 div[class*="st-key-example_query_"] button {
+    width: 100% !important;
     min-height: 38px !important;
     height: 38px !important;
     padding: 0 10px !important;
