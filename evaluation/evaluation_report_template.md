@@ -1,114 +1,145 @@
-# RAG/LLM 평가 보고서 템플릿
+# 청년 정책 RAG/LLM 평가 보고서
 
 ## 1. 평가 목적
 
-본 평가는 청년 정책 통합 탐색 에이전트의 RAG 검색 품질, 답변 근거성, 최신성 안전성, ReAct 워크플로우 동작 여부를 확인하기 위해 수행한다.
+본 평가는 청년 정책 통합 탐색 에이전트의 RAG 검색 품질, 답변 근거성, 최신성 안전성, ReAct 기반 분기 구조를 확인하기 위해 수행하였다.  
+특히 마감된 공고 추천 방지, 내부 검색 결과 충분성 판단, 외부 공식 출처 fallback 계획 생성 여부를 중점적으로 검증하였다.
 
 ## 2. 평가 대상
 
-- 대상 API: `/chat` 또는 `/api/chat`
-- 대상 기능:
-  - 사용자 조건 추출
-  - 도메인/source_category 라우팅
-  - Vector DB 검색
-  - 정책/창업공고/교육훈련 추천
-  - 마감 공고 필터링
-  - Result Sufficiency Checker
-  - 외부 공식 출처 fallback 계획 노드
+- API Endpoint: `/chat` 또는 `/api/chat`
+- 평가 스크립트: `evaluation/evaluate_rag.py`
+- 평가 질의셋: `evaluation/evaluation_dataset.jsonl`
+- 결과 저장 위치: `evaluation/result/`
 
-## 3. 평가 데이터셋
+## 3. 평가 데이터셋 구성
 
-평가 질의셋은 `evaluation_dataset.jsonl`에 정의한다.
+평가 질의셋은 총 10개 케이스로 구성하였다.
 
-주요 케이스는 다음과 같다.
-
-| 유형 | 예시 | 검증 목적 |
+| 구분 | 포함 케이스 | 평가 목적 |
 |---|---|---|
-| 정상 추천 | 2026년에 신청 가능한 창업지원 공고 추천 | open 공고 추천, 마감 공고 제외 |
-| 과거 공고 제외 | 2019년에 했던 사업 말고 지금 신청 가능한 공고 | 오래된 공고 추천 방지 |
-| ReAct fallback | 화성 청년 우주창업 지원금 | 불충분 검색 결과 차단, 외부 공식 출처 계획 |
-| 주거 정책 | 서울 25세 월세 지원 | 주거 라우팅 및 조건 반영 |
-| 교육훈련 | 국민내일배움카드 AI 데이터 분석 훈련 | training 데이터 라우팅 |
-| 일자리 | 면접수당 정책 | 일자리/정책 라우팅 |
-| 금융 | 청년도약계좌 | 금융 라우팅 |
-| 참여권리 | 청년 참여위원회 | 참여권리 라우팅 |
+| 정상 추천 | 창업, 주거, 교육훈련, 일자리, 금융, 참여권리 | 도메인 라우팅과 추천 품질 확인 |
+| 최신성 검증 | 2026년 신청 가능 공고, 과거 공고 제외 | 마감/과거 공고 추천 방지 확인 |
+| ReAct fallback | 비현실적 또는 내부 결과 불충분 질문 | 외부 공식 출처 검색 계획 분기 확인 |
+| 입력 검증 | 짧은 질문, 빈 질문 | warning/error 처리 확인 |
+| 텍스트 유사도 | reference_answer 포함 전 케이스 | BLEU/ROUGE 참고 지표 산출 |
 
-## 4. 자동 평가 지표
+각 케이스에는 다음 항목을 포함하였다.
 
-`evaluate_rag.py`는 다음 항목을 규칙 기반으로 확인한다.
+- `query`: 사용자 질문
+- `expected_route`: 기대 라우팅 도메인
+- `expected_behavior`: 기대 동작 설명
+- `reference_answer`: BLEU/ROUGE 및 LLM-as-a-Judge 참고 기준 답변
+- `must_have_any`, `must_not_have_any`: 답변 포함/제외 키워드
+- `expected_next_action`: ReAct 다음 행동 기대값
+- `expected_external_search_status`: 외부 검색 계획 상태 기대값
+- `allow_expired`: 마감 공고 허용 여부
+
+## 4. 평가 지표
+
+### 4.1 규칙 기반 평가
+
+`evaluate_rag.py`는 API 응답 JSON을 기준으로 다음 항목을 자동 점검한다.
 
 | 지표 | 설명 |
 |---|---|
-| route match | 기대 도메인과 실제 route 일치 여부 |
-| next_action match | answer_generation/external_search 분기 적절성 |
-| recommendation count | 기대 추천 개수 범위 충족 여부 |
-| freshness safety | 마감 공고가 추천에 포함되지 않았는지 여부 |
-| keyword check | 답변/응답 JSON에 필수 키워드 포함 여부 |
-| forbidden keyword check | 오래된 연도/부적절한 공고명 포함 여부 |
-| ReAct trace | tool_trace가 존재하고 단계가 기록되는지 여부 |
-| external search plan | fallback 시 공식 출처 target/query가 생성되는지 여부 |
+| Route Match | 응답의 `route`가 기대 도메인과 일치하는지 확인 |
+| Recommendation Count | 추천 결과 수가 기대 범위에 있는지 확인 |
+| No Expired Recommendations | `deadline_status=expired` 또는 `is_expired=true` 추천 여부 확인 |
+| ReAct Trace Presence | `tool_trace`가 존재하고 주요 노드 흐름이 기록되는지 확인 |
+| Internal Search Sufficiency | `internal_search_sufficient`가 케이스 기대값과 일치하는지 확인 |
+| Next Action | `next_action`이 `answer_generation` 또는 `external_search`로 적절히 설정되는지 확인 |
+| External Search Plan | `external_search_status`, `external_search_targets`, `external_search_queries`가 적절한지 확인 |
 
-## 5. LLM-as-a-Judge 평가 지표
+### 4.2 BLEU/ROUGE 평가
 
-LLM Judge는 다음 5개 항목을 1~5점으로 평가한다.
+각 케이스의 `reference_answer`와 실제 `answer`를 비교하여 다음 값을 계산한다.
 
-| 항목 | 설명 |
+| 지표 | 설명 |
 |---|---|
-| Context Relevance | 검색/추천 결과가 질문 도메인과 조건에 맞는가 |
-| Groundedness | 답변이 recommendations/source_url/deadline_status에 기반하는가 |
-| Answer Relevance | 사용자 질문에 직접 답하는가 |
+| BLEU | n-gram precision 기반 답변 유사도 참고 지표 |
+| ROUGE-1 F1 | unigram overlap 기반 유사도 |
+| ROUGE-2 F1 | bigram overlap 기반 유사도 |
+| ROUGE-L F1 | LCS 기반 문장 구조 유사도 |
+
+단, 본 서비스는 정책 추천형 RAG이므로 BLEU/ROUGE는 보조 지표로 사용한다. 같은 정책을 올바르게 추천하더라도 표현 방식이 다르면 BLEU/ROUGE가 낮게 나올 수 있으므로, 최종 품질 판단은 규칙 기반 평가 및 LLM-as-a-Judge 결과와 함께 해석한다.
+
+### 4.3 LLM-as-a-Judge 평가
+
+`--write-judge-inputs` 옵션을 사용하면 `evaluation/result/judge_inputs.jsonl`이 생성된다.  
+LLM Judge는 다음 항목을 1~5점으로 평가하도록 설계하였다.
+
+| 항목 | 평가 내용 |
+|---|---|
+| Context Relevance | 검색/추천 결과가 질문 조건과 관련 있는가 |
+| Groundedness | 답변이 응답 JSON의 근거에 기반하는가 |
+| Answer Relevance | 사용자 질문 및 reference_answer와 의미적으로 부합하는가 |
 | Freshness Safety | 마감/과거 공고를 부적절하게 추천하지 않는가 |
 | ReAct Trace Quality | tool_trace와 next_action이 결과와 일관되는가 |
+| Reference Alignment | 기준 답변의 핵심 기대 내용과 일치하는가 |
 
-## 6. 실행 방법
-
-```bash
-cd <프로젝트 루트>
-python evaluation/evaluate_rag.py --base-url http://127.0.0.1:8000 --endpoint /chat --write-judge-inputs
-```
-
-API prefix가 `/api/chat`이면 다음처럼 실행한다.
+## 5. 실행 방법
 
 ```bash
-python evaluation/evaluate_rag.py --base-url http://127.0.0.1:8000 --endpoint /api/chat --write-judge-inputs
+python evaluation/evaluate_rag.py \
+  --dataset evaluation/evaluation_dataset.jsonl \
+  --base-url http://127.0.0.1:8000 \
+  --endpoint /chat \
+  --write-judge-inputs
 ```
 
-## 7. 결과 기록
+API 라우터가 `/api/chat`인 경우:
 
-| 날짜 | 평가 케이스 수 | 통과 수 | 통과율 | 주요 실패 원인 | 개선 내용 |
-|---|---:|---:|---:|---|---|
-| YYYY-MM-DD | 10 | - | - | - | - |
+```bash
+python evaluation/evaluate_rag.py \
+  --dataset evaluation/evaluation_dataset.jsonl \
+  --base-url http://127.0.0.1:8000 \
+  --endpoint /api/chat \
+  --write-judge-inputs
+```
 
-## 8. 대표 검증 사례
+## 6. 생성 산출물
 
-### 8.1 정상 open 공고 추천
+| 파일 | 설명 |
+|---|---|
+| `evaluation/result/evaluation_results.json` | 케이스별 상세 평가 결과 및 원본 응답 JSON |
+| `evaluation/result/evaluation_results.md` | 평가 결과 요약표 |
+| `evaluation/result/judge_inputs.jsonl` | LLM-as-a-Judge 입력 프롬프트 |
 
-- 질문: `2026년에 신청 가능한 창업지원 공고 추천해줘`
-- 기대 결과:
-  - `internal_search_sufficient = true`
-  - `next_action = answer_generation`
-  - `external_used = false`
-  - `recommendations[].deadline_status != expired`
+## 7. 결과 요약
 
-### 8.2 ReAct fallback
+> 아래 항목은 평가 실행 후 `evaluation/result/evaluation_results.md` 내용을 기반으로 채운다.
 
-- 질문: `화성에서 받을 수 있는 청년 우주창업 지원금 알려줘`
-- 기대 결과:
-  - `internal_search_sufficient = false`
-  - `next_action = external_search`
-  - `external_search_status = planned_not_executed`
-  - `external_search_targets = ["K-Startup"]`
-  - `recommendations = []`
+- 총 케이스 수: 
+- 통과 케이스 수: 
+- 통과율: 
+- 평균 규칙 기반 점수: 
+- 평균 BLEU: 
+- 평균 ROUGE-1 F1: 
+- 평균 ROUGE-2 F1: 
+- 평균 ROUGE-L F1: 
 
-## 9. 개선 전후 비교
+## 8. 주요 검증 결과
 
-| 항목 | 개선 전 | 개선 후 |
-|---|---|---|
-| 마감 공고 처리 | 2016~2019년 공고가 답변에 포함될 수 있음 | expired 결과를 추천 후보에서 제외 |
-| 검색 부족 판단 | 검색 결과가 있으면 그대로 답변 | Result Sufficiency Checker로 충분성 판단 |
-| 외부 검색 분기 | 없음 | 공식 출처 fallback 계획 노드로 분기 |
-| 추적 가능성 | 최종 답변 중심 | tool_trace로 router/retriever/checker/external_search 흐름 확인 |
+### 8.1 오래된 정책/마감 공고 추천 방지
 
-## 10. 결론
+- `deadline_status=expired` 또는 `is_expired=true`인 항목이 최신성 질문에서 추천되지 않는지 확인하였다.
+- 과거 공고 제외 질문에서 2016~2019년 마감 공고가 답변에 포함되지 않는지 확인하였다.
 
-본 시스템은 내부 Vector DB 검색 결과의 충분성을 판단한 뒤, 충분한 경우에만 답변을 생성한다. 검색 결과가 모두 마감되었거나 내부 근거가 부족한 경우에는 추천을 생성하지 않고 외부 공식 출처 검색 계획으로 분기한다. 이를 통해 오래된 정책 추천과 근거 부족 답변을 줄이고, 평가 기준의 ReAct 및 Groundedness 요구사항에 대응한다.
+### 8.2 ReAct 기반 분기 검증
+
+- 내부 검색 결과가 충분한 경우 `next_action=answer_generation`으로 이동하는지 확인하였다.
+- 내부 검색 결과가 모두 마감이거나 부족한 경우 `next_action=external_search`로 분기하는지 확인하였다.
+- 외부 API는 아직 실제 호출하지 않지만 `external_search_status=planned_not_executed`와 공식 출처 대상이 기록되는지 확인하였다.
+
+### 8.3 Groundedness 검증
+
+- 답변에 포함된 정책명, 신청 기간, 마감 여부, 출처 URL이 recommendations의 필드에 기반하는지 확인하였다.
+- 내부 데이터에서 찾지 못한 경우 임의 정책을 생성하지 않고 no-result 답변을 반환하는지 확인하였다.
+
+## 9. 한계 및 개선 방향
+
+- BLEU/ROUGE는 생성 답변의 문장 표현 차이에 민감하므로 정책 추천 정확도를 직접 대변하지 않는다.
+- 외부 공식 출처 검색은 현재 계획 생성 단계이며, 추후 K-Startup/온통청년/고용24 API 또는 MCP Tool로 교체할 수 있다.
+- 향후 정답 정책 ID 기반 Top-k Hit Rate를 추가하면 검색 품질을 더 정량적으로 측정할 수 있다.
+- LLM-as-a-Judge 자동 실행까지 연결하면 Groundedness와 Answer Relevance를 반복적으로 추적할 수 있다.
