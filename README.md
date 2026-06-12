@@ -28,11 +28,11 @@
   
   <tr align="center">
     <td><strong>사진</strong></td>
-    <td><img src="docs/images/minji.png" width="110px" height="110px" alt="송민지"></td>
-    <td><img src="docs/images/seunghyuk.png" width="110px" height="110px" alt="윤승혁"></td>
-    <td><img src="docs/images/seung.png" width="110px" height="110px" alt="정승"></td>
-    <td><img src="docs/images/kyungchan.png" width="110px" height="110px" alt="한경찬"></td>
-    <td><img src="docs/images/yena.png" width="110px" height="110px" alt="한예"></td>
+    <td><img src="docs/images/minji.png" width="110" height="110" alt="송민지"></td>
+    <td><img src="docs/images/seunghyuk.png" width="11x" height="11x" alt="윤승혁"></td>
+    <td><img src="docs/images/seung.png" width="110" height="11x" alt="정승"></td>
+    <td><img src="docs/images/kyungchan.png" width="110" height="110" alt="한경찬"></td>
+    <td><img src="docs/images/yena.png" width="110" height="110" alt="한예나"></td>
   </tr>
   
   <tr align="center">
