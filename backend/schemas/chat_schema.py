@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Any, Optional
 
 
 class UserProfile(BaseModel):
@@ -49,6 +49,28 @@ class ChatResponse(BaseModel):
     route_reason: Optional[str] = Field(None, description="라우팅 이유")
     recommendations: list[PolicyRecommendation] = Field(..., description="추천 정책 목록")
     warnings: list[str] = Field(default_factory=list, description="경고 메시지")
+
+    # ReAct / tool routing debug fields
+    tool_trace: list[dict[str, Any]] = Field(
+        default_factory=list,
+        description="ReAct 형태의 도구 선택 및 관찰 이력",
+    )
+    internal_search_sufficient: bool = Field(
+        False,
+        description="내부 Vector DB 검색 결과가 충분했는지 여부",
+    )
+    sufficiency_reasons: list[str] = Field(
+        default_factory=list,
+        description="검색 결과 충분성 판단 근거",
+    )
+    next_action: str = Field(
+        "",
+        description="충분성 판단 이후 선택된 다음 행동",
+    )
+    external_used: bool = Field(
+        False,
+        description="외부 공식 출처 검색 도구 사용 여부",
+    )
 
 
 class ErrorResponse(BaseModel):

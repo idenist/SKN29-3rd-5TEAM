@@ -32,6 +32,11 @@ def _build_fallback_response(error_detail: str) -> ChatResponse:
         route_reason="오류로 인해 라우팅 불가",
         recommendations=[],
         warnings=[f"시스템 오류: {error_detail}"],
+        tool_trace=[],
+        internal_search_sufficient=False,
+        sufficiency_reasons=["workflow 실행 중 오류가 발생했습니다."],
+        next_action="fallback_response",
+        external_used=False,
     )
 
 
@@ -82,6 +87,21 @@ def _safe_list(value: Any) -> list[str]:
 
     text = str(value).strip()
     return [text] if text else []
+
+
+def _safe_tool_trace(value: Any) -> list[dict[str, Any]]:
+    if not isinstance(value, list):
+        return []
+
+    trace: list[dict[str, Any]] = []
+
+    for item in value:
+        if isinstance(item, dict):
+            trace.append(item)
+        else:
+            trace.append({"observation": str(item)})
+
+    return trace
 
 
 def _extract_field_from_text(text: str, field_name: str) -> str:
@@ -211,6 +231,14 @@ def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
         route_reason=raw.get("route_reason"),
         recommendations=parsed_recs,
         warnings=_safe_list(raw.get("warnings")),
+        tool_trace=_safe_tool_trace(raw.get("tool_trace")),
+        internal_search_sufficient=_safe_bool(
+            raw.get("internal_search_sufficient"),
+            default=False,
+        ),
+        sufficiency_reasons=_safe_list(raw.get("sufficiency_reasons")),
+        next_action=_safe_str(raw.get("next_action")),
+        external_used=_safe_bool(raw.get("external_used"), default=False),
     )
 
 # def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:

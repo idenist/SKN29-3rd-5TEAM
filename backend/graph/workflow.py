@@ -8,9 +8,18 @@ from backend.graph.nodes import (
     condition_extractor_node,
     router_node,
     retriever_node,
+    result_sufficiency_checker_node,
+    external_search_placeholder_node,
     eligibility_checker_node,
     answer_generator_node,
 )
+
+
+def _route_after_sufficiency_check(state: GraphState) -> str:
+    """검색 결과 충분성 판단 결과에 따라 다음 노드를 선택한다."""
+    if state.get("next_action") == "external_search":
+        return "external_search"
+    return "eligibility_checker"
 
 
 def build_rag_workflow():
@@ -22,7 +31,8 @@ def build_rag_workflow():
     → Condition Extractor
     → Router
     → Retriever
-    → Eligibility Checker
+    → Result Sufficiency Checker
+    → External Search Placeholder or Eligibility Checker
     → Answer Generator
     → END
     """
@@ -32,6 +42,8 @@ def build_rag_workflow():
     workflow.add_node("condition_extractor", condition_extractor_node)
     workflow.add_node("router", router_node)
     workflow.add_node("retriever", retriever_node)
+    workflow.add_node("result_sufficiency_checker", result_sufficiency_checker_node)
+    workflow.add_node("external_search", external_search_placeholder_node)
     workflow.add_node("eligibility_checker", eligibility_checker_node)
     workflow.add_node("answer_generator", answer_generator_node)
 
@@ -40,7 +52,16 @@ def build_rag_workflow():
     workflow.add_edge("input_validator", "condition_extractor")
     workflow.add_edge("condition_extractor", "router")
     workflow.add_edge("router", "retriever")
-    workflow.add_edge("retriever", "eligibility_checker")
+    workflow.add_edge("retriever", "result_sufficiency_checker")
+    workflow.add_conditional_edges(
+        "result_sufficiency_checker",
+        _route_after_sufficiency_check,
+        {
+            "external_search": "external_search",
+            "eligibility_checker": "eligibility_checker",
+        },
+    )
+    workflow.add_edge("external_search", "eligibility_checker")
     workflow.add_edge("eligibility_checker", "answer_generator")
     workflow.add_edge("answer_generator", END)
 
@@ -63,6 +84,10 @@ def run_rag_workflow(
         "user_query": query,
         "warnings": [],
         "errors": [],
+        "tool_trace": [],
+        "external_used": False,
+        "internal_search_sufficient": False,
+        "next_action": "internal_retriever",
         "top_k": top_k,
         "use_llm": use_llm,
     }
@@ -80,6 +105,11 @@ def run_rag_workflow(
         "recommendations": result.get("eligibility_results", []),
         "warnings": result.get("warnings", []),
         "errors": result.get("errors", []),
+        "tool_trace": result.get("tool_trace", []),
+        "internal_search_sufficient": result.get("internal_search_sufficient", False),
+        "sufficiency_reasons": result.get("sufficiency_reasons", []),
+        "next_action": result.get("next_action", ""),
+        "external_used": result.get("external_used", False),
     }
 
 
