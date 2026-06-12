@@ -2,6 +2,7 @@ from datetime import date, datetime
 from html import escape
 import re
 
+import pandas as pd
 import streamlit as st
 
 from utils.condition_parser import parse_user_query
@@ -87,6 +88,112 @@ def _shorten(text, limit):
     return normalized[:limit].rstrip() + "..."
 
 
+def _close_policy_dialog():
+    st.session_state.pop("policy_dialog_id", None)
+
+
+@st.dialog(
+    "정책 상세 분석",
+    width="large",
+    on_dismiss=_close_policy_dialog
+)
+def _render_policy_dialog(policy, profile):
+    render_html(f"""
+<div class="content-card policy-dialog-header">
+    <div class="policy-title">{escape(policy['icon'])} {escape(policy['title'])}</div>
+    <div class="policy-desc">{escape(policy['description'])}</div>
+    <span class="{policy['status_class']}">{escape(policy['status'])}</span>
+    <span class="badge-blue">{escape(policy['category'])}</span>
+</div>
+
+<div class="content-card">
+    <div class="section-title">정책 상세 내용</div>
+    <div class="detail-info-grid">
+        <div class="detail-info-item">
+            <div class="meta-label">신청 기간</div>
+            <div class="meta-value">{escape(policy['period'])}</div>
+        </div>
+        <div class="detail-info-item">
+            <div class="meta-label">대상 연령</div>
+            <div class="meta-value">{escape(policy['age'])}</div>
+        </div>
+        <div class="detail-info-item">
+            <div class="meta-label">대상 지역</div>
+            <div class="meta-value">{escape(policy['region'])}</div>
+        </div>
+        <div class="detail-info-item">
+            <div class="meta-label">운영 기관</div>
+            <div class="meta-value">{escape(policy['organization'])}</div>
+        </div>
+    </div>
+    <div class="detail-text-section">
+        <div class="meta-label">지원 내용</div>
+        <div class="detail-text">{escape(policy['support'])}</div>
+    </div>
+    <div class="detail-text-section">
+        <div class="meta-label">대상 및 자격 조건</div>
+        <div class="detail-text">{escape(policy['income'])}</div>
+    </div>
+    <div class="detail-text-section">
+        <div class="meta-label">신청 방법</div>
+        <div class="detail-text">{escape(policy['method'])}</div>
+    </div>
+</div>
+""")
+
+    link_columns = st.columns(2)
+    with link_columns[0]:
+        if policy["application_url"]:
+            st.link_button(
+                "신청 사이트 바로가기 ↗",
+                policy["application_url"],
+                width="stretch",
+                type="primary"
+            )
+    with link_columns[1]:
+        if policy["source_url"]:
+            st.link_button(
+                "공식 출처 확인 ↗",
+                policy["source_url"],
+                width="stretch"
+            )
+
+    st.markdown("### 내 조건과 비교")
+    comparison = pd.DataFrame([
+        ["나이", f"{profile['age']}세", policy["age"], "확인 필요"],
+        ["지역", profile["region"], policy["region"], "확인 필요"],
+        ["소득", f"{profile['income']:,}만원", policy["income"], "공식 공고 확인"],
+        ["현재 상태", profile["job_status"], policy["job_status"], "공식 공고 확인"],
+        ["주거 상태", profile["housing_status"], policy["housing_status"], "공식 공고 확인"],
+    ], columns=["조건", "내 정보", "정책 조건", "판정"])
+    st.dataframe(comparison, width="stretch", hide_index=True)
+
+    detail_notice = (
+        "원본 데이터에 일부 세부 조건이 없어 공식 공고 확인이 필요합니다."
+        if policy["needs_detail_check"]
+        else "전처리된 공공데이터를 기준으로 비교했습니다. 최종 자격은 공식 공고에서 확인하세요."
+    )
+    render_html(f"""
+<div class="content-card">
+    <div class="section-title">추천 이유</div>
+    <div class="policy-desc">{escape(detail_notice)}</div>
+</div>
+""")
+
+    if st.button(
+        "이 정책의 신청 가이드 보기",
+        width="stretch",
+        type="primary",
+        key=f"dialog_guide_{policy['id']}"
+    ):
+        st.session_state.guide_selected_policy_id = policy["id"]
+        st.session_state.selected_policy_id = policy["id"]
+        st.session_state.pop("guide_policy_select", None)
+        st.session_state.pop("policy_dialog_id", None)
+        st.session_state.page = "신청 가이드"
+        st.rerun()
+
+
 def render_search_page(policies):
     render_html("""
 <div class="search-page-marker"></div>
@@ -153,6 +260,7 @@ def render_search_page(policies):
                 "나이",
                 min_value=15,
                 max_value=80,
+                placeholder="나이 입력",
                 key="filter_age"
             )
             region = st.selectbox(
@@ -165,6 +273,7 @@ def render_search_page(policies):
                 min_value=0,
                 max_value=20000,
                 step=100,
+                placeholder="연소득 입력",
                 key="filter_income"
             )
             job_status = st.selectbox(
@@ -304,51 +413,60 @@ def render_search_page(policies):
             if not source_link:
                 source_link = '<div class="sub-btn action-btn-disabled">출처 없음</div>'
 
-            render_html(f"""
-<div class="policy-card">
-    <div class="policy-layout">
-        <div class="policy-left">
-            <span class="rank-badge">{display_rank}</span>
-            <div class="category-box">{escape(p['icon'])}</div>
-            <div class="category-label">{escape(p['category'])}</div>
-        </div>
+            with st.container(key=f"policy_card_{p['id']}"):
+                if st.button(
+                    f"{p['title']} 상세 보기",
+                    key=f"open_policy_detail_{p['id']}",
+                    width="stretch"
+                ):
+                    st.session_state.policy_dialog_id = p["id"]
 
-        <div>
-            <div class="policy-top">
-                <div class="policy-title">{escape(p['title'])}</div>
-                <div class="policy-badges">
-                    <span class="{p['status_class']}">{escape(p['status'])}</span>
-                    <span class="badge-blue">{escape(p['detail'])}</span>
+                render_html(f"""
+        <div class="policy-card">
+            <div class="policy-layout">
+                <div class="policy-left">
+                    <span class="rank-badge">{display_rank}</span>
+                    <div class="category-box">{escape(p['icon'])}</div>
+                    <div class="category-label">{escape(p['category'])}</div>
+                </div>
+
+                <div>
+                    <div class="policy-top">
+                        <div class="policy-title">{escape(p['title'])}</div>
+                        <div class="policy-badges">
+                            <span class="{p['status_class']}">{escape(p['status'])}</span>
+                            <span class="badge-blue">{escape(p['detail'])}</span>
+                        </div>
+                    </div>
+
+                    <div class="policy-meta">
+                        <div>
+                            <div class="meta-label">신청기간</div>
+                            <div class="meta-value">{escape(p['period'])}</div>
+                        </div>
+                        <div>
+                            <div class="meta-label">대상연령</div>
+                            <div class="meta-value">{escape(p['age'])}</div>
+                        </div>
+                        <div>
+                            <div class="meta-label">지원내용</div>
+                            <div class="meta-value support-summary">{escape(p['description'])}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    {apply_link}
+                    {source_link}
                 </div>
             </div>
-
-            <div class="policy-desc policy-desc-summary">
-                {escape(_shorten(p['description'], 105))}
-            </div>
-
-            <div class="policy-meta">
-                <div>
-                    <div class="meta-label">신청기간</div>
-                    <div class="meta-value">{escape(p['period'])}</div>
-                </div>
-                <div>
-                    <div class="meta-label">대상연령</div>
-                    <div class="meta-value">{escape(p['age'])}</div>
-                </div>
-                <div>
-                    <div class="meta-label">지원내용</div>
-                    <div class="meta-value">{escape(_shorten(p['support'], 75))}</div>
-                </div>
-            </div>
         </div>
-
-        <div>
-            {apply_link}
-            {source_link}
-        </div>
-    </div>
-</div>
 """)
+
+        policies_by_id = {policy["id"]: policy for policy in visible_policies}
+        dialog_policy_id = st.session_state.get("policy_dialog_id")
+        if dialog_policy_id in policies_by_id:
+            _render_policy_dialog(policies_by_id[dialog_policy_id], profile)
 
         render_html("""
 <div class="info-box">

@@ -73,7 +73,7 @@ def render_home_page(policies):
         </p>
         <div class="hero-search-label">
             <span>⌕</span>
-            궁금한 내용을 자연스럽게 입력해 보세요
+            궁금한 내용을 자연어로 입력하세요
         </div>
     </div>
 </div>
@@ -82,7 +82,7 @@ def render_home_page(policies):
 
     search_shell = st.container()
     with search_shell:
-        col1, col2 = st.columns([4.8, 1.25], vertical_alignment="center")
+        col1, col2 = st.columns([4.5, 1.55], vertical_alignment="center")
 
         with col1:
             user_query = st.text_input(

@@ -458,6 +458,68 @@ div[data-testid="stVerticalBlockBorderWrapper"]:has(.result-filter-heading)
     font-weight: 600;
 }
 
+.support-summary {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    line-height: 1.55;
+    max-height: 3.1em;
+    text-overflow: ellipsis;
+}
+
+div[class*="st-key-policy_card_"] {
+    position: relative;
+}
+
+div[class*="st-key-policy_card_"]
+    > div[data-testid="stVerticalBlock"] {
+    position: relative;
+}
+
+div[class*="st-key-open_policy_detail_"] {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div[class*="st-key-open_policy_detail_"]
+    > div[data-testid="stButton"] {
+    width: 100%;
+    height: 100%;
+}
+
+div[class*="st-key-open_policy_detail_"] button {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: transparent !important;
+    opacity: 0;
+    cursor: pointer;
+}
+
+div[class*="st-key-policy_card_"]:hover .policy-card {
+    border-color: #CAD5F5;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+div[class*="st-key-policy_card_"] .policy-link {
+    position: relative;
+    z-index: 4;
+}
+
+.policy-dialog-header {
+    margin-top: 4px;
+}
+
 .policy-checks {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -943,6 +1005,11 @@ div[data-testid="stForm"] div[data-testid="stCheckbox"] {
     min-height: 27px;
 }
 
+div[data-testid="stForm"]
+    [data-testid="InputInstructions"] {
+    display: none !important;
+}
+
 div[data-testid="stForm"] div[data-testid="stCheckbox"] label p {
     font-size: 15px;
     font-weight: 700;
@@ -1134,6 +1201,7 @@ div[data-testid="stDataFrame"] {
     .category-box {
         margin-left: 0;
     }
+
 }
 
 /* Reference-inspired landing page */
@@ -1176,7 +1244,7 @@ div[data-testid="stDataFrame"] {
 
 .st-key-main_navigation
     div[data-testid="stHorizontalBlock"]:has(button[kind]) {
-    max-width: 720px;
+    max-width: 770px;
     margin: -58px calc((100% - 1120px) / 2 + 24px) 15px auto;
     position: relative;
     z-index: 5;
@@ -1188,6 +1256,22 @@ div[data-testid="stDataFrame"] {
     padding-inline: 10px;
     border-radius: 10px;
     font-size: 13px;
+}
+
+.app-version {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 3px 9px;
+    border: 1px solid #DCE4F2;
+    border-radius: 999px;
+    background: #F2F6FC;
+    color: #7A8497;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 hr {
@@ -1303,8 +1387,9 @@ hr {
 
 .hero-search-label {
     margin-top: 42px;
-    color: rgba(230, 242, 255, 0.64);
-    font-size: 12px;
+    color: rgba(239, 248, 255, 0.86);
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .hero-search-label span {
@@ -1348,6 +1433,11 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-home_search_button)
     background: linear-gradient(135deg, #2E59DC, #1748C6) !important;
     font-size: 13px !important;
     box-shadow: 0 8px 18px rgba(34, 79, 194, 0.28) !important;
+    white-space: nowrap !important;
+}
+
+.st-key-home_search_button button p {
+    white-space: nowrap !important;
 }
 
 div[data-testid="stHorizontalBlock"]:has(div[class*="st-key-example_query_"]) {
@@ -1357,14 +1447,21 @@ div[data-testid="stHorizontalBlock"]:has(div[class*="st-key-example_query_"]) {
 }
 
 div[class*="st-key-example_query_"] button {
-    min-height: 34px !important;
-    padding: 0 12px !important;
+    min-height: 38px !important;
+    height: 38px !important;
+    padding: 0 10px !important;
     border: 1px solid rgba(255, 255, 255, 0.18) !important;
     background: rgba(30, 91, 202, 0.74) !important;
     color: #E2F1FF !important;
-    font-size: 12px !important;
+    font-size: 11px !important;
     box-shadow: none !important;
     backdrop-filter: blur(8px);
+    white-space: nowrap !important;
+}
+
+div[class*="st-key-example_query_"] button p {
+    white-space: nowrap !important;
+    overflow: visible !important;
 }
 
 div[class*="st-key-example_query_"] button:hover {
