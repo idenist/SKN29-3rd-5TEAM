@@ -8,6 +8,8 @@ from views.detail_page import render_detail_page
 from views.guide_page import render_guide_page
 from views.chatbot_page import render_chatbot_page
 
+APP_VERSION = "v1.1"
+
 # -----------------------------------
 # 기본 설정
 # -----------------------------------
@@ -122,8 +124,6 @@ render_html("""
 # 네비게이션
 # -----------------------------------
 
-st.markdown("<br>", unsafe_allow_html=True)
-
 pages = [
     "홈",
     "추천 결과",
@@ -133,7 +133,7 @@ pages = [
 ]
 
 with st.container(key="main_navigation"):
-    tabs = st.columns(len(pages))
+    tabs = st.columns([1, 1, 1, 1, 1, 0.38], vertical_alignment="center")
 
     for idx, page in enumerate(pages):
 
@@ -152,6 +152,12 @@ with st.container(key="main_navigation"):
             ):
                 st.session_state.page = page
                 st.rerun()
+
+    with tabs[-1]:
+        st.markdown(
+            f'<span class="app-version">{APP_VERSION}</span>',
+            unsafe_allow_html=True
+        )
 
 st.divider()
 

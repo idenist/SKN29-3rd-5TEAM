@@ -29,7 +29,7 @@ class YouthPolicyVectorStore:
     청년 정책 chunk 검색용 Chroma Vector Store.
 
     - 저장 위치: data/vector_db/
-    - 컬렉션명: youth_policy_chunks
+    - 컬렉션명: youth_opportunity_chunks
     - 임베딩 모델 기본값: text-embedding-3-small
     """
 

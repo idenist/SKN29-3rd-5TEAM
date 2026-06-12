@@ -1,3 +1,4 @@
+import logging
 from typing import Any
 
 from backend.graph.workflow import run_rag_workflow
@@ -6,6 +7,33 @@ from backend.schemas.chat_schema import (
     UserConditions,
     PolicyRecommendation,
 )
+
+logger = logging.getLogger(__name__)
+
+# ── 상수 ──────────────────────────────────────────────────────────────────────
+FALLBACK_ANSWER = (
+    "죄송합니다. 현재 정책 검색 서비스에 일시적인 문제가 발생했습니다. "
+    "잠시 후 다시 시도하거나 온통청년(https://www.youthcenter.go.kr)에서 직접 확인해 주세요."
+)
+ 
+ 
+# ── 커스텀 예외 ────────────────────────────────────────────────────────────────
+class WorkflowParsingError(Exception):
+    pass
+ 
+ 
+# ── fallback 응답 생성 ─────────────────────────────────────────────────────────
+def _build_fallback_response(error_detail: str) -> ChatResponse:
+    logger.warning("[RAG fallback] %s", error_detail)
+    return ChatResponse(
+        answer=FALLBACK_ANSWER,
+        user_conditions=UserConditions(),
+        route="알 수 없음",
+        route_reason="오류로 인해 라우팅 불가",
+        recommendations=[],
+        warnings=[f"시스템 오류: {error_detail}"],
+    )
+
 
 
 def _safe_str(value: Any, default: str = "") -> str:
@@ -150,13 +178,26 @@ def _policy_to_recommendation(policy: dict[str, Any]) -> PolicyRecommendation:
             default=True,
         ),
         cautions=cautions,
+        source_category=_safe_str(policy.get("source_category") or metadata.get("source_category")),
+        deadline_status=_safe_str(policy.get("deadline_status"), "unknown"),
+        application_end_date=policy.get("application_end_date"),
+        is_expired=_safe_bool(policy.get("is_expired"), default=False),
     )
 
-
 def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
+    if not isinstance(raw, dict):
+        raise WorkflowParsingError(f"workflow가 dict가 아닌 타입을 반환: {type(raw)}")
+ 
     conditions = raw.get("user_conditions") or {}
-    recommendations = raw.get("recommendations") or raw.get("eligibility_results") or []
-
+    recommendations_raw = raw.get("recommendations") or raw.get("eligibility_results") or []
+ 
+    parsed_recs = []
+    for idx, policy in enumerate(recommendations_raw):
+        try:
+            parsed_recs.append(_policy_to_recommendation(policy))
+        except Exception as e:
+            logger.warning("recommendations[%d] 파싱 실패, 건너뜀: %s", idx, e)
+ 
     return ChatResponse(
         answer=_safe_str(raw.get("answer")),
         user_conditions=UserConditions(
@@ -167,12 +208,32 @@ def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
             interest_domain=conditions.get("interest_domain"),
         ),
         route=_safe_str(raw.get("route"), "전체"),
-        recommendations=[
-            _policy_to_recommendation(policy)
-            for policy in recommendations
-        ],
+        route_reason=raw.get("route_reason"),
+        recommendations=parsed_recs,
         warnings=_safe_list(raw.get("warnings")),
     )
+
+# def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
+#     conditions = raw.get("user_conditions") or {}
+#     recommendations = raw.get("recommendations") or raw.get("eligibility_results") or []
+
+#     return ChatResponse(
+#         answer=_safe_str(raw.get("answer")),
+#         user_conditions=UserConditions(
+#             age=conditions.get("age"),
+#             region=conditions.get("region"),
+#             income=conditions.get("income"),
+#             employment_status=conditions.get("employment_status"),
+#             interest_domain=conditions.get("interest_domain"),
+#         ),
+#         route=_safe_str(raw.get("route"), "전체"),
+#         route_reason=raw.get("route_reason"),
+#         recommendations=[
+#             _policy_to_recommendation(policy)
+#             for policy in recommendations
+#         ],
+#         warnings=_safe_list(raw.get("warnings")),
+#     )
 
 
 def run_rag_chat(
@@ -182,13 +243,51 @@ def run_rag_chat(
 ) -> ChatResponse:
     """
     FastAPI chat.py에서 호출하는 RAG 어댑터 함수.
-
-    chat.py는 API 입출력만 담당하고,
-    실제 RAG workflow 실행 및 ChatResponse 변환은 이 함수에서 처리한다.
+    Chroma 연결 오류 / LLM 오류 / 파싱 오류 발생 시 fallback ChatResponse 반환.
     """
-    raw = run_rag_workflow(
-        query=message,
-        return_full_state=False,
-    )
+    try:
+        raw = run_rag_workflow(
+            query=message,
+            top_k=top_k,
+            return_full_state=False,
+        )
+        return _workflow_result_to_chat_response(raw)
+ 
+    except WorkflowParsingError as e:
+        logger.error("workflow 파싱 오류: %s", e)
+        return _build_fallback_response(str(e))
+ 
+    except (ConnectionError, OSError) as e:
+        logger.error("Chroma 연결 오류: %s", e, exc_info=True)
+        return _build_fallback_response(str(e))
+ 
+    except Exception as e:
+        err = str(e).lower()
+        if any(k in err for k in ("ratelimit", "rate limit", "429")):
+            logger.error("LLM RateLimit: %s", e)
+        elif any(k in err for k in ("timeout", "timed out")):
+            logger.error("LLM 타임아웃: %s", e)
+        elif any(k in err for k in ("apiconnectionerror", "authenticationerror", "401")):
+            logger.error("LLM 연결/인증 오류: %s", e)
+        else:
+            logger.error("workflow 알 수 없는 오류: %s", e, exc_info=True)
+        return _build_fallback_response(str(e))
 
-    return _workflow_result_to_chat_response(raw)
+# def run_rag_chat(
+#     message: str,
+#     user_profile: Any = None,
+#     top_k: int = 5,
+# ) -> ChatResponse:
+#     """
+#     FastAPI chat.py에서 호출하는 RAG 어댑터 함수.
+
+#     chat.py는 API 입출력만 담당하고,
+#     실제 RAG workflow 실행 및 ChatResponse 변환은 이 함수에서 처리한다.
+#     """
+#     raw = run_rag_workflow(
+#         query=message,
+#         top_k=top_k,
+#         return_full_state=False,
+#     )
+
+#     return _workflow_result_to_chat_response(raw)
