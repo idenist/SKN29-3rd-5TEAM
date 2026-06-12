@@ -26,7 +26,7 @@
 
 ---
 
-## 2. 현재 통합된 데이터 출처
+## 3. 현재 통합된 데이터 출처
 
 | source_category | 데이터 | 출처 | 통합 기준 | 건수 |
 |---|---|---|---|---:|
@@ -34,7 +34,7 @@
 | `startup_notice` | 창업지원 공고 | K-Startup / 창업진흥원 Open API | `youth_relevance = high` | 3,789 |
 | `training` | 교육·취업 훈련 과정 | 고용24/HRD 국민내일배움카드 훈련과정 API | `youth_relevance = high` | 20,403 |
 
-## 3. 핵심 기능 (Key Features)
+## 4. 핵심 기능 (Key Features)
 1. **자연어 기반 유저 프로필 추출 (NLP)**
    - "서울 사는 27살 취준생이고 주거에 관심 있어"와 같은 사용자 질의에서 연령, 지역, 소득, 상태, 관심사를 파싱하여 유저 프로필 세션에 자동 매칭합니다.
 2. **실시간 대용량 통합 데이터 필터링**
@@ -46,7 +46,7 @@
 
 ---
 
-## 4. 데이터 출처 URL
+## 5. 데이터 출처 URL
 
 1. 온통청년 Open API  
    - https://www.youthcenter.go.kr/cmnFooter/openapiIntro/oaiGuide
@@ -59,7 +59,7 @@
 3. 고용24/HRD Open API  
    - https://www.work24.go.kr/cm/e/a/0110/selectOpenApiIntro.do
 
-## 5. 최종 데이터 수량
+## 6. 최종 데이터 수량
 
 | 항목 | 수량 |
 |---|---:|
@@ -72,7 +72,7 @@
 | 출처 URL 보유 데이터 | 25,851건 |
 | Ground Truth 평가 질문 | 50개 |
 
-## 6. 최종 산출물
+## 7. 최종 산출물
 
 | 파일 | 용도 |
 |---|---|
@@ -94,7 +94,7 @@
 | `docs/data_pipeline_summary.md` | 데이터 수집→정제→통합 파이프라인 문서 |
 | `docs/evaluation_checklist.md` | 평가 지표 대응표 |
 
-## 6. 전체 디렉터리 구조
+## 8. 전체 디렉터리 구조
 
 ```text
 📂 3RDPRJ
@@ -122,7 +122,7 @@
 ├── 📄 run_konlpy_setup.bat        # Java 환경 검증 및 KoNLPy 패키지 자동 설치 스크립트
 └── 📄 update_readme_eval.py       # 데이터 전처리 평가 리포트 README 반영 스크립트
 
-## 7. 데이터 수집 및 전처리 흐름
+## 9. 데이터 수집 및 전처리 흐름
 
 ```text
 1. 온통청년 / K-Startup / HRD 데이터 수집
@@ -142,7 +142,7 @@
 15. 평가용 문서 및 리포트 정리
 ```
 
-## 8. 평가 지표 대응 현황
+## 10. 평가 지표 대응 현황
 
 | 평가 항목 | 반영 내용 | 산출물 |
 |---|---|---|
@@ -162,7 +162,7 @@
 | 파이프라인 문서화 | 수집→전처리→통합→청크→텍스트 분석→Ground Truth 검증 흐름 작성 | `docs/data_pipeline_summary.md` |
 | 데이터 수량 문서화 | source_category별 건수 및 청크 수 기록 | `README.md`, `data/processed/preprocessing_summary.json` |
 
-## 9. KoNLPy 형태소 분석 및 불용어 처리
+## 11. KoNLPy 형태소 분석 및 불용어 처리
 
 `scripts/analyze_korean_text.py`는 다음 필드를 결합하여 분석한다.
 
@@ -184,7 +184,7 @@ output: data/processed/opportunities_with_keywords.json
 
 `analyze_korean_text.py` 안에는 Java/KoNLPy가 없는 환경에서도 스크립트가 중단되지 않도록 정규표현식 기반 예외 처리 경로를 포함했다. 이 예외 처리는 환경 이식성을 위한 안전장치이며, 최종 제출 산출물은 KoNLPy Okt 실행 결과를 기준으로 한다.
 
-## 10. BoW / TF-IDF / Word2Vec / FastText 대응
+## 12. BoW / TF-IDF / Word2Vec / FastText 대응
 
 `scripts/build_text_features.py`는 다음 리포트를 생성한다.
 
@@ -203,7 +203,7 @@ FastText: trained_sample
 
 해당 모델은 평가/분석용 샘플 학습이며, 실제 서비스 검색에는 사용하지 않는다. 실제 RAG 검색은 `opportunity_chunks.jsonl`의 `content`를 Chroma 등 Vector DB에 임베딩하여 수행한다.
 
-## 11. RAG 청킹 전략
+## 13. RAG 청킹 전략
 
 현재 청킹은 `item_id` 기준 search_profile chunk를 생성한다.
 
@@ -212,7 +212,7 @@ FastText: trained_sample
 
 자세한 내용은 `docs/chunking_strategy.md`에 작성했다.
 
-## 12. 백엔드 사용 방법
+## 14. 백엔드 사용 방법
 
 백엔드는 다음 파일을 사용한다.
 
@@ -224,7 +224,7 @@ data/processed/opportunities.json
 
 `application_url`이 없으면 신청 버튼을 숨기고, `source_url`이 있으면 출처 링크로 표시한다.
 
-## 13. RAG 사용 방법
+## 15. RAG 사용 방법
 
 RAG 담당자는 다음 파일을 사용한다.
 
@@ -234,7 +234,7 @@ data/processed/opportunity_chunks.jsonl
 
 `content`를 임베딩하고 `metadata`를 Chroma metadata로 저장한다. 검색 결과의 `item_id`를 `opportunities.json`의 상세 데이터와 연결한다.
 
-## 14. 제외한 데이터와 이유
+## 16. 제외한 데이터와 이유
 
 공모전·경진대회·모집공고 데이터는 이번 최종 범위에서 제외했다.
 
@@ -244,7 +244,7 @@ data/processed/opportunity_chunks.jsonl
 - 현재 통합 데이터만으로 정책/창업/교육훈련 영역을 충분히 구성함
 - 평가 대응을 위해 추가 수집보다 전처리 품질과 문서화를 우선함
 
-## 15. 실행 방법
+## 17. 실행 방법
 
 기본 통합 파일 재생성:
 
@@ -286,7 +286,7 @@ python scripts/build_text_features.py
 python scripts/validate_evaluation_dataset.py
 ```
 
-## 16. Ground Truth 평가 데이터셋 및 검증 스크립트
+## 18. Ground Truth 평가 데이터셋 및 검증 스크립트
 
 RAG 검색 결과를 평가하기 위해 `tests/evaluation_dataset.jsonl` 파일을 추가했다.
 
@@ -346,7 +346,7 @@ data/reports/evaluation_dataset_validation_errors.json
 
 따라서 본 패키지는 RAG 검색 품질 평가를 위한 Ground Truth 데이터셋과, 해당 데이터셋이 최종 통합 데이터와 정상 연결되는지 확인하는 검증 스크립트를 함께 포함한다.
 
-## 17. 주의사항
+## 19. 주의사항
 
 - 원본 raw 데이터는 절대 덮어쓰지 않는다.
 - 원본에 없는 신청방법, 제출서류, 조건은 임의 생성하지 않는다.
