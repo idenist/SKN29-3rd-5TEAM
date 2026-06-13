@@ -47,29 +47,19 @@
   <tr valign="top">
     <td align="center"><strong>한 일</strong></td>
     <td>
-      • 전체 일정 관리<br>
-      • 작업 방향 컨펌<br>
-      • 파트별 진행 상황 확인
+      Streamlit UI/UX 설계
     </td>
     <td>
-      • 노인·고령층 관련 법령 데이터 확인<br>
-      • 문서 전처리 및 임베딩 흐름 정리
+      LangGraph 기반 에이전트 워크플로우 설계
     </td>
     <td>
-      • 사용자 질문 화면 구성<br>
-      • API 연결 흐름 설계<br>
-      • 결과 화면 UX 정리<br>
-      • RAG 기반 테스트 케이스 설계
+      Open API 데이터 수집 및 정제
     </td>
     <td>
-      • FastAPI <code>/chat</code> 구성<br>
-      • LangGraph Agent 실행 구조 정리<br>
-      • MCP tool 연동 준비
+      FastAPI 기반 RESTful API 설계
     </td>
     <td>
-      • 전체 서비스 흐름 정리<br>
-      • README 및 발표 자료 구성<br>
-      • 팀 산출물 내용 정리
+      프로젝트 리딩 및 기획 총괄
     </td>
   </tr>
 </table>

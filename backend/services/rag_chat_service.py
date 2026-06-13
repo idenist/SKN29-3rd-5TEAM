@@ -247,29 +247,7 @@ def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
         external_search_queries=_safe_list(raw.get("external_search_queries")),
     )
 
-# def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
-#     conditions = raw.get("user_conditions") or {}
-#     recommendations = raw.get("recommendations") or raw.get("eligibility_results") or []
-
-#     return ChatResponse(
-#         answer=_safe_str(raw.get("answer")),
-#         user_conditions=UserConditions(
-#             age=conditions.get("age"),
-#             region=conditions.get("region"),
-#             income=conditions.get("income"),
-#             employment_status=conditions.get("employment_status"),
-#             interest_domain=conditions.get("interest_domain"),
-#         ),
-#         route=_safe_str(raw.get("route"), "전체"),
-#         route_reason=raw.get("route_reason"),
-#         recommendations=[
-#             _policy_to_recommendation(policy)
-#             for policy in recommendations
-#         ],
-#         warnings=_safe_list(raw.get("warnings")),
-#     )
-
-
+# FastAPI /api/chat 엔드포인트의 실제 RAG 처리 진입점
 def run_rag_chat(
     message: str,
     user_profile: Any = None,
@@ -307,21 +285,3 @@ def run_rag_chat(
             logger.error("workflow 알 수 없는 오류: %s", e, exc_info=True)
         return _build_fallback_response(str(e))
 
-# def run_rag_chat(
-#     message: str,
-#     user_profile: Any = None,
-#     top_k: int = 5,
-# ) -> ChatResponse:
-#     """
-#     FastAPI chat.py에서 호출하는 RAG 어댑터 함수.
-
-#     chat.py는 API 입출력만 담당하고,
-#     실제 RAG workflow 실행 및 ChatResponse 변환은 이 함수에서 처리한다.
-#     """
-#     raw = run_rag_workflow(
-#         query=message,
-#         top_k=top_k,
-#         return_full_state=False,
-#     )
-
-#     return _workflow_result_to_chat_response(raw)
