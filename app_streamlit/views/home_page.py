@@ -48,17 +48,13 @@ def _apply_query_and_open_results(user_query):
     st.session_state.result_query = user_query
     st.session_state.result_query_input = user_query
 
-    st.session_state.filter_age = profile["age"]
-    st.session_state.filter_region = profile["region"]
-    st.session_state.filter_income = profile["income"]
-    st.session_state.filter_job_status = profile["job_status"]
-    st.session_state.filter_housing_status = profile["housing_status"]
-
+    # 홈 검색 결과에는 추출 조건을 적용하되, 수동 필터 UI는 빈 상태로 시작한다.
+    st.session_state.filter_age = None
+    st.session_state.filter_region = None
     for interest in INTERESTS:
-        st.session_state[f"filter_interest_{interest}"] = (
-            interest in profile["interest"]
-        )
+        st.session_state[f"filter_interest_{interest}"] = False
 
+    st.session_state.filter_validation_error = False
     st.session_state.has_searched = True
     st.session_state.page = "추천 결과"
 def _submit_home_query():

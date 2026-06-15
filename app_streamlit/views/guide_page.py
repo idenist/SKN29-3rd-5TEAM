@@ -26,7 +26,21 @@ def render_guide_page(policies):
         for policy_id in st.session_state.get("recommended_policy_ids", [])
         if policy_id in policies_by_id
     ]
-    selectable_ids = recommended_ids or list(policies_by_id)
+    if not st.session_state.get("has_searched", False) or not recommended_ids:
+        st.session_state.pop("guide_policy_select", None)
+        st.session_state.pop("guide_selected_policy_id", None)
+        render_html("""
+<div class="empty-search-state">
+    <div class="empty-search-icon">⌕</div>
+    <div class="empty-search-title">아직 검색한 정책이 없습니다.</div>
+    <div class="empty-search-desc">
+        홈에서 정책을 검색하면 검색된 정책의 신청 가이드를 확인할 수 있습니다.
+    </div>
+</div>
+""")
+        return
+
+    selectable_ids = recommended_ids
     preferred_id = (
         st.session_state.get("guide_selected_policy_id")
         or st.session_state.get("selected_policy_id")

@@ -1,0 +1,18 @@
+* text=auto
+
+.gitattributes text eol=lf
+app_streamlit/README.md text eol=lf
+app_streamlit/app.py text eol=lf
+app_streamlit/styles/style.css text eol=lf
+app_streamlit/views/guide_page.py text eol=lf
+app_streamlit/views/home_page.py text eol=lf
+app_streamlit/views/search_page.py text eol=lf
+
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary

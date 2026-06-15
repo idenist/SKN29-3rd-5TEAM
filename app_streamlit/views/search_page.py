@@ -382,19 +382,19 @@ def render_search_page(policies):
     search_left, search_right = st.columns([1.05, 4])
 
     with search_left:
-        keyword = st.text_input(
-            "검색어",
-            label_visibility="collapsed",
-            key="result_query_input"
-        )
+        with st.form("condition_search_form", border=False):
+            keyword = st.text_input(
+                "검색어",
+                label_visibility="collapsed",
+                key="result_query_input"
+            )
 
-        st.button(
-            "조건 추출",
-            width="stretch",
-            type="primary",
-            key="extract_search_conditions",
-            on_click=_extract_search_conditions
-        )
+            st.form_submit_button(
+                "조건 추출",
+                width="stretch",
+                type="primary",
+                on_click=_extract_search_conditions
+            )
 
         st.caption("예: 서울 28살 월세 지원 정책")
 
@@ -550,6 +550,8 @@ def render_search_page(policies):
 """)
 
     with results_right:
+        render_html('<div class="policy-results-marker"></div>')
+
         if not has_searched:
             st.session_state.recommended_policy_ids = []
             render_html("""

@@ -340,6 +340,10 @@ div[data-testid="stVerticalBlockBorderWrapper"]:has(.result-filter-heading)
     text-align: center;
 }
 
+.policy-results-marker {
+    height: 0;
+}
+
 .st-key-previous_result_page button,
 .st-key-next_result_page button {
     border: 1px solid #DDE4F0 !important;
