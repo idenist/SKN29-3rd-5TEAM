@@ -405,16 +405,39 @@ def evaluate_case(case: dict[str, Any], response: dict[str, Any]) -> EvalResult:
 
     # must_have_any/must_not_have_any는 검사 범위를 분리한다.
     # - must_have_any: 기본적으로 answer/recommendations/warnings/errors 중심
-    # - must_not_have_any: 기본적으로 recommendations 중심 + query echo 제거 answer
-    # 이렇게 해야 fallback 답변이 사용자 질문을 인용했다는 이유만으로 false fail이 나지 않는다.
+    # - must_not_have_any: 기본적으로 recommendations만 검사
+    #
+    # 이유:
+    # fallback 답변에서는 "추천에서 제외되었습니다" 같은 설명 문맥으로
+    # 금지 후보명이 answer에 등장할 수 있다. 이 경우 실제 추천이 아니므로
+    # answer 전체를 금지어 검사 범위에 넣으면 false fail이 발생한다.
+    #
+    # answer까지 금지어 검사를 하고 싶은 케이스는 evaluation_dataset.jsonl에서
+    # must_not_scope="recommendations_and_answer" 또는 "answer"를 명시한다.
     must_have_scope = case.get("must_have_scope", "safe_response")
-    must_not_scope = case.get("must_not_scope", "recommendations_and_answer")
+    must_not_scope = case.get("must_not_scope", "recommendations")
 
     positive_blob = response_text_by_scope(response, must_have_scope, query=query)
     negative_blob = response_text_by_scope(response, must_not_scope, query=query)
 
     checks["must_have_any"] = contains_any(positive_blob, case.get("must_have_any"))
     checks["must_not_have_any"] = contains_none(negative_blob, case.get("must_not_have_any"))
+
+    # 더 명시적인 평가 필드도 지원한다.
+    # must_not_recommend_any: recommendations에 포함되면 실패
+    # must_not_answer_any: answer에 포함되면 실패
+    if case.get("must_not_recommend_any") is not None:
+        checks["must_not_recommend_any"] = contains_none(
+            response_text_by_scope(response, "recommendations", query=query),
+            case.get("must_not_recommend_any"),
+        )
+
+    if case.get("must_not_answer_any") is not None:
+        answer_text = _remove_query_echo(str(response.get("answer", "")), query)
+        checks["must_not_answer_any"] = contains_none(
+            answer_text,
+            case.get("must_not_answer_any"),
+        )
 
     expected_route = case.get("expected_route")
     checks["route"] = route_matches(response.get("route", ""), expected_route)
@@ -565,6 +588,8 @@ def write_results_md(results: list[EvalResult], output_path: Path) -> None:
     lines.append("- BLEU/ROUGE는 evaluation_dataset.jsonl의 reference_answer 또는 expected_answer가 있는 케이스에서만 계산된다.")
     lines.append("- 추천형 RAG에서는 같은 정책을 맞게 추천해도 문장 표현 차이로 BLEU/ROUGE가 낮을 수 있으므로 참고 지표로 사용한다.")
     lines.append("- LLM-as-a-Judge 평가는 judge_inputs.jsonl을 사용해 context_relevance, groundedness, answer_relevance, freshness_safety, react_trace_quality를 별도로 채점한다.")
+    lines.append("- must_not_have_any의 기본 검사 범위는 recommendations이다. fallback 답변에서 제외 사유로 언급된 후보명은 기본적으로 실패 처리하지 않는다.")
+    lines.append("- answer까지 금지어 검사가 필요한 경우 evaluation_dataset.jsonl에서 must_not_scope를 answer 또는 recommendations_and_answer로 지정한다.")
     lines.append("- 자동 점수에서 실패한 케이스는 Swagger 응답의 tool_trace와 recommendations를 함께 확인한다.")
 
     output_path.write_text("\n".join(lines), encoding="utf-8")
