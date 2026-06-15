@@ -5,14 +5,12 @@ import streamlit as st
 from PIL import Image
 
 from utils.data_loader import load_policies
-from utils.html_renderer import render_html
 from views.home_page import render_home_page
 from views.search_page import render_search_page
-from views.detail_page import render_detail_page
 from views.guide_page import render_guide_page
 from views.chatbot_page import render_chatbot_page
 
-APP_VERSION = "v1.2"
+APP_VERSION = "v1.3"
 LOGO_PATH = Path(__file__).resolve().parents[1] / "KakaoTalk_20260612_161223810.png"
 LOGO_DATA_URI = (
     "data:image/png;base64,"
@@ -96,6 +94,8 @@ policies = load_policies()
 
 if "page" not in st.session_state:
     st.session_state.page = "홈"
+elif st.session_state.page == "상세 분석":
+    st.session_state.page = "추천 결과"
 
 if "has_searched" not in st.session_state:
     st.session_state.has_searched = False
@@ -110,48 +110,47 @@ if "profile" not in st.session_state:
         "interest": []
     }
 
+
+def _go_to_page(page):
+    st.session_state.page = page
+
+
 # -----------------------------------
 # 상단 로고
 # -----------------------------------
 
-render_html("""
-<div class="top-header">
-    <div class="brand">
-        <div class="brand-icon">
-            <img src="{logo_data_uri}" alt="이젠, 안쉼 로고">
-        </div>
-
-        <div>
-            <div class="brand-title">
-                이젠, 안쉼
-            </div>
-
-            <div class="brand-sub">
-                청년 지원 정보 통합 탐색 에이전트
-            </div>
-        </div>
-    </div>
-</div>
-""".format(logo_data_uri=LOGO_DATA_URI))
-
-# -----------------------------------
-# 네비게이션
-# -----------------------------------
+st.markdown(
+    f"""
+    <style>
+    .st-key-brand_home_button button::before {{
+        background-image: url("{LOGO_DATA_URI}");
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 pages = [
-    "홈",
     "추천 결과",
-    "상세 분석",
     "신청 가이드",
     "챗봇"
 ]
 
-with st.container(key="main_navigation"):
-    tabs = st.columns([1, 1, 1, 1, 1, 0.38], vertical_alignment="center")
+with st.container(key="site_header"):
+    tabs = st.columns([2.4, 1, 1, 1, 0.38], vertical_alignment="center")
+
+    with tabs[0]:
+        st.button(
+            "이젠, 안쉼",
+            key="brand_home_button",
+            help="홈으로 이동",
+            on_click=_go_to_page,
+            args=("홈",)
+        )
 
     for idx, page in enumerate(pages):
 
-        with tabs[idx]:
+        with tabs[idx + 1]:
 
             button_type = (
                 "primary"
@@ -159,13 +158,13 @@ with st.container(key="main_navigation"):
                 else "secondary"
             )
 
-            if st.button(
+            st.button(
                 page,
                 width="stretch",
-                type=button_type
-            ):
-                st.session_state.page = page
-                st.rerun()
+                type=button_type,
+                on_click=_go_to_page,
+                args=(page,)
+            )
 
     with tabs[-1]:
         st.markdown(
@@ -184,9 +183,6 @@ if st.session_state.page == "홈":
 
 elif st.session_state.page == "추천 결과":
     render_search_page(policies)
-
-elif st.session_state.page == "상세 분석":
-    render_detail_page(policies)
 
 elif st.session_state.page == "신청 가이드":
     render_guide_page(policies)

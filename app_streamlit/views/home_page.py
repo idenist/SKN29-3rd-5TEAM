@@ -39,7 +39,14 @@ def _apply_query_and_open_results(user_query):
         )
     st.session_state.has_searched = True
     st.session_state.page = "추천 결과"
-    st.rerun()
+
+
+def _submit_home_query():
+    user_query = st.session_state.get("home_user_query", "").strip()
+    if user_query:
+        _apply_query_and_open_results(user_query)
+    else:
+        st.toast("궁금한 정책이나 현재 상황을 입력해 주세요.")
 
 
 def render_home_page(policies):
@@ -83,39 +90,36 @@ def render_home_page(policies):
 
     search_shell = st.container()
     with search_shell:
-        col1, col2 = st.columns([4.5, 1.55], vertical_alignment="center")
+        with st.form("home_search_form", border=False):
+            col1, col2 = st.columns([4.5, 1.55], vertical_alignment="center")
 
-        with col1:
-            user_query = st.text_input(
-                "자연어 입력",
-                placeholder="예: 서울 사는 25살 취준생인데 받을 수 있는 정책 알려줘",
-                label_visibility="collapsed",
-                key="home_user_query"
-            )
+            with col1:
+                st.text_input(
+                    "자연어 입력",
+                    placeholder="예: 서울 사는 25살 취준생인데 받을 수 있는 정책 알려줘",
+                    label_visibility="collapsed",
+                    key="home_user_query"
+                )
 
-        with col2:
-            extract_clicked = st.button(
-                "✦ AI에게 물어보기",
-                width="stretch",
-                type="primary",
-                key="home_search_button"
-            )
-
-    if extract_clicked:
-        if user_query.strip():
-            _apply_query_and_open_results(user_query)
-        else:
-            st.toast("궁금한 정책이나 현재 상황을 입력해 주세요.")
+            with col2:
+                st.form_submit_button(
+                    "✦ AI에게 물어보기",
+                    width="stretch",
+                    type="primary",
+                    key="home_search_button",
+                    on_click=_submit_home_query
+                )
 
     example_columns = st.columns(len(EXAMPLE_QUERIES))
     for column, example_query in zip(example_columns, EXAMPLE_QUERIES):
         with column:
-            if st.button(
+            st.button(
                 example_query,
                 key=f"example_query_{example_query}",
-                width="stretch"
-            ):
-                _apply_query_and_open_results(example_query)
+                width="stretch",
+                on_click=_apply_query_and_open_results,
+                args=(example_query,)
+            )
 
     stats_html = f"""
 <div class="home-stats">
