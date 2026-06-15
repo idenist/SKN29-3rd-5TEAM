@@ -1,11 +1,11 @@
 """
 청년 정책 RAG 서비스 평가 스크립트.
 
-기본 사용법:
-    python evaluation/evaluate_rag.py --base-url http://127.0.0.1:8000 --endpoint /chat
+기본 사용법 (루트 폴더에서):
+    python evaluation/evaluate_rag.py --dataset evaluation/evaluation_dataset.jsonl --base-url http://127.0.0.1:8000 --endpoint /chat --write-judge-inputs
 
-/api/chat을 쓰는 프로젝트라면:
-    python evaluation/evaluate_rag.py --base-url http://127.0.0.1:8000 --endpoint /api/chat
+/api/chat을 쓰는 프로젝트라면 (루트 폴더에서):
+    python evaluation/evaluate_rag.py --dataset evaluation/evaluation_dataset.jsonl --base-url http://127.0.0.1:8000 --endpoint /api/chat --write-judge-inputs
 
 결과:
     evaluation/result/evaluation_results.json
@@ -63,6 +63,11 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def post_chat(base_url: str, endpoint: str, message: str, top_k: int, timeout: int) -> dict[str, Any]:
+    """채팅 API 호출.
+
+    평가에서는 빈 질문/스키마 검증 실패도 "방어 로직 성공"으로 볼 수 있으므로
+    FastAPI/Pydantic 400/422 응답은 예외로 중단하지 않고 평가 가능한 response dict로 변환한다.
+    """
     url = base_url.rstrip("/") + "/" + endpoint.strip("/")
     payload = json.dumps({"message": message, "top_k": top_k}, ensure_ascii=False).encode("utf-8")
     req = request.Request(
@@ -74,23 +79,42 @@ def post_chat(base_url: str, endpoint: str, message: str, top_k: int, timeout: i
     try:
         with request.urlopen(req, timeout=timeout) as resp:
             body = resp.read().decode("utf-8")
-            return json.loads(body)
-    # except error.HTTPError as e:
-    #     body = e.read().decode("utf-8", errors="replace")
-    #     raise RuntimeError(f"HTTP {e.code}: {body}") from e
-    
+            data = json.loads(body)
+            if isinstance(data, dict):
+                data.setdefault("http_status", getattr(resp, "status", 200))
+            return data
+
     except error.HTTPError as e:
         body = e.read().decode("utf-8", errors="replace")
-        if e.code == 422:
+        if e.code in {400, 422}:
             try:
-                return {"detail": json.loads(body)}
+                detail = json.loads(body)
             except Exception:
-                return {"detail": body}
+                detail = body
+
+            errors = [f"HTTP {e.code}: 요청 검증 실패"]
+            answer = "요청 형식 또는 입력값이 올바르지 않습니다."
+
+            # 빈 질문 케이스는 FastAPI validation에서 먼저 막힐 수 있으므로
+            # 평가 스크립트가 의도한 expected_error_any와 매칭되도록 명시 메시지를 넣는다.
+            if not str(message or "").strip():
+                errors.append("사용자 질문이 비어 있습니다.")
+                answer = "질문이 비어 있습니다. 찾고 싶은 청년 정책 조건을 입력해 주세요."
+
+            return {
+                "http_status": e.code,
+                "detail": detail,
+                "errors": errors,
+                "warnings": [],
+                "answer": answer,
+                "recommendations": [],
+                "tool_trace": [],
+            }
+
         raise RuntimeError(f"HTTP {e.code}: {body}") from e
-    
+
     except Exception as e:
         raise RuntimeError(str(e)) from e
-
 
 def normalize_text(value: Any) -> str:
     return str(value or "").lower().replace(" ", "")
@@ -273,6 +297,84 @@ def get_recommendations(response: dict[str, Any]) -> list[dict[str, Any]]:
     return recs if isinstance(recs, list) else []
 
 
+def _json_blob(value: Any) -> str:
+    return json.dumps(value, ensure_ascii=False)
+
+
+def _remove_query_echo(text: str, query: str) -> str:
+    """사용자 질문을 답변에서 그대로 인용한 부분은 금지어 검사에서 제외한다."""
+    if not query:
+        return text
+    result = str(text or "")
+    result = result.replace(query, "")
+    # 따옴표로 감싼 query echo도 한 번 더 제거
+    for quote in ("'", '"', "‘", "’", "“", "”"):
+        result = result.replace(f"{quote}{query}{quote}", "")
+    return result
+
+
+def response_text_for_positive_checks(response: dict[str, Any]) -> str:
+    """must_have_any 검사 범위.
+
+    answer/recommendations/warnings/errors 중심으로 검사한다.
+    tool_trace 전체를 넣으면 검색 쿼리나 디버그 정보가 우연히 매칭되어 과대평가될 수 있어 제외한다.
+    """
+    return _json_blob(
+        {
+            "answer": response.get("answer", ""),
+            "recommendations": response.get("recommendations", []),
+            "warnings": response.get("warnings", []),
+            "errors": response.get("errors", []),
+            "route": response.get("route", ""),
+            "next_action": response.get("next_action", ""),
+            "external_used": response.get("external_used"),
+            "external_search_status": response.get("external_search_status", ""),
+            "external_search_targets": response.get("external_search_targets", []),
+            "http_status": response.get("http_status"),
+            "detail": response.get("detail", ""),
+        }
+    )
+
+
+def response_text_for_negative_checks(response: dict[str, Any], query: str = "") -> str:
+    """must_not_have_any 기본 검사 범위.
+
+    추천 품질 검사의 목적은 "금지된 항목을 추천했는가"이므로 recommendations를 중심으로 본다.
+    answer 전체를 검사하면 사용자의 질문을 다시 인용한 문장 때문에 false fail이 발생한다.
+    """
+    recs = response.get("recommendations", [])
+    answer_without_query = _remove_query_echo(str(response.get("answer", "")), query)
+    return _json_blob(
+        {
+            "recommendations": recs,
+            # no-result/fallback 답변에서 query echo는 제거하되,
+            # 실제 답변 본문에 남아 있는 명백한 금지어는 잡을 수 있도록 answer도 보조 포함한다.
+            "answer": answer_without_query,
+        }
+    )
+
+
+def response_text_by_scope(response: dict[str, Any], scope: str, query: str = "") -> str:
+    """평가셋에서 검사 범위를 지정할 수 있게 한다.
+
+    지원 scope:
+    - response: 전체 응답 JSON
+    - safe_response: answer/recommendations/warnings/errors 중심
+    - answer: answer만
+    - recommendations: recommendations만
+    - recommendations_and_answer: recommendations + query echo 제거 answer
+    """
+    if scope == "response":
+        return response_text_blob(response)
+    if scope == "answer":
+        return str(response.get("answer", ""))
+    if scope == "recommendations":
+        return _json_blob(response.get("recommendations", []))
+    if scope == "recommendations_and_answer":
+        return response_text_for_negative_checks(response, query=query)
+    return response_text_for_positive_checks(response)
+
+
 def count_expired_recommendations(recommendations: list[dict[str, Any]]) -> int:
     count = 0
     for rec in recommendations:
@@ -297,12 +399,22 @@ def value_matches_any(actual: Any, expected_any: list[Any] | None) -> bool:
 
 def evaluate_case(case: dict[str, Any], response: dict[str, Any]) -> EvalResult:
     checks: dict[str, Any] = {}
-    blob = response_text_blob(response)
+    query = case.get("query", "")
     answer = response.get("answer", "")
     recs = get_recommendations(response)
 
-    checks["must_have_any"] = contains_any(blob, case.get("must_have_any"))
-    checks["must_not_have_any"] = contains_none(blob, case.get("must_not_have_any"))
+    # must_have_any/must_not_have_any는 검사 범위를 분리한다.
+    # - must_have_any: 기본적으로 answer/recommendations/warnings/errors 중심
+    # - must_not_have_any: 기본적으로 recommendations 중심 + query echo 제거 answer
+    # 이렇게 해야 fallback 답변이 사용자 질문을 인용했다는 이유만으로 false fail이 나지 않는다.
+    must_have_scope = case.get("must_have_scope", "safe_response")
+    must_not_scope = case.get("must_not_scope", "recommendations_and_answer")
+
+    positive_blob = response_text_by_scope(response, must_have_scope, query=query)
+    negative_blob = response_text_by_scope(response, must_not_scope, query=query)
+
+    checks["must_have_any"] = contains_any(positive_blob, case.get("must_have_any"))
+    checks["must_not_have_any"] = contains_none(negative_blob, case.get("must_not_have_any"))
 
     expected_route = case.get("expected_route")
     checks["route"] = route_matches(response.get("route", ""), expected_route)
@@ -337,6 +449,9 @@ def evaluate_case(case: dict[str, Any], response: dict[str, Any]) -> EvalResult:
         else any(target in actual_targets for target in expected_targets_any)
     )
 
+    expected_http_status_any = case.get("expected_http_status_any")
+    checks["http_status"] = value_matches_any(response.get("http_status"), expected_http_status_any)
+
     min_recs = case.get("min_recommendations")
     max_recs = case.get("max_recommendations")
     checks["min_recommendations"] = True if min_recs is None else len(recs) >= int(min_recs)
@@ -351,14 +466,18 @@ def evaluate_case(case: dict[str, Any], response: dict[str, Any]) -> EvalResult:
     checks["expected_warning_any"] = contains_any(warnings_blob, expected_warning_any)
 
     expected_error_any = case.get("expected_error_any")
-    # API 응답 스키마에 errors가 없는 경우 answer/warnings까지 함께 확인한다.
-    err_blob = "\n".join(response.get("errors") or []) + "\n" + warnings_blob + "\n" + str(answer)
+    # API 응답 스키마에 errors가 없는 경우 answer/warnings/detail/http_status까지 함께 확인한다.
+    err_blob = "\n".join(response.get("errors") or [])
+    err_blob += "\n" + warnings_blob
+    err_blob += "\n" + str(answer)
+    err_blob += "\n" + _json_blob(response.get("detail", ""))
+    err_blob += "\n" + str(response.get("http_status", ""))
     checks["expected_error_any"] = contains_any(err_blob, expected_error_any)
 
     # ReAct trace 기본 품질 확인
     trace = response.get("tool_trace") or []
     checks["tool_trace_present_when_needed"] = True
-    if case.get("intent") not in {"empty_query_validation"}:
+    if case.get("intent") not in {"empty_query_validation"} and response.get("http_status") not in {400, 422}:
         checks["tool_trace_present_when_needed"] = isinstance(trace, list) and len(trace) >= 2
 
     passed_count = sum(1 for ok in checks.values() if ok)
@@ -371,7 +490,7 @@ def evaluate_case(case: dict[str, Any], response: dict[str, Any]) -> EvalResult:
 
     return EvalResult(
         case_id=case.get("id", "unknown"),
-        query=case.get("query", ""),
+        query=query,
         passed=passed,
         score=score,
         checks=checks,

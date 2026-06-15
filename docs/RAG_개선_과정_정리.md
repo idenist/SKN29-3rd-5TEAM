@@ -1,0 +1,643 @@
+# RAG 개선 과정 정리
+
+## 1. 개선 목적
+
+본 프로젝트의 RAG 시스템은 청년정책, 창업지원 공고, 교육훈련 과정 데이터를 기반으로 사용자의 질문에 맞는 지원 정보를 추천하는 것을 목표로 한다. 초기 구현에서는 VectorDB 기반 검색과 LLM 답변 생성은 동작했지만, 테스트 과정에서 다음 문제가 확인되었다.
+
+- 오래되었거나 마감된 정책이 추천되는 문제
+- 질문과 직접 관련 없는 검색 후보가 답변으로 이어지는 문제
+- 내부 VectorDB에 없는 롱테일 질의에 대해 빈약한 fallback만 제공하는 문제
+- 외부 공식 출처를 확인해야 하는 상황에서도 실제 검색 없이 안내 문구만 출력하는 문제
+- LLM-as-a-Judge 평가에서 Context Relevance, Groundedness, Answer Relevance 점수가 낮게 나오는 문제
+
+따라서 개선 목표를 다음과 같이 설정하였다.
+
+```text
+1. 마감/오래된 정책 추천 방지
+2. ReAct 기반 검색 충분성 판단 강화
+3. 내부 검색 실패 시 공식 출처 fallback 제공
+4. 외부 공식 검색 결과를 실제 답변 근거로 사용
+5. 검색 결과 후처리와 rerank를 통해 답변 품질 향상
+```
+
+---
+
+## 2. 초기 RAG 구조
+
+초기 RAG 파이프라인은 다음 흐름으로 구성되었다.
+
+```text
+사용자 질문
+→ Input Validator
+→ Condition Extractor
+→ Router
+→ Retriever(VectorDB)
+→ Eligibility Checker
+→ Answer Generator
+```
+
+주요 구성요소는 다음과 같다.
+
+| 구성요소 | 역할 |
+|---|---|
+| Condition Extractor | 사용자 질문에서 나이, 지역, 관심 분야, 고용 상태 등 조건 추출 |
+| Router | 정책 분야 및 source_category 결정 |
+| Retriever | Chroma VectorDB에서 관련 chunk 검색 |
+| Eligibility Checker | 사용자 조건과 정책 조건 비교 |
+| Answer Generator | 검색 결과 기반 최종 답변 생성 |
+
+초기에는 VectorDB 검색 결과가 존재하면 대부분 답변 생성으로 넘어갔다. 이로 인해 검색 결과가 질문과 직접 관련이 낮아도 LLM이 그럴듯한 추천 문장을 생성하는 문제가 있었다.
+
+---
+
+## 3. 1차 개선: 마감/오래된 정책 추천 방지
+
+### 문제
+
+사용자가 “지금 신청 가능한”, “2026년에 신청 가능한”처럼 현재성 의도가 있는 질문을 했을 때, 과거 공고나 마감된 창업지원 사업이 추천되는 문제가 있었다.
+
+예시 문제 질의:
+
+```text
+2019년에 했던 청년 창업 지원사업 말고 지금 신청 가능한 공고 알려줘
+화성에서 받을 수 있는 청년 우주창업 지원금 알려줘
+```
+
+### 개선 내용
+
+`rag_service.py`, `policy_matcher.py`, `answer_generator.py`, `vector_store.py` 계열에서 다음 로직을 강화하였다.
+
+```text
+- deadline_status == expired 후보 제외
+- is_expired == true 후보 제외
+- 현재성 질문에서 마감 공고 강제 제거
+- 오래된 연도가 포함된 공고를 최신 질문에서 배제
+- 비현실적 질문에 대해 내부 후보를 억지 추천하지 않도록 처리
+```
+
+### 결과
+
+마감 공고 추천 문제는 크게 줄어들었고, 비현실적 질문에 대해 오래된 내부 후보를 추천하지 않는 방향으로 개선되었다.
+
+---
+
+## 4. 2차 개선: ReAct 기반 검색 충분성 판단 추가
+
+### 문제
+
+검색 결과가 없거나 부정확한 상황에서도 Answer Generator로 넘어가면서, 관련 없는 정책을 억지로 설명하는 문제가 있었다.
+
+### 개선 내용
+
+`nodes.py`에 ReAct 스타일의 판단 단계를 추가하였다.
+
+```text
+Retriever
+→ Result Sufficiency Checker
+→ 충분하면 Answer Generator
+→ 부족하면 External Search 단계로 분기
+```
+
+`GraphState`에는 다음 필드가 추가되었다.
+
+```python
+internal_search_sufficient: bool
+sufficiency_reasons: list[str]
+next_action: str
+external_used: bool
+tool_trace: list[dict]
+```
+
+검색 충분성 판단 기준은 다음과 같이 구성하였다.
+
+```text
+- 내부 검색 결과 수
+- 마감 여부
+- 출처 URL 존재 여부
+- open 상태 결과 존재 여부
+- 사용자의 최신성 의도 여부
+```
+
+### 결과
+
+Swagger 응답과 evaluation 결과에서 `tool_trace`를 통해 다음 흐름을 확인할 수 있게 되었다.
+
+```text
+router
+→ internal_retriever
+→ result_sufficiency_checker
+→ answer_generation 또는 external_search
+```
+
+이 단계에서 RAG 시스템이 단순 검색기가 아니라, 검색 결과를 평가한 뒤 다음 행동을 결정하는 구조로 개선되었다.
+
+---
+
+## 5. 3차 개선: 공식 외부 출처 fallback 계획 도입
+
+### 문제
+
+내부 검색 결과가 부족할 때 단순히 “찾지 못했습니다”라고 답변하면 사용자 경험과 평가 점수가 모두 낮아졌다.
+
+### 개선 내용
+
+`external_search_service.py`를 추가하여 source_category와 route에 따라 공식 출처 확인 계획을 생성하도록 했다.
+
+| source_category | 공식 출처 |
+|---|---|
+| training | 고용24/HRD-Net |
+| policy | 온통청년 |
+| startup_notice | K-Startup |
+
+초기 외부 검색 모듈은 실제 API 호출을 하지 않고 다음 정보만 생성했다.
+
+```python
+external_search_status = "planned_not_executed"
+external_search_targets = ["고용24/HRD-Net"]
+external_search_queries = ["지게차운전기능사 국민내일배움카드", ...]
+```
+
+### 결과
+
+외부 검색이 필요한 경우, 답변에서 공식 출처 확인 안내를 제공할 수 있게 되었다. 그러나 실제 검색 결과가 없기 때문에 LLM-as-a-Judge 관점에서는 Context Relevance와 Answer Relevance가 크게 오르지 않았다.
+
+---
+
+## 6. 4차 개선 시도: 후보 품질 필터 강화
+
+### 시도 내용
+
+질문 핵심 키워드와 검색 결과 제목/본문의 overlap을 검사하여, 관련성이 낮은 후보를 제거하는 후처리 필터를 추가하였다.
+
+예시 규칙:
+
+```text
+- 질문 핵심어가 검색 결과에 거의 없으면 external_search로 분기
+- route와 source_category가 맞지 않으면 후보 제거
+- 마감/오래된/가능성 낮음 후보 제거
+```
+
+### 문제
+
+이 방식은 지나치게 공격적이었다. 일부 후보가 낮은 관련성을 가지더라도 Judge는 “검색된 근거가 있는 답변”을 더 높게 평가하는 경향이 있었는데, hard filtering으로 인해 `retrieved_policies: []`가 늘어났다.
+
+그 결과 다음과 같은 문제가 발생했다.
+
+```text
+- 검색 후보가 비워짐
+- 답변이 공식 출처 안내문만 포함
+- Context Relevance와 Answer Relevance 하락
+```
+
+### 교훈
+
+```text
+검색 결과를 무조건 제거하는 hard filtering보다,
+후보는 유지하되 품질 점수를 기록하고 rerank하는 방식이 더 적합하다.
+```
+
+---
+
+## 7. 5차 개선: 공식 도메인 제한 외부 웹 검색 도입
+
+### 문제
+
+내부 VectorDB만으로는 롱테일 질의에 대응하기 어려웠다.
+
+대표적으로 다음 질문은 내부 DB만으로 정확한 후보를 찾기 어려웠다.
+
+```text
+지게차 자격증 국비지원 과정 있어?
+취약계층 청년 식품 지원 받을 수 있는 거 있어?
+청년 고용 정책 한눈에 알 수 있는 행사 있어?
+청년 창업자 임차료 지원해주는 거 있어?
+중소기업 다니는 청년 교통비 지원해주는 사업 있어?
+```
+
+### 개선 내용
+
+`external_search_service.py`에 공식 도메인 제한 웹 검색 기능을 추가하였다.
+
+지원 검색 백엔드:
+
+```text
+Tavily
+Brave Search
+SerpAPI
+Bing Search
+Naver Search
+DuckDuckGo HTML best-effort fallback
+```
+
+단, 실제 테스트에서는 Tavily를 중심으로 검증하였다.
+
+검색 대상 도메인은 다음과 같이 제한하였다.
+
+| 분야 | 공식 도메인 |
+|---|---|
+| 교육훈련 | work24.go.kr, hrd.go.kr |
+| 청년정책 | youthcenter.go.kr, youth.seoul.go.kr, bokjiro.go.kr, moel.go.kr |
+| 창업지원 | k-startup.go.kr |
+
+외부 검색 결과는 내부 RAG 후보와 유사한 스키마로 변환하였다.
+
+```python
+{
+    "policy_id": "external_training_xxxxx",
+    "policy_name": title,
+    "text": snippet,
+    "source_url": url,
+    "source_category": "training",
+    "deadline_status": "unknown",
+    "metadata": {
+        "source": "official_external_search",
+        "official_source": "고용24/HRD-Net"
+    }
+}
+```
+
+### 결과
+
+외부 검색 API 키가 없을 때는 fallback 안내문 중심이라 성능 향상이 제한적이었다. Tavily API를 적용한 뒤에는 실제 공식 출처 결과가 들어오면서 일부 케이스의 점수가 상승하였다.
+
+---
+
+## 8. 6차 개선: 외부 검색 결과 후처리 필터 추가
+
+### 문제
+
+Tavily 호출은 성공했지만, 초기 결과에는 다음 문제가 있었다.
+
+```text
+- 같은 HRD-Net 상세 페이지 제목 중복
+- 질문과 무관한 PDF/HWP 문서 유입
+- 통합검색/고객센터/포털성 페이지가 상위에 노출
+- title/snippet이 너무 일반적이어서 Groundedness가 낮게 평가됨
+```
+
+### 개선 내용
+
+외부 검색 결과에 대해 다음 후처리 필터를 추가하였다.
+
+```text
+1. PDF/HWP/DOC/PPT/XLS 결과 기본 제외 또는 감점
+2. 같은 제목/URL 중복 제거
+3. title/snippet/url에 핵심 키워드가 부족하면 제외 또는 감점
+4. HRD-Net의 일반 상세 페이지는 핵심어가 없으면 제외
+5. 포털/고객센터/자료실성 페이지는 직접 키워드가 부족하면 후순위 처리
+```
+
+### 결과
+
+지게차 질의에서는 `인천지게차교육 국비지원 - 고용24` 같은 더 직접적인 결과가 잡히기 시작했고, 교통비 질의에서도 `산업단지 중소기업 청년 교통비 지원사업`과 같은 공식 결과가 후보에 포함되었다.
+
+---
+
+## 9. 7차 개선: Tavily 결과 rerank 및 외부 답변 톤 조정
+
+### 문제
+
+후처리 필터 이후에도 다음 문제가 남아 있었다.
+
+```text
+- 정확한 결과가 2~3순위로 밀림
+- 일반 포털 페이지가 1순위가 됨
+- 외부 검색 결과의 snippet보다 LLM이 더 많은 내용을 단정적으로 설명함
+```
+
+### 개선 내용
+
+### 9.1 내부 결과가 약할 때 외부 검색 보강
+
+이전에는 내부 VectorDB 결과가 있으면 외부 검색을 수행하지 않는 경우가 많았다. 개선 후에는 내부 결과가 있어도 질문 핵심 유형과 맞지 않으면 Tavily 보강 검색을 수행하도록 했다.
+
+보강 대상 유형:
+
+```text
+- 식품/식비 지원
+- 교통비 지원
+- 임차료/임대료 지원
+- 고용 정책 행사
+- 직무 일경험
+- 공공기관 인턴
+- 장기재직 공제
+```
+
+### 9.2 외부 검색 결과 rerank
+
+다음 요소를 점수화하여 외부 검색 결과를 재정렬하였다.
+
+```text
+- 제목에 핵심 키워드가 직접 포함되는지
+- 질문의 핵심 키워드 그룹을 몇 개 충족하는지
+- 공식 도메인인지
+- 통합검색/고객센터/자료실성 페이지인지
+- PDF/HWP 등 첨부 문서성 결과인지
+- title이 지나치게 일반적인지
+```
+
+예시:
+
+```text
+중소기업 다니는 청년 교통비 지원해주는 사업 있어?
+
+좋은 결과:
+산업단지 중소기업 청년 교통비 지원사업 본격 시행 - 복지로
+
+낮은 우선순위 결과:
+청년지원정보 - 청년몽땅정보통
+공지사항 | 고객센터
+```
+
+### 9.3 외부 결과 답변 톤 조정
+
+외부 검색 결과는 title/snippet/url만 근거로 하므로, 답변에서 단정적인 표현을 줄였다.
+
+기존 톤:
+
+```text
+이 정책은 신청 가능합니다.
+이 과정은 실습 중심의 국비지원 과정입니다.
+```
+
+개선 톤:
+
+```text
+공식 외부 출처 검색 기준으로 확인 후보를 찾았습니다.
+아래 결과는 제목/요약/출처 URL을 근거로 정리한 것이므로,
+실제 신청 가능 여부·지역·자부담금·마감일은 원문에서 확인해야 합니다.
+```
+
+이 변경으로 Groundedness가 안정적으로 상승하였다.
+
+---
+
+## 10. 최신 LLM-as-a-Judge 평가 결과
+
+최신 테스트에서는 Context Relevance, Groundedness, Answer Relevance 모두 평균 4점 이상 수준으로 개선되었다.
+
+| 지표 | 평균 점수 |
+|---|---:|
+| Context Relevance | 4.6 / 5 |
+| Groundedness | 4.2 / 5 |
+| Answer Relevance | 4.1 / 5 |
+| 전체 평균 | 약 4.3 / 5 |
+
+### 케이스별 결과 요약
+
+| 질문 | 주요 검색 결과 | Context | Groundedness | Answer |
+|---|---|---:|---:|---:|
+| 지게차 자격증 국비지원 과정 있어? | 지게차 운전 입문자를 위한 자격증 취득 및 취업지원 | 5 | 4 | 4 |
+| 청년 공공기관 인턴 기회 있어? | 취업성공 디딤돌 청년인턴 사업 | 5 | 4 | 4 |
+| 취약계층 청년 식품 지원 받을 수 있는 거 있어? | 자립준비청년 식비 지원 관련 결과 | 4 | 4 | 4 |
+| 청년 고용 정책 한눈에 알 수 있는 행사 있어? | 고용노동부 행사/청년정책 관련 결과 | 4 | 4 | 4 |
+| 청년 주거 지원 입주 프로그램 있어? | 청춘가 청년주거지 운영, 청년 셰어하우스 운영 | 5 | 4 | 4 |
+| 청년 직무 일경험 지원사업 있어? | 미래내일 일경험 사업 참여신청 - 고용24 | 5 | 5 | 4 |
+| 중소기업 재직 청년 장기 재직 지원 공제 있어? | 청년 재직자 슈퍼패스 바우처 | 4 | 4 | 4 |
+| 청년 창업자 임차료 지원해주는 거 있어? | 여주시 청년 창업자 임차료 지원 | 4 | 4 | 4 |
+| 산림 기반 창업 비즈니스 모델 만들 수 있는 프로그램 있어? | 2026년 청년 산림인 성장지원 프로그램 | 5 | 4 | 5 |
+| 중소기업 다니는 청년 교통비 지원해주는 사업 있어? | 산업단지 중소기업 청년 교통비 지원사업 | 5 | 5 | 4 |
+
+---
+
+## 11. 최종 구조: Hybrid RAG + ReAct Fallback
+
+최종 개선 후 RAG 구조는 다음과 같이 정리할 수 있다.
+
+```text
+사용자 질문
+→ Input Validator
+→ Condition Extractor
+→ Router
+→ Internal Retriever(VectorDB)
+→ Result Sufficiency Checker
+    ├─ 내부 결과 충분 → Eligibility Checker → Answer Generator
+    └─ 내부 결과 부족/관련성 낮음 → Official Web Search(Tavily)
+        → Post-filter
+        → Rerank
+        → External Result Formatter
+        → Answer Generator 또는 External Guidance Answer
+```
+
+이 구조는 단순한 VectorDB RAG가 아니라 다음 특성을 가진다.
+
+```text
+- 내부 정제 데이터 기반 1차 검색
+- 검색 결과 충분성 판단
+- 공식 도메인 제한 외부 검색 fallback
+- 외부 검색 결과 후처리 및 rerank
+- 외부 결과에 대한 보수적 답변 생성
+- tool_trace 기반 ReAct 흐름 설명 가능
+```
+
+---
+
+## 12. VectorDB의 역할과 의미
+
+Tavily 외부 검색이 추가되면서 “VectorDB를 구축한 의미가 있는가?”라는 의문이 생길 수 있다. 그러나 최종 구조에서 VectorDB의 역할은 여전히 중요하다.
+
+VectorDB는 다음 역할을 담당한다.
+
+```text
+1. 사전에 수집·정제한 청년정책/창업공고/교육훈련 데이터의 기본 검색 레이어
+2. 네트워크/API 비용 없이 빠르고 안정적인 1차 검색 제공
+3. 정책명, 지원대상, 지역, 마감일, source_category 등 구조화된 메타데이터 기반 필터링
+4. 나이·지역·소득·고용 상태 기반 eligibility 판단의 근거 제공
+5. 외부 검색이 불필요한 일반 질의에 대한 안정적 답변 생성
+```
+
+반면 Tavily 기반 외부 검색은 다음 역할을 한다.
+
+```text
+1. 내부 DB가 포괄하지 못한 롱테일 질의 보강
+2. 최신성 또는 특정성 높은 공식 출처 확인
+3. 고용24/온통청년/K-Startup 등 공식 도메인 기반 fallback
+4. 내부 결과가 질문 핵심어와 맞지 않을 때 보조 검색 수행
+```
+
+따라서 최종 시스템은 다음과 같이 설명할 수 있다.
+
+```text
+VectorDB = 1차 공식 데이터 검색 레이어
+Tavily 공식 검색 = 최신·롱테일 질의 보강 fallback
+LLM = 검색 결과를 사용자 친화적으로 요약하는 답변 생성기
+```
+
+---
+
+
+## 13. Tavily를 선택한 이유
+
+외부 검색 fallback을 구현할 때 사용할 수 있는 선택지는 여러 가지가 있었다.
+
+```text
+- Tavily
+- Brave Search API
+- Bing Search API
+- SerpAPI
+- Naver Search API
+- 각 공식 사이트 API 직접 연동
+```
+
+이 중 Tavily를 선택한 이유는 단순히 “웹 검색이 가능해서”가 아니라, 본 프로젝트의 개선 목적이 **LLM/RAG 시스템에 공식 외부 검색 결과를 context로 연결하는 것**이었기 때문이다.
+
+### 13.1 RAG context로 변환하기 쉬운 구조화 결과 제공
+
+본 서비스는 외부 검색 결과를 그대로 사용자에게 보여주는 방식이 아니라, 검색 결과의 제목, 요약, URL을 내부 RAG 후보와 유사한 형태로 변환한 뒤 답변 생성에 사용한다.
+
+```python
+{
+    "policy_id": "external_policy_xxxxx",
+    "policy_name": title,
+    "text": snippet,
+    "source_url": url,
+    "source_category": source_category,
+    "metadata": {
+        "source": "official_external_search",
+        "official_source": official_source_name
+    }
+}
+```
+
+Tavily는 검색 결과를 JSON 형태로 반환하므로, title/snippet/url을 추출해 RAG context로 변환하기 쉬웠다. 이 점은 단순 검색 결과 노출이 아니라 **외부 검색 결과를 RAG 파이프라인에 통합**해야 하는 본 프로젝트에 적합했다.
+
+### 13.2 공식 도메인 제한 검색에 적합
+
+본 프로젝트에서는 외부 검색 결과의 신뢰성을 높이기 위해 아무 웹사이트나 검색하지 않고 공식 도메인만 사용하도록 제한했다.
+
+```text
+교육훈련 → work24.go.kr, hrd.go.kr
+청년정책 → youthcenter.go.kr, youth.seoul.go.kr, bokjiro.go.kr, moel.go.kr
+창업지원 → k-startup.go.kr
+```
+
+Tavily는 도메인 제한 검색을 적용할 수 있어, 공식 출처 fallback 구조를 빠르게 구현하는 데 적합했다.
+
+### 13.3 LLM/Agent/RAG 워크플로우에 붙이기 쉬움
+
+일반 검색 API는 검색 결과 제공 자체가 목적이지만, Tavily는 LLM agent나 RAG workflow에 연결하기 쉬운 검색 API라는 장점이 있다.
+
+본 프로젝트에서는 LangGraph 기반 workflow 안에서 다음과 같은 ReAct 흐름을 구현했다.
+
+```text
+내부 VectorDB 검색
+→ 검색 결과 충분성 판단
+→ 부족하거나 관련성 낮음
+→ Tavily 공식 도메인 검색
+→ 후처리 및 rerank
+→ 외부 결과를 RAG context로 변환
+→ 답변 생성
+```
+
+이처럼 Tavily는 단독 검색 엔진으로 쓰기보다, ReAct fallback tool로 연결하기에 적합했다.
+
+### 13.4 빠른 실험과 검증이 가능
+
+공식 API를 직접 연동하는 것이 가장 정석적인 방법이지만, 고용24/온통청년/K-Startup을 각각 별도로 연동하려면 API 문서 확인, 인증키 발급, 응답 스키마 분석, 예외 처리, 필드 매핑을 모두 구현해야 한다.
+
+프로젝트 기간이 제한되어 있었기 때문에, 먼저 Tavily를 이용해 다음 가설을 빠르게 검증했다.
+
+```text
+내부 VectorDB가 커버하지 못하는 롱테일 질의에 대해,
+공식 도메인 제한 외부 검색 fallback을 붙이면
+Context Relevance와 Groundedness가 개선되는가?
+```
+
+실제 테스트 결과 지게차 국비지원, 청년 일경험, 창업자 임차료, 중소기업 청년 교통비 같은 롱테일 질의에서 점수가 개선되어 fallback 전략의 유효성을 확인할 수 있었다.
+
+### 13.5 무료 크레딧을 활용한 검증 가능
+
+상용 배포 단계에서 Tavily에 무조건 의존하려는 목적은 아니었다. 프로젝트 검증과 시연 단계에서는 무료 크레딧을 활용해 외부 검색 fallback이 실제로 효과가 있는지 확인할 수 있었다.
+
+따라서 Tavily는 최종 운영 인프라라기보다, 다음 목적을 위한 실험적 도구로 사용했다.
+
+```text
+- 내부 RAG의 한계 확인
+- 공식 도메인 제한 외부 검색 효과 검증
+- ReAct fallback 구조의 실효성 검증
+- Hybrid RAG 구조의 평가 점수 개선 가능성 확인
+```
+
+### 13.6 다른 대안과의 비교
+
+| 대안 | 장점 | 이번 프로젝트에서의 한계 |
+|---|---|---|
+| Tavily | RAG/Agent 연결 용이, JSON 결과, 도메인 제한, 빠른 실험 가능 | 무료 사용량 제한, 검색 결과 후처리 필요 |
+| Brave Search API | 독립 검색 인덱스 기반, 검색 품질 안정성 기대 | 별도 과금/크레딧 구조, RAG context 변환은 직접 구현 필요 |
+| Bing Search API | 범용 검색 품질 우수 | Azure 설정 및 비용 관리 부담 |
+| SerpAPI | 다양한 검색엔진 결과 활용 가능 | 무료 한도와 비용 부담, 공식 도메인 제한 후처리 필요 |
+| Naver Search API | 한국어 검색에 친숙 | 공식 정책/훈련/창업 도메인만 안정적으로 가져오려면 추가 필터링 필요 |
+| 공식 API 직접 연동 | 가장 안정적이고 정석적인 운영 방식 | 고용24/온통청년/K-Startup 각각의 API 연동 비용과 시간이 큼 |
+
+### 13.7 최종 설명 문장
+
+발표나 질의응답에서 Tavily 선택 이유는 다음과 같이 설명할 수 있다.
+
+```text
+Tavily는 VectorDB가 커버하지 못하는 최신·롱테일 질의에 대해 공식 도메인 제한 검색을 빠르게 붙일 수 있고, 검색 결과를 title/snippet/url 형태의 구조화된 RAG context로 변환하기 쉬워 선택했습니다. 다만 서비스의 핵심 검색기는 여전히 내부 VectorDB이며, Tavily는 ReAct 기반 fallback 검증용 외부 검색 도구로 사용했습니다. 실제 운영 단계에서는 비용과 안정성을 고려해 고용24, 온통청년, K-Startup 공식 API 직접 연동으로 교체할 수 있습니다.
+```
+
+
+## 14. 주요 수정 파일
+
+| 파일 | 주요 수정 내용 |
+|---|---|
+| `nodes.py` | ReAct 상태 필드 추가, 검색 충분성 판단, external_search 분기, 외부 결과 사용 로직, 답변 톤 분기 |
+| `external_search_service.py` | 공식 출처 선택, 검색어 확장, Tavily 검색, 공식 도메인 제한, 결과 후처리, rerank |
+| `rag_service.py` | 마감/오래된 정책 필터링, Chroma 검색 결과 품질 개선 |
+| `policy_matcher.py` | 사용자 조건과 정책 조건 비교, eligibility 판단 |
+| `answer_generator.py` | 추천 답변 생성, 외부 결과의 보수적 표현 필요성 반영 |
+| `evaluate_rag.py` | 자동 평가 및 BLEU/ROUGE/LLM Judge용 결과 생성 |
+
+---
+
+## 15. 개선 과정에서 얻은 교훈
+
+### 14.1 데이터 추가만으로는 해결되지 않는다
+
+내부 데이터가 많아져도 검색 후보를 제대로 고르지 못하면 관련 없는 후보가 더 많이 섞일 수 있다. 따라서 데이터 확장보다 검색 결과 품질 판단, 필터링, rerank가 우선이다.
+
+### 14.2 hard filtering은 위험하다
+
+관련성이 낮은 후보를 너무 공격적으로 제거하면 `retrieved_policies`가 비어 Judge 점수가 오히려 낮아진다. 후보 제거보다 점수화와 재정렬이 더 안정적이다.
+
+### 14.3 외부 검색은 후처리 없이는 품질이 불안정하다
+
+Tavily를 붙이는 것만으로는 충분하지 않았다. 중복 제거, 공식 도메인 제한, PDF/HWP 처리, 제목/스니펫 기반 keyword scoring, rerank가 필요했다.
+
+### 14.4 외부 검색 결과는 단정하면 안 된다
+
+외부 검색 결과는 title/snippet/url 기반이므로, 신청 가능 여부나 세부 조건을 LLM이 단정하면 Groundedness가 떨어진다. 따라서 “공식 출처 확인 후보” 톤으로 답변하는 것이 적절하다.
+
+### 14.5 Hybrid RAG 구조가 가장 현실적이다
+
+내부 VectorDB만으로는 최신·롱테일 질의 대응이 부족하고, 외부 검색만으로는 안정성·비용·메타데이터 활용이 부족하다. 두 방식을 결합한 Hybrid RAG가 가장 적합했다.
+
+---
+
+## 16. 발표/보고서용 요약 문장
+
+```text
+본 프로젝트는 초기 VectorDB 기반 RAG에서 출발했으나, 테스트 과정에서 마감 공고 추천, 낮은 관련성 후보 추천, 내부 DB 미포함 롱테일 질의 대응 한계가 확인되었다. 이를 개선하기 위해 ReAct 기반 Result Sufficiency Checker를 추가하여 내부 검색 결과의 충분성을 판단하고, 부족한 경우 공식 도메인 제한 외부 검색 fallback을 수행하도록 구조를 확장하였다.
+
+또한 Tavily를 선택한 이유는 검색 결과를 구조화된 RAG context로 변환하기 쉽고, 공식 도메인 제한 검색을 빠르게 적용할 수 있었기 때문이다. Tavily 기반 외부 검색 결과에 대해 PDF/HWP 제외, 중복 제거, 핵심 키워드 기반 rerank, 일반 포털 페이지 감점 등의 후처리 로직을 추가하였다. 외부 검색 결과는 단정적인 추천이 아니라 공식 출처 확인 후보로 답변하도록 조정하여 Groundedness를 강화하였다.
+
+최종적으로 내부 VectorDB는 정제된 정책 데이터의 1차 검색 레이어로 유지하고, 외부 검색은 최신·롱테일 질의에 대한 보강 도구로 사용하는 Hybrid RAG 구조를 완성하였다. LLM-as-a-Judge 평가 결과 Context Relevance, Groundedness, Answer Relevance가 모두 평균 4점 이상으로 개선되었다.
+```
+
+---
+
+## 17. 남은 개선 과제
+
+현재 구조는 평가 기준에서 충분히 개선되었지만, 다음 과제는 남아 있다.
+
+```text
+1. Tavily 무료 사용량 제한 대응
+2. 공식 API 직접 연동 검토
+3. 외부 검색 결과의 상세 페이지 본문 파싱
+4. 신청 기간/마감일 자동 추출
+5. 지역·연령·소득 조건의 외부 결과 eligibility 판단 강화
+6. 내부 VectorDB와 외부 검색 결과의 통합 ranking 고도화
+```
+
+특히 장기적으로는 Tavily 검색 결과의 title/snippet만 사용하는 것이 아니라, 공식 상세 페이지 본문을 가져와 신청 기간, 지원 대상, 지역, 신청 URL을 구조화하는 방향으로 확장할 수 있다.

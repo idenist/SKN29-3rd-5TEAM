@@ -13,6 +13,7 @@
       "external_used": true,
       "external_search_status": true,
       "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
       "max_recommendations": true,
       "no_expired_recommendations": true,
@@ -21,8 +22,30 @@
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0249,
+      "rouge_1_f1": 0.0909,
+      "rouge_2_f1": 0.046,
+      "rouge_l_f1": 0.0909,
+      "rouge_1": {
+        "precision": 0.053,
+        "recall": 0.32,
+        "f1": 0.0909
+      },
+      "rouge_2": {
+        "precision": 0.0267,
+        "recall": 0.1667,
+        "f1": 0.046
+      },
+      "rouge_l": {
+        "precision": 0.053,
+        "recall": 0.32,
+        "f1": 0.0909
+      }
+    },
     "response": {
-      "answer": "사용자 입력 기준으로 창업에 관심이 있는 분을 위해 2026년에 신청 가능한 창업지원 공고를 추천드립니다.\n\n### 1. 2026년 G-Space 창업기업 디지털마케팅 지원사업 참여기업 모집 공고\n- 항목 유형: 창업지원 공고\n- 추천 이유: 온라인 디지털마케팅 전략을 지원하여 스타트업의 경쟁력을 높이는 사업입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 지역 조건은 전국 대상이며, 소득 조건은 명확하지 않습니다.\n- 추가 확인 필요: 사용자 나이와 고용 상태에 대한 정보가 없어 연령 및 고용 조건 확인이 필요합니다.\n- 지원 내용: 창업기업이 필요로 하는 온라인 디지털마케팅 전략 실행 도구를 맞춤형으로 지원합니다.\n- 신청/접수 기간: 2026-05-22 ~ 2026-06-22\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [출처](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=177791)\n- 신청 URL: [신청하기](https://www.gnstartup.kr/business/8339db24-725a-45bc-baf9-d778adc7b0d8/10602/detail)\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으니 추가 확인이 필요합니다.\n\n### 2. 2026년 강북창업지원센터 6월 창업 상담 참가자 모집(정부지원사업 사업계획서 작성 그룹 멘토링)\n- 항목 유형: 창업지원 공고\n- 추천 이유: 예비 및 초기 창업자를 위한 창업 상담 프로그램으로, 사업계획서 작성에 도움을 줄 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건은 명확하지 않으며, 지역은 서울입니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태에 대한 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 예비 및 초기 창업자들을 위한 창업 상담 프로그램을 제공합니다.\n- 신청/접수 기간: 2026-06-04 ~ 2026-06-17\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [출처](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=177981)\n- 신청 URL: [신청하기](https://forms.gle/YvtMQ5VBGYMiayyD6)\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으니 추가 확인이 필요합니다.",
+      "answer": "사용자 입력 기준으로 창업에 관심이 있는 분을 위한 2026년에 신청 가능한 창업지원 공고를 추천드립니다.\n\n### 1. 2026년 강북창업지원센터 6월 창업 상담 참가자 모집(정부지원사업 사업계획서 작성 그룹 멘토링)\n- 항목 유형: 창업지원 공고\n- 추천 이유: 예비 및 초기 창업자를 위한 창업 상담 프로그램으로, 사업계획서 작성에 대한 멘토링을 제공합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 예비 및 초기 창업자, 강북구 거주자 우선 선발\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태에 대한 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 창업 상담 프로그램 및 사업계획서 작성 멘토링\n- 신청/접수 기간: 2026년 6월 4일 ~ 2026년 6월 17일\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [출처](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=177981)\n- 신청 URL: [신청하기](https://forms.gle/YvtMQ5VBGYMiayyD6)\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으니 추가 확인이 필요합니다. \n\n정확한 자격 조건 및 신청 방법은 추가 확인이 필요합니다.",
       "user_conditions": {
         "age": null,
         "region": null,
@@ -33,25 +56,6 @@
       "route": "창업",
       "route_reason": "사용자 질문에 창업, 창업지원 키워드가 포함됨 / 조건 추출 결과 interest_domain이 창업로 판단됨 / 질문과 route를 기준으로 startup_notice 데이터를 우선 검색",
       "recommendations": [
-        {
-          "policy_id": "startup_3e106a719531",
-          "policy_name": "2026년 G-Space 창업기업 디지털마케팅 지원사업 참여기업 모집 공고",
-          "eligibility": "추가 확인 필요",
-          "score": 0.6548,
-          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
-          "support_content": "정보 없음",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=177791",
-          "needs_detail_check": false,
-          "cautions": [
-            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
-          ],
-          "source_category": "startup_notice",
-          "deadline_status": "open",
-          "application_end_date": "2026-06-22",
-          "is_expired": false
-        },
         {
           "policy_id": "startup_80fc1d0f28c4",
           "policy_name": "2026년 강북창업지원센터 6월  창업 상담 참가자 모집(정부지원사업 사업계획서 작성 그룹 멘토링)",
@@ -97,9 +101,9 @@
               "domain": "창업",
               "source_category": "startup_notice"
             },
-            "total": 2,
+            "total": 1,
             "expired_count": 0,
-            "source_count": 2
+            "source_count": 1
           },
           "next_action": "result_sufficiency_checker"
         },
@@ -107,11 +111,39 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
-            "total": 2,
+            "raw_total": 1,
+            "total": 1,
             "expired_count": 0,
-            "open_count": 2,
-            "source_count": 2,
+            "open_count": 1,
+            "source_count": 1,
             "freshness_intent": true,
+            "keyword_overlap": {
+              "specific_keywords": [
+                "2026년",
+                "신청",
+                "창업지원",
+                "공고",
+                "추천해줘"
+              ],
+              "hit_keywords": [
+                "2026년",
+                "신청",
+                "창업지원",
+                "공고"
+              ],
+              "hit_count": 4,
+              "keyword_count": 5,
+              "hit_ratio": 0.8
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [],
             "sufficient": true,
             "reasons": []
           },
@@ -124,23 +156,25 @@
       "external_used": false,
       "external_search_status": "",
       "external_search_targets": [],
-      "external_search_queries": []
+      "external_search_queries": [],
+      "http_status": 200
     }
   },
   {
     "case_id": "TC002_startup_exclude_old",
     "query": "2019년에 했던 청년 창업 지원사업 말고 지금 신청 가능한 공고 알려줘",
-    "passed": false,
-    "score": 0.9286,
+    "passed": true,
+    "score": 1.0,
     "checks": {
       "must_have_any": true,
-      "must_not_have_any": false,
+      "must_not_have_any": true,
       "route": true,
       "internal_search_sufficient": true,
       "next_action": true,
       "external_used": true,
       "external_search_status": true,
       "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
       "max_recommendations": true,
       "no_expired_recommendations": true,
@@ -149,8 +183,30 @@
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0002,
+      "rouge_1_f1": 0.0761,
+      "rouge_2_f1": 0.022,
+      "rouge_l_f1": 0.0761,
+      "rouge_1": {
+        "precision": 0.0449,
+        "recall": 0.25,
+        "f1": 0.0761
+      },
+      "rouge_2": {
+        "precision": 0.0129,
+        "recall": 0.0741,
+        "f1": 0.022
+      },
+      "rouge_l": {
+        "precision": 0.0449,
+        "recall": 0.25,
+        "f1": 0.0761
+      }
+    },
     "response": {
-      "answer": "현재 청년 창업 지원에 관심이 있으신 것으로 보입니다. 아래는 현재 신청 가능한 창업 지원 공고입니다.\n\n### 1. 내 아이디어로 창업 가능할까?\n- 항목 유형: 창업지원 공고\n- 추천 이유: 예비 및 초기 청년 창업자를 위한 창업 교육 프로그램으로, 창업에 대한 아이디어를 구체화할 수 있는 기회를 제공합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 예비 및 초기 청년(만 19세~39세) 창업자\n- 추가 확인 필요: 사용자의 나이와 고용 상태에 대한 정보가 없어 자격 조건을 확인할 필요가 있습니다.\n- 지원 내용: 창업 교육을 진행하며, 많은 관심과 지원을 부탁드립니다.\n- 신청/접수 기간: 2026-06-08 ~ 2026-06-17\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [K-Startup](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178034)\n- 신청 URL: [Naroo](https://www.naroo.or.kr/bbs/content.php?co_id=program_view&np_seq=1269)\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으니, 추가 확인이 필요합니다.\n\n위 정보를 참고하시어 신청하시기 바랍니다.",
+      "answer": "현재 청년 창업 지원에 관심이 있으신 것으로 보입니다. 아래는 현재 신청 가능한 창업 지원 공고입니다.\n\n### 1. 내 아이디어로 창업 가능할까?\n- 항목 유형: 창업지원 공고\n- 추천 이유: 예비 및 초기 청년 창업자를 위한 창업 교육 프로그램으로, 창업 아이디어를 구체화할 수 있는 기회를 제공합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 예비 및 초기 청년(만 19세~39세) 창업자\n- 추가 확인 필요: 사용자 나이와 고용 상태 정보가 없어 연령 및 고용 조건 확인이 필요합니다.\n- 지원 내용: 창업 교육을 진행하며, 많은 관심과 지원을 부탁드립니다.\n- 신청/접수 기간: 2026-06-08 ~ 2026-06-17\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [K-Startup](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178034)\n- 신청 URL: [Naroo](https://www.naroo.or.kr/bbs/content.php?co_id=program_view&np_seq=1269)\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으니, 추가 확인이 필요합니다.\n\n위 정보를 참고하시어 신청하시기 바랍니다.",
       "user_conditions": {
         "age": null,
         "region": null,
@@ -216,11 +272,39 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
+            "raw_total": 1,
             "total": 1,
             "expired_count": 0,
             "open_count": 1,
             "source_count": 1,
             "freshness_intent": true,
+            "keyword_overlap": {
+              "specific_keywords": [
+                "2019년",
+                "했던",
+                "창업",
+                "말고",
+                "신청",
+                "공고"
+              ],
+              "hit_keywords": [
+                "창업",
+                "신청",
+                "공고"
+              ],
+              "hit_count": 3,
+              "keyword_count": 6,
+              "hit_ratio": 0.5
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [],
             "sufficient": true,
             "reasons": []
           },
@@ -233,33 +317,57 @@
       "external_used": false,
       "external_search_status": "",
       "external_search_targets": [],
-      "external_search_queries": []
+      "external_search_queries": [],
+      "http_status": 200
     }
   },
   {
     "case_id": "TC003_react_fallback_unrealistic",
     "query": "화성에서 받을 수 있는 청년 우주창업 지원금 알려줘",
     "passed": false,
-    "score": 0.4286,
+    "score": 0.9333,
     "checks": {
-      "must_have_any": false,
+      "must_have_any": true,
       "must_not_have_any": false,
       "route": true,
-      "internal_search_sufficient": false,
-      "next_action": false,
+      "internal_search_sufficient": true,
+      "next_action": true,
       "external_used": true,
-      "external_search_status": false,
-      "external_search_targets": false,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
-      "max_recommendations": false,
-      "no_expired_recommendations": false,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
       "expected_warning_any": true,
       "expected_error_any": true,
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0006,
+      "rouge_1_f1": 0.2734,
+      "rouge_2_f1": 0.1314,
+      "rouge_l_f1": 0.2014,
+      "rouge_1": {
+        "precision": 0.1759,
+        "recall": 0.6129,
+        "f1": 0.2734
+      },
+      "rouge_2": {
+        "precision": 0.0841,
+        "recall": 0.3,
+        "f1": 0.1314
+      },
+      "rouge_l": {
+        "precision": 0.1296,
+        "recall": 0.4516,
+        "f1": 0.2014
+      }
+    },
     "response": {
-      "answer": "사용자 입력 기준으로 화성에서 청년 우주창업 지원금을 찾고 계십니다.\n\n추천 정책은 다음과 같습니다.\n\n### 1. 청년성장지원 『이룸』하반기 청년창업팀 모집\n- 항목 유형: 창업지원 공고\n- 추천 이유: 청년 예비창업팀을 모집하는 프로그램으로, 창업에 관심 있는 청년들에게 지원을 제공합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 성남시 거주 혹은 재학 중인 만 19~39세 청년\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 자격 조건 확인이 필요합니다.\n- 지원 내용: 청년 예비창업팀 모집\n- 신청/접수 기간: 2026년 6월 8일 ~ 2026년 6월 22일\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년성장지원 『이룸』하반기 청년창업팀 모집](https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178005)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 제출서류 정보가 명확히 포함되어 있지 않으니 추가 확인이 필요합니다.\n\n제공된 데이터에는 화성 지역에 대한 구체적인 정보가 없으므로, 해당 정책이 화성에서 신청 가능한지 추가 확인이 필요합니다.",
+      "answer": "내부 데이터에서 출처와 관련성이 충분히 확인된 '화성에서 받을 수 있는 청년 우주창업 지원금 알려줘' 관련 지원 정보를 찾지 못했습니다.\n\n이 질문은 창업 분야에 해당하므로 K-Startup 공식 출처 확인이 필요합니다. 현재 버전에서는 실제 외부 API 호출은 아직 수행하지 않지만, 부정확한 내부 검색 결과를 추천하지 않고 공식 출처 확인 대상으로 분기했습니다.\n- 검색 후보가 있었지만 route/source_category, 마감 여부, 오래된 연도 조건으로 모두 제외되었습니다.\n- 내부 Vector DB 검색 결과가 없습니다.\n- 현재성 질문에서 마감 후보 제외: 서울특별시 금천구 대명여울빛거리시장 청년상인 모집\n\n공식 사이트에서 아래 검색어로 다시 확인해 보세요:\n- 화성에서 받을 수 있는 청년 우주창업 지원금 알려줘\n\n확인 대상 공식 출처:\n- K-Startup (창업지원 공고): https://www.k-startup.go.kr",
       "user_conditions": {
         "age": null,
         "region": "화성",
@@ -269,108 +377,10 @@
       },
       "route": "창업",
       "route_reason": "사용자 질문에 창업 키워드가 포함됨 / 조건 추출 결과 interest_domain이 창업로 판단됨 / 질문과 route를 기준으로 startup_notice 데이터를 우선 검색",
-      "recommendations": [
-        {
-          "policy_id": "startup_b930eebdedde",
-          "policy_name": "청년성장지원 『이룸』하반기 청년창업팀 모집",
-          "eligibility": "추가 확인 필요",
-          "score": 0.591,
-          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
-          "support_content": "정보 없음",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=178005",
-          "needs_detail_check": false,
-          "cautions": [
-            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
-          ],
-          "source_category": "startup_notice",
-          "deadline_status": "open",
-          "application_end_date": "2026-06-22",
-          "is_expired": false
-        },
-        {
-          "policy_id": "startup_d4d6afd4c34a",
-          "policy_name": "서울특별시 금천구 대명여울빛거리시장 청년상인 모집",
-          "eligibility": "가능성 낮음",
-          "score": 0.638,
-          "reason": "검색 결과에는 포함되었지만 일부 조건이 맞지 않을 가능성이 있습니다.",
-          "support_content": "정보 없음",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=76316",
-          "needs_detail_check": false,
-          "cautions": [
-            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "불충족 가능 조건: 마감된 창업지원 공고: 신청/접수 종료일이 2016-09-30로 확인됨"
-          ],
-          "source_category": "startup_notice",
-          "deadline_status": "expired",
-          "application_end_date": "2016-09-30",
-          "is_expired": true
-        },
-        {
-          "policy_id": "startup_4990d7c0cf71",
-          "policy_name": "서울특별시 금천구 대명여울빛거리시장 청년상인 모집",
-          "eligibility": "가능성 낮음",
-          "score": 0.6372,
-          "reason": "검색 결과에는 포함되었지만 일부 조건이 맞지 않을 가능성이 있습니다.",
-          "support_content": "정보 없음",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=76536",
-          "needs_detail_check": false,
-          "cautions": [
-            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "불충족 가능 조건: 마감된 창업지원 공고: 신청/접수 종료일이 2016-10-14로 확인됨"
-          ],
-          "source_category": "startup_notice",
-          "deadline_status": "expired",
-          "application_end_date": "2016-10-14",
-          "is_expired": true
-        },
-        {
-          "policy_id": "startup_666f2c3c9687",
-          "policy_name": "서울특별시 금천구 대명여울빛거리시장 청년상인 모집",
-          "eligibility": "가능성 낮음",
-          "score": 0.6358,
-          "reason": "검색 결과에는 포함되었지만 일부 조건이 맞지 않을 가능성이 있습니다.",
-          "support_content": "정보 없음",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=78353",
-          "needs_detail_check": false,
-          "cautions": [
-            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "불충족 가능 조건: 마감된 창업지원 공고: 신청/접수 종료일이 2017-02-17로 확인됨"
-          ],
-          "source_category": "startup_notice",
-          "deadline_status": "expired",
-          "application_end_date": "2017-02-17",
-          "is_expired": true
-        },
-        {
-          "policy_id": "startup_ce5bb7ab5354",
-          "policy_name": "서울특별시 금천구 대명여울빛거리시장 청년상인 모집",
-          "eligibility": "가능성 낮음",
-          "score": 0.6349,
-          "reason": "검색 결과에는 포함되었지만 일부 조건이 맞지 않을 가능성이 있습니다.",
-          "support_content": "정보 없음",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=77452",
-          "needs_detail_check": false,
-          "cautions": [
-            "창업지원 공고의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "불충족 가능 조건: 마감된 창업지원 공고: 신청/접수 종료일이 2016-12-29로 확인됨"
-          ],
-          "source_category": "startup_notice",
-          "deadline_status": "expired",
-          "application_end_date": "2016-12-29",
-          "is_expired": true
-        }
+      "recommendations": [],
+      "warnings": [
+        "내부 데이터 검색 결과가 충분하지 않아 외부 공식 출처 검색이 필요합니다. 공식 도메인 제한 외부 검색에서도 사용 가능한 결과를 찾지 못해 확인 안내로 대체합니다."
       ],
-      "warnings": [],
       "tool_trace": [
         {
           "step": "router",
@@ -396,7 +406,7 @@
               "source_category": "startup_notice"
             },
             "total": 5,
-            "expired_count": 4,
+            "expired_count": 5,
             "source_count": 5
           },
           "next_action": "result_sufficiency_checker"
@@ -405,24 +415,81 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
-            "total": 5,
-            "expired_count": 4,
-            "open_count": 1,
-            "source_count": 5,
-            "freshness_intent": false,
-            "sufficient": true,
-            "reasons": []
+            "raw_total": 5,
+            "total": 0,
+            "expired_count": 0,
+            "open_count": 0,
+            "source_count": 0,
+            "freshness_intent": true,
+            "keyword_overlap": {
+              "specific_keywords": [
+                "화성",
+                "우주창업"
+              ],
+              "hit_keywords": [],
+              "hit_count": 0,
+              "keyword_count": 2,
+              "hit_ratio": 0.0
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [
+              "현재성 질문에서 마감 후보 제외: 서울특별시 금천구 대명여울빛거리시장 청년상인 모집",
+              "현재성 질문에서 마감 후보 제외: 서울특별시 금천구 대명여울빛거리시장 청년상인 모집",
+              "현재성 질문에서 마감 후보 제외: 서울특별시 금천구 대명여울빛거리시장 청년상인 모집",
+              "현재성 질문에서 마감 후보 제외: 서울특별시 금천구 대명여울빛거리시장 청년상인 모집",
+              "현재성 질문에서 마감 후보 제외: 서울특별시 금천구 대명여울빛거리시장 청년상인 모집"
+            ],
+            "sufficient": false,
+            "reasons": [
+              "검색 후보가 있었지만 route/source_category, 마감 여부, 오래된 연도 조건으로 모두 제외되었습니다.",
+              "내부 Vector DB 검색 결과가 없습니다.",
+              "현재성 질문에서 마감 후보 제외: 서울특별시 금천구 대명여울빛거리시장 청년상인 모집"
+            ]
           },
-          "next_action": "answer_generation"
+          "next_action": "external_search"
+        },
+        {
+          "step": "external_search",
+          "action": "search_official_sources",
+          "observation": {
+            "status": "planned_not_executed",
+            "backend": "none",
+            "target_names": [
+              "K-Startup"
+            ],
+            "queries": [
+              "화성에서 받을 수 있는 청년 우주창업 지원금 알려줘"
+            ],
+            "result_count": 0,
+            "errors": [],
+            "message": "공식 도메인 제한 외부 웹 검색을 시도했지만 후처리 필터를 통과한 결과가 없어 검색 계획만 반환합니다."
+          },
+          "next_action": "eligibility_checker"
         }
       ],
-      "internal_search_sufficient": true,
-      "sufficiency_reasons": [],
-      "next_action": "answer_generation",
+      "internal_search_sufficient": false,
+      "sufficiency_reasons": [
+        "검색 후보가 있었지만 route/source_category, 마감 여부, 오래된 연도 조건으로 모두 제외되었습니다.",
+        "내부 Vector DB 검색 결과가 없습니다.",
+        "현재성 질문에서 마감 후보 제외: 서울특별시 금천구 대명여울빛거리시장 청년상인 모집"
+      ],
+      "next_action": "external_search",
       "external_used": false,
-      "external_search_status": "",
-      "external_search_targets": [],
-      "external_search_queries": []
+      "external_search_status": "planned_not_executed",
+      "external_search_targets": [
+        "K-Startup"
+      ],
+      "external_search_queries": [
+        "화성에서 받을 수 있는 청년 우주창업 지원금 알려줘"
+      ],
+      "http_status": 200
     }
   },
   {
@@ -439,6 +506,7 @@
       "external_used": true,
       "external_search_status": true,
       "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
       "max_recommendations": true,
       "no_expired_recommendations": true,
@@ -447,8 +515,30 @@
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0081,
+      "rouge_1_f1": 0.0589,
+      "rouge_2_f1": 0.0222,
+      "rouge_l_f1": 0.0589,
+      "rouge_1": {
+        "precision": 0.0312,
+        "recall": 0.5161,
+        "f1": 0.0589
+      },
+      "rouge_2": {
+        "precision": 0.0117,
+        "recall": 0.2,
+        "f1": 0.0222
+      },
+      "rouge_l": {
+        "precision": 0.0312,
+        "recall": 0.5161,
+        "f1": 0.0589
+      }
+    },
     "response": {
-      "answer": "사용자 입력 기준으로 서울에 거주하는 25세 청년이 받을 수 있는 월세 지원 정책을 안내드립니다.\n\n### 1. (국토부) 26년 청년월세 지원사업\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 이상, 서울 거주\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 2026년 3월 30일 ~ 2026년 5월 29일\n- 신청/접수 방법: 주소지 관할 주민센터 방문 또는 복지로 온라인 신청\n- 제출 서류: 월세지원 신청서, 소득·재산 신고서, 임대차계약서 및 최근 3개월간 월세 이체 증빙서류, 통장 사본, 가족관계증명서 등\n- 출처 URL: [복지로](https://www.bokjiro.go.kr/ssis-tbu/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004661)\n- 신청 URL: [복지로 신청](https://bokjiro.go.kr)\n- 유의사항: 대리인 신청 시 위임장 및 신분증 지참 필요\n\n### 2. 청년월세 한시 특별지원\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 이상, 서울 거주\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 월 최대 20만원 임대료 지원(최대 24개월)\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책의 상세 확인 필요\n\n### 3. 청년안심주택 공급활성화(임차보증금 무이자지원)\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 이상, 서울 거주\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 임차보증금 무이자 지원\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책의 상세 확인 필요\n\n### 4. 서울시 청년수당\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 이상, 서울 거주\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 매월 50만원 × 최대 6개월\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [서울시 청년수당](https://youth.seoul.go.kr/youthConts.do?key=2310100061&sc_detailAt=&pageIndex=1&orderBy=regYmd+desc&tabKind=201&pwKind=&sc_pbancSe=&sc_pbancSeCd=012&sc_bbsStngSn=2212200001&sc_bbsCtgrySn=2310200011&sc_pstSn=2503040001&sc_rvwSn=0&sc_userId=&sc_ntcPstYn=&sc_delYn=&sc_ctgry=&useYn=&sc_faqCtgryCd=005&sc_qnaCtgryCd=004&sc_plcyQnaSn=0&pstSn=&recordCountPerPage=10&sc_wDateS=&sc_wDateE=&sc=&sw=)\n- 신청 URL: [서울시 청년수당 신청](https://youth.seoul.go.kr/youthConts.do?key=2310100061&sc_detailAt=&pageIndex=1&orderBy=regYmd+desc&tabKind=201&pwKind=&sc_pbancSe=&sc_pbancSeCd=012&sc_bbsStngSn=2212200001&sc_bbsCtgrySn=2310200011&sc_pstSn=2503040001&sc_rvwSn=0&sc_userId=&sc_ntcPstYn=&sc_delYn=&sc_ctgry=&useYn=&sc_faqCtgryCd=005&sc_qnaCtgryCd=004&sc_plcyQnaSn=0&pstSn=&recordCountPerPage=10&sc_wDateS=&sc_wDateE=&sc=&sw=)\n- 유의사항: 정책의 상세 확인 필요\n\n위 정책들을 참고하여 신청 가능성을 확인해 보시기 바랍니다.",
+      "answer": "사용자 입력 기준으로 서울에 거주하는 25세 청년이 받을 수 있는 월세 지원 정책을 안내드립니다.\n\n### 1. (국토부) 26년 청년월세 지원사업\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 연령 조건 충족, 서울 지역 조건 충족\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 2026년 3월 30일 ~ 2026년 5월 29일\n- 신청/접수 방법: 주소지 관할 주민센터에 청년 본인이 방문하거나 복지로에서 온라인으로 신청 가능\n- 제출 서류: 월세지원 신청서, 소득·재산 신고서, 임대차계약서 및 최근 3개월간 월세 이체 증빙서류, 통장 사본, 가족관계증명서 등\n- 출처 URL: [복지로](https://www.bokjiro.go.kr/ssis-tbu/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004661)\n- 신청 URL: [복지로 신청](https://bokjiro.go.kr)\n- 유의사항: 대리인 신청 시 위임장 및 대리인 신분증 지참 필요\n\n### 2. 청년월세 한시 특별지원\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 연령 조건 충족, 서울 지역 조건 충족\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 월 최대 20만원 임대료 지원(최대 24개월)\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책의 상세 확인 필요\n\n### 3. 청년안심주택 공급활성화(임차보증금 무이자지원)\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 연령 조건 충족, 서울 지역 조건 충족\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 임차보증금 무이자 지원\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책의 상세 확인 필요\n\n### 4. 서울시 청년수당\n- 항목 유형: 정책\n- 추천 이유: 25세는 지원 대상 연령에 포함되며, 서울 지역에서 신청할 수 있는 정책입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 25세 연령 조건 충족, 서울 지역 조건 충족\n- 추가 확인 필요: 소득 조건 및 고용 상태 정보 확인 필요\n- 지원 내용: 매월 50만원 × 최대 6개월 지원\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [서울시 청년수당](https://youth.seoul.go.kr/youthConts.do?key=2310100061&sc_pbancSeCd=012&sc_bbsStngSn=2212200001&sc_bbsCtgrySn=2310200011&sc_qnaCtgryCd=004&sc_faqCtgryCd=005)\n- 신청 URL: [서울시 청년수당 신청](https://youth.seoul.go.kr/youthConts.do?key=2310100061&sc_detailAt=&pageIndex=1&orderBy=regYmd+desc&tabKind=201&pwKind=&sc_pbancSe=&sc_pbancSeCd=012&sc_bbsStngSn=2212200001&sc_bbsCtgrySn=2310200011&sc_pstSn=2503040001&sc_rvwSn=0&sc_userId=&sc_ntcPstYn=&sc_delYn=&sc_ctgry=&useYn=&sc_faqCtgryCd=005&sc_qnaCtgryCd=004&sc_plcyQnaSn=0&pstSn=&recordCountPerPage=10&sc_wDateS=&sc_wDateE=&sc=&sw=)\n- 유의사항: 지원 방법은 체크카드 사용으로 제한됨\n\n위 정책들을 참고하여 추가 확인 후 신청하시기 바랍니다.",
       "user_conditions": {
         "age": 25,
         "region": "서울",
@@ -544,7 +634,7 @@
           "policy_id": "policy_20260520005400213208",
           "policy_name": "2026년 서울청년정책네트워크 하반기 모집",
           "eligibility": "추가 확인 필요",
-          "score": 0.5923,
+          "score": 0.5924,
           "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
           "support_content": "정보 없음",
           "application_period": "20260520 ~ 20260529",
@@ -597,11 +687,36 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
+            "raw_total": 5,
             "total": 5,
             "expired_count": 0,
             "open_count": 0,
             "source_count": 3,
-            "freshness_intent": false,
+            "freshness_intent": true,
+            "keyword_overlap": {
+              "specific_keywords": [
+                "서울",
+                "사는",
+                "25세",
+                "월세"
+              ],
+              "hit_keywords": [
+                "서울",
+                "월세"
+              ],
+              "hit_count": 2,
+              "keyword_count": 4,
+              "hit_ratio": 0.5
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [],
             "sufficient": true,
             "reasons": []
           },
@@ -614,7 +729,8 @@
       "external_used": false,
       "external_search_status": "",
       "external_search_targets": [],
-      "external_search_queries": []
+      "external_search_queries": [],
+      "http_status": 200
     }
   },
   {
@@ -631,6 +747,7 @@
       "external_used": true,
       "external_search_status": true,
       "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
       "max_recommendations": true,
       "no_expired_recommendations": true,
@@ -639,8 +756,30 @@
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0001,
+      "rouge_1_f1": 0.0254,
+      "rouge_2_f1": 0.0085,
+      "rouge_l_f1": 0.0254,
+      "rouge_1": {
+        "precision": 0.0135,
+        "recall": 0.2143,
+        "f1": 0.0254
+      },
+      "rouge_2": {
+        "precision": 0.0045,
+        "recall": 0.0741,
+        "f1": 0.0085
+      },
+      "rouge_l": {
+        "precision": 0.0135,
+        "recall": 0.2143,
+        "f1": 0.0254
+      }
+    },
     "response": {
-      "answer": "사용자 입력 기준으로 AI 데이터 분석 관련 교육훈련 과정을 추천드립니다.\n\n### 1. Ai를 활용한 유튜브영상편집\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI 기술을 활용한 영상 편집 과정으로, 데이터 분석과 관련된 기술을 배울 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 자격 조건 확인이 필요합니다.\n- 지원 내용: Ai를 활용한 유튜브영상편집 과정\n- 신청/접수 기간: 2026-06-24 ~ 2026-08-26\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [상세정보](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026)\n- 신청 URL: [신청하기](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n### 2. [AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정 (필기&실기)\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI와 컴퓨터 활용 능력을 동시에 배울 수 있는 과정으로, 데이터 분석에 필요한 기초를 다질 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 자격 조건 확인이 필요합니다.\n- 지원 내용: [AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정\n- 신청/접수 기간: 2026-06-11 ~ 2026-07-02\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [상세정보](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642)\n- 신청 URL: [신청하기](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n### 3. [기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무 (포토_일러_AI툴)\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI를 활용한 디자인 및 포트폴리오 실무 과정으로, 데이터 분석과 관련된 시각적 표현 능력을 기를 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 자격 조건 확인이 필요합니다.\n- 지원 내용: [기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무\n- 신청/접수 기간: 2026-07-20 ~ 2026-09-28\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [상세정보](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000545026&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500041645611)\n- 신청 URL: [신청하기](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000545026&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500041645611)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n위의 정보들을 참고하여 관심 있는 교육훈련 과정을 확인해 보시기 바랍니다.",
+      "answer": "사용자 입력 기준으로 AI 데이터 분석 관련 교육훈련 과정을 추천드립니다.\n\n### 1. [AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정 (필기&실기)\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI와 관련된 실무 능력을 배양할 수 있는 과정으로, 컴퓨터 활용 능력과 AI 업무 활용을 동시에 익힐 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건에 대한 정보가 명확하지 않음.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 지원 내용: [AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정 (필기&실기)\n- 신청/접수 기간: 2026-06-11 ~ 2026-07-02\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642)\n- 신청 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요.\n\n### 2. Ai를 활용한 유튜브영상편집\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI를 활용한 영상 편집 기술을 배울 수 있는 과정으로, 실무에 적합한 교육입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건에 대한 정보가 명확하지 않음.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 지원 내용: Ai를 활용한 유튜브영상편집\n- 신청/접수 기간: 2026-06-24 ~ 2026-08-26\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026)\n- 신청 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요.\n\n### 3. [기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무 (포토_일러_AI툴)\n- 항목 유형: 교육훈련 과정\n- 추천 이유: AI를 활용한 디자인 및 포트폴리오 실무를 배울 수 있는 기초 과정입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건에 대한 정보가 명확하지 않음.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 지원 내용: [기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무 (포토_일러_AI툴)\n- 신청/접수 기간: 2026-07-20 ~ 2026-09-28\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000545026&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500041645611)\n- 신청 URL: [링크](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000545026&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500041645611)\n- 유의사항: 교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요.\n\n위의 과정들을 참고하시어 추가 확인 후 신청하시기 바랍니다.",
       "user_conditions": {
         "age": null,
         "region": null,
@@ -652,15 +791,15 @@
       "route_reason": "사용자 질문에 훈련 키워드가 포함됨 / 조건 추출 결과 interest_domain이 교육로 판단됨 / 질문과 route를 기준으로 training 데이터를 우선 검색",
       "recommendations": [
         {
-          "policy_id": "training_e0a4daf3cc4d",
-          "policy_name": "Ai를 활용한 유튜브영상편집",
+          "policy_id": "training_4fb4a7139c63",
+          "policy_name": "[AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정 (필기&실기)",
           "eligibility": "추가 확인 필요",
           "score": 0.6498,
           "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
           "support_content": "정보 없음",
           "application_period": "정보 없음",
           "required_documents": "정보 없음",
-          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026",
+          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642",
           "needs_detail_check": true,
           "cautions": [
             "교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
@@ -673,15 +812,15 @@
           "is_expired": false
         },
         {
-          "policy_id": "training_4fb4a7139c63",
-          "policy_name": "[AI융복합과정]컴퓨터활용능력 2급 취득 및 AI 업무 활용 과정 (필기&실기)",
+          "policy_id": "training_e0a4daf3cc4d",
+          "policy_name": "Ai를 활용한 유튜브영상편집",
           "eligibility": "추가 확인 필요",
-          "score": 0.6497,
+          "score": 0.6461,
           "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
           "support_content": "정보 없음",
           "application_period": "정보 없음",
           "required_documents": "정보 없음",
-          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000544956&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020054642",
+          "source_url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546055&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020052026",
           "needs_detail_check": true,
           "cautions": [
             "교육훈련 과정 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
@@ -739,7 +878,7 @@
           "policy_id": "training_a1c300f1e7db",
           "policy_name": "[기초] AI 활용 편집(출판) 디자인 & 포트폴리오 실무 (포토_일러_AI툴)",
           "eligibility": "추가 확인 필요",
-          "score": 0.6444,
+          "score": 0.6445,
           "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
           "support_content": "정보 없음",
           "application_period": "정보 없음",
@@ -792,11 +931,41 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
+            "raw_total": 5,
             "total": 5,
             "expired_count": 0,
             "open_count": 0,
             "source_count": 5,
-            "freshness_intent": false,
+            "freshness_intent": true,
+            "keyword_overlap": {
+              "specific_keywords": [
+                "국민내일배움카드",
+                "들을",
+                "ai",
+                "데이터",
+                "분석",
+                "훈련",
+                "추천해줘"
+              ],
+              "hit_keywords": [
+                "국민내일배움카드",
+                "ai",
+                "데이터",
+                "훈련"
+              ],
+              "hit_count": 4,
+              "keyword_count": 7,
+              "hit_ratio": 0.5714
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [],
             "sufficient": true,
             "reasons": []
           },
@@ -809,7 +978,8 @@
       "external_used": false,
       "external_search_status": "",
       "external_search_targets": [],
-      "external_search_queries": []
+      "external_search_queries": [],
+      "http_status": 200
     }
   },
   {
@@ -826,6 +996,7 @@
       "external_used": true,
       "external_search_status": true,
       "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
       "max_recommendations": true,
       "no_expired_recommendations": true,
@@ -834,8 +1005,30 @@
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0,
+      "rouge_1_f1": 0.1657,
+      "rouge_2_f1": 0.0,
+      "rouge_l_f1": 0.0828,
+      "rouge_1": {
+        "precision": 0.0986,
+        "recall": 0.5185,
+        "f1": 0.1657
+      },
+      "rouge_2": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "rouge_l": {
+        "precision": 0.0493,
+        "recall": 0.2593,
+        "f1": 0.0828
+      }
+    },
     "response": {
-      "answer": "사용자 입력 기준으로 면접수당 관련 정책을 찾았습니다. 다음은 추천하는 정책입니다.\n\n### 1. 모자건강증진 사업\n- 항목 유형: 정책\n- 추천 이유: 면접수당과 관련된 정책으로, 지원 내용이 건강 증진과 관련되어 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 주요 내용: 제공된 데이터에는 지원 내용에 대한 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 보건소 방문 또는 온라인(맘편한임신) 신청 후 택배수령\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [모자건강증진 사업](https://www.mohw.go.kr/board.es?mid=a10411010100&bid=0019&act=view&list_no=1484219&tag=&nPage=1)\n- 신청 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n정책에 대한 추가 정보는 원문을 통해 확인하시기 바랍니다.",
+      "answer": "사용자 입력 기준으로 면접수당 관련 정책을 찾았습니다. 다음은 추천하는 정책입니다.\n\n### 1. 모자건강증진 사업\n- 항목 유형: 정책\n- 추천 이유: 면접수당과 관련된 정책으로, 건강 증진을 위한 지원을 포함할 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 주요 내용: 제공된 데이터에는 지원 내용에 대한 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 보건소 방문 또는 온라인(맘편한임신) 신청 후 택배수령\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [모자건강증진 사업](https://www.mohw.go.kr/board.es?mid=a10411010100&bid=0019&act=view&list_no=1484219&tag=&nPage=1)\n- 신청 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n정책에 대한 추가 정보는 출처를 통해 확인하시기 바랍니다.",
       "user_conditions": {
         "age": null,
         "region": null,
@@ -903,11 +1096,30 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
+            "raw_total": 1,
             "total": 1,
             "expired_count": 0,
             "open_count": 0,
             "source_count": 1,
-            "freshness_intent": false,
+            "freshness_intent": true,
+            "keyword_overlap": {
+              "specific_keywords": [
+                "면접수당"
+              ],
+              "hit_keywords": [],
+              "hit_count": 0,
+              "keyword_count": 1,
+              "hit_ratio": 0.0
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [],
             "sufficient": true,
             "reasons": []
           },
@@ -920,7 +1132,8 @@
       "external_used": false,
       "external_search_status": "",
       "external_search_targets": [],
-      "external_search_queries": []
+      "external_search_queries": [],
+      "http_status": 200
     }
   },
   {
@@ -937,6 +1150,7 @@
       "external_used": true,
       "external_search_status": true,
       "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
       "max_recommendations": true,
       "no_expired_recommendations": true,
@@ -945,8 +1159,30 @@
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0,
+      "rouge_1_f1": 0.0305,
+      "rouge_2_f1": 0.0034,
+      "rouge_l_f1": 0.0271,
+      "rouge_1": {
+        "precision": 0.0159,
+        "recall": 0.375,
+        "f1": 0.0305
+      },
+      "rouge_2": {
+        "precision": 0.0018,
+        "recall": 0.0435,
+        "f1": 0.0034
+      },
+      "rouge_l": {
+        "precision": 0.0141,
+        "recall": 0.3333,
+        "f1": 0.0271
+      }
+    },
     "response": {
-      "answer": "사용자 입력 기준으로 금융 관련 정책을 찾았습니다. 다음은 추천하는 정책 목록입니다.\n\n### 1. 청년미래적금('26.6.22 출시예정)\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 금융 지원 정책으로, 자산 형성을 도와주는 적금 상품입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년미래적금](https://www.kinfa.or.kr/financialProduct/youthFutureSavings.do)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요\n\n### 2. (접수 마감)2026년 11기 광주 청년 13(일+삶)통장\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 금융 지원 정책으로, 자산 형성을 도와주는 통장입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [광주 청년 13통장](https://youth.gwangju.go.kr/www/)\n- 신청 URL: [광주 청년 13통장](https://youth.gwangju.go.kr/www/)\n- 유의사항: 출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요\n\n### 3. 청년 자산형성 지원(청년도약계좌)\n- 항목 유형: 정책\n- 추천 이유: 청년의 자산 형성을 지원하는 정책으로, 청년도약계좌를 통해 자산을 쌓을 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년도약계좌](https://ylaccount.kinfa.or.kr/main)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요\n\n### 4. 금융감독원 e-금융교육센터\n- 항목 유형: 정책\n- 추천 이유: 청년층을 위한 맞춤형 금융 교육을 제공하여 재무 관리 능력을 향상시킬 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않음\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 지원 내용: 청년 특화과정 및 생애 주기별 필수 과정 제공\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [e-금융교육센터](https://www.fss.or.kr/edu/fem/eduProgram/view.do?programSlno=1&menuNo=300020)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 정보 완성도 점수가 낮아 세부 조건 확인 필요\n\n### 5. 청년미래적금 운영\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 적금 상품으로, 자산 형성을 지원합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 사용자 나이, 지역, 고용 상태 정보가 필요\n- 추가 확인 필요: 소득 조건 확인 필요\n- 지원 내용: 관내 근로 청년이 월 15만원 적금 시 시에서 동일 금액을 적립하여 만기 시 지급\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년미래적금 운영](https://sjyouth.sjepa.or.kr/)\n- 신청 URL: [청년미래적금 운영](https://sjyouth.sjepa.or.kr/)\n- 유의사항: 정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음\n\n위 정책들을 참고하시어 추가 확인 후 신청하시기 바랍니다.",
+      "answer": "사용자 입력 기준으로 금융 관련 정책을 찾았습니다. 다음은 추천하는 정책 목록입니다.\n\n### 1. 청년미래적금('26.6.22 출시예정)\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 금융 지원 정책으로, 자산 형성을 도와주는 적금 상품입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요합니다.\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년미래적금](https://www.kinfa.or.kr/financialProduct/youthFutureSavings.do)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요.\n\n### 2. (접수 마감)2026년 11기 광주 청년 13(일+삶)통장\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 금융 지원 정책으로, 자산 형성을 도와주는 통장입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요합니다.\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [광주 청년 13통장](https://youth.gwangju.go.kr/www/)\n- 신청 URL: [광주 청년 13통장](https://youth.gwangju.go.kr/www/)\n- 유의사항: 출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요.\n\n### 3. 청년 자산형성 지원(청년도약계좌)\n- 항목 유형: 정책\n- 추천 이유: 청년의 자산 형성을 지원하는 정책으로, 금융 지원을 통해 경제적 자립을 도와줍니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요합니다.\n- 지원 내용: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년도약계좌](https://ylaccount.kinfa.or.kr/main)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요.\n\n### 4. 금융감독원 e-금융교육센터\n- 항목 유형: 정책\n- 추천 이유: 청년층을 위한 맞춤형 금융 교육을 제공하여 재무 관리 능력을 향상시킬 수 있습니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건이 명확하지 않으며, 나이, 지역, 고용 상태에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 필요합니다.\n- 지원 내용: 청년 특화과정 및 생애 주기별 필수 과정 제공.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [e-금융교육센터](https://www.fss.or.kr/edu/fem/eduProgram/view.do?programSlno=1&menuNo=300020)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 정보 완성도 점수가 낮아 세부 조건 확인 필요.\n\n### 5. 청년미래적금 운영\n- 항목 유형: 정책\n- 추천 이유: 청년을 위한 적금 상품으로, 자산 형성을 지원합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 나이, 지역, 고용 상태, 소득 조건에 대한 정보가 필요합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태, 소득 조건 확인 필요.\n- 지원 내용: 관내 근로 청년이 월 15만원의 적금 납입 시 시도 동일금액을 적립하여 만기 시에 일시 지급.\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년미래적금 운영](https://sjyouth.sjepa.or.kr/)\n- 신청 URL: [청년미래적금 운영](https://sjyouth.sjepa.or.kr/)\n- 유의사항: 정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음.\n\n위 정책들을 참고하여 추가적인 정보 확인 후 신청하시기 바랍니다.",
       "user_conditions": {
         "age": null,
         "region": null,
@@ -1047,7 +1283,7 @@
           "policy_id": "policy_20250904005400211630",
           "policy_name": "청년미래적금 운영",
           "eligibility": "추가 확인 필요",
-          "score": 0.4722,
+          "score": 0.4717,
           "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
           "support_content": "○ 관내 기업에 근로 중인 청년이 월 15만원의 적금 납입 시에 시도 동일금액을 적립하여 만기(3년)에 일시 지급\n ※ 만기수령액: 본인 저축액 540만원(15만원×36개월) + 시 지원금 540만원(매칭지원) + 본인 저축분에 대한 이자\n○ 지원요건\n - (연령) 19세 이상 39세인 청년\n - (거주) 공고일 기준 세종시 6개월 이상 계속 거주\n - (근로) 공고일 기준 6개월 이상 4대 보험이 가입된 관내 ‧ 동일사업장(재직 중인 기업‧기관 등의 사업자등록증 기준 세종 소재 확인)에서 주 30시간 이상 계속 근로하고 있는 자\n - (소득) 공고일 기준 최근 6개월 평균 건강보험료 본인부담금이 ’25년 건강보험료 소득판정기준표상 중위소득 120% 이하인 자",
           "application_period": "정보 없음",
@@ -1099,11 +1335,35 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
+            "raw_total": 5,
             "total": 5,
             "expired_count": 0,
             "open_count": 0,
             "source_count": 4,
             "freshness_intent": false,
+            "keyword_overlap": {
+              "specific_keywords": [
+                "청년도약계좌",
+                "같은",
+                "금융"
+              ],
+              "hit_keywords": [
+                "청년도약계좌",
+                "금융"
+              ],
+              "hit_count": 2,
+              "keyword_count": 3,
+              "hit_ratio": 0.6667
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [],
             "sufficient": true,
             "reasons": []
           },
@@ -1116,7 +1376,8 @@
       "external_used": false,
       "external_search_status": "",
       "external_search_targets": [],
-      "external_search_queries": []
+      "external_search_queries": [],
+      "http_status": 200
     }
   },
   {
@@ -1133,6 +1394,7 @@
       "external_used": true,
       "external_search_status": true,
       "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
       "max_recommendations": true,
       "no_expired_recommendations": true,
@@ -1141,8 +1403,30 @@
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0,
+      "rouge_1_f1": 0.125,
+      "rouge_2_f1": 0.0141,
+      "rouge_l_f1": 0.0833,
+      "rouge_1": {
+        "precision": 0.0769,
+        "recall": 0.3333,
+        "f1": 0.125
+      },
+      "rouge_2": {
+        "precision": 0.0086,
+        "recall": 0.0385,
+        "f1": 0.0141
+      },
+      "rouge_l": {
+        "precision": 0.0513,
+        "recall": 0.2222,
+        "f1": 0.0833
+      }
+    },
     "response": {
-      "answer": "사용자 입력 기준으로 청년 참여위원회 모집 정보를 안내드립니다.\n\n### 1. 청년정책조정위원회 실무위원회 위촉직 위원 모집\n- 항목 유형: 정책\n- 추천 이유: 청년정책에 대한 전문적 검토를 통해 청년의 의견을 반영할 수 있는 기회입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건은 명확히 확인되지 않았습니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 청년정책조정위원회 심의사항에 대한 전문적 검토\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [청년정책조정위원회 실무위원회 위촉직 위원 모집](https://www.2030db.go.kr/user/ntt/BBS_0000000000000005/NTT_0000000000000442/selectNttDetail.do)\n- 신청 URL: [신청 페이지](https://www.2030db.go.kr)\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n### 2. 부천시 청년정책협의체 위원 모집(기간 연장)\n- 항목 유형: 정책\n- 추천 이유: 지역 청년과의 소통 및 청년문제 해결을 위한 정책 제안 기회입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 부천시에 주소 또는 직장이 있거나, 부천 소재 대학에 재학 중인 대학(원)생이어야 합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 위촉장 수여, 활동비 지급, 자원봉사시간 부여 등\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [부천시 청년정책협의체 위원 모집](https://bucheon.go.kr/site/homepage/menu/viewMenu?menuid=148002003001)\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n### 3. 「광명시 청년위원회」 4기 위원 모집\n- 항목 유형: 정책\n- 추천 이유: 청년정책에 관한 주요사항 심의·자문을 위한 기회입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건은 명확히 확인되지 않았습니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 광명시장 명의 위촉장 교부, 회의 참석수당 지급\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [광명시 청년위원회 4기 위원 모집](https://www.gm.go.kr/pt/user/nftcBbs/BD_selectNftcBbsDetail.do?q_nftcBbsCode=1001&q_nftcBbsMgtno=61279#1)\n- 신청 URL: [신청 페이지](https://www.gm.go.kr/pt/user/nftcBbs/BD_selectNftcBbsDetail.do?q_nftcBbsCode=1001&q_nftcBbsMgtno=61279#1)\n- 유의사항: 출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인이 필요합니다.\n\n### 4. 광주청년위원회(제10기)\n- 항목 유형: 정책\n- 추천 이유: 청년 의견수렴 및 청년정책 제안 기회를 제공합니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 소득 조건은 명확히 확인되지 않았습니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 위촉장 수여, 전체회의 참석수당·분과활동비 지원\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: 제공된 데이터에는 출처 URL이 없습니다.\n- 신청 URL: 제공된 데이터에는 정보가 없습니다.\n- 유의사항: 출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인이 필요합니다.\n\n### 5. 진주시 청년네트워크 위원 모집\n- 항목 유형: 정책\n- 추천 이유: 청년문제 발굴 및 정책 수립에 참여할 수 있는 기회입니다.\n- 신청/참여 가능성: 추가 확인 필요\n- 충족 조건: 진주시 거주 또는 생활권인 청년(18 ~ 39세)이어야 합니다.\n- 추가 확인 필요: 사용자 나이, 지역, 고용 상태 정보가 없어 조건 확인이 필요합니다.\n- 지원 내용: 청년정책 수립을 위한 의견수렴 및 아이디어 제안\n- 신청/접수 기간: 제공된 데이터에는 정보가 없습니다.\n- 신청/접수 방법: 제공된 데이터에는 정보가 없습니다.\n- 제출 서류: 제공된 데이터에는 정보가 없습니다.\n- 출처 URL: [진주시 청년네트워크 위원 모집](https://young.jinju.go.kr/young/)\n- 신청 URL: [신청 페이지](https://young.jinju.go.kr/young/)\n- 유의사항: 정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인이 필요합니다.\n\n위의 정보들을 참고하시어 관심 있는 정책에 대해 추가 확인 후 신청하시기 바랍니다.",
+      "answer": "내부 데이터에서 출처와 관련성이 충분히 확인된 '청년 참여위원회 모집 정보 알려줘' 관련 지원 정보를 찾지 못했습니다.\n\n이 질문은 참여권리 분야에 해당하므로 온통청년 공식 출처 확인이 필요합니다. 현재 버전에서는 실제 외부 API 호출은 아직 수행하지 않지만, 부정확한 내부 검색 결과를 추천하지 않고 공식 출처 확인 대상으로 분기했습니다.\n- 검색 후보가 있었지만 route/source_category, 마감 여부, 오래된 연도 조건으로 모두 제외되었습니다.\n- 내부 Vector DB 검색 결과가 없습니다.\n- route/source_category 불일치 후보 제외: 청년성장지원 『이룸』하반기 청년창업팀 모집\n- route/source_category 불일치 후보 제외: 청년창직인턴 운영기관 2차간담회\n- route/source_category 불일치 후보 제외: 2012 청년창업해외연수\n\n공식 사이트에서 아래 검색어로 다시 확인해 보세요:\n- 청년 참여위원회 모집 정보 알려줘 참여기반\n\n확인 대상 공식 출처:\n- 온통청년 (청년정책): https://www.youthcenter.go.kr",
       "user_conditions": {
         "age": null,
         "region": null,
@@ -1152,116 +1436,10 @@
       },
       "route": "참여권리",
       "route_reason": "사용자 질문에 참여, 위원 키워드가 포함됨 / 조건 추출 결과 interest_domain이 참여권리로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색",
-      "recommendations": [
-        {
-          "policy_id": "policy_20250909005400111689",
-          "policy_name": "청년정책조정위원회 실무위원회 위촉직 위원 모집",
-          "eligibility": "추가 확인 필요",
-          "score": 0.6756,
-          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
-          "support_content": "청년정책조정위원회 심의사항에 대한 전문적 검토",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://www.2030db.go.kr/user/ntt/BBS_0000000000000005/NTT_0000000000000442/selectNttDetail.do",
-          "needs_detail_check": true,
-          "cautions": [
-            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
-            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
-          ],
-          "source_category": "policy",
-          "deadline_status": "not_applicable",
-          "application_end_date": null,
-          "is_expired": false
-        },
-        {
-          "policy_id": "policy_20250307005400210601",
-          "policy_name": "부천시 청년정책협의체 위원 모집(기간 연장)",
-          "eligibility": "추가 확인 필요",
-          "score": 0.6608,
-          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
-          "support_content": "□ 모집대상\n ○ 부천시에 주소 또는 직장이 있거나, 부천 소재 대학에 재학 중인 대학(원)생\n ○ 19 ~ 39세 청년 (1986. 1. 1. ~ 2006. 12. 31. 출생자)\n ※ 부천 소재 대학에 재학 중인 외국인 유학생 신청 가능\n□ 주요활동\n ○ 지역 청년과의 소통 및 의견 수렴\n ○ 청년문제 조사·연구 및 청년정책 제안\n ○ 분과활동 및 각종 회의 참석\n ○ 위원 역량 강화 워크숍, 성과공유회 등 프로그램 참여\n ※ 선정 후 워크숍 참여자에 한하여 위촉\n□ 지원내용\n ○ 청년정책협의체 위원 위촉장 수여\n ○ 활동비 지급\n ○ 자원봉사시간 부여\n ○ 부천시 청년 관련 행사 우선 참여 등",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://bucheon.go.kr/site/homepage/menu/viewMenu?menuid=148002003001",
-          "needs_detail_check": true,
-          "cautions": [
-            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
-            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
-          ],
-          "source_category": "policy",
-          "deadline_status": "not_applicable",
-          "application_end_date": null,
-          "is_expired": false
-        },
-        {
-          "policy_id": "policy_20250423005400210715",
-          "policy_name": "「광명시 청년위원회」 4기 위원 모집",
-          "eligibility": "추가 확인 필요",
-          "score": 0.6459,
-          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
-          "support_content": "- 최종 선정자 대상 광명시장 명의 위촉장 교부\n- 회의 참석수당 지급",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "정보 없음",
-          "needs_detail_check": true,
-          "cautions": [
-            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
-            "출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요",
-            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
-          ],
-          "source_category": "policy",
-          "deadline_status": "not_applicable",
-          "application_end_date": null,
-          "is_expired": false
-        },
-        {
-          "policy_id": "policy_20250711005400211198",
-          "policy_name": "광주청년위원회(제10기)",
-          "eligibility": "추가 확인 필요",
-          "score": 0.6415,
-          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
-          "support_content": "청년 의견수렴 및 청년정책 제안, 위원회 활동보고서 발간, 국내외 청년단체·협의체와 협력 및 교류 등\n위촉장 수여, 전체회의 참석수당·분과활동비 지원, 우수위원 표창 등",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "정보 없음",
-          "needs_detail_check": true,
-          "cautions": [
-            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
-            "출처 URL이 없어 참여 또는 신청 전 원문/담당 기관 확인 필요",
-            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
-          ],
-          "source_category": "policy",
-          "deadline_status": "not_applicable",
-          "application_end_date": null,
-          "is_expired": false
-        },
-        {
-          "policy_id": "policy_20251001005400211798",
-          "policy_name": "진주시 청년네트워크 위원 모집",
-          "eligibility": "추가 확인 필요",
-          "score": 0.623,
-          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
-          "support_content": "2026년 진주시 청년네트워크 위원 모집\n○ 활동기간 : 1년(2026.1.1. ~ 12.31.)\n○ 진주시 거주 또는 생활권인 청년(18 ~ 39세)\n○ 청년정책 수립을 위한 의견수렴 및 청년문제 발굴․조사, 아이디어 제안\n○ 청년의 참여 기회 보장으로 청년의견 수렴 대표 창구 역할 담당",
-          "application_period": "정보 없음",
-          "required_documents": "정보 없음",
-          "source_url": "https://young.jinju.go.kr/young/",
-          "needs_detail_check": true,
-          "cautions": [
-            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
-            "정책의 신청기간 또는 모집기간 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
-            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음"
-          ],
-          "source_category": "policy",
-          "deadline_status": "not_applicable",
-          "application_end_date": null,
-          "is_expired": false
-        }
+      "recommendations": [],
+      "warnings": [
+        "내부 데이터 검색 결과가 충분하지 않아 외부 공식 출처 검색이 필요합니다. 공식 도메인 제한 외부 검색에서도 사용 가능한 결과를 찾지 못해 확인 안내로 대체합니다."
       ],
-      "warnings": [],
       "tool_trace": [
         {
           "step": "router",
@@ -1286,7 +1464,7 @@
               "domain": "참여권리",
               "source_category": "policy"
             },
-            "total": 5,
+            "total": 3,
             "expired_count": 0,
             "source_count": 3
           },
@@ -1296,24 +1474,83 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
-            "total": 5,
+            "raw_total": 3,
+            "total": 0,
             "expired_count": 0,
             "open_count": 0,
-            "source_count": 3,
+            "source_count": 0,
             "freshness_intent": false,
-            "sufficient": true,
-            "reasons": []
+            "keyword_overlap": {
+              "specific_keywords": [
+                "참여위원회",
+                "모집"
+              ],
+              "hit_keywords": [],
+              "hit_count": 0,
+              "keyword_count": 2,
+              "hit_ratio": 0.0
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [
+              "route/source_category 불일치 후보 제외: 청년성장지원 『이룸』하반기 청년창업팀 모집",
+              "route/source_category 불일치 후보 제외: 청년창직인턴 운영기관 2차간담회",
+              "route/source_category 불일치 후보 제외: 2012 청년창업해외연수"
+            ],
+            "sufficient": false,
+            "reasons": [
+              "검색 후보가 있었지만 route/source_category, 마감 여부, 오래된 연도 조건으로 모두 제외되었습니다.",
+              "내부 Vector DB 검색 결과가 없습니다.",
+              "route/source_category 불일치 후보 제외: 청년성장지원 『이룸』하반기 청년창업팀 모집",
+              "route/source_category 불일치 후보 제외: 청년창직인턴 운영기관 2차간담회",
+              "route/source_category 불일치 후보 제외: 2012 청년창업해외연수"
+            ]
           },
-          "next_action": "answer_generation"
+          "next_action": "external_search"
+        },
+        {
+          "step": "external_search",
+          "action": "search_official_sources",
+          "observation": {
+            "status": "planned_not_executed",
+            "backend": "tavily",
+            "target_names": [
+              "온통청년"
+            ],
+            "queries": [
+              "청년 참여위원회 모집 정보 알려줘 참여기반"
+            ],
+            "result_count": 0,
+            "errors": [],
+            "message": "공식 도메인 제한 외부 웹 검색을 시도했지만 후처리 필터를 통과한 결과가 없어 검색 계획만 반환합니다."
+          },
+          "next_action": "eligibility_checker"
         }
       ],
-      "internal_search_sufficient": true,
-      "sufficiency_reasons": [],
-      "next_action": "answer_generation",
+      "internal_search_sufficient": false,
+      "sufficiency_reasons": [
+        "검색 후보가 있었지만 route/source_category, 마감 여부, 오래된 연도 조건으로 모두 제외되었습니다.",
+        "내부 Vector DB 검색 결과가 없습니다.",
+        "route/source_category 불일치 후보 제외: 청년성장지원 『이룸』하반기 청년창업팀 모집",
+        "route/source_category 불일치 후보 제외: 청년창직인턴 운영기관 2차간담회",
+        "route/source_category 불일치 후보 제외: 2012 청년창업해외연수"
+      ],
+      "next_action": "external_search",
       "external_used": false,
-      "external_search_status": "",
-      "external_search_targets": [],
-      "external_search_queries": []
+      "external_search_status": "planned_not_executed",
+      "external_search_targets": [
+        "온통청년"
+      ],
+      "external_search_queries": [
+        "청년 참여위원회 모집 정보 알려줘 참여기반"
+      ],
+      "http_status": 200
     }
   },
   {
@@ -1330,6 +1567,7 @@
       "external_used": true,
       "external_search_status": true,
       "external_search_targets": true,
+      "http_status": true,
       "min_recommendations": true,
       "max_recommendations": true,
       "no_expired_recommendations": true,
@@ -1338,8 +1576,30 @@
       "tool_trace_present_when_needed": true
     },
     "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.0,
+      "rouge_1_f1": 0.0451,
+      "rouge_2_f1": 0.0,
+      "rouge_l_f1": 0.0401,
+      "rouge_1": {
+        "precision": 0.0245,
+        "recall": 0.2903,
+        "f1": 0.0451
+      },
+      "rouge_2": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "rouge_l": {
+        "precision": 0.0217,
+        "recall": 0.2581,
+        "f1": 0.0401
+      }
+    },
     "response": {
-      "answer": "제공된 데이터에서 조건에 맞는 지원 정보를 찾지 못했습니다. 지역, 나이, 관심 분야 조건을 조금 넓혀 다시 검색해 주세요.",
+      "answer": "공식 외부 출처 검색 기준으로 '월세'와 관련된 확인 후보를 찾았습니다.\n아래 결과는 검색 결과의 제목/요약/출처 URL을 근거로 정리한 것이므로, 실제 신청 가능 여부·지역·자부담금·마감일은 원문에서 확인해야 합니다.\n\n### 1. 청년월세 한시 특별지원 | 청년몽땅정보통\n- 항목 유형: 청년정책\n- 공식 출처: 온통청년\n- 관련 근거: 검색 결과에서 월세, 주거 키워드가 확인되었습니다.\n- 요약: | 정책 소개 | 고금리·고물가 등으로 경제적 어려움을 겪는 청년층의 주거비 부담 경감을 위해 청년월세를 한시적으로 지원합니다. ○ 주거급여 수급자의 경우 주거급여액 중 월차임분(청년 주거급여 분리지급액 포함)을 차감한 금액만 지원합니다. | 참여요건 | 아래에 해당하는 경우 지원 대상에서 제외합니다. ○ 주택 소유자(분양권, 입주권 포함) ○ 직계존속·형제·자매 등 2촌 이내 혈족(배우자의 2촌 이내 혈족 포함) 주택 임차...\n- 출처 URL: https://youth.seoul.go.kr/infoData/youthPlcyInfo/view.do?key=2309160001&plcyBizId=R2024101827203\n- 확인 필요: 신청기간, 대상 연령, 지역 제한, 세부 자격, 실제 접수 가능 여부\n\n### 2. 청년정책 > 청년정책검색 > 중앙정부/타지역 정책 | 청년몽땅정보통\n- 항목 유형: 청년정책\n- 공식 출처: 온통청년\n- 관련 근거: 검색 결과에서 월세, 주거 키워드가 확인되었습니다.\n- 요약: | 정책 소개 | 청년 신혼부부가 기납부한 월세에 대해 연소득(부부합산) 구간별 차등하여 최대 월 30만원(2년)을 지원하는 방식으로 해당 보조사업자(시·군)가 신청인 본인 계좌로 반기별(6개월분) 이체 | | |. | 지원 내용 | 청년 신혼부부가 기납부한 월세에 대해 연소득(부부합산) 구간별 차등하여 최대 월 30만원(2년)을 지원하는 방식으로 해당 보조사업자(시·군)가 신청인 본인 계좌로 반기별(6개월분) 이체 연소득(부...\n- 출처 URL: https://youth.seoul.go.kr/infoData/youthPlcyInfo/view.do?key=2309160001&plcyBizId=20250903005400111595\n- 확인 필요: 신청기간, 대상 연령, 지역 제한, 세부 자격, 실제 접수 가능 여부\n\n### 3. 청년정책 > 청년정책검색 > 서울시 정책 | 청년몽땅정보통\n- 항목 유형: 청년정책\n- 공식 출처: 온통청년\n- 관련 근거: 검색 결과에서 월세, 주거 키워드가 확인되었습니다.\n- 요약: ### 서울시 정책. 정책 유형, 주관 기관, 정책 소개, 지원 내용, 사업운영기간, 사업신청기간, 지원규모, 관련 사이트로 구성되어있습니다. | 정책 유형 | 주거 | 주관 기관 | 주택정책과 |. | 정책 소개 | 사회에 갓 진입한 청년층의 주거비 부담 완화를 통한 청년 주거 수준 향상으로 사회 진입을 돕고 내 집 마련, 결혼, 출산, 양육 등 생애 다음 단계로의 성장 지원 | | |. | 지원 내용 | 월 임차료 지원(2...\n- 출처 URL: https://youth.seoul.go.kr/infoData/plcyInfo/view.do?key=2309150002&plcyBizId=V202500034\n- 확인 필요: 신청기간, 대상 연령, 지역 제한, 세부 자격, 실제 접수 가능 여부\n\n내부 DB 결과가 질문 핵심어와 충분히 맞지 않아, 공식 도메인 제한 외부 검색 결과를 우선 사용했습니다.",
       "user_conditions": {
         "age": null,
         "region": null,
@@ -1349,11 +1609,74 @@
       },
       "route": "주거",
       "route_reason": "사용자 질문에 월세 키워드가 포함됨 / 조건 추출 결과 interest_domain이 주거로 판단됨 / 질문과 route를 기준으로 policy 데이터를 우선 검색",
-      "recommendations": [],
+      "recommendations": [
+        {
+          "policy_id": "external_policy_25781b42e2ae",
+          "policy_name": "청년월세 한시 특별지원 | 청년몽땅정보통",
+          "eligibility": "추가 확인 필요",
+          "score": 0.35,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://youth.seoul.go.kr/infoData/youthPlcyInfo/view.do?key=2309160001&plcyBizId=R2024101827203",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 마감일을 구조화 데이터에서 명확히 확인하지 못해 원문 확인 필요"
+          ],
+          "source_category": "policy",
+          "deadline_status": "unknown",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "external_policy_b9cd3258e6d9",
+          "policy_name": "청년정책 > 청년정책검색 > 중앙정부/타지역 정책 | 청년몽땅정보통",
+          "eligibility": "추가 확인 필요",
+          "score": 0.35,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://youth.seoul.go.kr/infoData/youthPlcyInfo/view.do?key=2309160001&plcyBizId=20250903005400111595",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "정책의 제출서류 정보가 검색된 chunk에 명확히 포함되어 있지 않음",
+            "정책의 마감일을 구조화 데이터에서 명확히 확인하지 못해 원문 확인 필요"
+          ],
+          "source_category": "policy",
+          "deadline_status": "unknown",
+          "application_end_date": null,
+          "is_expired": false
+        },
+        {
+          "policy_id": "external_policy_0d34bd15ddc4",
+          "policy_name": "청년정책 > 청년정책검색 > 서울시 정책 | 청년몽땅정보통",
+          "eligibility": "추가 확인 필요",
+          "score": 0.35,
+          "reason": "검색된 정책 데이터 기준으로 관련성이 있으나 일부 조건은 추가 확인이 필요합니다.",
+          "support_content": "정보 없음",
+          "application_period": "정보 없음",
+          "required_documents": "정보 없음",
+          "source_url": "https://youth.seoul.go.kr/infoData/plcyInfo/view.do?key=2309150002&plcyBizId=V202500034",
+          "needs_detail_check": true,
+          "cautions": [
+            "정책 데이터에 상세 확인 필요 플래그가 있어 원문 확인 필요",
+            "정책의 마감일을 구조화 데이터에서 명확히 확인하지 못해 원문 확인 필요"
+          ],
+          "source_category": "policy",
+          "deadline_status": "unknown",
+          "application_end_date": null,
+          "is_expired": false
+        }
+      ],
       "warnings": [
         "질문이 짧아 검색 정확도가 낮을 수 있습니다.",
         "검색 조건에 맞는 지원 정보 chunk를 찾지 못했습니다.",
-        "내부 데이터 검색 결과가 충분하지 않아 외부 공식 출처 검색이 필요합니다. 현재 버전에서는 부정확한 내부 검색 결과를 추천에서 제외합니다."
+        "내부 데이터 검색 결과가 충분하지 않아 공식 외부 출처 검색 결과를 사용했습니다. 외부 검색 결과는 원문에서 세부 조건 확인이 필요합니다."
       ],
       "tool_trace": [
         {
@@ -1389,11 +1712,30 @@
           "step": "result_sufficiency_checker",
           "action": "check_internal_search_results",
           "observation": {
+            "raw_total": 0,
             "total": 0,
             "expired_count": 0,
             "open_count": 0,
             "source_count": 0,
             "freshness_intent": false,
+            "keyword_overlap": {
+              "specific_keywords": [
+                "월세"
+              ],
+              "hit_keywords": [],
+              "hit_count": 0,
+              "keyword_count": 1,
+              "hit_ratio": 0.0
+            },
+            "direct_intent_match": {
+              "required_groups": [],
+              "group_results": [],
+              "required_group_count": 0,
+              "missing_group_count": 0,
+              "missing_groups": [],
+              "all_groups_satisfied": false
+            },
+            "removed_candidate_reasons": [],
             "sufficient": false,
             "reasons": [
               "내부 Vector DB 검색 결과가 없습니다."
@@ -1403,26 +1745,39 @@
         },
         {
           "step": "external_search",
-          "action": "plan_official_source_search",
+          "action": "search_official_sources",
           "observation": {
-            "status": "planned_not_executed",
-            "reason": [
-              "내부 Vector DB 검색 결과가 없습니다."
-            ],
-            "targets": [
-              {
-                "name": "온통청년",
-                "kind": "청년정책",
-                "official_url": "https://www.youthcenter.go.kr"
-              }
-            ],
+            "status": "executed",
+            "backend": "tavily",
             "target_names": [
               "온통청년"
             ],
             "queries": [
               "월세 주거"
             ],
-            "message": "공식 외부 출처 검색 계획을 생성했습니다. 실제 API 호출은 추후 K-Startup/온통청년/고용24 연동으로 교체 예정입니다."
+            "result_count": 3,
+            "result_titles": [
+              "청년월세 한시 특별지원 | 청년몽땅정보통",
+              "청년정책 > 청년정책검색 > 중앙정부/타지역 정책 | 청년몽땅정보통",
+              "청년정책 > 청년정책검색 > 서울시 정책 | 청년몽땅정보통"
+            ],
+            "post_filter": {
+              "filtered_out_count": 0,
+              "filtered_out_samples": [],
+              "accepted_count": 3,
+              "candidate_count_before_rerank": 5,
+              "reranked_titles": [
+                "청년월세 한시 특별지원 | 청년몽땅정보통",
+                "청년정책 > 청년정책검색 > 중앙정부/타지역 정책 | 청년몽땅정보통",
+                "청년정책 > 청년정책검색 > 서울시 정책 | 청년몽땅정보통"
+              ],
+              "reranked_scores": [
+                0.35,
+                0.35,
+                0.35
+              ]
+            },
+            "errors": []
           },
           "next_action": "eligibility_checker"
         }
@@ -1432,25 +1787,88 @@
         "내부 Vector DB 검색 결과가 없습니다."
       ],
       "next_action": "external_search",
-      "external_used": false,
-      "external_search_status": "planned_not_executed",
+      "external_used": true,
+      "external_search_status": "executed",
       "external_search_targets": [
         "온통청년"
       ],
       "external_search_queries": [
         "월세 주거"
-      ]
+      ],
+      "http_status": 200
     }
   },
   {
     "case_id": "TC010_no_empty_query",
     "query": "",
-    "passed": false,
-    "score": 0.0,
+    "passed": true,
+    "score": 1.0,
     "checks": {
-      "request_success": false
+      "must_have_any": true,
+      "must_not_have_any": true,
+      "route": true,
+      "internal_search_sufficient": true,
+      "next_action": true,
+      "external_used": true,
+      "external_search_status": true,
+      "external_search_targets": true,
+      "http_status": true,
+      "min_recommendations": true,
+      "max_recommendations": true,
+      "no_expired_recommendations": true,
+      "expected_warning_any": true,
+      "expected_error_any": true,
+      "tool_trace_present_when_needed": true
     },
-    "error": "HTTP 422: {\"detail\":[{\"type\":\"string_too_short\",\"loc\":[\"body\",\"message\"],\"msg\":\"String should have at least 1 character\",\"input\":\"\",\"ctx\":{\"min_length\":1}}]}",
-    "response": {}
+    "error": null,
+    "text_metrics": {
+      "available": true,
+      "bleu": 0.1782,
+      "rouge_1_f1": 0.5385,
+      "rouge_2_f1": 0.3333,
+      "rouge_l_f1": 0.5385,
+      "rouge_1": {
+        "precision": 0.7,
+        "recall": 0.4375,
+        "f1": 0.5385
+      },
+      "rouge_2": {
+        "precision": 0.4444,
+        "recall": 0.2667,
+        "f1": 0.3333
+      },
+      "rouge_l": {
+        "precision": 0.7,
+        "recall": 0.4375,
+        "f1": 0.5385
+      }
+    },
+    "response": {
+      "http_status": 422,
+      "detail": {
+        "detail": [
+          {
+            "type": "string_too_short",
+            "loc": [
+              "body",
+              "message"
+            ],
+            "msg": "String should have at least 1 character",
+            "input": "",
+            "ctx": {
+              "min_length": 1
+            }
+          }
+        ]
+      },
+      "errors": [
+        "HTTP 422: 요청 검증 실패",
+        "사용자 질문이 비어 있습니다."
+      ],
+      "warnings": [],
+      "answer": "질문이 비어 있습니다. 찾고 싶은 청년 정책 조건을 입력해 주세요.",
+      "recommendations": [],
+      "tool_trace": []
+    }
   }
 ]

@@ -73,9 +73,12 @@ def judge(question: str, context: str, answer: str) -> dict:
 
 
 def main():
-    with open(EVAL_PATH) as f:
-        all_rows = [json.loads(line) for line in f]
-
+    with open(EVAL_PATH, "r", encoding="utf-8-sig") as f:
+        all_rows = [
+            json.loads(line)
+            for line in f
+            if line.strip()
+        ]
     random.seed(42)
     samples = random.sample(all_rows, SAMPLE_N)
 
