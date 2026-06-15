@@ -412,6 +412,7 @@ def generate_answer_with_llm(
     user_conditions: dict[str, Any],
     policies: list[dict[str, Any]],
     model: str = DEFAULT_MODEL,
+    graph_context: str = "",          # ← 파라미터 추가
 ) -> str:
     """
     LLM을 사용해 최종 답변을 생성한다.
@@ -430,6 +431,10 @@ def generate_answer_with_llm(
         user_conditions=json.dumps(user_conditions, ensure_ascii=False, indent=2),
         policies=json.dumps(compact_policies, ensure_ascii=False, indent=2),
     )
+
+    # ← 이 줄 추가
+    if graph_context:
+        user_prompt += f"\n\n[Graph DB 관계 검색 보완 결과]\n{graph_context}"
 
     client = _get_client()
     max_retries = 2
@@ -637,6 +642,7 @@ def generate_answer(
     user_conditions: dict[str, Any],
     policies: list[dict[str, Any]],
     use_llm: bool = True,
+    graph_context: str = "",          # ← 추가
 ) -> str:
     """
     최종 Answer Generator 진입점.
@@ -650,6 +656,7 @@ def generate_answer(
                 query=query,
                 user_conditions=user_conditions,
                 policies=policies,
+                graph_context=graph_context,   # ← 추가
             )
         except Exception as e:
             fallback_answer = generate_answer_rule_based(

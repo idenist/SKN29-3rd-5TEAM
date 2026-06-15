@@ -47,6 +47,10 @@ class GraphState(TypedDict, total=False):
     warnings: list[str]
     errors: list[str]
 
+    # neo4j
+    graph_chunks:  list[dict[str, Any]]   # Neo4j 검색 결과
+    graph_context: str                    # 프롬프트 결합용 Graph 컨텍스트
+
 
 
 ROUTE_DOMAINS = {
@@ -1325,6 +1329,7 @@ def answer_generator_node(state: GraphState) -> GraphState:
             user_conditions=conditions,
             policies=policies,
             use_llm=use_llm,
+            graph_context=state.get("graph_context", ""),  # ← 추가
         )
 
         return {
@@ -1339,6 +1344,7 @@ def answer_generator_node(state: GraphState) -> GraphState:
             user_conditions=conditions,
             policies=policies,
             use_llm=False,
+            graph_context=state.get("graph_context", ""),  # ← 추가
         )
 
         return {

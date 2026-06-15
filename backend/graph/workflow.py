@@ -14,6 +14,11 @@ from backend.graph.nodes import (
     answer_generator_node,
 )
 
+from backend.graph.graph_nodes import (
+    graph_retrieve_node,
+    hybrid_merge_node,
+)
+
 
 def _route_after_sufficiency_check(state: GraphState) -> str:
     """검색 결과 충분성 판단 결과에 따라 다음 노드를 선택한다."""
@@ -31,6 +36,9 @@ def build_rag_workflow():
     → Condition Extractor
     → Router
     → Retriever
+    → graph_retriever
+    → hybrid_merge
+    
     → Result Sufficiency Checker
     → External Search Plan or Eligibility Checker
     → Answer Generator
@@ -42,6 +50,8 @@ def build_rag_workflow():
     workflow.add_node("condition_extractor", condition_extractor_node)
     workflow.add_node("router", router_node)
     workflow.add_node("retriever", retriever_node)
+    workflow.add_node("graph_retrieve",    graph_retrieve_node)   # ← 추가
+    workflow.add_node("hybrid_merge",      hybrid_merge_node)     # ← 추가
     workflow.add_node("result_sufficiency_checker", result_sufficiency_checker_node)
     workflow.add_node("external_search", external_search_placeholder_node)
     workflow.add_node("eligibility_checker", eligibility_checker_node)
@@ -52,7 +62,9 @@ def build_rag_workflow():
     workflow.add_edge("input_validator", "condition_extractor")
     workflow.add_edge("condition_extractor", "router")
     workflow.add_edge("router", "retriever")
-    workflow.add_edge("retriever", "result_sufficiency_checker")
+    workflow.add_edge("retriever", "graph_retrieve")      
+    workflow.add_edge("graph_retrieve", "hybrid_merge")        # ← 추가
+    workflow.add_edge("hybrid_merge", "result_sufficiency_checker")   # ← 추가
     workflow.add_conditional_edges(
         "result_sufficiency_checker",
         _route_after_sufficiency_check,
