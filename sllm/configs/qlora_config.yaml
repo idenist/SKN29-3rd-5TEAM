@@ -1,0 +1,50 @@
+# QLoRA 학습 설정 예시
+# 4bit quantization을 사용해 VRAM 사용량을 줄인다.
+
+model_name_or_path: "Qwen/Qwen2.5-1.5B-Instruct"
+train_file: "sllm/data/policy_qa_train_sample.jsonl"
+eval_file: "sllm/data/policy_qa_eval_sample.jsonl"
+output_dir: "sllm/outputs/qlora_policy_qa"
+
+seed: 42
+max_seq_length: 1024
+use_qlora: true
+
+torch_dtype: "bfloat16"
+device_map: "auto"
+bnb_4bit_quant_type: "nf4"
+bnb_4bit_compute_dtype: "bfloat16"
+bnb_4bit_use_double_quant: true
+
+# LoRA
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# Training
+num_train_epochs: 1
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 0.0002
+weight_decay: 0.0
+warmup_ratio: 0.03
+lr_scheduler_type: "cosine"
+max_grad_norm: 1.0
+gradient_checkpointing: true
+bf16: true
+fp16: false
+
+logging_steps: 10
+save_steps: 100
+eval_steps: 100
+save_total_limit: 2
+report_to: "none"

@@ -1,0 +1,6 @@
+# 평가/추론 시 생성 설정
+max_new_tokens: 256
+temperature: 0.2
+top_p: 0.9
+do_sample: false
+repetition_penalty: 1.05
