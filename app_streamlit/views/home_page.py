@@ -2,7 +2,7 @@ import streamlit as st
 
 from utils.condition_parser import parse_user_query
 from utils.html_renderer import render_html
-
+from utils.api_client import extract_conditions_from_backend
 
 INTERESTS = ["취업", "교육", "창업", "주거", "금융", "복지"]
 EXAMPLE_QUERIES = [
@@ -15,33 +15,49 @@ EXAMPLE_QUERIES = [
 
 def _apply_query_and_open_results(user_query):
     extracted = parse_user_query(user_query)
+
+    try:
+        backend_extracted = extract_conditions_from_backend(user_query)
+
+        for key in ("age", "region", "income", "job_status", "housing_status"):
+            if backend_extracted.get(key) is not None:
+                extracted[key] = backend_extracted[key]
+
+        if backend_extracted.get("interest"):
+            extracted["interest"] = backend_extracted["interest"]
+
+    except Exception:
+        st.toast("AI 조건 추출에 실패해 기본 조건 추출을 사용합니다.")
+
     profile = st.session_state.profile.copy()
 
-    for key in ("age", "region", "income", "job_status"):
-        if extracted[key] is not None:
+    for key in ("age", "region", "income", "job_status", "housing_status"):
+        if extracted.get(key) is not None:
             profile[key] = extracted[key]
 
-    if extracted["interest"]:
+    if extracted.get("interest"):
         profile["interest"] = extracted["interest"]
 
+    # 여기부터가 현재 빠진 부분
     st.session_state.profile = profile
     st.session_state.extracted_conditions = extracted
     st.session_state.result_query = user_query
     st.session_state.result_query_input = user_query
+
     st.session_state.filter_age = profile["age"]
     st.session_state.filter_region = profile["region"]
     st.session_state.filter_income = profile["income"]
     st.session_state.filter_job_status = profile["job_status"]
     st.session_state.filter_housing_status = profile["housing_status"]
+
     for interest in INTERESTS:
         st.session_state[f"filter_interest_{interest}"] = (
             interest in profile["interest"]
         )
+
     st.session_state.has_searched = True
     st.session_state.page = "추천 결과"
     st.rerun()
-
-
 def render_home_page(policies):
     category_count = len({
         policy["category"]

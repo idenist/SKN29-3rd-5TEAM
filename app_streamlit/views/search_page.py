@@ -9,7 +9,7 @@ import streamlit.components.v1 as components
 
 from utils.condition_parser import parse_user_query
 from utils.html_renderer import render_html
-
+from utils.api_client import extract_conditions_from_backend
 
 REGIONS = ["서울", "부산", "대구", "인천", "광주", "대전", "경기", "기타"]
 JOB_STATUSES = ["구직자", "재직자", "중소기업 재직자", "프리랜서", "예비창업자", "사업자", "학생"]
@@ -36,14 +36,15 @@ def _is_closed_policy(policy, today=None):
 
 
 def _sync_filter_widgets(profile):
-    st.session_state.filter_age = profile["age"]
-    st.session_state.filter_region = profile["region"]
-    st.session_state.filter_income = profile["income"]
-    st.session_state.filter_job_status = profile["job_status"]
-    st.session_state.filter_housing_status = profile["housing_status"]
+    st.session_state.filter_age = profile.get("age")
+    st.session_state.filter_region = profile.get("region")
+    st.session_state.filter_income = profile.get("income")
+    st.session_state.filter_job_status = profile.get("job_status")
+    st.session_state.filter_housing_status = profile.get("housing_status")
+    selected_interests = profile.get("interest", [])
     for interest in INTERESTS:
         st.session_state[f"filter_interest_{interest}"] = (
-            interest in profile["interest"]
+            interest in selected_interests
         )
 
 
@@ -301,14 +302,31 @@ def render_search_page(policies):
             type="primary",
             key="extract_search_conditions"
         ):
+            # 1차: 기존 로컬 rule-based 추출
             extracted = parse_user_query(keyword)
+
+            # 2차: 백엔드 LLM 조건 추출
+            try:
+                backend_extracted = extract_conditions_from_backend(keyword)
+
+                # 백엔드 결과가 있으면 로컬 결과를 보강/덮어쓰기
+                for key in ("age", "region", "income", "job_status", "housing_status"):
+                    if backend_extracted.get(key) is not None:
+                        extracted[key] = backend_extracted[key]
+
+                if backend_extracted.get("interest"):
+                    extracted["interest"] = backend_extracted["interest"]
+
+            except Exception as e:
+                st.toast("AI 조건 추출에 실패해 기본 조건 추출을 사용합니다.")
+
             updated_profile = profile.copy()
 
-            for key in ("age", "region", "income", "job_status"):
-                if extracted[key] is not None:
+            for key in ("age", "region", "income", "job_status", "housing_status"):
+                if extracted.get(key) is not None:
                     updated_profile[key] = extracted[key]
 
-            if extracted["interest"]:
+            if extracted.get("interest"):
                 updated_profile["interest"] = extracted["interest"]
 
             st.session_state.profile = updated_profile

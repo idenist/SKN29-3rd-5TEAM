@@ -5,7 +5,7 @@ from fastapi import FastAPI, Request, HTTPException       # HTTPException 추가
 from fastapi.exceptions import RequestValidationError     # 추가
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse                # 추가
-from backend.api import chat, policies
+from backend.api import chat, policies, conditions
 
 
 logging.basicConfig(
@@ -41,7 +41,7 @@ app.add_middleware(
 
 app.include_router(chat.router, prefix="/api")
 app.include_router(policies.router, prefix="/api")
-
+app.include_router(conditions.router, prefix="/api")
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
