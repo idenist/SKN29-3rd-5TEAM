@@ -4,6 +4,7 @@ from utils.condition_parser import parse_user_query
 from utils.html_renderer import render_html
 from utils.api_client import extract_conditions_from_backend
 
+
 INTERESTS = ["취업", "교육", "창업", "주거", "금융", "복지"]
 EXAMPLE_QUERIES = [
     "월세 지원 정책 찾아줘",
@@ -12,8 +13,7 @@ EXAMPLE_QUERIES = [
     "교육비 지원 받을 수 있어?",
 ]
 
-
-def _apply_query_and_open_results(user_query):
+def _extract_conditions(user_query):
     extracted = parse_user_query(user_query)
 
     try:
@@ -29,6 +29,10 @@ def _apply_query_and_open_results(user_query):
     except Exception:
         st.toast("AI 조건 추출에 실패해 기본 조건 추출을 사용합니다.")
 
+    return extracted
+
+def _apply_query_and_open_results(user_query):
+    extracted = _extract_conditions(user_query)
     profile = st.session_state.profile.copy()
 
     for key in ("age", "region", "income", "job_status", "housing_status"):
@@ -38,7 +42,7 @@ def _apply_query_and_open_results(user_query):
     if extracted.get("interest"):
         profile["interest"] = extracted["interest"]
 
-    # 여기부터가 현재 빠진 부분
+    # 여기부터 반드시 필요
     st.session_state.profile = profile
     st.session_state.extracted_conditions = extracted
     st.session_state.result_query = user_query
@@ -57,7 +61,14 @@ def _apply_query_and_open_results(user_query):
 
     st.session_state.has_searched = True
     st.session_state.page = "추천 결과"
-    st.rerun()
+def _submit_home_query():
+    user_query = st.session_state.get("home_user_query", "").strip()
+    if user_query:
+        _apply_query_and_open_results(user_query)
+    else:
+        st.toast("궁금한 정책이나 현재 상황을 입력해 주세요.")
+
+
 def render_home_page(policies):
     category_count = len({
         policy["category"]
@@ -99,39 +110,36 @@ def render_home_page(policies):
 
     search_shell = st.container()
     with search_shell:
-        col1, col2 = st.columns([4.5, 1.55], vertical_alignment="center")
+        with st.form("home_search_form", border=False):
+            col1, col2 = st.columns([4.5, 1.55], vertical_alignment="center")
 
-        with col1:
-            user_query = st.text_input(
-                "자연어 입력",
-                placeholder="예: 서울 사는 25살 취준생인데 받을 수 있는 정책 알려줘",
-                label_visibility="collapsed",
-                key="home_user_query"
-            )
+            with col1:
+                st.text_input(
+                    "자연어 입력",
+                    placeholder="예: 서울 사는 25살 취준생인데 받을 수 있는 정책 알려줘",
+                    label_visibility="collapsed",
+                    key="home_user_query"
+                )
 
-        with col2:
-            extract_clicked = st.button(
-                "✦ AI에게 물어보기",
-                width="stretch",
-                type="primary",
-                key="home_search_button"
-            )
-
-    if extract_clicked:
-        if user_query.strip():
-            _apply_query_and_open_results(user_query)
-        else:
-            st.toast("궁금한 정책이나 현재 상황을 입력해 주세요.")
+            with col2:
+                st.form_submit_button(
+                    "✦ AI에게 물어보기",
+                    width="stretch",
+                    type="primary",
+                    key="home_search_button",
+                    on_click=_submit_home_query
+                )
 
     example_columns = st.columns(len(EXAMPLE_QUERIES))
     for column, example_query in zip(example_columns, EXAMPLE_QUERIES):
         with column:
-            if st.button(
+            st.button(
                 example_query,
                 key=f"example_query_{example_query}",
-                width="stretch"
-            ):
-                _apply_query_and_open_results(example_query)
+                width="stretch",
+                on_click=_apply_query_and_open_results,
+                args=(example_query,)
+            )
 
     stats_html = f"""
 <div class="home-stats">

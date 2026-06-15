@@ -41,11 +41,71 @@ def _sync_filter_widgets(profile):
     st.session_state.filter_income = profile.get("income")
     st.session_state.filter_job_status = profile.get("job_status")
     st.session_state.filter_housing_status = profile.get("housing_status")
+
     selected_interests = profile.get("interest", [])
     for interest in INTERESTS:
         st.session_state[f"filter_interest_{interest}"] = (
             interest in selected_interests
         )
+
+def _extract_conditions(keyword):
+    extracted = parse_user_query(keyword)
+
+    try:
+        backend_extracted = extract_conditions_from_backend(keyword)
+
+        for key in ("age", "region", "income", "job_status", "housing_status"):
+            if backend_extracted.get(key) is not None:
+                extracted[key] = backend_extracted[key]
+
+        if backend_extracted.get("interest"):
+            extracted["interest"] = backend_extracted["interest"]
+
+    except Exception:
+        st.toast("AI 조건 추출에 실패해 기본 조건 추출을 사용합니다.")
+
+    return extracted
+
+def _extract_search_conditions():
+    keyword = st.session_state.get("result_query_input", "")
+    extracted = _extract_conditions(keyword)
+    updated_profile = st.session_state.profile.copy()
+
+    for key in ("age", "region", "income", "job_status", "housing_status"):
+        if extracted.get(key) is not None:
+            updated_profile[key] = extracted[key]
+
+    if extracted.get("interest"):
+        updated_profile["interest"] = extracted["interest"]
+
+    st.session_state.profile = updated_profile
+    st.session_state.extracted_conditions = extracted
+    st.session_state.result_query = keyword
+    st.session_state.has_searched = True
+    _sync_filter_widgets(updated_profile)
+
+def _apply_filter_conditions():
+    age = st.session_state.get("filter_age")
+    region = st.session_state.get("filter_region")
+    if age is None or region is None:
+        st.session_state.filter_validation_error = True
+        return
+
+    profile = st.session_state.profile
+    st.session_state.profile = {
+        "age": age,
+        "region": region,
+        "income": profile["income"],
+        "job_status": profile["job_status"],
+        "housing_status": profile["housing_status"],
+        "interest": [
+            interest
+            for interest in INTERESTS
+            if st.session_state.get(f"filter_interest_{interest}", False)
+        ],
+    }
+    st.session_state.has_searched = True
+    st.session_state.filter_validation_error = False
 
 
 def _matches_age(policy, age):
@@ -118,6 +178,42 @@ def _shorten(text, limit):
 
 def _close_policy_dialog():
     st.session_state.pop("policy_dialog_id", None)
+
+
+def _open_guide(policy_id):
+    st.session_state.guide_selected_policy_id = policy_id
+    st.session_state.selected_policy_id = policy_id
+    st.session_state.pop("guide_policy_select", None)
+    st.session_state.pop("policy_dialog_id", None)
+    st.session_state.page = "신청 가이드"
+
+
+def _change_result_page(delta):
+    st.session_state.search_result_page = max(
+        1,
+        st.session_state.get("search_result_page", 1) + delta
+    )
+    st.session_state.scroll_to_search_results = True
+
+
+def _scroll_to_search_results():
+    if not st.session_state.pop("scroll_to_search_results", False):
+        return
+
+    components.html(
+        """
+<script>
+window.requestAnimationFrame(() => {
+    const target = window.parent.document.querySelector('.result-filter-heading');
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+});
+</script>
+""",
+        height=0,
+        scrolling=False
+    )
 
 
 def _reset_policy_dialog_scroll():
@@ -248,18 +344,14 @@ def _render_policy_dialog(policy, profile):
 </div>
 """)
 
-    if st.button(
+    st.button(
         "이 정책의 신청 가이드 보기",
         width="stretch",
         type="primary",
-        key=f"dialog_guide_{policy['id']}"
-    ):
-        st.session_state.guide_selected_policy_id = policy["id"]
-        st.session_state.selected_policy_id = policy["id"]
-        st.session_state.pop("guide_policy_select", None)
-        st.session_state.pop("policy_dialog_id", None)
-        st.session_state.page = "신청 가이드"
-        st.rerun()
+        key=f"dialog_guide_{policy['id']}",
+        on_click=_open_guide,
+        args=(policy["id"],)
+    )
 
     _reset_policy_dialog_scroll()
 
@@ -296,45 +388,13 @@ def render_search_page(policies):
             key="result_query_input"
         )
 
-        if st.button(
+        st.button(
             "조건 추출",
             width="stretch",
             type="primary",
-            key="extract_search_conditions"
-        ):
-            # 1차: 기존 로컬 rule-based 추출
-            extracted = parse_user_query(keyword)
-
-            # 2차: 백엔드 LLM 조건 추출
-            try:
-                backend_extracted = extract_conditions_from_backend(keyword)
-
-                # 백엔드 결과가 있으면 로컬 결과를 보강/덮어쓰기
-                for key in ("age", "region", "income", "job_status", "housing_status"):
-                    if backend_extracted.get(key) is not None:
-                        extracted[key] = backend_extracted[key]
-
-                if backend_extracted.get("interest"):
-                    extracted["interest"] = backend_extracted["interest"]
-
-            except Exception as e:
-                st.toast("AI 조건 추출에 실패해 기본 조건 추출을 사용합니다.")
-
-            updated_profile = profile.copy()
-
-            for key in ("age", "region", "income", "job_status", "housing_status"):
-                if extracted.get(key) is not None:
-                    updated_profile[key] = extracted[key]
-
-            if extracted.get("interest"):
-                updated_profile["interest"] = extracted["interest"]
-
-            st.session_state.profile = updated_profile
-            st.session_state.extracted_conditions = extracted
-            st.session_state.result_query = keyword
-            st.session_state.has_searched = True
-            _sync_filter_widgets(updated_profile)
-            st.rerun()
+            key="extract_search_conditions",
+            on_click=_extract_search_conditions
+        )
 
         st.caption("예: 서울 28살 월세 지원 정책")
 
@@ -436,6 +496,8 @@ def render_search_page(policies):
                     else "마감된 정책도 함께 표시 중"
                 )
 
+    _scroll_to_search_results()
+
     filter_left, results_right = st.columns([1.05, 4])
 
     with filter_left:
@@ -469,27 +531,15 @@ def render_search_page(policies):
                         ):
                             interest.append(interest_name)
 
-            filter_submitted = st.form_submit_button(
+            st.form_submit_button(
                 "조건 적용",
                 width="stretch",
-                type="primary"
+                type="primary",
+                on_click=_apply_filter_conditions
             )
 
-        if filter_submitted:
-            if age is None or region is None:
-                st.warning("나이와 지역을 입력해 주세요.")
-                st.stop()
-
-            st.session_state.profile = {
-                "age": age,
-                "region": region,
-                "income": profile["income"],
-                "job_status": profile["job_status"],
-                "housing_status": profile["housing_status"],
-                "interest": interest
-            }
-            st.session_state.has_searched = True
-            st.rerun()
+        if st.session_state.get("filter_validation_error", False):
+            st.warning("나이와 지역을 입력해 주세요.")
 
         render_html("""
 <div class="info-box" style="margin-top:24px;">
@@ -586,14 +636,14 @@ def render_search_page(policies):
                 vertical_alignment="center"
             )
             with previous_page:
-                if st.button(
+                st.button(
                     "← 이전",
                     width="stretch",
                     disabled=current_page == 1,
-                    key="previous_result_page"
-                ):
-                    st.session_state.search_result_page = current_page - 1
-                    st.rerun()
+                    key="previous_result_page",
+                    on_click=_change_result_page,
+                    args=(-1,)
+                )
             with page_status:
                 st.markdown(
                     f'<div class="pagination-status">'
@@ -602,14 +652,14 @@ def render_search_page(policies):
                     unsafe_allow_html=True
                 )
             with next_page:
-                if st.button(
+                st.button(
                     "다음 →",
                     width="stretch",
                     disabled=current_page == total_pages,
-                    key="next_result_page"
-                ):
-                    st.session_state.search_result_page = current_page + 1
-                    st.rerun()
+                    key="next_result_page",
+                    on_click=_change_result_page,
+                    args=(1,)
+                )
 
         policies_by_id = {policy["id"]: policy for policy in filtered_policies}
         dialog_policy_id = st.session_state.get("policy_dialog_id")
