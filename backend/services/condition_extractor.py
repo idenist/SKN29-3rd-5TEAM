@@ -1,10 +1,12 @@
 import json
 import os
 import re
-from typing import Any, Optional
+import time
 
+from openai import OpenAI, RateLimitError, APIStatusError, APITimeoutError
+from typing import Any, Optional
 from dotenv import load_dotenv
-from openai import OpenAI
+
 
 from backend.graph.prompts import (
     CONDITION_EXTRACTION_SYSTEM_PROMPT,
@@ -100,16 +102,39 @@ def _chat_completion(
     messages: list[dict[str, str]],
     model: str = DEFAULT_MODEL,
     temperature: float = 0.0,
+    max_retries: int = 2,        # 파라미터 추가
 ) -> str:
     client = _get_client()
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages,
-        temperature=temperature,
-    )
+    for attempt in range(max_retries + 1):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=messages,
+                temperature=temperature,
+            )
+            return response.choices[0].message.content or ""
 
-    return response.choices[0].message.content or ""
+        except RateLimitError:
+            # 429 — 잠깐 기다렸다 재시도
+            if attempt < max_retries:
+                time.sleep(2 ** attempt)  # 1초, 2초
+                continue
+            raise
+
+        except APITimeoutError:
+            # timeout — 바로 재시도
+            if attempt < max_retries:
+                time.sleep(1)
+                continue
+            raise
+
+        except APIStatusError as e:
+            # 5xx — 재시도 / 4xx — 재시도 의미 없으므로 바로 raise
+            if e.status_code >= 500 and attempt < max_retries:
+                time.sleep(1)
+                continue
+            raise
 
 
 def _extract_json_object(text: str) -> str:

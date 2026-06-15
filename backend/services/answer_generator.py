@@ -1,10 +1,12 @@
 import json
 import os
 import re
-from typing import Any, Optional
+import time
 
+from openai import OpenAI, RateLimitError, APIStatusError, APITimeoutError
+from typing import Any, Optional
 from dotenv import load_dotenv
-from openai import OpenAI
+
 
 from backend.graph.prompts import (
     ANSWER_GENERATION_SYSTEM_PROMPT,
@@ -430,17 +432,39 @@ def generate_answer_with_llm(
     )
 
     client = _get_client()
+    max_retries = 2
+    answer = ""
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": ANSWER_GENERATION_SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ],
-        temperature=0.0,
-    )
+    for attempt in range(max_retries + 1):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": ANSWER_GENERATION_SYSTEM_PROMPT},
+                    {"role": "user", "content": user_prompt},
+                ],
+                temperature=0.0,
+            )
+            answer = response.choices[0].message.content or ""
+            break  # 성공 시 루프 탈출
 
-    answer = response.choices[0].message.content or ""
+        except RateLimitError:
+            if attempt < max_retries:
+                time.sleep(2 ** attempt)
+                continue
+            raise
+
+        except APITimeoutError:
+            if attempt < max_retries:
+                time.sleep(1)
+                continue
+            raise
+
+        except APIStatusError as e:
+            if e.status_code >= 500 and attempt < max_retries:
+                time.sleep(1)
+                continue
+            raise
 
     # 검색 결과가 있는데도 LLM이 no-result 문구를 따라 쓰는 경우 방지
     if policies:

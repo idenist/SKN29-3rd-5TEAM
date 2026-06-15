@@ -49,15 +49,18 @@ class YouthPolicyVectorStore:
 
         self.openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        self.chroma_client = chromadb.PersistentClient(path=self.persist_dir)
-
-        self.collection = self.chroma_client.get_or_create_collection(
-            name=self.collection_name,
-            metadata={
-                "description": "Youth policy RAG chunks",
-                "hnsw:space": "cosine",
-            },
-        )
+        try:
+            self.chroma_client = chromadb.PersistentClient(path=self.persist_dir)
+            self.collection = self.chroma_client.get_or_create_collection(
+                name=self.collection_name,
+                metadata={
+                    "description": "Youth policy RAG chunks",
+                    "hnsw:space": "cosine",
+                },
+            )
+        except Exception as e:
+            self.collection = None
+            raise RuntimeError(f"Chroma 초기화 실패: {e}") from e
 
     def get_collection(self) -> Collection:
         return self.collection
@@ -103,20 +106,17 @@ class YouthPolicyVectorStore:
         top_k: int = 5,
         where: Optional[dict[str, Any]] = None,
     ) -> list[VectorSearchResult]:
-        """
-        query를 OpenAI embedding으로 변환한 뒤 Chroma에서 Top-k 검색한다.
+        try:
+            query_embedding = self.embed_query(query)
 
-        반환값에는 완료 기준에 맞게
-        policy_id, policy_name, score, source_url이 포함된다.
-        """
-        query_embedding = self.embed_query(query)
-
-        result = self.collection.query(
-            query_embeddings=[query_embedding],
-            n_results=top_k,
-            where=where,
-            include=["documents", "metadatas", "distances"],
-        )
+            result = self.collection.query(
+                query_embeddings=[query_embedding],
+                n_results=top_k,
+                where=where,
+                include=["documents", "metadatas", "distances"],
+            )
+        except Exception as e:
+            return []
 
         ids = result.get("ids", [[]])[0]
         documents = result.get("documents", [[]])[0]
@@ -132,9 +132,6 @@ class YouthPolicyVectorStore:
             distances,
         ):
             metadata = metadata or {}
-
-            # cosine distance 기준: 작을수록 유사함.
-            # score는 보기 편하게 1 - distance로 둔다.
             score = 1.0 - float(distance)
 
             search_results.append(
