@@ -263,12 +263,22 @@ def _close_policy_dialog():
     st.session_state.pop("policy_dialog_id", None)
 
 
+def _key_suffix(value):
+    return re.sub(r"[^0-9A-Za-z_]", "_", str(value))
+
+
 def _open_guide(policy_id):
+    if not st.session_state.get("recommended_policy_ids"):
+        st.session_state.recommended_policy_ids = [
+            policy["id"]
+            for policy in st.session_state.get("search_filtered_policies", [])
+        ]
+
+    st.session_state.page = "신청 가이드"
     st.session_state.guide_selected_policy_id = policy_id
     st.session_state.selected_policy_id = policy_id
     st.session_state.pop("guide_policy_select", None)
     st.session_state.pop("policy_dialog_id", None)
-    st.session_state.page = "신청 가이드"
 
 
 def _change_result_page(delta):
@@ -351,6 +361,7 @@ window.requestAnimationFrame(() => {
 )
 def _render_policy_dialog(policy, profile):
     apply_url, source_url = _policy_links(policy)
+    guide_button_key = f"go_guide_from_dialog_{_key_suffix(policy['id'])}"
 
     render_html(f"""
 <div class="content-card policy-dialog-header">
@@ -434,13 +445,43 @@ def _render_policy_dialog(policy, profile):
 </div>
 """)
 
-    st.button(
-        "이 정책의 신청 가이드 보기",
-        width="stretch",
-        type="primary",
-        key=f"dialog_guide_{policy['id']}",
-        on_click=_open_guide,
-        args=(policy["id"],)
+    components.html(
+        f"""
+<button type="button" class="guide-dialog-button">
+    이 정책의 신청 가이드 보기
+</button>
+<style>
+body {{
+    margin: 0;
+}}
+.guide-dialog-button {{
+    width: 100%;
+    min-height: 46px;
+    border: 0;
+    border-radius: 8px;
+    background: #EF4444;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 600 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}}
+.guide-dialog-button:hover {{
+    background: #DC2626;
+}}
+</style>
+<script>
+const button = document.querySelector(".guide-dialog-button");
+button.addEventListener("click", () => {{
+    const target = window.parent.document.querySelector(
+        ".st-key-{guide_button_key} button"
+    );
+    if (target) {{
+        target.click();
+    }}
+}});
+</script>
+""",
+        height=52,
+        scrolling=False
     )
 
     _reset_policy_dialog_scroll()
@@ -695,6 +736,13 @@ def render_search_page(policies):
                     width="stretch"
                 ):
                     st.session_state.policy_dialog_id = p["id"]
+
+                st.button(
+                    "신청 가이드 이동",
+                    key=f"go_guide_from_dialog_{_key_suffix(p['id'])}",
+                    on_click=_open_guide,
+                    args=(p["id"],)
+                )
 
                 render_html(f"""
         <div class="policy-card">

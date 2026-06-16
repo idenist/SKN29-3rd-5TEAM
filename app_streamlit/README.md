@@ -27,6 +27,7 @@
 - 정책 카드 전체 영역을 클릭해 상세 팝업 표시
 - 상세 팝업에서 정책 정보와 사용자 조건 비교
 - 카드의 `신청하기`, `출처 보기` 링크는 팝업 클릭 영역에서 제외
+- 상세 팝업의 신청 가이드 이동은 현재 검색 결과 세션을 유지한 채 선택 정책만 전달
 - 신청 가이드에서 검색된 정책만 선택 가능
 - 신청 가이드 검색 전 또는 검색 결과 없음 상태에서는 빈 안내 화면 표시
 - FastAPI 챗봇 API 연동
@@ -297,6 +298,12 @@ app_streamlit/data/processed/opportunities.json
 - 사용자 조건과 정책 조건 비교표 표시
 - 팝업에서 신청 가이드로 이동 가능
 - 팝업은 열릴 때 상단부터 표시되고 내부 스크롤 가능
+- 팝업의 신청 가이드 버튼은 `st.dialog` 내부 rerun 경고를 피하기 위해
+  `components.html` 버튼으로 렌더링
+- 실제 페이지 전환 이벤트는 검색 결과 카드 영역의 숨겨진 Streamlit 버튼
+  `go_guide_from_dialog_*`가 처리
+- 이동 시 `recommended_policy_ids`, `search_filtered_policies`, `has_searched`를
+  유지하고 `guide_selected_policy_id`와 `selected_policy_id`만 선택 정책으로 갱신
 
 카드의 `신청하기`와 `출처 보기`는 팝업 버튼과 분리된 외부 링크입니다.
 
@@ -316,6 +323,7 @@ app_streamlit/data/processed/opportunities.json
 
 - 추천 결과에서 검색된 정책만 선택 목록에 표시
 - 팝업에서 이동한 경우 해당 정책을 기본 선택
+- 팝업에서 이동해도 검색 결과 목록과 검색 조건 세션은 초기화하지 않음
 - 홈 검색 전이거나 검색 결과가 없으면 빈 상태 안내 표시
 - 신청 기간과 현재 상태 표시
 - 신청 절차 5단계 표시
@@ -391,6 +399,7 @@ app_streamlit/data/processed/opportunities.json
 - 첫 진입 시 정책 데이터 로드 중 동일한 로딩 화면만 먼저 표시하고 완료 후 페이지 렌더링
 - 조건 입력 팁은 `먼저 검색 → 필요 시 나이·지역·관심 분야 추가 적용` 흐름 안내
 - 정책 카드 전체 클릭 영역과 외부 링크 영역 분리
+- 상세 팝업의 신청 가이드 이동용 숨김 버튼은 카드 레이아웃 밖으로 숨김
 - 버튼 hover/active 피드백과 부드러운 스크롤 적용
 - `prefers-reduced-motion` 환경에서는 모션 최소화
 - 900px, 620px 기준 반응형 레이아웃 적용
@@ -432,6 +441,8 @@ python -m py_compile app.py views\home_page.py views\search_page.py views\guide_
 - 제목 옆 자동 앵커 링크 아이콘 숨김
 - 연령 정보가 없는 정책은 `연령 정보 없음`으로 표시
 - 팝업에서 신청 가이드 이동
+- 팝업에서 신청 가이드 이동 시 `Calling st.rerun() within a callback is a no-op.` 경고 미표시
+- 팝업에서 신청 가이드 이동 후 검색 결과 세션과 선택 정책 유지
 - 검색 전 신청 가이드 빈 상태
 - 검색 후 신청 가이드 정책 목록 연동
 - 챗봇 백엔드 연결 오류 처리
@@ -446,6 +457,8 @@ python -m py_compile app.py views\home_page.py views\search_page.py views\guide_
 - 챗봇, 검색 전 추천 결과, 검색 전 신청 가이드 화면에서는 정책 목록 로드를 생략해 페이지 전환 속도 개선
 - 동일 검색 조건의 추천 결과 필터링/정렬 결과를 `st.session_state`에서 재사용
 - 로고 base64 변환, 페이지 아이콘, CSS 파일 읽기를 캐시해 rerun 시 반복 파일 I/O 감소
+- 상세 팝업의 신청 가이드 이동을 `components.html` 버튼과 숨겨진 Streamlit
+  버튼 조합으로 처리해 `st.dialog` 내부 rerun 경고 없이 검색 결과 세션 유지
 
 ### v1.4
 

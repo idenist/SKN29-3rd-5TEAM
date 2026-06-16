@@ -134,8 +134,8 @@ if "profile" not in st.session_state:
 # -----------------------------------
 
 def _go_to_page(page):
-    if st.session_state.page != page:
-        st.session_state.page = page
+    st.session_state.page = page
+    st.session_state.pop("policy_dialog_id", None)
 
 
 # -----------------------------------
