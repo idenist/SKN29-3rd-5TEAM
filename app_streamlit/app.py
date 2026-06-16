@@ -169,6 +169,20 @@ def _page_needs_policies():
         return False
     return True
 
+
+needs_policies = _page_needs_policies()
+initial_loading_slot = None
+
+if needs_policies and not st.session_state.get("initial_loading_shown", False):
+    initial_loading_slot = st.empty()
+    show_policy_loading(initial_loading_slot)
+
+policies = load_policies() if needs_policies else []
+
+if initial_loading_slot is not None:
+    initial_loading_slot.empty()
+    st.session_state.initial_loading_shown = True
+
 with st.container(key="site_header"):
     tabs = st.columns([2.4, 1, 1, 1, 0.38], vertical_alignment="center")
 
@@ -210,15 +224,6 @@ st.divider()
 # 페이지 렌더링
 # -----------------------------------
 
-needs_policies = _page_needs_policies()
-initial_loading_slot = None
-
-if needs_policies and not st.session_state.get("initial_loading_shown", False):
-    initial_loading_slot = st.empty()
-    show_policy_loading(initial_loading_slot)
-
-policies = load_policies() if needs_policies else []
-
 if st.session_state.page == "홈":
     render_home_page(policies)
 
@@ -230,7 +235,3 @@ elif st.session_state.page == "신청 가이드":
 
 elif st.session_state.page == "챗봇":
     render_chatbot_page(policies)
-
-if initial_loading_slot is not None:
-    initial_loading_slot.empty()
-    st.session_state.initial_loading_shown = True
