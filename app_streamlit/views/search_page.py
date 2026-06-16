@@ -517,21 +517,6 @@ def render_search_page(policies):
     profile = st.session_state.profile
     selected_interests = profile["interest"]
     exclude_closed = st.session_state.get("exclude_closed_policies", True)
-    filtered_policies = [
-        policy for policy in policies
-        if (not selected_interests or policy["category"] in selected_interests)
-        and _matches_age(policy, profile["age"])
-        and _matches_region(policy, profile["region"])
-    ]
-    if exclude_closed:
-        filtered_policies = [
-            policy for policy in filtered_policies
-            if not _is_closed_policy(policy)
-        ]
-    filtered_policies.sort(
-        key=lambda policy: _relevance_score(policy, keyword),
-        reverse=True
-    )
     result_signature = (
         keyword,
         profile["age"],
@@ -542,8 +527,29 @@ def render_search_page(policies):
         tuple(selected_interests),
         exclude_closed,
     )
-    if st.session_state.get("search_result_signature") != result_signature:
+
+    if not has_searched:
+        filtered_policies = []
+    elif st.session_state.get("search_result_signature") == result_signature:
+        filtered_policies = st.session_state.get("search_filtered_policies", [])
+    else:
+        filtered_policies = [
+            policy for policy in policies
+            if (not selected_interests or policy["category"] in selected_interests)
+            and _matches_age(policy, profile["age"])
+            and _matches_region(policy, profile["region"])
+        ]
+        if exclude_closed:
+            filtered_policies = [
+                policy for policy in filtered_policies
+                if not _is_closed_policy(policy)
+            ]
+        filtered_policies.sort(
+            key=lambda policy: _relevance_score(policy, keyword),
+            reverse=True
+        )
         st.session_state.search_result_signature = result_signature
+        st.session_state.search_filtered_policies = filtered_policies
         st.session_state.search_result_page = 1
 
     total_pages = max(

@@ -1,4 +1,5 @@
 import base64
+from functools import lru_cache
 from pathlib import Path
 
 import streamlit as st
@@ -10,12 +11,32 @@ from views.search_page import render_search_page
 from views.guide_page import render_guide_page
 from views.chatbot_page import render_chatbot_page
 
-APP_VERSION = "v1.4"
+APP_VERSION = "v1.5"
 LOGO_PATH = Path(__file__).resolve().parents[1] / "docs" / "images" / "home_logo.png"
-LOGO_DATA_URI = (
-    "data:image/png;base64,"
-    + base64.b64encode(LOGO_PATH.read_bytes()).decode("ascii")
-)
+STYLE_PATH = Path(__file__).resolve().parent / "styles" / "style.css"
+
+
+@lru_cache(maxsize=8)
+def _load_text_file(path_text, modified_at):
+    return Path(path_text).read_text(encoding="utf-8")
+
+
+@lru_cache(maxsize=8)
+def _load_logo_data_uri(path_text, modified_at):
+    return (
+        "data:image/png;base64,"
+        + base64.b64encode(Path(path_text).read_bytes()).decode("ascii")
+    )
+
+
+@lru_cache(maxsize=4)
+def _load_page_icon(path_text, modified_at):
+    return Image.open(path_text).copy()
+
+
+LOGO_STAMP = LOGO_PATH.stat().st_mtime_ns
+STYLE_STAMP = STYLE_PATH.stat().st_mtime_ns
+LOGO_DATA_URI = _load_logo_data_uri(str(LOGO_PATH), LOGO_STAMP)
 
 # -----------------------------------
 # 기본 설정
@@ -23,7 +44,7 @@ LOGO_DATA_URI = (
 
 st.set_page_config(
     page_title="이젠, 안쉼",
-    page_icon=Image.open(LOGO_PATH),
+    page_icon=_load_page_icon(str(LOGO_PATH), LOGO_STAMP),
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -32,11 +53,10 @@ st.set_page_config(
 # CSS 로드
 # -----------------------------------
 
-with open("styles/style.css", encoding="utf-8") as f:
-    st.markdown(
-        f"<style>{f.read()}</style>",
-        unsafe_allow_html=True
-    )
+st.markdown(
+    f"<style>{_load_text_file(str(STYLE_PATH), STYLE_STAMP)}</style>",
+    unsafe_allow_html=True
+)
 
 # -----------------------------------
 # Streamlit 기본 UI 제거
@@ -112,11 +132,9 @@ if "profile" not in st.session_state:
 # 데이터
 # -----------------------------------
 
-policies = load_policies()
-
-
 def _go_to_page(page):
-    st.session_state.page = page
+    if st.session_state.page != page:
+        st.session_state.page = page
 
 
 # -----------------------------------
@@ -139,6 +157,16 @@ pages = [
     "신청 가이드",
     "챗봇"
 ]
+
+
+def _page_needs_policies():
+    current_page = st.session_state.page
+    has_searched = st.session_state.get("has_searched", False)
+    if current_page == "챗봇":
+        return False
+    if current_page in ("추천 결과", "신청 가이드") and not has_searched:
+        return False
+    return True
 
 with st.container(key="site_header"):
     tabs = st.columns([2.4, 1, 1, 1, 0.38], vertical_alignment="center")
@@ -180,6 +208,8 @@ st.divider()
 # -----------------------------------
 # 페이지 렌더링
 # -----------------------------------
+
+policies = load_policies() if _page_needs_policies() else []
 
 if st.session_state.page == "홈":
     render_home_page(policies)
