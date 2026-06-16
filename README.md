@@ -150,7 +150,7 @@
 
 ## 5.2 Framework
 
-전체 시스템은 **Frontend → FastAPI Backend → LangGraph Workflow → Data/ML Layer** 4개 레이어로 구성된다.
+전체 시스템은 **Frontend → FastAPI Backend → LangGraph Workflow → Data/ML Layer** 4개 레이어로 구성된다. 
 
 ### Frontend (Streamlit)
 사용자는 Streamlit UI를 통해 챗봇, 정책 검색, 상세 조회 화면에 접근한다. 챗봇(`chatbot_page.py`)은 `POST /api/chat`으로 FastAPI와 통신하며, 정책 목록·상세 화면은 `data_loader.py`가 `opportunities.json`을 직접 읽어 렌더링한다.
