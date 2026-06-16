@@ -63,10 +63,10 @@ def render_chatbot_page(policies):
                         payload = {
                             "message": user_input,
                             "user_profile": {
-                                "age": int(user_profile.get("age", 27)),
+                                "age": int(user_profile.get("age" or 27)),
                                 "region": str(user_profile.get("region", "서울")),
                                 # 소득 수준을 백엔드 사양에 맞춰 문자열(String)로 변환
-                                "income": f"연소득 {user_profile.get('income', 3000)}만원 이하",
+                                "income": f"연소득 {user_profile.get('income'or 3000)}만원 이하",
                                 "employment_status": str(user_profile.get("job_status", "중소기업 재직자")),
                                 "interest_domain": "전체"
                             },
