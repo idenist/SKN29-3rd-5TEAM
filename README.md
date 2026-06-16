@@ -46,19 +46,19 @@
   
   <tr align="center">
     <td><strong>역할</strong></td>
-    <td><strong>프론트엔드</strong></td>
+    <td><strong>Frontend</strong></td>
     <td><strong>RAG/LangGraph</strong></td>
-    <td><strong>데이터 엔지니어링</strong></td>
-    <td><strong>백엔드</strong></td>
-    <td><strong>PM/기획, 평가</strong></td>
+    <td><strong>Data Engineering</strong></td>
+    <td><strong>Backend</strong></td>
+    <td><strong>PM/기획&평가</strong></td>
   </tr>
   
   <tr valign="top">
-    <td align="center"><strong>한 일</strong></td>
+    <td align="center"><strong> 담당 </strong></td>
     <td>Streamlit UI/UX 설계</td>
-    <td>LangGraph 기반 에이전트 워크플로우 설계</td>
+    <td>LangGraph, RAG-Agent 워크플로우 설계</td>
     <td>Open API 데이터 수집 및 정제</td>
-    <td>FastAPI 기반 RESTful API 설계</td>
+    <td>FastAPI 기반 내부 설계 </td>
     <td>프로젝트 리딩 및 기획 총괄</td>
   </tr>
 </table>
