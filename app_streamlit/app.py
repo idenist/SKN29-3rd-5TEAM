@@ -11,7 +11,7 @@ from views.guide_page import render_guide_page
 from views.chatbot_page import render_chatbot_page
 
 APP_VERSION = "v1.4"
-LOGO_PATH = Path(__file__).resolve().parents[1] / "KakaoTalk_20260615_181150914.png"
+LOGO_PATH = Path(__file__).resolve().parents[1] / 'docs/images/home_logo.png'
 LOGO_DATA_URI = (
     "data:image/png;base64,"
     + base64.b64encode(LOGO_PATH.read_bytes()).decode("ascii")
