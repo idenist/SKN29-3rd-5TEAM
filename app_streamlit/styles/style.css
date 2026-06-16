@@ -2,6 +2,25 @@
     background: #F8FAFC;
 }
 
+header,
+#MainMenu,
+footer,
+[data-testid="stHeader"],
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"],
+[data-testid="collapsedControl"],
+[data-testid="stHeaderActionElements"],
+[data-testid="stAppDeployButton"],
+[data-testid="stMainMenu"],
+.stDeployButton,
+button[kind="header"],
+div[data-testid="stToolbar"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+}
+
 html, body, [class*="css"] {
     font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
 }

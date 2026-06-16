@@ -67,7 +67,7 @@ def _chat_user_profile(user_input, session_profile):
 
 
 def render_chatbot_page(policies):
-    st.markdown('<div class="page-title">정책 챗봇</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">안쉼 챗봇</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-sub">궁금한 정책 정보를 질문해보세요.</div>', unsafe_allow_html=True)
 
     # ------------------------------------------------------------------
@@ -77,7 +77,7 @@ def render_chatbot_page(policies):
         st.session_state.chat_history = [
             {
                 "role": "assistant",
-                "message": "안녕하세요! '이젠, 안쉼' 통합 정책 챗봇입니다. 무엇이 궁금하신가요?\n\n(예: '나에게 맞는 창업 지원 정책이 있어?', '국비지원 데이터 분석 강의 알려줘')"
+                "message": "안녕하세요! '이젠, 안쉼' 안쉼 챗봇입니다. 무엇이 궁금하신가요?\n\n(예: '나에게 맞는 창업 지원 정책이 있어?', '국비지원 데이터 분석 강의 알려줘')"
             }
         ]
 

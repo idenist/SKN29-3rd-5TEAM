@@ -6,6 +6,7 @@ import streamlit as st
 from PIL import Image
 
 from utils.data_loader import load_policies
+from utils.loading_overlay import show_policy_loading
 from views.home_page import render_home_page
 from views.search_page import render_search_page
 from views.guide_page import render_guide_page
@@ -209,7 +210,14 @@ st.divider()
 # 페이지 렌더링
 # -----------------------------------
 
-policies = load_policies() if _page_needs_policies() else []
+needs_policies = _page_needs_policies()
+initial_loading_slot = None
+
+if needs_policies and not st.session_state.get("initial_loading_shown", False):
+    initial_loading_slot = st.empty()
+    show_policy_loading(initial_loading_slot)
+
+policies = load_policies() if needs_policies else []
 
 if st.session_state.page == "홈":
     render_home_page(policies)
@@ -222,3 +230,7 @@ elif st.session_state.page == "신청 가이드":
 
 elif st.session_state.page == "챗봇":
     render_chatbot_page(policies)
+
+if initial_loading_slot is not None:
+    initial_loading_slot.empty()
+    st.session_state.initial_loading_shown = True
