@@ -17,7 +17,7 @@ from backend.graph.prompts import (
 load_dotenv()
 
 
-DEFAULT_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini")
+DEFAULT_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-5.4-nano")
 MISSING_TEXT = "제공된 데이터에는 정보가 없습니다."
 
 
@@ -276,7 +276,7 @@ def _compact_policy_for_prompt(policy: dict[str, Any]) -> dict[str, Any]:
     )
 
     raw_text_excerpt = _clean_text_for_answer(
-        _truncate_text(text, max_chars=1200)
+        _truncate_text(text, max_chars=600)
     )
 
     support_content = _extract_field_from_text(
@@ -449,6 +449,7 @@ def generate_answer_with_llm(
                     {"role": "user", "content": user_prompt},
                 ],
                 temperature=0.0,
+                max_tokens = 1500,
             )
             answer = response.choices[0].message.content or ""
             break  # 성공 시 루프 탈출
