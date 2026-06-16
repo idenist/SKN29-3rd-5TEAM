@@ -372,6 +372,7 @@ cp .env.example .env
 ```env
 OPENAI_API_KEY=openai_api_key
 OPENAI_EMBEDDING_MODEL = text-embedding-3-small
+OPENAI_CHAT_MODEL = 'model_name'
 
 NEO4J_URI=your_neo4j_uri
 NEO4J_USER=your_neo4j_user
