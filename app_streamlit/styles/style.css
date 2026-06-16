@@ -20,6 +20,64 @@ pre, code {
     white-space: normal !important;
 }
 
+.anchor-link,
+div[data-testid="stMarkdownContainer"] h1 a[href^="#"],
+div[data-testid="stMarkdownContainer"] h2 a[href^="#"],
+div[data-testid="stMarkdownContainer"] h3 a[href^="#"],
+div[data-testid="stMarkdownContainer"] h4 a[href^="#"] {
+    display: none !important;
+}
+
+.policy-loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(71, 91, 130, 0.42);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.policy-loading-panel {
+    width: min(420px, calc(100vw - 42px));
+    aspect-ratio: 1 / 1.02;
+    animation: policy-loading-pop 0.18s ease-out both,
+        policy-loading-float 1.6s ease-in-out infinite 0.18s;
+}
+
+.policy-loading-panel img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 24px;
+    box-shadow: 0 26px 80px rgba(20, 38, 74, 0.28);
+}
+
+@keyframes policy-loading-pop {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes policy-loading-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
 /* Streamlit 버튼 기본 스타일 */
 div[data-testid="stButton"] button {
     border: none;
@@ -619,6 +677,17 @@ div[class*="st-key-policy_card_"] .policy-link {
     padding: 12px;
     text-align: center;
     font-weight: 900;
+}
+
+.dialog-link-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 12px 0 20px;
+}
+
+.dialog-link-actions .dialog-link-btn {
+    margin-bottom: 0;
 }
 
 .badge-green {

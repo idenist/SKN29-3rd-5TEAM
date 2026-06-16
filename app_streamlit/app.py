@@ -10,8 +10,8 @@ from views.search_page import render_search_page
 from views.guide_page import render_guide_page
 from views.chatbot_page import render_chatbot_page
 
-APP_VERSION = "v1.3"
-LOGO_PATH = Path(__file__).resolve().parents[1] / "docs" / "images" / "home_logo.png"
+APP_VERSION = "v1.4"
+LOGO_PATH = Path(__file__).resolve().parents[1] / "KakaoTalk_20260615_181150914.png"
 LOGO_DATA_URI = (
     "data:image/png;base64,"
     + base64.b64encode(LOGO_PATH.read_bytes()).decode("ascii")
@@ -83,12 +83,6 @@ button[kind="header"]{
 """, unsafe_allow_html=True)
 
 # -----------------------------------
-# 데이터
-# -----------------------------------
-
-policies = load_policies()
-
-# -----------------------------------
 # 세션
 # -----------------------------------
 
@@ -100,6 +94,10 @@ elif st.session_state.page == "상세 분석":
 if "has_searched" not in st.session_state:
     st.session_state.has_searched = False
 
+if st.session_state.get("cache_version") != APP_VERSION:
+    st.cache_data.clear()
+    st.session_state.cache_version = APP_VERSION
+
 if "profile" not in st.session_state:
     st.session_state.profile = {
         "age": 27,
@@ -109,6 +107,12 @@ if "profile" not in st.session_state:
         "housing_status": "월세",
         "interest": []
     }
+
+# -----------------------------------
+# 데이터
+# -----------------------------------
+
+policies = load_policies()
 
 
 def _go_to_page(page):
