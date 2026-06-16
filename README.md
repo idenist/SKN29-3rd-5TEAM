@@ -1,16 +1,25 @@
-# 청년 지원 통합 탐색 에이전트 데이터 파이프라인
+# 청년 지원 통합 탐색 에이전트
 
 ## 1. 프로젝트 개요
 
 - **서비스 명**: 이젠, 안쉼 (청년들이 정보 탐색의 피로에서 벗어나 안심할 수 있는 서비스)
 - **기획 배경**: 청년 정책(온통청년), 창업 지원(K-Startup), 교육·훈련(고용24) 정보가 여러 기관에 파편화되어 있어 발생하는 청년들의 높은 탐색 비용과 정보 비대칭 문제를 해결하고자 함
-- **핵심 가치**: 규칙 기반의 하드코딩 필터링을 넘어, **자연어 기반 조건 추출(NLP)** 및 **멀티 에이전트 워크플로우(LangGraph)**를 결합하여 대용량 공공 데이터셋(2.6만 건) 안에서 유저 맞춤형 정책을 최적의 경로로 큐레이션합니다.
+- **핵심 가치**: 규칙 기반의 하드코딩 필터링을 넘어, **자연어 기반 조건 추출(NLP)**, **Hybrid RAG**, **LangGraph 기반 멀티 에이전트 워크플로우**를 결합하여 대용량 공공 데이터셋 안에서 사용자 맞춤형 청년 지원 정보를 큐레이션함
 
-본 패키지는 청년 지원 정보를 RAG 기반으로 탐색하기 위한 최종 데이터 산출물이다.
+본 저장소는 청년 지원 정보를 통합 탐색하기 위한 **Streamlit 프론트엔드, FastAPI 백엔드, LangGraph 기반 RAG 파이프라인, Chroma Vector DB, Neo4j 보조 검색, 평가 및 sLLM 실험 산출물**을 포함한다.
 
-기존 v2 통합 데이터에 평가계획서의 데이터 전처리 요구 항목을 반영하여 데이터 설명서, 전처리 파이프라인 문서, KoNLPy Okt 형태소 분석 스크립트, 불용어 처리 리포트, BoW/TF-IDF 리포트, Word2Vec/FastText 샘플 학습 리포트, Ground Truth 평가 데이터셋, 청킹 전략 문서를 추가했다.
+초기에는 온통청년 정책 데이터 중심으로 출발했으나, 서비스 범위를 넓히기 위해 K-Startup 창업지원 공고와 고용24/HRD 교육훈련 과정까지 통합하였다. 최종 백엔드 데이터는 `data/processed/opportunities.json`이며, RAG 임베딩 데이터는 `data/processed/opportunity_chunks.jsonl`이다.
 
-최종 백엔드 데이터는 `data/processed/opportunities.json`이며, RAG 임베딩 데이터는 `data/processed/opportunity_chunks.jsonl`이다.
+### 1.1 프로젝트 한눈에 보기
+
+| 항목 | 내용 |
+|---|---|
+| 서비스 대상 | 청년 정책, 창업지원 공고, 교육·훈련 과정을 찾는 청년 사용자 |
+| 핵심 문제 | 기관별로 흩어진 지원 정보를 사용자가 직접 비교해야 하는 탐색 비용 |
+| 핵심 기능 | 자연어 조건 추출, 맞춤형 추천, 신청 가능성 판단, 출처 기반 답변, 마감 공고 필터링 |
+| 데이터 규모 | 통합 데이터 26,803건, RAG 청크 33,950개 |
+| 주요 기술 | Streamlit, FastAPI, LangGraph, ChromaDB, Neo4j, OpenAI, Tavily, LoRA/QLoRA |
+| 평가 방식 | Rule-based 평가, BLEU/ROUGE 보조 지표, LLM-as-a-Judge 평가 |
 
 ---
 
@@ -41,7 +50,7 @@
     <td><strong>RAG/LangGraph</strong></td>
     <td><strong>데이터 엔지니어링</strong></td>
     <td><strong>백엔드</strong></td>
-    <td><strong>PM/기획,평가</strong></td>
+    <td><strong>PM/기획, 평가</strong></td>
   </tr>
   
   <tr valign="top">
@@ -58,21 +67,32 @@
 
 ## 3. 핵심 기능 (Key Features)
 
-
 1. **자연어 기반 유저 프로필 추출 (NLP)**
-   - "서울 사는 27살 취준생이고 주거에 관심 있어"와 같은 사용자 질의에서 연령, 지역, 소득, 상태, 관심사를 파싱하여 유저 프로필 세션에 자동 매칭합니다.
+   - "서울 사는 27살 취준생이고 주거에 관심 있어"와 같은 사용자 질의에서 연령, 지역, 소득, 고용 상태, 관심사를 파싱하여 유저 프로필 세션에 자동 매칭한다.
+
 2. **실시간 대용량 통합 데이터 필터링**
-   - 2.6만 건 이상의 이종 데이터(정책, 창업, 교육)를 단일 스키마로 통합하여 자연어 추출 조건, 추가 입력 필터, 마감 여부를 실시간으로 다중 필터링합니다. 브라우저 성능을 위해 추천 결과는 10개 단위 페이지네이션으로 표시합니다.
+   - 2.6만 건 이상의 이종 데이터(정책, 창업, 교육)를 단일 스키마로 통합하여 자연어 추출 조건, 추가 입력 필터, 마감 여부를 실시간으로 다중 필터링한다. 브라우저 성능을 위해 추천 결과는 10개 단위 페이지네이션으로 표시한다.
+
 3. **데이터 완성도 점수 (`info_score`) 도입**
-   - 공공 데이터 특유의 정보 공백을 극복하기 위해 필드 완성도를 기반으로 스코어링 시스템을 구현, 유저에게 정밀하고 신뢰도 높은 공고를 최우선으로 노출합니다.
-4. **LangGraph 및 에이전트 기반 오케스트레이션 (Back-end 지향)**
-   - 단순 검색 쿼리를 넘어 복잡한 추천 로직 및 예외 처리를 에이전트의 상태 그래프(`graph/`) 흐름으로 제어하여 향후 유연한 챗봇 서비스 확장이 가능합니다.
+   - 공공 데이터 특유의 정보 공백을 극복하기 위해 필드 완성도를 기반으로 스코어링 시스템을 구현하였다. 단, `info_score`는 데이터 완성도 점수이며 사용자 적합도 점수와는 구분한다.
+
+4. **LangGraph 및 에이전트 기반 오케스트레이션**
+   - 단순 검색 쿼리를 넘어 조건 추출, 라우팅, 검색, 검색 충분성 판단, 외부 검색 fallback, 자격 판단, 답변 생성을 상태 그래프 흐름으로 제어한다.
+
 5. **Hybrid RAG 기반 정책 검색**
-   - Vector 검색(ChromaDB)과 Graph 검색(Neo4j)을 병합하여 의미 기반 검색과 관계 기반 검색을 동시에 수행합니다.
-6. **멀티 소스 통합 인터페이스**
-   - 청년정책(온통청년), 창업지원(K-Startup), 교육훈련(고용24) 3개 출처를 단일 화면에서 탐색할 수 있습니다.
-7. **대화형 챗봇 UI**
-   - 자연어로 조건을 입력하면 맞춤형 정책을 추천받을 수 있는 챗봇 인터페이스를 제공합니다.
+   - ChromaDB 기반 Vector 검색과 Neo4j 기반 Graph 보조 검색을 병합하여 의미 기반 검색과 관계 기반 검색을 함께 수행한다.
+
+6. **공식 외부 검색 fallback**
+   - 내부 Vector DB 검색 결과가 부족하거나 최신성이 필요한 경우 Tavily 기반 공식 도메인 제한 검색을 수행하여 온통청년, K-Startup, 고용24/HRD 등 공식 출처 확인 후보를 보강한다.
+
+7. **멀티 소스 통합 인터페이스**
+   - 청년정책(온통청년), 창업지원(K-Startup), 교육훈련(고용24/HRD) 3개 출처를 단일 화면에서 탐색할 수 있다.
+
+8. **대화형 챗봇 UI**
+   - 자연어로 조건을 입력하면 맞춤형 지원 항목을 추천받을 수 있는 챗봇 인터페이스를 제공한다.
+
+9. **sLLM LoRA/QLoRA 실험**
+   - 메인 서비스는 OpenAI 기반 RAG를 유지하되, 평가 기준 대응 및 향후 확장 가능성 검토를 위해 Qwen2.5-1.5B-Instruct 기반 LoRA/QLoRA 실험을 별도 수행하였다.
 
 ---
 
@@ -90,18 +110,20 @@
 | 협업 | ![Notion](https://img.shields.io/badge/Notion-000000?style=flat&logo=notion&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white) |
 | Language | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) |
 
+---
+
 ## 5. 시스템 아키텍처
 
 ## 5.1 전체 디렉터리 구조
 
 ```text
 📂 SKN29-3rd-5TEAM
-├── 📂 app_streamlit               # Streamlit 프론트엔드 어플리케이션
+├── 📂 app_streamlit               # Streamlit 프론트엔드 애플리케이션
 │   ├── 📄 app.py                  # 프론트엔드 메인 진입점
 │   ├── 📂 styles/                 # UI 커스텀 스타일링 (style.css)
 │   ├── 📂 utils/                  # 데이터 로더, HTML 렌더러, 조건 파서 모듈
 │   └── 📂 views/                  # 화면 단위 렌더링 (홈, 추천결과, 상세, 가이드, 챗봇)
-├── 📂 backend                     # FastAPI 백엔드 어플리케이션
+├── 📂 backend                     # FastAPI 백엔드 애플리케이션
 │   ├── 📄 main.py                 # 백엔드 API 서버 진입점
 │   ├── 📂 api/                    # API 라우터 및 엔드포인트 제어 레이어
 │   ├── 📂 db/                     # 데이터베이스 및 Vector DB 연결 설정
@@ -111,15 +133,15 @@
 ├── 📂 data                        # 데이터 저장 및 분석 관리
 │   ├── 📂 raw/                    # 공공데이터 수집 원본 (Open API Raw Data)
 │   ├── 📂 processed/              # 전처리 완료 및 정규화 데이터 (opportunities.json 등)
-│   ├── 📂 vector_db/              # vector db 구축
+│   ├── 📂 vector_db/              # Chroma Vector DB 저장 경로
 │   └── 📂 reports/                # 중복/결측치/형태소 분석 품질 리포트
 ├── 📂 docs                        # 데이터 사전, 청킹 전략 등 개발 명세 및 문서
 ├── 📂 scripts                     # 데이터 전처리, 텍스트 분석 및 자동화 스크립트
-├── 📂 sllm                        # sLLM 파인튜닝, RoLA 튜닝 작업
+├── 📂 sllm                        # sLLM 파인튜닝, LoRA/QLoRA 실험
 ├── 📂 evaluation                  # RAG, LLM 평가
 ├── 📂 tests                       # 단위 및 통합 테스트 코드
-├── 📄 .env                        # API 키 및 DB 접속 정보 환경변수 파일
-├── 📄 requirements.txt            # 의존성 패키지 목록 (Streamlit, FastAPI, Pandas 등)
+├── 📄 .env.example                # API 키 및 DB 접속 정보 환경변수 예시 파일
+├── 📄 requirements.txt            # 의존성 패키지 목록
 ├── 📄 run_konlpy_setup.bat        # Java 환경 검증 및 KoNLPy 패키지 자동 설치 스크립트
 └── 📄 update_readme_eval.py       # 데이터 전처리 평가 리포트 README 반영 스크립트
 ```
@@ -142,25 +164,29 @@
 
 <img src="docs/images/langgraph_node_flow.png" width="1000" alt="LangGraph node flow">
 
-```
+```text
 Input Validator → Condition Extractor → Router
-  → source_category 필터 → Retriever (Vector Search)
+  → Retriever (Chroma Vector Search)
   → graph_retrieve_node (Neo4j Cypher)
   → hybrid_merge_node (Vector + Graph 결과 병합, 중복 제거)
-  → Eligibility Checker → Answer Generator
+  → Result Sufficiency Checker
+  → Official External Search Fallback (필요 시)
+  → Eligibility Checker
+  → Answer Generator
 ```
 
 ### Data / ML Layer
 
 | 구성 요소 | 내용 |
 |---|---|
-| ChromaDB | `youth_opportunity_chunks` 컬렉션, 9,758 chunks |
-| Neo4j AuraDB | Item + Domain 노드, 500건 적재 완료 |
+| ChromaDB | `youth_opportunity_chunks` 컬렉션, 33,950 chunks |
+| Neo4j AuraDB | Item + Domain 노드, 500건 샘플 적재 완료 |
 | opportunities.json | 통합 데이터 26,803건 |
 | opportunity_chunks.jsonl | RAG 임베딩용 33,950 chunks |
 | OpenAI API | Embedding + Chat, 지수백오프 재시도 (max=2) |
-| QLoRA/PEFT | RunPod 파인튜닝 완료 |
-| LLM-as-a-Judge | CR 4.2 / GR 4.0 / AR 4.1 |
+| Tavily | 공식 도메인 제한 외부 검색 fallback |
+| LoRA/QLoRA | Qwen2.5-1.5B-Instruct 기반 sLLM 파인튜닝 실험 |
+| LLM-as-a-Judge | Context Relevance 4.6 / Groundedness 4.2 / Answer Relevance 4.1 |
 
 ---
 
@@ -178,7 +204,7 @@ Input Validator → Condition Extractor → Router
 
 ### 데이터 적재 현황
 
-- `opportunity_chunks.jsonl` 기준 500건 적재 완료
+- `opportunity_chunks.jsonl` 기준 500건 샘플 적재 완료
 - 적재 스크립트: `scripts/build_graph_db.py`
 
 ### Hybrid RAG 파이프라인
@@ -194,7 +220,6 @@ Neo4j 연결 실패 시 기존 Vector 파이프라인으로 자동 전환(gracef
 
 <img src="docs/images/graph_DB.png" width="1000" alt="graph_DB">
 <img src="docs/images/hybrid_rag.png" width="1000" alt="hybrid_rag">
-
 
 ---
 
@@ -252,11 +277,16 @@ Neo4j 연결 실패 시 기존 Vector 파이프라인으로 자동 전환(gracef
 | `data/reports/chunk_length_report.csv` | 청크 길이 통계 |
 | `tests/evaluation_dataset.jsonl` | RAG 검색 품질 평가용 Ground Truth 데이터셋 |
 | `scripts/validate_evaluation_dataset.py` | Ground Truth 정답 `item_id` 검증 스크립트 |
-| `docs/data_dictionary.md` | 데이터 설명서 |
-| `docs/chunking_strategy.md` | RAG/Graph 입력용 청킹 전략 문서 |
-| `docs/text_preprocessing.md` | 텍스트 전처리 및 형태소 분석 문서 |
-| `docs/data_pipeline_summary.md` | 데이터 수집→정제→통합 파이프라인 문서 |
-| `docs/evaluation_checklist.md` | 평가 지표 대응표 |
+| `docs/01-1. 데이터_출처.md` | 온통청년, K-Startup, 고용24/HRD 데이터 출처 정리 |
+| `docs/01-2. 데이터 스키마 설계서.md` | 통합 데이터 스키마와 `item_id` 연결 기준 |
+| `docs/01-3. 데이터 전처리 가이드.md` | 출처별 전처리 기준과 청년 관련성 분류 기준 |
+| `docs/01-4. 데이터 파이프라인 가이드.md` | 데이터 수집→정제→통합→청크→평가 데이터셋 흐름 |
+| `docs/02-1. RAG_LLM_보고서_통합.md` | RAG/LLM 파이프라인 통합 보고서 |
+| `docs/02-4. RAG_평가_보고서.md` | Rule-based RAG 평가 결과 보고서 |
+| `docs/02-5. LLM_Judge_평가_보고서.md` | LLM-as-a-Judge 평가 결과 보고서 |
+| `docs/03-1. 백엔드_API_명세.md` | FastAPI 응답 계약 및 엔드포인트 명세 |
+| `docs/03-2. 백엔드-RAG_연결.md` | 백엔드-RAG 연결 기준 문서 |
+| `docs/04. sLLM_LoRA_실험_보고서.md` | LoRA/QLoRA 실험 코드, 설정, 샘플 결과 |
 
 ---
 
@@ -302,8 +332,8 @@ Word2Vec/FastText는 평가용 샘플 학습이며 실제 서비스 검색에는
 
 | 평가 항목 | 반영 내용 | 산출물 |
 |---|---|---|
-| 데이터셋 선정 타당성 | 청년정책, 창업지원, 교육훈련 3개 공식 출처 선정 | `docs/source_notes.md` |
-| 편향성 처리 | 청년 관련성 high 기준으로 서비스 통합 범위 제한 | `docs/data_pipeline_summary.md` |
+| 데이터셋 선정 타당성 | 청년정책, 창업지원, 교육훈련 3개 공식 출처 선정 | `docs/01-1. 데이터_출처.md` |
+| 편향성 처리 | 청년 관련성 high 기준으로 서비스 통합 범위 제한 | `docs/01-4. 데이터 파이프라인 가이드.md` |
 | 중복 제거 | `item_id` 기준 중복 확인 | `data/reports/duplicate_check_report.csv` |
 | 결측치 처리 | 필드별 결측률 산출, 임의 보완 금지 | `data/reports/missing_value_report.csv` |
 | 정규표현식 텍스트 정규화 | HTML/URL/특수문자/공백 정리 | `scripts/analyze_korean_text.py` |
@@ -313,30 +343,59 @@ Word2Vec/FastText는 평가용 샘플 학습이며 실제 서비스 검색에는
 | TF-IDF | 전체/source_category/domain별 주요 키워드 | `data/reports/tfidf_keyword_report.csv` |
 | Word2Vec/FastText | Gensim 기반 샘플 학습 수행, 두 모델 모두 `trained_sample` 상태 확인 | `data/reports/word2vec_fasttext_status_report.csv` |
 | Ground Truth | RAG 정답 데이터셋 50개 구축 및 `answer_item_ids` 연결 검증 | `tests/evaluation_dataset.jsonl`, `data/reports/evaluation_dataset_summary.csv` |
-| 청킹 전략 | search_profile chunk 및 향후 Recursive/Semantic 전략 문서화 | `docs/chunking_strategy.md` |
-| 데이터 스키마 문서화 | 필드 설명 및 백엔드/RAG 연결 기준 작성 | `docs/data_dictionary.md`, `docs/opportunity_schema.md` |
-| 파이프라인 문서화 | 수집→전처리→통합→청크→텍스트 분석→Ground Truth 검증 흐름 작성 | `docs/data_pipeline_summary.md` |
+| 청킹 전략 | search_profile chunk 및 향후 Recursive/Semantic 전략 문서화 | `docs/01-4. 데이터 파이프라인 가이드.md` |
+| 데이터 스키마 문서화 | 필드 설명 및 백엔드/RAG 연결 기준 작성 | `docs/01-2. 데이터 스키마 설계서.md`, `docs/03-2. 백엔드-RAG_연결.md` |
+| 파이프라인 문서화 | 수집→전처리→통합→청크→텍스트 분석→Ground Truth 검증 흐름 작성 | `docs/01-4. 데이터 파이프라인 가이드.md` |
 | 데이터 수량 문서화 | source_category별 건수 및 청크 수 기록 | `README.md`, `data/processed/preprocessing_summary.json` |
-
-
+| RAG/LLM 평가 | Rule-based 평가, BLEU/ROUGE 보조 지표, LLM-as-a-Judge 평가 수행 | `docs/02-4. RAG_평가_보고서.md`, `docs/02-5. LLM_Judge_평가_보고서.md` |
+| sLLM 파인튜닝 대응 | LoRA/QLoRA 학습 코드, 설정 파일, 샘플 프롬프트 결과 정리 | `sllm/`, `docs/04. sLLM_LoRA_실험_보고서.md` |
 
 ---
 
-## 13. RAG 청킹 전략
+## 13. 평가 결과 요약
+
+### 13.1 Rule-based RAG 평가
+
+| 항목 | 결과 |
+|---|---:|
+| 총 테스트 케이스 수 | 10 |
+| 통과 케이스 수 | 10 |
+| 통과율 | 100.0% |
+| 평균 규칙 기반 점수 | 1.000 |
+| 평균 BLEU | 0.0212 |
+| 평균 ROUGE-1 F1 | 0.1451 |
+| 평균 ROUGE-2 F1 | 0.0581 |
+| 평균 ROUGE-L F1 | 0.1242 |
+
+규칙 기반 평가는 route, next_action, recommendations 개수, 마감 공고 제외, 입력 검증, tool_trace 존재 여부처럼 시스템 동작 조건을 확인한다. BLEU/ROUGE는 추천형 RAG 특성상 참고용 보조 지표로 해석한다.
+
+### 13.2 LLM-as-a-Judge 평가
+
+| 지표 | 평균 점수 |
+|---|---:|
+| Context Relevance | 4.6 / 5 |
+| Groundedness | 4.2 / 5 |
+| Answer Relevance | 4.1 / 5 |
+| 전체 평균 | 약 4.3 / 5 |
+
+검색된 컨텍스트가 질문과 대체로 관련 있고, 답변이 검색 결과에 근거하여 생성되었음을 확인했다. 다만 신청 가능 여부, 제출 서류, 지역 제한 등 세부 신청 정보는 원천 데이터 구조화 수준에 따라 추가 확인이 필요한 경우가 남아 있다.
+
+---
+
+## 14. RAG 청킹 전략
 
 현재 청킹은 `item_id` 기준 search_profile chunk를 생성한다.
 
 - 임베딩 대상: `content`
 - metadata: `item_id`, `source_category`, `domain`, `title`, `source_url`, `application_url`, `info_score`, `needs_detail_check`
 
-자세한 내용은 `docs/chunking_strategy.md`에 작성했다.
+자세한 내용은 `docs/01-4. 데이터 파이프라인 가이드.md`와 `docs/02-1. RAG_LLM_보고서_통합.md`에 작성했다.
 
 <img src="docs/images/chunk_diagram.png" width="1000" alt="chunk_diagram">
 
-
 ---
 
-## 14. 제외한 데이터와 이유
+## 15. 제외한 데이터와 이유
 
 공모전·경진대회·모집공고 데이터는 이번 최종 범위에서 제외했다.
 
@@ -348,12 +407,15 @@ Word2Vec/FastText는 평가용 샘플 학습이며 실제 서비스 검색에는
 
 ---
 
-## 15. 설치 및 실행
+## 16. 설치 및 실행
 
 ### 요구 환경
 
 - Python 3.10 이상
 - Java JDK 11 이상 (KoNLPy 사용 시 필요)
+- OpenAI API Key
+- Neo4j AuraDB 접속 정보 (Graph DB 사용 시)
+- Tavily API Key (외부 공식 검색 fallback 사용 시)
 
 ### 1. 패키지 설치
 
@@ -370,68 +432,120 @@ cp .env.example .env
 `.env` 파일에 아래 항목을 입력한다.
 
 ```env
-OPENAI_API_KEY=openai_api_key
-OPENAI_EMBEDDING_MODEL = text-embedding-3-small
-OPENAI_CHAT_MODEL = 'model_name'
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+OPENAI_CHAT_MODEL=gpt-4o-mini
 
 NEO4J_URI=your_neo4j_uri
 NEO4J_USER=your_neo4j_user
 NEO4J_PASSWORD=your_neo4j_password
 
-
-TAVILY_API_KEY=api_key
+TAVILY_API_KEY=your_tavily_api_key
 EXTERNAL_WEB_SEARCH_ENABLED=true
 ENABLE_DDG_HTML_SEARCH=false
 TAVILY_SEARCH_DEPTH=basic
 TAVILY_INCLUDE_RAW_CONTENT=false
 CURRENT_POLICY_YEAR=2026
-
 ```
 
 ### 3. 데이터 초기화
 
 ```bash
 python scripts/build_opportunities.py
+python scripts/validate_final_dataset.py
+```
+
+### 4. Vector DB 구축
+
+통합 RAG 검색용 Chroma Vector DB를 구축한다.
+
+```bash
+python scripts/build_opportunity_vector_db.py \
+  --input data/processed/opportunity_chunks.jsonl \
+  --persist-dir data/vector_db \
+  --collection-name youth_opportunity_chunks \
+  --reset
+```
+
+OpenAI Embedding API RateLimit이 발생하면 batch size를 낮춰 재실행한다.
+
+```bash
+python scripts/build_opportunity_vector_db.py \
+  --input data/processed/opportunity_chunks.jsonl \
+  --persist-dir data/vector_db \
+  --collection-name youth_opportunity_chunks \
+  --batch-size 30
+```
+
+### 5. Graph DB 적재
+
+Neo4j 보조 검색을 사용할 경우 다음 스크립트를 실행한다.
+
+```bash
 python scripts/build_graph_db.py
 ```
 
-### 4. 서버 실행
+Neo4j 연결 정보가 없거나 연결에 실패해도 기본 Vector RAG 파이프라인은 동작하도록 설계되어 있다.
+
+### 6. 서버 실행
 
 백엔드:
+
 ```bash
-cd backend
-uvicorn main:app --reload
+uvicorn backend.main:app --reload
 ```
 
 프론트엔드:
+
 ```bash
 cd app_streamlit
 streamlit run app.py
 ```
 
-### 5. 데이터 전처리 스크립트
+### 7. API 동작 확인
+
+헬스체크:
+
+```bash
+curl http://127.0.0.1:8000/health
+```
+
+RAG 챗봇 API 테스트:
+
+```bash
+curl -X POST "http://127.0.0.1:8000/api/chat" \
+  -H "Content-Type: application/json" \
+  -d '{"message":"서울에 사는 25세 청년이 받을 수 있는 월세 지원 정책 알려줘.","top_k":5}'
+```
+
+### 8. 데이터 전처리 및 평가용 스크립트
 
 데이터 검증:
+
 ```bash
 python scripts/validate_final_dataset.py
 ```
 
 KoNLPy Okt 형태소 분석 및 키워드 리포트 생성:
+
 ```bash
 python scripts/analyze_korean_text.py
 ```
 
 BoW / TF-IDF / Word2Vec / FastText 분석:
+
 ```bash
 python scripts/build_text_features.py
 ```
 
 Ground Truth 평가 데이터셋 검증:
+
 ```bash
 python scripts/validate_evaluation_dataset.py
 ```
 
 전체 평가 대응 실행 순서:
+
 ```bash
 python scripts/build_opportunities.py
 python scripts/validate_final_dataset.py
@@ -442,7 +556,21 @@ python scripts/validate_evaluation_dataset.py
 
 ---
 
-## 16. 백엔드 사용 방법
+## 17. 데모 시나리오
+
+발표 또는 시연 시 다음 질의를 사용할 수 있다.
+
+| 시나리오 | 예시 질문 | 확인 포인트 |
+|---|---|---|
+| 주거 정책 추천 | 서울에 사는 25세 청년이 받을 수 있는 월세 지원 정책 알려줘 | 조건 추출, 주거 route, 정책 추천, 출처 URL |
+| 교육훈련 추천 | 국민내일배움카드로 들을 수 있는 AI 데이터 분석 훈련 과정 추천해줘 | training source_category, 교육훈련 카드 표시 |
+| 창업공고 최신성 | 2026년에 신청 가능한 청년 창업지원 공고 추천해줘 | startup_notice 검색, 마감 공고 제외 |
+| 롱테일 fallback | 중소기업 다니는 청년 교통비 지원해주는 사업 있어? | 내부 검색 보강, 공식 외부 검색 fallback |
+| 입력 검증 | 월세 | 짧은 질문 경고, 추가 조건 안내 또는 외부 검색 보강 |
+
+---
+
+## 18. 백엔드 사용 방법
 
 백엔드는 다음 파일을 사용한다.
 
@@ -456,7 +584,7 @@ data/processed/opportunities.json
 
 ---
 
-## 17. RAG 사용 방법
+## 19. RAG 사용 방법
 
 RAG 담당자는 다음 파일을 사용한다.
 
@@ -468,28 +596,29 @@ data/processed/opportunity_chunks.jsonl
 
 ---
 
-## 18. Ground Truth 평가 데이터셋
+## 20. Ground Truth 평가 데이터셋
 
 RAG 검색 결과를 평가하기 위해 `tests/evaluation_dataset.jsonl` 파일을 추가했다.
 
-실제 사용자가 입력할 만한 자연어 질문과, 정답으로 기대되는 `item_id`를 JSONL 형식으로 정리한 Ground Truth 데이터셋이다. 자세한 내용은 `docs/evaluation_checklist.md` 참고.
-
+실제 사용자가 입력할 만한 자연어 질문과, 정답으로 기대되는 `item_id`를 JSONL 형식으로 정리한 Ground Truth 데이터셋이다. 자세한 내용은 `docs/02-4. RAG_평가_보고서.md`와 `docs/02-5. LLM_Judge_평가_보고서.md` 참고.
 
 ---
 
-## 19. 주의사항
+## 21. 주의사항
 
 - 원본 raw 데이터는 절대 덮어쓰지 않는다.
 - 원본에 없는 신청방법, 제출서류, 조건은 임의 생성하지 않는다.
 - 모든 연결 기준은 `item_id`이다.
+- `info_score`는 데이터 완성도 점수이며 추천 적합도 점수가 아니다.
 - KoNLPy는 Java 환경이 필요할 수 있다.
 - 최종 제출 산출물은 KoNLPy Okt 기반 분석 결과로 재생성했다.
 - Java/KoNLPy가 없는 환경에서는 스크립트가 중단되지 않도록 정규표현식 기반 예외 처리 경로를 포함한다.
 - Word2Vec/FastText는 평가/분석용 샘플 학습이며 실제 서비스 검색에는 사용하지 않는다.
+- 외부 검색 fallback 결과는 공식 출처 확인 후보이며, 신청 가능 여부와 세부 조건은 원문 확인이 필요하다.
 
 ---
 
-## 20. 버전 히스토리 (Version History)
+## 22. 버전 히스토리 (Version History)
 
 ### 📌 v1.5 — 페이지 전환 최적화 및 리소스 캐시 개선
 
