@@ -435,7 +435,7 @@ def _rerank_results(
     # 마감 상태가 있는 데이터 유형은 이미 마감된 항목을 가능한 한 뒤로 보낸다.
     # 특히 사용자가 "지금 신청 가능한", "2026년에 신청 가능한"처럼 최신성을 명시한 경우에는
     # expired 결과를 참고용으로도 섞지 않고 강하게 제외한다.
-    deadline_target_categories = {"startup_notice", "policy", "training"}
+    deadline_target_categories = {"startup_notice"}
 
     if preferred_source_category in deadline_target_categories:
         non_expired = [
@@ -500,7 +500,7 @@ def _compact_result(item: dict[str, Any]) -> dict[str, Any]:
     
     deadline_rank = _get_deadline_rank(item)
 
-    deadline_status = "not_applicable"
+    deadline_status = "unknown"
     application_end_date = None
 
     if source_category == "startup_notice":
@@ -514,7 +514,7 @@ def _compact_result(item: dict[str, Any]) -> dict[str, Any]:
             metadata=metadata,
         )
 
-        application_end_date = end_date.isoformat() if end_date else ""
+        application_end_date = end_date.isoformat() if end_date else None
 
         if deadline_rank == 3:
             deadline_status = "open"

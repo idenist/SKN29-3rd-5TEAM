@@ -17,22 +17,35 @@ class ChatRequest(BaseModel):
 
 
 class PolicyRecommendation(BaseModel):
-    policy_id: str = Field(..., description="정책 ID")
-    policy_name: str = Field(..., description="정책명")
+    # 신규 통합 필드
+    item_id: str = Field("", description="지원 항목 ID")
+    title: str = Field("", description="지원 항목명")
+
+    # 기존 코드 호환 alias
+    policy_id: str = Field("", description="기존 호환용 정책 ID")
+    policy_name: str = Field("", description="기존 호환용 정책명")
+
+    source_category: str = Field("", description="데이터 유형 (policy/startup_notice/training)")
+    domain: Optional[str] = Field(None, description="도메인")
+    summary: Optional[str] = Field(None, description="요약")
+
     eligibility: str = Field("추가 확인 필요", description="자격 요건 충족 여부")
-    score: float = Field(..., description="유사도 점수 (0~1)")
-    reason: str = Field(..., description="추천 이유")
+    score: float = Field(0.0, description="유사도 점수 (0~1)")
+    reason: str = Field("", description="추천 이유")
+
     support_content: str = Field("정보 없음", description="지원 내용")
     application_period: str = Field("정보 없음", description="신청 기간")
     required_documents: str = Field("정보 없음", description="제출 서류")
+
     source_url: Optional[str] = Field(None, description="원문 URL")
+    application_url: Optional[str] = Field(None, description="신청 URL")
+
     needs_detail_check: bool = Field(False, description="상세 확인 필요 여부")
     cautions: list[str] = Field(default_factory=list, description="주의사항")
-    source_category: str = Field("", description="데이터 유형 (policy/startup_notice/training)")
+
     deadline_status: str = Field("unknown", description="마감 상태 (open/expired/unknown)")
     application_end_date: Optional[str] = Field(None, description="신청 종료일 (파싱된 값)")
     is_expired: bool = Field(False, description="마감 여부")
-
 
 class UserConditions(BaseModel):
     age: Optional[int] = None

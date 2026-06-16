@@ -157,11 +157,45 @@ def _build_reason(policy: dict[str, Any]) -> str:
 def _policy_to_recommendation(policy: dict[str, Any]) -> PolicyRecommendation:
     metadata = policy.get("metadata") or {}
     text = _safe_str(policy.get("text"))
+    
+    item_id = (
+        _safe_str(policy.get("item_id"))
+        or _safe_str(metadata.get("item_id"))
+        or _safe_str(policy.get("policy_id"))
+        or _safe_str(metadata.get("policy_id"))
+    )
+
+    title = (
+        _safe_str(policy.get("title"))
+        or _safe_str(metadata.get("title"))
+        or _safe_str(policy.get("policy_name"))
+        or _safe_str(metadata.get("policy_name"))
+    )
+
+    domain = (
+        _safe_str(policy.get("domain"))
+        or _safe_str(metadata.get("domain"))
+        or None
+    )
+
+    summary = (
+        _safe_str(policy.get("summary"))
+        or _safe_str(metadata.get("summary"))
+        or _extract_field_from_text(text, "policy_summary")
+        or None
+    )
 
     source_url = (
         _safe_str(metadata.get("source_url"))
         or _safe_str(policy.get("source_url"))
-        or "정보 없음"
+        or None
+    )
+    
+    application_url = (
+        _safe_str(metadata.get("application_url"))
+        or _safe_str(policy.get("application_url"))
+        or _extract_field_from_text(text, "application_url")
+        or None
     )
 
     support_content = (
@@ -187,26 +221,45 @@ def _policy_to_recommendation(policy: dict[str, Any]) -> PolicyRecommendation:
         cautions += [f"불충족 가능 조건: {item}" for item in blockers]
 
     return PolicyRecommendation(
-        policy_id=_safe_str(policy.get("policy_id")),
-        policy_name=_safe_str(policy.get("policy_name")),
+        item_id=item_id,
+        title=title,
+        policy_id=item_id,
+        policy_name=title,
+
+        source_category=_safe_str(policy.get("source_category") or metadata.get("source_category")),
+        domain=domain,
+        summary=summary,
+
         eligibility=_safe_str(policy.get("eligibility"), "추가 확인 필요"),
         score=_safe_float(policy.get("score")),
         reason=_build_reason(policy),
+
         support_content=support_content,
         application_period=application_period,
         required_documents=required_documents,
+
         source_url=source_url,
+        application_url=application_url,
+
         needs_detail_check=_safe_bool(
             metadata.get("needs_detail_check", policy.get("needs_detail_check")),
             default=True,
         ),
         cautions=cautions,
-        source_category=_safe_str(policy.get("source_category") or metadata.get("source_category")),
-        deadline_status=_safe_str(policy.get("deadline_status"), "unknown"),
-        application_end_date=policy.get("application_end_date"),
-        is_expired=_safe_bool(policy.get("is_expired"), default=False),
+        deadline_status=_safe_str(
+            policy.get("deadline_status") or metadata.get("deadline_status"),
+            "unknown",
+        ),
+        application_end_date=(
+            policy.get("application_end_date")
+            or metadata.get("application_end_date")
+        ),
+        is_expired=_safe_bool(
+            policy.get("is_expired", metadata.get("is_expired")),
+            default=False,
+        ),
     )
-
+    
 def _workflow_result_to_chat_response(raw: dict[str, Any]) -> ChatResponse:
     if not isinstance(raw, dict):
         raise WorkflowParsingError(f"workflow가 dict가 아닌 타입을 반환: {type(raw)}")
