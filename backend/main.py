@@ -17,13 +17,13 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="청년 정책 통합 탐색 에이전트 API",
     description=(
-        "SK네트웍스 Family AI 캠프 29기 | 청년 정책 RAG 에이전트 백엔드\n\n"
+        "SK네트웍스 Family AI 캠프 29기 3rd Team5 | 청년 정책 RAG 에이전트 \n\n"
         "자연어 질문으로 청년 정책, 창업공고, 교육훈련을 통합 검색하고 "
         "자격 가능성과 신청 안내를 제공합니다."
     ),
     version="1.0.0",
     contact={
-        "name": "SKN 29기 팀",
+        "name": "Team GitHub",
         "url": "https://github.com/idenist/SKN29-3rd-5TEAM",
     },
 )
