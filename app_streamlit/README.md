@@ -38,12 +38,12 @@
 
 ```text
 4th_project/
-├─ KakaoTalk_20260615_181150914.png  # 로고 및 브라우저 아이콘
 ├─ backend/                          # FastAPI 조건 추출·RAG 챗봇 API
 └─ app_streamlit/
    ├─ app.py
    ├─ README.md
    ├─ assets/
+   │  ├─ logo.png
    │  └─ policy_loading.png
    ├─ data/
    │  └─ processed/
@@ -137,6 +137,7 @@ $env:CONDITION_EXTRACT_TIMEOUT="2.5"
 - `APP_VERSION = "v1.4"`
 - Streamlit 페이지 설정과 CSS 로드
 - 로고 이미지의 Data URI 생성
+- 로고와 브라우저 탭 아이콘은 `docs/images/home_logo.png` 사용
 - 정책 데이터 로드
 - 공통 세션 상태 초기화
 - 로고 홈 버튼과 상단 메뉴 렌더링
@@ -442,6 +443,7 @@ python -m py_compile app.py views\home_page.py views\search_page.py views\guide_
 - 로컬 조건 파서를 우선 사용해 조건 추출 버튼 반응 속도 개선
 - 백엔드 조건 추출 API 호출 타임아웃 단축 및 동일 문장 캐시 적용
 - 홈 검색과 조건 추출 처리 중 백구 로딩 오버레이 표시
+- 로고 파일 경로를 `docs/images/home_logo.png`로 통일해 다른 PC에서도 경로 오류 없이 실행
 - 조건 입력 팁 문구를 실제 사용자 흐름에 맞게 수정
 - 페이지 이동 후 스크롤을 결과 목록 상단으로 복원
 - Streamlit 제목 옆 자동 앵커 링크 아이콘 숨김
