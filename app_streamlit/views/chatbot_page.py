@@ -1,6 +1,70 @@
 import streamlit as st
 import requests
+
+from utils.condition_parser import parse_user_query
 from utils.html_renderer import render_html
+
+
+def _safe_int_or_none(value):
+    if value is None or value == "":
+        return None
+
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _safe_str_or_none(value):
+    if value is None:
+        return None
+
+    value = str(value).strip()
+    return value or None
+
+
+def _income_to_text(value):
+    if value is None or value == "":
+        return None
+
+    if isinstance(value, str):
+        value = value.strip()
+        if not value:
+            return None
+        if "소득" in value or "만원" in value:
+            return value
+
+    return f"연소득 {value}만원 이하"
+
+
+def _chat_user_profile(user_input, session_profile):
+    extracted = parse_user_query(user_input)
+
+    age = (
+        extracted.get("age")
+        if extracted.get("age") is not None
+        else session_profile.get("age")
+    )
+    region = extracted.get("region") or session_profile.get("region")
+    income = (
+        extracted.get("income")
+        if extracted.get("income") is not None
+        else session_profile.get("income")
+    )
+    employment_status = (
+        extracted.get("job_status")
+        or session_profile.get("job_status")
+    )
+    interest = extracted.get("interest") or session_profile.get("interest") or []
+
+    return {
+        "age": _safe_int_or_none(age),
+        "region": _safe_str_or_none(region),
+        "income": _income_to_text(income),
+        "employment_status": _safe_str_or_none(employment_status),
+        "interest_domain": interest[0] if interest else "전체",
+    }
+
 
 def render_chatbot_page(policies):
     st.markdown('<div class="page-title">정책 챗봇</div>', unsafe_allow_html=True)
@@ -59,17 +123,9 @@ def render_chatbot_page(policies):
                         # 홈 또는 세션에 저장된 사용자 프로필 데이터 가져오기
                         user_profile = st.session_state.get("profile", {})
                         
-                        # [🚨 chat_schema.py 기반 완벽한 규격 조립]
                         payload = {
                             "message": user_input,
-                            "user_profile": {
-                                "age": int(user_profile.get("age" or 27)),
-                                "region": str(user_profile.get("region", "서울")),
-                                # 소득 수준을 백엔드 사양에 맞춰 문자열(String)로 변환
-                                "income": f"연소득 {user_profile.get('income'or 3000)}만원 이하",
-                                "employment_status": str(user_profile.get("job_status", "중소기업 재직자")),
-                                "interest_domain": "전체"
-                            },
+                            "user_profile": _chat_user_profile(user_input, user_profile),
                             "top_k": 5
                         }
 

@@ -3,6 +3,7 @@ import streamlit as st
 from utils.condition_parser import parse_user_query
 from utils.html_renderer import render_html
 from utils.api_client import extract_conditions_from_backend
+from utils.loading_overlay import show_policy_loading
 
 
 INTERESTS = ["취업", "교육", "창업", "주거", "금융", "복지"]
@@ -13,8 +14,48 @@ EXAMPLE_QUERIES = [
     "교육비 지원 받을 수 있어?",
 ]
 
+def _empty_profile():
+    return {
+        "age": None,
+        "region": None,
+        "income": None,
+        "job_status": None,
+        "housing_status": None,
+        "interest": [],
+    }
+
+
+def _profile_from_extracted(extracted):
+    profile = _empty_profile()
+
+    for key in ("age", "region", "income", "job_status", "housing_status"):
+        if extracted.get(key) is not None:
+            profile[key] = extracted[key]
+
+    if extracted.get("interest"):
+        profile["interest"] = extracted["interest"]
+
+    return profile
+
+
+def _has_extracted_condition(extracted):
+    return any(
+        extracted.get(key)
+        for key in (
+            "age",
+            "region",
+            "income",
+            "job_status",
+            "housing_status",
+            "interest",
+        )
+    )
+
 def _extract_conditions(user_query):
     extracted = parse_user_query(user_query)
+
+    if _has_extracted_condition(extracted):
+        return extracted
 
     try:
         backend_extracted = extract_conditions_from_backend(user_query)
@@ -33,17 +74,11 @@ def _extract_conditions(user_query):
 
 def _apply_query_and_open_results(user_query):
     extracted = _extract_conditions(user_query)
-    profile = st.session_state.profile.copy()
-
-    for key in ("age", "region", "income", "job_status", "housing_status"):
-        if extracted.get(key) is not None:
-            profile[key] = extracted[key]
-
-    if extracted.get("interest"):
-        profile["interest"] = extracted["interest"]
+    profile = _profile_from_extracted(extracted)
 
     # 여기부터 반드시 필요
     st.session_state.profile = profile
+    st.session_state.search_base_profile = profile.copy()
     st.session_state.extracted_conditions = extracted
     st.session_state.result_query = user_query
     st.session_state.result_query_input = user_query
@@ -118,13 +153,22 @@ def render_home_page(policies):
                 )
 
             with col2:
-                st.form_submit_button(
+                submitted = st.form_submit_button(
                     "✦ AI에게 물어보기",
                     width="stretch",
                     type="primary",
-                    key="home_search_button",
-                    on_click=_submit_home_query
+                    key="home_search_button"
                 )
+
+        if submitted:
+            user_query = st.session_state.get("home_user_query", "").strip()
+            if user_query:
+                loading_slot = st.empty()
+                show_policy_loading(loading_slot)
+                _apply_query_and_open_results(user_query)
+                st.rerun()
+            else:
+                st.toast("궁금한 정책이나 현재 상황을 입력해 주세요.")
 
     example_columns = st.columns(len(EXAMPLE_QUERIES))
     for column, example_query in zip(example_columns, EXAMPLE_QUERIES):

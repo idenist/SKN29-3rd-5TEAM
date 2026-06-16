@@ -10,12 +10,52 @@ import streamlit.components.v1 as components
 from utils.condition_parser import parse_user_query
 from utils.html_renderer import render_html
 from utils.api_client import extract_conditions_from_backend
+from utils.loading_overlay import show_policy_loading
 
 REGIONS = ["서울", "부산", "대구", "인천", "광주", "대전", "경기", "기타"]
 JOB_STATUSES = ["구직자", "재직자", "중소기업 재직자", "프리랜서", "예비창업자", "사업자", "학생"]
 HOUSING_STATUSES = ["월세", "전세", "자가", "무주택", "기타"]
 INTERESTS = ["취업", "교육", "창업", "주거", "금융", "복지"]
 RESULTS_PER_PAGE = 10
+NO_MATCH_INTEREST = "__NO_MATCH_INTEREST__"
+
+
+def _empty_profile():
+    return {
+        "age": None,
+        "region": None,
+        "income": None,
+        "job_status": None,
+        "housing_status": None,
+        "interest": [],
+    }
+
+
+def _profile_from_extracted(extracted):
+    profile = _empty_profile()
+
+    for key in ("age", "region", "income", "job_status", "housing_status"):
+        if extracted.get(key) is not None:
+            profile[key] = extracted[key]
+
+    if extracted.get("interest"):
+        profile["interest"] = extracted["interest"]
+
+    return profile
+
+
+def _has_extracted_condition(extracted):
+    return any(
+        extracted.get(key)
+        for key in (
+            "age",
+            "region",
+            "income",
+            "job_status",
+            "housing_status",
+            "interest",
+        )
+    )
 
 
 def _is_closed_policy(policy, today=None):
@@ -35,21 +75,22 @@ def _is_closed_policy(policy, today=None):
     return deadline < (today or date.today())
 
 
-def _sync_filter_widgets(profile):
-    st.session_state.filter_age = profile.get("age")
-    st.session_state.filter_region = profile.get("region")
-    st.session_state.filter_income = profile.get("income")
-    st.session_state.filter_job_status = profile.get("job_status")
-    st.session_state.filter_housing_status = profile.get("housing_status")
+def _reset_filter_widgets():
+    st.session_state.filter_age = None
+    st.session_state.filter_region = None
+    st.session_state.filter_income = None
+    st.session_state.filter_job_status = None
+    st.session_state.filter_housing_status = None
+    st.session_state.filter_validation_error = False
 
-    selected_interests = profile.get("interest", [])
     for interest in INTERESTS:
-        st.session_state[f"filter_interest_{interest}"] = (
-            interest in selected_interests
-        )
+        st.session_state[f"filter_interest_{interest}"] = False
 
 def _extract_conditions(keyword):
     extracted = parse_user_query(keyword)
+
+    if _has_extracted_condition(extracted):
+        return extracted
 
     try:
         backend_extracted = extract_conditions_from_backend(keyword)
@@ -69,46 +110,68 @@ def _extract_conditions(keyword):
 def _extract_search_conditions():
     keyword = st.session_state.get("result_query_input", "")
     extracted = _extract_conditions(keyword)
-    updated_profile = st.session_state.profile.copy()
-
-    for key in ("age", "region", "income", "job_status", "housing_status"):
-        if extracted.get(key) is not None:
-            updated_profile[key] = extracted[key]
-
-    if extracted.get("interest"):
-        updated_profile["interest"] = extracted["interest"]
+    updated_profile = _profile_from_extracted(extracted)
 
     st.session_state.profile = updated_profile
+    st.session_state.search_base_profile = updated_profile.copy()
     st.session_state.extracted_conditions = extracted
     st.session_state.result_query = keyword
     st.session_state.has_searched = True
-    _sync_filter_widgets(updated_profile)
+    _reset_filter_widgets()
 
 def _apply_filter_conditions():
     age = st.session_state.get("filter_age")
     region = st.session_state.get("filter_region")
-    if age is None or region is None:
+    selected_interests = [
+        interest
+        for interest in INTERESTS
+        if st.session_state.get(f"filter_interest_{interest}", False)
+    ]
+
+    if age is None and region is None and not selected_interests:
         st.session_state.filter_validation_error = True
         return
 
-    profile = st.session_state.profile
+    profile = st.session_state.get(
+        "search_base_profile",
+        st.session_state.profile
+    ).copy()
+
+    if age is not None:
+        profile["age"] = age
+
+    if region is not None:
+        profile["region"] = region
+
+    if selected_interests:
+        base_interests = profile.get("interest", [])
+        if base_interests:
+            profile["interest"] = [
+                interest
+                for interest in base_interests
+                if interest in selected_interests
+            ]
+            if not profile["interest"]:
+                profile["interest"] = [NO_MATCH_INTEREST]
+        else:
+            profile["interest"] = selected_interests
+
     st.session_state.profile = {
-        "age": age,
-        "region": region,
+        "age": profile["age"],
+        "region": profile["region"],
         "income": profile["income"],
         "job_status": profile["job_status"],
         "housing_status": profile["housing_status"],
-        "interest": [
-            interest
-            for interest in INTERESTS
-            if st.session_state.get(f"filter_interest_{interest}", False)
-        ],
+        "interest": profile["interest"],
     }
     st.session_state.has_searched = True
     st.session_state.filter_validation_error = False
 
 
 def _matches_age(policy, age):
+    if age is None:
+        return True
+
     try:
         age_min = int(policy["age_min"]) if policy["age_min"] else None
         age_max = int(policy["age_max"]) if policy["age_max"] else None
@@ -119,6 +182,9 @@ def _matches_age(policy, age):
 
 
 def _matches_region(policy, region):
+    if not region:
+        return True
+
     policy_region = policy["region"]
     return policy_region == "전국" or region in policy_region
 
@@ -176,6 +242,23 @@ def _shorten(text, limit):
     return normalized[:limit].rstrip() + "..."
 
 
+def _display_user_value(value, suffix=""):
+    if value is None or value == "":
+        return "입력 없음"
+
+    if isinstance(value, (int, float)):
+        value = f"{value:,}"
+
+    return f"{value}{suffix}"
+
+
+def _display_policy_age(value):
+    normalized = " ".join(str(value or "").split())
+    if normalized in {"", "만 0세 ~ 0세", "만 0세 이상", "만 0세 이하"}:
+        return "연령 정보 없음"
+    return normalized
+
+
 def _close_policy_dialog():
     st.session_state.pop("policy_dialog_id", None)
 
@@ -203,12 +286,19 @@ def _scroll_to_search_results():
     components.html(
         """
 <script>
-window.requestAnimationFrame(() => {
-    const target = window.parent.document.querySelector('.result-filter-heading');
+const scrollToResults = (attempt = 0) => {
+    const target = window.parent.document.querySelector('.policy-results-marker');
     if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
     }
-});
+
+    if (attempt < 12) {
+        window.setTimeout(() => scrollToResults(attempt + 1), 80);
+    }
+};
+
+window.requestAnimationFrame(() => scrollToResults());
 </script>
 """,
         height=0,
@@ -279,7 +369,7 @@ def _render_policy_dialog(policy, profile):
         </div>
         <div class="detail-info-item">
             <div class="meta-label">대상 연령</div>
-            <div class="meta-value">{escape(policy['age'])}</div>
+            <div class="meta-value">{escape(_display_policy_age(policy['age']))}</div>
         </div>
         <div class="detail-info-item">
             <div class="meta-label">대상 지역</div>
@@ -305,30 +395,30 @@ def _render_policy_dialog(policy, profile):
 </div>
 """)
 
-    link_columns = st.columns(2)
-    with link_columns[0]:
-        if apply_url:
-            st.link_button(
-                "신청 사이트 바로가기 ↗",
-                apply_url,
-                width="stretch",
-                type="primary"
-            )
-    with link_columns[1]:
-        if source_url:
-            st.link_button(
-                "공식 출처 확인 ↗",
-                source_url,
-                width="stretch"
-            )
+    dialog_apply_link = _external_link(
+        "신청 사이트 바로가기 ↗",
+        apply_url,
+        "action-btn policy-link dialog-link-btn"
+    )
+    dialog_source_link = _external_link(
+        "공식 출처 확인 ↗",
+        source_url,
+        "sub-btn policy-link dialog-link-btn"
+    )
+    render_html(f"""
+<div class="dialog-link-actions">
+    {dialog_apply_link or '<div class="action-btn action-btn-disabled dialog-link-btn">신청 링크 없음</div>'}
+    {dialog_source_link or '<div class="sub-btn action-btn-disabled dialog-link-btn">출처 없음</div>'}
+</div>
+""")
 
     st.markdown("### 내 조건과 비교")
     comparison = pd.DataFrame([
-        ["나이", f"{profile['age']}세", policy["age"], "확인 필요"],
-        ["지역", profile["region"], policy["region"], "확인 필요"],
-        ["소득", f"{profile['income']:,}만원", policy["income"], "공식 공고 확인"],
-        ["현재 상태", profile["job_status"], policy["job_status"], "공식 공고 확인"],
-        ["주거 상태", profile["housing_status"], policy["housing_status"], "공식 공고 확인"],
+        ["나이", _display_user_value(profile.get("age"), "세"), _display_policy_age(policy["age"]), "확인 필요"],
+        ["지역", _display_user_value(profile.get("region")), policy["region"], "확인 필요"],
+        ["소득", _display_user_value(profile.get("income"), "만원"), policy["income"], "공식 공고 확인"],
+        ["현재 상태", _display_user_value(profile.get("job_status")), policy["job_status"], "공식 공고 확인"],
+        ["주거 상태", _display_user_value(profile.get("housing_status")), policy["housing_status"], "공식 공고 확인"],
     ], columns=["조건", "내 정보", "정책 조건", "판정"])
     st.dataframe(comparison, width="stretch", hide_index=True)
 
@@ -389,14 +479,24 @@ def render_search_page(policies):
                 key="result_query_input"
             )
 
-            st.form_submit_button(
+            submitted = st.form_submit_button(
                 "조건 추출",
                 width="stretch",
                 type="primary",
-                on_click=_extract_search_conditions
+                key="extract_search_conditions"
             )
 
         st.caption("예: 서울 28살 월세 지원 정책")
+
+        if submitted:
+            keyword = st.session_state.get("result_query_input", "").strip()
+            if keyword:
+                loading_slot = st.empty()
+                show_policy_loading(loading_slot)
+                _extract_search_conditions()
+                st.rerun()
+            else:
+                st.toast("검색어를 입력해 주세요.")
 
     with search_right:
         render_html(f"""
@@ -471,32 +571,31 @@ def render_search_page(policies):
         st.markdown("### 조건 입력 필터")
 
     with heading_right:
-        with st.container(border=True):
-            result_title, closed_filter = st.columns(
-                [3, 1.15],
-                vertical_alignment="center"
-            )
-            with result_title:
-                render_html(f"""
+        if has_searched:
+            with st.container(border=True):
+                result_title, closed_filter = st.columns(
+                    [3, 1.15],
+                    vertical_alignment="center"
+                )
+                with result_title:
+                    render_html(f"""
 <div class="result-filter-heading">
     <div class="result-title">총 {len(filtered_policies)}개의 관련 정책을 찾았습니다.</div>
     <div class="small-muted">관련도 순으로 한 페이지에 {RESULTS_PER_PAGE}개씩 보여드려요.</div>
 </div>
 """)
-            with closed_filter:
-                st.toggle(
-                    "마감 정책 제외",
-                    value=True,
-                    key="exclude_closed_policies",
-                    help="끄면 신청이 마감된 정책도 결과에 함께 표시됩니다."
-                )
-                st.caption(
-                    "마감된 정책을 숨기는 중"
-                    if exclude_closed
-                    else "마감된 정책도 함께 표시 중"
-                )
-
-    _scroll_to_search_results()
+                with closed_filter:
+                    st.toggle(
+                        "마감 정책 제외",
+                        value=True,
+                        key="exclude_closed_policies",
+                        help="끄면 신청이 마감된 정책도 결과에 함께 표시됩니다."
+                    )
+                    st.caption(
+                        "마감된 정책을 숨기는 중"
+                        if exclude_closed
+                        else "마감된 정책도 함께 표시 중"
+                    )
 
     filter_left, results_right = st.columns([1.05, 4])
 
@@ -539,18 +638,19 @@ def render_search_page(policies):
             )
 
         if st.session_state.get("filter_validation_error", False):
-            st.warning("나이와 지역을 입력해 주세요.")
+            st.warning("적용할 필터 조건을 하나 이상 입력해 주세요.")
 
         render_html("""
 <div class="info-box" style="margin-top:24px;">
     <b>조건 입력 팁</b><br>
-    · 자연어에서 추출된 값이 기본으로 설정됩니다.<br>
-· 결과를 보면서 조건을 수정할 수 있습니다.
+    · 먼저 위에서 궁금한 정책을 검색해 주세요.<br>
+· 더 정확한 결과가 필요할 때만 나이, 지역, 관심 분야를 추가로 적용해 주세요.
 </div>
 """)
 
     with results_right:
         render_html('<div class="policy-results-marker"></div>')
+        _scroll_to_search_results()
 
         if not has_searched:
             st.session_state.recommended_policy_ids = []
@@ -615,7 +715,7 @@ def render_search_page(policies):
                         </div>
                         <div>
                             <div class="meta-label">대상연령</div>
-                            <div class="meta-value">{escape(p['age'])}</div>
+                            <div class="meta-value">{escape(_display_policy_age(p['age']))}</div>
                         </div>
                         <div>
                             <div class="meta-label">지원내용</div>

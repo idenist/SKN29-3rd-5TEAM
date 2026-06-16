@@ -122,6 +122,8 @@ def _status_for(item):
 def _age_for(item):
     age_min = str(item.get("age_min") or "").strip()
     age_max = str(item.get("age_max") or "").strip()
+    age_min = "" if age_min == "0" else age_min
+    age_max = "" if age_max == "0" else age_max
 
     if age_min and age_max:
         return f"만 {age_min}세 ~ {age_max}세"
@@ -129,7 +131,7 @@ def _age_for(item):
         return f"만 {age_min}세 이상"
     if age_max:
         return f"만 {age_max}세 이하"
-    return "공식 공고 확인"
+    return "연령 정보 없음"
 
 
 def _region_for(item):
@@ -165,6 +167,10 @@ def _normalize(item, rank):
     status, status_class = _status_for(item)
     application_url = str(item.get("application_url") or "").strip()
     source_url = str(item.get("source_url") or "").strip()
+    age_min = str(item.get("age_min") or "").strip()
+    age_max = str(item.get("age_max") or "").strip()
+    age_min = "" if age_min == "0" else age_min
+    age_max = "" if age_max == "0" else age_max
 
     return {
         "id": str(item.get("item_id") or f"opportunity_{rank}"),
@@ -192,8 +198,8 @@ def _normalize(item, rank):
         "organization": str(item.get("organization") or "기관 정보 없음"),
         "source_category": str(item.get("source_category") or ""),
         "needs_detail_check": bool(item.get("needs_detail_check")),
-        "age_min": str(item.get("age_min") or ""),
-        "age_max": str(item.get("age_max") or ""),
+        "age_min": age_min,
+        "age_max": age_max,
         "search_text": " ".join(
             str(item.get(key) or "")
             for key in ("title", "summary", "domain", "tags", "target_text", "region", "location")
