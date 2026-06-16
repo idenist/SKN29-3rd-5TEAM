@@ -43,7 +43,6 @@
    ├─ app.py
    ├─ README.md
    ├─ assets/
-   │  ├─ logo.png
    │  └─ policy_loading.png
    ├─ data/
    │  └─ processed/
@@ -60,6 +59,7 @@
       ├─ search_page.py
       ├─ guide_page.py
       └─ chatbot_page.py
+docs/images/home_logo.png        # 화면 로고 및 브라우저 탭 아이콘
 ```
 
 ## 3. 실행 방법
