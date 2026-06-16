@@ -1330,6 +1330,7 @@ def answer_generator_node(state: GraphState) -> GraphState:
             policies=policies,
             use_llm=use_llm,
             graph_context=state.get("graph_context", ""),  # ← 추가
+            route=state.get("route", ""),   # ← 추가
         )
 
         return {
@@ -1345,6 +1346,8 @@ def answer_generator_node(state: GraphState) -> GraphState:
             policies=policies,
             use_llm=False,
             graph_context=state.get("graph_context", ""),  # ← 추가
+            route=state.get("route", ""),   # ← 추가
+
         )
 
         return {

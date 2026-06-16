@@ -20,6 +20,23 @@ load_dotenv()
 DEFAULT_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-5.4-nano")
 MISSING_TEXT = "제공된 데이터에는 정보가 없습니다."
 
+# temperature / top_p use-case별 파라미터
+LLM_PARAMS_BY_ROUTE = {
+    "질의응답":  {"temperature": 0.2, "top_p": 0.9},   # 기본 QA
+    "일자리":    {"temperature": 0.2, "top_p": 0.9},
+    "주거":      {"temperature": 0.2, "top_p": 0.9},
+    "교육":      {"temperature": 0.3, "top_p": 0.95},  # 교육훈련은 설명 다양성 허용
+    "복지문화":  {"temperature": 0.3, "top_p": 0.95},
+    "참여권리":  {"temperature": 0.3, "top_p": 0.95},
+    "금융":      {"temperature": 0.1, "top_p": 0.85},  # 금융은 정확성 최우선
+    "창업":      {"temperature": 0.3, "top_p": 0.95},
+    "전체":      {"temperature": 0.3, "top_p": 0.95},
+    "요약":      {"temperature": 0.5, "top_p": 0.95},  # 요약 use-case
+}
+LLM_PARAMS_DEFAULT = {"temperature": 0.2, "top_p": 0.9}
+
+
+
 
 def _get_client() -> OpenAI:
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -413,6 +430,7 @@ def generate_answer_with_llm(
     policies: list[dict[str, Any]],
     model: str = DEFAULT_MODEL,
     graph_context: str = "",          # ← 파라미터 추가
+    route: str = "",
 ) -> str:
     """
     LLM을 사용해 최종 답변을 생성한다.
@@ -448,7 +466,7 @@ def generate_answer_with_llm(
                     {"role": "system", "content": ANSWER_GENERATION_SYSTEM_PROMPT},
                     {"role": "user", "content": user_prompt},
                 ],
-                temperature=0.0,
+                **LLM_PARAMS_BY_ROUTE.get(route, LLM_PARAMS_DEFAULT),
                 max_tokens = 1500,
             )
             answer = response.choices[0].message.content or ""
@@ -644,6 +662,7 @@ def generate_answer(
     policies: list[dict[str, Any]],
     use_llm: bool = True,
     graph_context: str = "",          # ← 추가
+    route: str = "",
 ) -> str:
     """
     최종 Answer Generator 진입점.
@@ -658,6 +677,7 @@ def generate_answer(
                 user_conditions=user_conditions,
                 policies=policies,
                 graph_context=graph_context,   # ← 추가
+                route=route,          # ← 추가
             )
         except Exception as e:
             fallback_answer = generate_answer_rule_based(
