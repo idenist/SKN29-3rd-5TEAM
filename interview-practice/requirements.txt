@@ -1,0 +1,9 @@
+# 실습 test_env에서 확인한 버전
+chromadb==1.5.9
+langgraph==1.1.6
+openai==2.31.0
+tavily-python==0.7.26
+python-dotenv==1.2.2
+streamlit==1.55.0
+pandas==2.3.3
+typing-extensions==4.15.0

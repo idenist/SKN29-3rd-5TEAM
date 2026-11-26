@@ -1,3 +1,5 @@
+"""임베딩과 코사인 유사도 (p.9~10). 예제 정책 본문과 질문을 벡터로 바꾸어 수치와 유사도를 출력한다. indexing과 retriever를 읽기 전 비교할 수 있는 독립 실행 예제다."""
+
 from openai import OpenAI
 from dotenv import load_dotenv
 

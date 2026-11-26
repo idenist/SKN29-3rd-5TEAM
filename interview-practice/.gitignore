@@ -1,0 +1,6 @@
+.env
+.env.*
+!.env.example
+practice_vector_db/
+__pycache__/
+*.py[cod]

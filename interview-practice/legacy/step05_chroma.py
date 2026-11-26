@@ -1,3 +1,5 @@
+"""Chroma 검색 실습 (p.9~11). 정책 목록을 청크로 적재하고 질문과 조건으로 후보를 정리해 결과를 출력한다. 초기 적재·검색 동작을 현재 indexing 및 retriever와 비교한다."""
+
 import chromadb
 from openai import OpenAI
 from dotenv import load_dotenv

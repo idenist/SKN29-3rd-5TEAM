@@ -1,4 +1,6 @@
-"""이젠, 안쉼 재현 실습: LangGraph 및 LLM-as-a-Judge (실습 15~16).
+"""LangGraph와 사후 평가 (p.9~12). step14의 함수를 호출해 질문과 기준일을 최종 State로 바꾸고 원할 때 별도로 채점한다. 현재 workflow 및 evaluation으로 나누기 전의 실행본이다.
+
+이젠, 안쉼 재현 실습: LangGraph 및 LLM-as-a-Judge (실습 15~16).
 
 포트폴리오 p.9~12의 주요 검색·답변·평가 흐름을 재현하는 학습용 코드다.
 기존 step14_rag.py의 함수를 재사용하므로 해당 파일과 기존 Chroma DB가 필요하다.

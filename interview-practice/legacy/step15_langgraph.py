@@ -1,3 +1,5 @@
+"""초기 LangGraph 실습 (p.9~12). step14의 검색·답변 함수를 StateGraph에 연결하고 질문의 최종 State와 평가 결과를 출력한다. 현재 workflow 및 evaluation과 비교할 수 있다."""
+
 from datetime import date
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, START, END
