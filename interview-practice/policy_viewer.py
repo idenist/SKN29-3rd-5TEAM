@@ -12,7 +12,7 @@ import streamlit as st
 st.set_page_config(layout="wide")
 
 data_dir = Path(__file__).resolve().parent / "data"
-raw_path = data_dir / "youth_policies_raw_200.json"
+raw_path = data_dir / "youth_policies_raw.json"
 normalized_path = data_dir / "youth_policies_normalized.json"
 if not raw_path.is_file() or not normalized_path.is_file():
     st.info("원본·정규화 JSON이 필요합니다. 파일 위치는 README의 정책 데이터 조회 항목을 확인하세요.")
