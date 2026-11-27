@@ -1,11 +1,14 @@
 """정책을 청크로 나누고 벡터를 저장하는 적재 단계 (p.9~10, p.12).
 
 main에서 policies의 레코드를 받고 Chroma 컬렉션에 본문·벡터·메타데이터를 저장한다.
-retriever는 embed_texts를 질문에도 사용한다. 적재와 조회를 분리해 기존 문서 벡터를 재사용한다."""
+retriever는 embed_texts를 질문에도 사용한다. 적재와 조회를 분리해 기존 문서 벡터를 재사용한다.
+내용 유형마다 한 청크를 만들므로 같은 유형의 긴 문서는 한 청크에 남는다.
+"""
 
 import chromadb
+from chromadb.errors import NotFoundError
 
-from config import COLLECTION_NAME, DB_PATH, EMBEDDING_MODEL, get_openai_client
+from config import COLLECTIONS, DB_PATH, EMBEDDING_MODEL, get_openai_client
 
 
 def build_chunks(policies):
@@ -62,24 +65,21 @@ def embed_texts(texts):
     return [item.embedding for item in items]
 
 
-def get_collection():
-    """설정의 저장 경로와 이름으로 Chroma 컬렉션을 열어 반환한다.
-
-    최초 생성 시 코사인 거리를 지정한다. 기존 컬렉션을 열면 그 안의 데이터와 설정을 재사용한다.
-    이 함수는 자료를 적재하지 않는다.
-    """
-
-    chroma_client = chromadb.PersistentClient(
-        path=DB_PATH
-    )
-
-    collection = chroma_client.get_or_create_collection(
-        name=COLLECTION_NAME,
-        configuration={
-            "hnsw": {"space": "cosine"}
-        }
-    )
-
+def get_collection(dataset="sample", *, for_indexing=False):
+    """지정한 데이터셋의 컬렉션을 연다. 확장 DB 생성은 명시적인 배치 적재 경로에서만 허용한다."""
+    if dataset not in COLLECTIONS:
+        raise ValueError("DATASET은 sample 또는 extended여야 합니다.")
+    name = COLLECTIONS[dataset]
+    client = chromadb.PersistentClient(path=DB_PATH)
+    if dataset == "sample" or for_indexing:
+        return client.get_or_create_collection(name, configuration={"hnsw": {"space": "cosine"}})
+    hint = f"{name} 컬렉션과 DB_PATH를 확인하세요. 확장 적재 단계는 data_pipeline.index_large입니다."
+    try:
+        collection = client.get_collection(name)
+    except NotFoundError:
+        raise ValueError(f"확장 컬렉션을 찾지 못했습니다. {hint}") from None
+    if not collection.count():
+        raise ValueError(f"확장 컬렉션이 비어 있습니다. {hint}")
     return collection
 
 

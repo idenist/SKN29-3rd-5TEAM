@@ -372,6 +372,7 @@ def print_evaluation(evaluation):
 
 
 def main():
+    """이 단계의 샘플 정책과 질문으로 검색 흐름을 실행하고 결과를 출력한다."""
     # 데이터 적재는 이전 실습(step14_rag.py)에서 완료했다는 전제다.
     # 여기서는 기존 Chroma DB를 재사용하고 정책을 다시 임베딩하지 않는다.
     as_of = date.today() if AS_OF is None else AS_OF

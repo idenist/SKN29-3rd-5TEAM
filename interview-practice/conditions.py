@@ -1,9 +1,14 @@
 """질문의 조건 추출과 정책별 자격 판정 (p.9~10).
 
 workflow가 질문을 보내면 나이·지역·관심 분야를 추출한다. answer는 남은 후보와 사용자 조건을
-check_eligibility에 전달해 판정과 그 근거를 받는다. 후보의 의미적 관련성과 지원 가능성은 별도로 판단한다."""
+check_eligibility에 전달해 판정과 그 근거를 받는다. 후보의 의미적 관련성과 지원 가능성은 별도로 판단한다.
+소득 등 상세 조건과 LLM이 추출한 값의 사실성은 원문과 사용자 확인이 필요하다.
+"""
 
 import json
+from datetime import date
+
+from policy_filters import age_match, period_match, region_match
 
 from config import CHAT_MODEL, get_openai_client
 
@@ -59,42 +64,23 @@ def extract_conditions(query):
     return conditions
 
 
-def check_eligibility(result, user_age, user_region):
-    """대표 청크 하나와 사용자 나이·지역을 대조해 eligibility, matched, unmatched, missing을 반환한다.
-
-    명시적 불일치가 우선이며, 미확인 조건이 남으면 추가 확인으로 판단한다. 검색 단계에서
-    남았다는 사실만으로 신청을 확정할 수 없다. 소득·고용 등 세부 요건은 직접 검증하지 않는다.
-    """
-
+def check_eligibility(result, user_age, user_region, as_of=None):
+    """대표 청크의 조건을 비교해 일치·불일치·미확인 사유를 구분한다. 법적 자격 확정은 할 수 없다."""
     metadata = result["metadata"]
+    matched, unmatched, missing = [], [], []
+    checks = [
+        ("연령", age_match(metadata, user_age)),
+        ("지역", region_match(metadata, user_region)),
+        ("신청 기간", period_match(metadata, as_of or date.today())),
+    ]
+    for label, status in checks:
+        if status is True:
+            matched.append(f"{label} 조건 충족")
+        elif status is False:
+            unmatched.append(f"{label} 조건 불충족")
+        else:
+            missing.append(f"{label} 추가 확인 필요")
 
-    matched = []
-    unmatched = []
-    missing = []
-
-    # 1. 연령 조건 판단
-    if user_age is None:
-        missing.append("사용자 나이 정보 없음")
-
-    elif metadata["age_min"] <= user_age <= metadata["age_max"]:
-        matched.append("연령 조건 충족")
-
-    else:
-        unmatched.append("연령 조건 불충족")
-
-    # 2. 지역 조건 판단
-    if user_region is None:
-        missing.append("사용자 지역 정보 없음")
-
-    elif metadata["region"] == user_region:
-        matched.append("지역 조건 충족")
-
-    else:
-        unmatched.append("지역 조건 불충족")
-
-    # 3. 아직 검증하지 않은 세부 자격 요건
-    # 현재 실습 데이터는 소득, 고용 상태 등
-    # 세부 조건이 생략되어 있으므로 기본값을 True로 둔다.
     if metadata.get("needs_detail_check", True):
         missing.append("정책별 세부 자격 요건 확인 필요")
 

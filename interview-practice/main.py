@@ -50,8 +50,12 @@ def main():
 
     평가를 켜면 그래프 종료 후 최종 State로 세 항목을 채점한다. 외부 서비스 실패는 호출자에게 전달된다.
     """
-    collection = get_collection()
-    if config.UPDATE_INDEX or collection.count() == 0:
+    try:
+        collection = get_collection(config.DATASET)
+    except ValueError as error:
+        raise SystemExit(str(error)) from None
+    print("[데이터셋]", config.DATASET, collection.name, "·", config.FILTER_MODE)
+    if config.DATASET == "sample" and (config.UPDATE_INDEX or collection.count() == 0):
         index_chunks(collection, build_chunks(POLICIES))
 
     as_of = config.AS_OF if config.AS_OF is not None else date.today()

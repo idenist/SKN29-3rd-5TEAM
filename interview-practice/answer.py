@@ -1,7 +1,9 @@
 """선택된 근거로 사용자에게 보여줄 답변을 만든다 (p.10~11).
 
 workflow의 내부 경로는 후보별 판정과 본문을 묶어 LLM에 주고, 외부 경로는 Tavily 결과로
-고정 양식을 채운다. 두 함수 모두 문자열을 반환한다. 평가에는 이 답변과 실제 경로의 근거가 쓰인다."""
+고정 양식을 채운다. 두 함수 모두 문자열을 반환한다. 평가에는 이 답변과 실제 경로의 근거가 쓰인다.
+정책당 대표 청크 하나를 사용하므로 다른 청크의 세부 조건은 빠질 수 있다.
+"""
 
 import json
 
@@ -9,7 +11,7 @@ from conditions import check_eligibility
 from config import CHAT_MODEL, get_openai_client
 
 
-def build_internal_context(results, user_age, user_region):
+def build_internal_context(results, user_age, user_region, as_of=None):
     """
     내부 검색 후보마다 자격을 한 번씩 판정하고 답변용 근거를 구성한다.
 
@@ -21,7 +23,7 @@ def build_internal_context(results, user_age, user_region):
     context = []
 
     for result in results:
-        judgment = check_eligibility(result, user_age, user_region)
+        judgment = check_eligibility(result, user_age, user_region, as_of)
 
         # 검색 결과와 규칙 기반 판정 결과를 하나로 묶는다.
         context.append({

@@ -785,6 +785,7 @@ def generate_external_answer(results):
 # ============================================================
 
 def print_results(title, results):
+    """내부 검색 후보와 판정 근거를 콘솔에서 확인한다."""
     print(f"[{title}] 결과 수: {len(results)}")
 
 def print_eligibility_results(context):
@@ -803,6 +804,7 @@ def print_eligibility_results(context):
 
 
 def print_external_results(results):
+    """외부 검색 결과의 제목과 출처를 콘솔에 표시한다."""
     print(f"[7. 외부 검색] 결과 수: {len(results)}")
 
     for result in results:

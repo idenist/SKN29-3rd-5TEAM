@@ -5,22 +5,21 @@ index_large.py — 실제 정책 데이터 배치 적재
 
 정규화된 정책 데이터를 청크로 변환하고,
 일정한 크기로 나누어 임베딩 및 Chroma 적재를 수행한다.
-기존 소규모 실습 컬렉션은 변경하지 않는다.
+indexing의 공통 적재 함수를 사용한다. 이미 저장된 ID는 건너뛰므로 같은 ID의 수정 본문은 갱신하지 않는다.
 """
 
 import json
-import chromadb
 
-from config import DB_PATH, PRACTICE_DIR
-from indexing import build_chunks, index_chunks
+from config import PRACTICE_DIR
+from indexing import build_chunks, get_collection, index_chunks
 
 
 DATA_LIMIT = None  # None이면 전체 정책 사용
 BATCH_SIZE = 100
-COLLECTION_NAME = "youth_policy_extended"
 
 
 def main():
+    """정규화 JSON을 읽고 새 청크만 배치로 확장 컬렉션에 적재한다."""
     # 1. 정규화된 정책 데이터 불러오기
     path = PRACTICE_DIR / "data/youth_policies_normalized.json"
 
@@ -36,14 +35,7 @@ def main():
     print("청크 수:", len(chunks))
 
     # 3. 확장 실험용 컬렉션 생성
-    client = chromadb.PersistentClient(path=DB_PATH)
-
-    collection = client.get_or_create_collection(
-        name=COLLECTION_NAME,
-        configuration={
-            "hnsw": {"space": "cosine"}
-        }
-    )
+    collection = get_collection("extended", for_indexing=True)
 
     # 4. 이미 적재된 청크는 제외한다.
     # 중간에 실행이 실패하더라도 완료된 청크를

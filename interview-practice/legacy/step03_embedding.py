@@ -1,4 +1,6 @@
-"""임베딩과 코사인 유사도 (p.9~10). 예제 정책 본문과 질문을 벡터로 바꾸어 수치와 유사도를 출력한다. indexing과 retriever를 읽기 전 비교할 수 있는 독립 실행 예제다."""
+"""임베딩과 코사인 유사도 (p.9~10). 예제 정책 본문과 질문을 벡터로 바꾸어 수치와 유사도를 출력한다. indexing과 retriever를 읽기 전 비교할 수 있는 독립 실행 예제다.
+이전 실습을 보존한 파일로 import할 때도 API 호출이 발생한다.
+"""
 
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -74,6 +76,7 @@ query_embedding = response.data[0].embedding
 
 # 코사인 유사도 계산
 def cosine_similarity(a, b):
+    """두 벡터의 내적을 길이의 곱으로 나누어 방향의 유사도를 반환한다."""
     dot = sum(x * y for x, y in zip(a, b))
     norm_a = math.sqrt(sum(x ** 2 for x in a))
     norm_b = math.sqrt(sum(y ** 2 for y in b))

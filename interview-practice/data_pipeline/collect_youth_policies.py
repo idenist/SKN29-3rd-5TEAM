@@ -1,9 +1,9 @@
 """온통청년 공식 Open API에서 모든 분야의 정책 원본 전량을 수집한다 (포트폴리오 p.12).
 
-실행: interview-practice 폴더에서 python collect_youth_policies.py
+실행: interview-practice 폴더에서 python -m data_pipeline.collect_youth_policies
 환경: YOUTH_POLICY_API_KEY를 환경변수 또는 이 폴더의 .env에 설정한다.
 출력: data/youth_policies_raw.json. policies에는 API의 정책 객체를 그대로 넣고,
-수집 시각·출처·페이지 수·분야별 분포은 별도의 collection 필드에 기록한다.
+수집 시각·출처·페이지 수·분야별 분포는 별도의 collection 필드에 기록한다. normalize_policies가 이 파일을 읽는다. 수집 도중 원본 목록은 바뀔 수 있다.
 """
 
 import json
@@ -18,7 +18,7 @@ import requests
 from dotenv import load_dotenv
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "data" / "youth_policies_raw.json"
 ENDPOINT = "https://www.youthcenter.go.kr/go/ythip/getPlcy"
 SPEC = "https://www.youthcenter.go.kr/cmnFooter/openapiIntro/oaiDoc/86"

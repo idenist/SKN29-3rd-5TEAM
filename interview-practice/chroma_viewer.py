@@ -2,6 +2,7 @@
 
 config의 DB 경로에서 컬렉션과 청크를 선택하면 본문·메타데이터 표, 벡터 차원과 값을 표시한다.
 indexing이 적재한 값을 get으로 읽으므로 질문 임베딩이나 RAG 워크플로우 실행이 필요 없다.
+전체 메타데이터와 본문을 한 번에 읽으므로 대규모 컬렉션에서 화면이 느려질 수 있다.
 """
 
 import chromadb
@@ -28,7 +29,7 @@ collection_names = [
 ]
 
 if not collection_names:
-    st.info("아직 컬렉션이 없습니다. main.py에서 실습 데이터를 먼저 적재하세요.")
+    st.info("DB 경로에 조회 가능한 컬렉션이 없습니다. config.py의 DB_PATH와 데이터셋을 확인하세요.")
     st.stop()
 
 selected = st.sidebar.selectbox(

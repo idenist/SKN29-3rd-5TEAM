@@ -4,3 +4,4 @@
 practice_vector_db/
 __pycache__/
 *.py[cod]
+/data/

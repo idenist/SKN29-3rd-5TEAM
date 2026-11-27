@@ -6,7 +6,8 @@ normalize_policies.py — 온통청년 원본 데이터 정규화
 원본 정책 JSON을 읽어 검색용 본문(documents)과
 필터링용 메타데이터(metadata)로 분리한다.
 
-출력 형식은 indexing.py의 build_chunks()와 연결된다.
+기관 필드와 결측 표현을 통일해야 숫자·날짜를 비교할 수 있다. 본문은 의미 검색에, 메타데이터는 조건 비교에 사용한다.
+indexing.build_chunks가 이 결과를 받는다. 연령 플래그와 신청 기간 코드의 해석은 잠정적이다.
 """
 
 import json
@@ -15,7 +16,7 @@ from pathlib import Path
 from datetime import datetime
 from collections import Counter
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parents[1]
 
 RAW_PATH = BASE_DIR / "data/youth_policies_raw.json"
 OUTPUT_PATH = BASE_DIR / "data/youth_policies_normalized.json"
@@ -239,6 +240,7 @@ def normalize_policy(policy):
 
 
 def main():
+    """원본 JSON의 정책 ID를 확인하고 정규화한 목록과 필드 분포를 기록한다."""
     with RAW_PATH.open(encoding="utf-8") as f:
         raw = json.load(f)["policies"]
 

@@ -2,6 +2,7 @@
 
 main에서 연 컬렉션과 최초 State(query, as_of)를 사용한다. 각 노드는 바뀐 키만 반환하고
 LangGraph가 기존 State에 합친다. END의 State에는 분기 근거, 실제 답변 근거와 최종 답변이 남는다.
+충분성은 후보와 분야를 기준으로 판단하므로 질문의 모든 세부 요구를 검사하지 않는다.
 """
 
 from datetime import date
@@ -13,10 +14,8 @@ from typing_extensions import TypedDict
 from answer import build_internal_context, generate_external_answer, generate_internal_answer
 from conditions import extract_conditions
 from external_search import refine_external_results, search_external
-from retriever import (
-    check_sufficiency, deduplicate_results, filter_expired_results,
-    filter_results, rerank_results, search_chunks,
-)
+import config
+from retriever import check_sufficiency, refine_candidates, search_chunks
 
 
 class GraphState(TypedDict, total=False):
@@ -63,9 +62,9 @@ def condition_node(state: GraphState):
 
 def retrieve_node(state: GraphState, *, collection):
     """State의 질문으로 collection을 검색해 retrieved_results를 반환한다. 아직 자격을 판단하지 않는다."""
-    results = search_chunks(collection, state["query"])
+    results = search_chunks(collection, state["query"], config.FETCH_K, state["conditions"], config.FILTER_MODE)
 
-    # 아직 나이·지역 필터링을 적용하지 않은 원본 결과다.
+    # pre에서는 제한된 범위, post에서는 전체 컬렉션에서 검색한 순위다.
     return {"retrieved_results": results}
 
 
@@ -74,35 +73,10 @@ def refine_node(state: GraphState):
 
     후보 목록 candidates와 단계별 개수를 반환한다. 처음 가져온 청크 범위 안에서만 후보를 고른다.
     """
-    conditions = state["conditions"]
-
-    # 1. 사용자가 제공한 나이·지역과 맞지 않는 후보를 제외한다.
-    # 정보가 없는 조건은 검색 단계에서 생략한다.
-    results = filter_results(
-        state["retrieved_results"],
-        conditions["age"],
-        conditions["region"],
+    candidates, counts = refine_candidates(
+        state["retrieved_results"], state["conditions"], state["as_of"], config.TOP_K
     )
-
-    # 2. 같은 정책(item_id)의 여러 청크 중 대표 청크만 선택한다.
-    unique = deduplicate_results(results)
-
-    # 3. 관심 분야 일치 여부를 우선하고, 그다음 유사도로 정렬한다.
-    ranked = rerank_results(unique, conditions["interest_domain"])
-
-    # 4. 기준일보다 신청 마감일이 앞선 공고를 제외한다.
-    remaining = filter_expired_results(ranked, as_of=state["as_of"])
-
-    # 원본 retrieved_results는 덮어쓰지 않고 별도 키에 보관한다.
-    return {
-        "candidates": remaining,
-        "stage_counts": {
-            "조건 필터링": len(results),
-            "중복 제거": len(unique),
-            "재정렬": len(ranked),
-            "마감 필터링": len(remaining),
-        },
-    }
+    return {"candidates": candidates, "stage_counts": counts}
 
 
 def sufficiency_node(state: GraphState):
@@ -132,6 +106,7 @@ def internal_answer_node(state: GraphState):
         state["candidates"],
         conditions["age"],
         conditions["region"],
+        state["as_of"],
     )
 
     # LLM은 판정과 검색 근거를 전달받아 자연어 답변을 작성한다.
